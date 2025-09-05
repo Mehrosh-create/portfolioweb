@@ -22,3 +22,6 @@ body {
 .animate-spin {
   animation: spin 1s linear infinite;
 }
+button, a, [role="button"], input[type="submit"], input[type="button"], .clickable {
+  cursor: pointer;
+}
