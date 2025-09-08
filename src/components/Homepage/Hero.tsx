@@ -7,12 +7,13 @@ import VideoModal from '@/components/Video/Videomodal'
 import { SearchIcon, X } from 'lucide-react'
 
 interface HeroSectionProps {
-  onVideoPlay: () => void;
-  showSearch: boolean;
-  onSearchClose: () => void;
+  onVideoPlay: () => void
+  showSearch: boolean
+  onSearchClose: () => void
+  bgColor?: string // <-- new prop for background color
 }
 
-const HeroSection = ({ onVideoPlay, showSearch, onSearchClose }: HeroSectionProps) => {
+const HeroSection = ({ onVideoPlay, showSearch, onSearchClose, bgColor = "bg-black/60" }: HeroSectionProps) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -29,7 +30,7 @@ const HeroSection = ({ onVideoPlay, showSearch, onSearchClose }: HeroSectionProp
 
   return (
     <>
-      {/* Search Bar - Big like in reference image */}
+      {/* Search Bar */}
       {showSearch && (
         <div className="w-full bg-black py-8 px-8 border-b border-gray-700 relative z-50">
           <div className="max-w-7xl mx-auto flex items-center">
@@ -44,8 +45,8 @@ const HeroSection = ({ onVideoPlay, showSearch, onSearchClose }: HeroSectionProp
                 autoFocus
                 style={{ fontSize: '2.5rem' }}
               />
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="ml-8 text-white bg-transparent border-2 border-white px-8 py-3 hover:bg-white hover:text-black transition-colors duration-300 text-xl font-medium"
               >
                 SEARCH
@@ -59,7 +60,7 @@ const HeroSection = ({ onVideoPlay, showSearch, onSearchClose }: HeroSectionProp
       )}
 
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        {/* Full Background Image with proper sizing */}
+        {/* Full Background Image */}
         <div className="absolute inset-0 w-full h-full">
           <Image
             src="/images/ceo.png"
@@ -70,13 +71,12 @@ const HeroSection = ({ onVideoPlay, showSearch, onSearchClose }: HeroSectionProp
             quality={100}
             sizes="100vw"
           />
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/60"></div>
+          {/* Overlay with dynamic bgColor */}
+          <div className={`absolute inset-0 ${bgColor}`}></div>
         </div>
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-8">
           <div className="flex flex-col items-start text-left">
-            
             {/* Text Content */}
             <div className="max-w-4xl">
               <h1 className="text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight drop-shadow-2xl">
@@ -123,4 +123,4 @@ const HeroSection = ({ onVideoPlay, showSearch, onSearchClose }: HeroSectionProp
   )
 }
 
-export default HeroSection;
+export default HeroSection

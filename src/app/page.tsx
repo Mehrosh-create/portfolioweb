@@ -1,47 +1,45 @@
-// app/page.tsx
-"use client"
-import { useState } from 'react';
-import Sidebar from '@/components/Sidebar/Sidebar';
-import Hero from '@/components/Homepage/Hero';
-import CounterSection from '@/components/Homepage/Counter';
-import Footer from '@/components/Global/Footer';
-import Spacer from '@/components/Global/Spacer';
+"use client";
+
+import Hero from "@/components/Homepage/Hero";
+import CounterSection from "@/components/Homepage/Counter";
+import Footer from "@/components/Global/Footer";
+import Spacer from "@/components/Global/Spacer";
+import New from "@/components/Homepage/New";
+import Blog from "@/components/Homepage/Blog";
 
 export default function Home() {
-  const [showSearch, setShowSearch] = useState(false);
-
   const handleVideoPlay = () => {
     console.log("Video play triggered");
-    // You can add any additional logic here
-  };
-
-  const handleSearchClick = () => {
-    setShowSearch(true);
-  };
-
-  const handleSearchClose = () => {
-    setShowSearch(false);
   };
 
   return (
-    <main className="min-h-screen flex">
-      <Sidebar onSearchClick={handleSearchClick} />
-      
-      {/* Main content area */}
-      <div className="flex-1 flex flex-col lg:ml-0">
-        <div className="flex-grow">
-          <Hero 
-            onVideoPlay={handleVideoPlay} 
-            showSearch={showSearch}
-            onSearchClose={handleSearchClose}
-          />
-          <Spacer height={2} />
+    <main className="min-h-screen flex flex-col">
+      <div className="flex-grow">
+        <section id="home">
+          <Hero onVideoPlay={handleVideoPlay} showSearch={false} onSearchClose={() => {}} />
+        </section>
+
+        <Spacer height={2} />
+
+        <section id="counter">
           <CounterSection />
-          <Spacer height={2} />
-          {/* Additional sections would go here */}
-        </div>
-        <Footer />
+        </section>
+
+        <Spacer height={2} />
+
+        <section id="new">
+          <New />
+        </section>
+
+        <Spacer height={2} />
+
+        <section id="blog">
+          <Blog />
+        </section>
+
+        <Spacer height={2} />
       </div>
+      <Footer />
     </main>
   );
 }
