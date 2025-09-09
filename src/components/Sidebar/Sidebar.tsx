@@ -58,6 +58,21 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
     setTimeout(() => setActiveSocialIcon(""), 300);
   };
 
+  // Social links data
+  const socialLinks = [
+    { href: "https://twitter.com/garyvee", icon: Twitter, label: "Twitter" },
+    { href: "https://www.facebook.com/gary", icon: Facebook, label: "Facebook" },
+    { href: "https://www.pinterest.com/garyvee/", icon: Bookmark, label: "Pinterest" },
+    { href: "https://www.linkedin.com/in/garyvaynerchuk/", icon: Linkedin, label: "Linkedin" },
+    { href: "https://www.youtube.com/c/garyvee", icon: Youtube, label: "YouTube" },
+    { href: "https://www.instagram.com/garyvee/", icon: Instagram, label: "Instagram" },
+    { href: "https://snapchat.com/add/garyvee", icon: Camera, label: "Snapchat" },
+    { href: "https://discord.com/invite/veefriends", icon: MessageCircle, label: "Discord" },
+    { href: "https://www.tiktok.com/@garyvee", icon: Play, label: "TikTok" },
+    { href: "https://www.threads.net/@teamgaryvee?hl=en", icon: Hash, label: "Threads" },
+    { href: "sms:+12129315731", icon: Phone, label: "Phone" },
+  ];
+
   return (
     <>
       {/* Hamburger for mobile */}
@@ -86,13 +101,10 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
           ${isOpen ? "translate-x-0" : "-translate-x-full"} 
           lg:translate-x-0`}
       >
-        {/* Scrollable content */}
         <div className="flex flex-col h-full overflow-y-auto">
           {/* Logo */}
           <div
-            className={`p-6 transition-all duration-300 ${
-              scrolled ? "py-4" : "py-6"
-            } flex justify-center`}
+            className={`p-6 transition-all duration-300 ${scrolled ? "py-4" : "py-6"} flex justify-center`}
           >
             <Link href="/" onClick={() => handleLinkClick("home")}>
               <Image
@@ -121,19 +133,16 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                   <Link
                     href={item.href}
                     className={`block px-4 py-3 rounded-lg relative overflow-hidden text-xl font-semibold transition-all duration-300
-                      ${
-                        activeLink === item.id
-                          ? "text-[#02B600] drop-shadow-[0_0_10px_#02B600]"
-                          : "text-white hover:text-[#02B600] hover:drop-shadow-[0_0_8px_#02B600]"
+                      ${activeLink === item.id
+                        ? "text-[#02B600] drop-shadow-[0_0_10px_#02B600]"
+                        : "text-white hover:text-[#02B600] hover:drop-shadow-[0_0_8px_#02B600]"
                       }`}
                     onClick={() => handleLinkClick(item.id)}
                   >
                     {item.label}
                     <span
                       className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#02B600] transform transition-transform duration-300 ${
-                        activeLink === item.id
-                          ? "translate-x-0"
-                          : "-translate-x-full"
+                        activeLink === item.id ? "translate-x-0" : "-translate-x-full"
                       }`}
                     />
                   </Link>
@@ -155,39 +164,46 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
 
           {/* Footer Socials */}
           <div className="p-6 border-t border-[#02B600]/40 mt-auto">
-            <ul className="grid grid-cols-4 gap-4 justify-items-center mb-6">
-              {[
-                Twitter,
-                Facebook,
-                Bookmark,
-                Linkedin,
-                Youtube,
-                Instagram,
-                Camera,
-                MessageCircle,
-                Play,
-                Hash,
-                Phone,
-              ].map((Icon, i) => (
+            {/* Desktop Grid */}
+            <ul className="hidden lg:grid grid-cols-4 gap-4 justify-items-center mb-6">
+              {socialLinks.map((social, i) => (
                 <li key={i}>
-                  <button
-                    onClick={() =>
-                      handleSocialIconClick(Icon.displayName || String(i))
-                    }
-                    className={`group relative block transition-transform duration-300 hover:scale-110
-                      ${
-                        activeSocialIcon === (Icon.displayName || String(i))
-                          ? "-translate-y-2"
-                          : ""
-                      }`}
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative block transition-transform duration-300 hover:-translate-y-2"
+                    aria-label={social.label}
                   >
                     <span className="flex items-center justify-center w-10 h-10 bg-black/40 rounded-full group-hover:bg-[#02B600] group-hover:shadow-[0_0_12px_#02B600] transition-all">
-                      <Icon className="w-5 h-5" />
+                      <social.icon className="w-5 h-5 text-white" />
                     </span>
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
+
+            {/* Mobile Horizontal Scroll */}
+            <div className="lg:hidden overflow-x-auto">
+              <ul className="flex gap-4 mb-6 px-1">
+                {socialLinks.map((social, i) => (
+                  <li key={i} className="flex-shrink-0">
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative block transition-transform duration-300 hover:-translate-y-2"
+                      aria-label={social.label}
+                    >
+                      <span className="flex items-center justify-center w-10 h-10 bg-black/40 rounded-full group-hover:bg-[#02B600] group-hover:shadow-[0_0_12px_#02B600] transition-all">
+                        <social.icon className="w-5 h-5 text-white" />
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <p className="text-sm text-center text-gray-400">
               © {new Date().getFullYear()} Entrepreneur Portfolio
             </p>
