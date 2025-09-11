@@ -31,7 +31,7 @@ const Spacer = ({ height = 60, showPattern = true }: SpacerProps) => {
   return (
     <div className="relative" style={{ height: `${height}px` }}>
       {showPattern && (
-        <div 
+        <div
           ref={patternRef}
           className="absolute inset-0 z-0 opacity-5"
           style={{

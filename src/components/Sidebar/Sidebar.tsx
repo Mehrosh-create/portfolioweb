@@ -8,7 +8,6 @@ import {
   Instagram,
   Linkedin,
   Youtube,
-  Github,
   Twitter,
   SearchIcon,
   MessageCircle,
@@ -28,12 +27,13 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [activeLink, setActiveLink] = useState("");
-  const [activeSocialIcon, setActiveSocialIcon] = useState("");
+  const [hoveredNav, setHoveredNav] = useState("");
+  const [searchHover, setSearchHover] = useState(false);
 
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 1024);
-      setIsOpen(window.innerWidth >= 1024); // Sidebar always open on desktop
+      setIsOpen(window.innerWidth >= 1024);
     };
 
     checkIfMobile();
@@ -50,15 +50,9 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
   const handleLinkClick = (link: string) => {
     setActiveLink(link);
     if (isMobile) setIsOpen(false);
-    setTimeout(() => setActiveLink(""), 500);
+    setTimeout(() => setActiveLink(""), 800);
   };
 
-  const handleSocialIconClick = (iconName: string) => {
-    setActiveSocialIcon(iconName);
-    setTimeout(() => setActiveSocialIcon(""), 300);
-  };
-
-  // Social links data
   const socialLinks = [
     { href: "https://twitter.com/garyvee", icon: Twitter, label: "Twitter" },
     { href: "https://www.facebook.com/gary", icon: Facebook, label: "Facebook" },
@@ -75,19 +69,17 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
 
   return (
     <>
-      {/* Hamburger for mobile */}
       {isMobile && (
-        <div className="fixed top-4 left-4 z-50">
+        <div className="fixed top-3 left-3 z-50">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white bg-gray-900 px-3 py-2 rounded transition-all hover:scale-105"
+            className="text-white bg-gray-900 px-2 py-1 rounded text-sm transition-all hover:scale-105"
           >
             ☰
           </button>
         </div>
       )}
 
-      {/* Overlay */}
       {isMobile && isOpen && (
         <div
           className="fixed inset-0 bg-black/70 backdrop-blur-md z-40 lg:hidden"
@@ -97,30 +89,31 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-72 bg-black text-white z-50 transition-transform duration-300 shadow-xl shadow-black/50
-          ${isOpen ? "translate-x-0" : "-translate-x-full"} 
-          lg:translate-x-0`}
+        className={`fixed top-0 left-0 h-screen w-64 bg-black text-white z-50 transition-transform duration-300 shadow-xl shadow-black/50
+        ${isOpen ? "translate-x-0" : "-translate-x-full"} 
+        lg:translate-x-0`}
       >
-        <div className="flex flex-col h-full overflow-y-auto">
+        <div className="flex flex-col h-full justify-between">
           {/* Logo */}
           <div
-            className={`p-6 transition-all duration-300 ${scrolled ? "py-4" : "py-6"} flex justify-center`}
+            className={`p-4 transition-all duration-300 ${scrolled ? "py-3" : "py-4"
+              } flex justify-center`}
           >
             <Link href="/" onClick={() => handleLinkClick("home")}>
               <Image
                 src="/images/logo.png"
                 alt="Entrepreneur Portfolio Logo"
-                width={160}
-                height={56}
-                className="transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_12px_#02B600]"
+                width={120}
+                height={45}
+                className="transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_8px_#02B600]"
                 priority
               />
             </Link>
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 px-4 py-6">
-            <ul className="space-y-5">
+          <nav className="flex-1 px-3 flex items-center justify-center">
+            <ul className="space-y-4 w-full text-lg">
               {[
                 { href: "/", label: "Home", id: "home" },
                 { href: "/about", label: "About", id: "about" },
@@ -129,53 +122,65 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                 { href: "/testimonials", label: "Testimonials", id: "testimonials" },
                 { href: "/contact", label: "Contact", id: "contact" },
               ].map((item) => (
-                <li key={item.id}>
+                <li key={item.id} className="relative">
+                  <div
+                    className={`absolute inset-0 bg-[#02B600] rounded-md transform transition-transform duration-300 ease-out ${hoveredNav === item.id ? "scale-x-100 origin-left" : "scale-x-0 origin-left"
+                      }`}
+                    style={{ zIndex: -1 }}
+                  />
                   <Link
                     href={item.href}
-                    className={`block px-4 py-3 rounded-lg relative overflow-hidden text-xl font-semibold transition-all duration-300
-                      ${activeLink === item.id
-                        ? "text-[#02B600] drop-shadow-[0_0_10px_#02B600]"
-                        : "text-white hover:text-[#02B600] hover:drop-shadow-[0_0_8px_#02B600]"
-                      }`}
+                    className="block px-4 py-2 rounded-md relative font-semibold text-white"
                     onClick={() => handleLinkClick(item.id)}
+                    onMouseEnter={() => setHoveredNav(item.id)}
+                    onMouseLeave={() => setHoveredNav("")}
                   >
                     {item.label}
-                    <span
-                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#02B600] transform transition-transform duration-300 ${
-                        activeLink === item.id ? "translate-x-0" : "-translate-x-full"
-                      }`}
-                    />
                   </Link>
                 </li>
               ))}
 
-              {/* Search */}
-              <li>
+              {/* Search Icon (LEFT aligned) */}
+              <li className="flex justify-start pt-4 pl-2">
                 <button
                   onClick={onSearchClick}
-                  className="w-full px-4 py-3 rounded-lg text-white text-xl font-semibold flex items-center transition-all duration-300 hover:text-[#02B600] hover:drop-shadow-[0_0_8px_#02B600]"
+                  onMouseEnter={() => setSearchHover(true)}
+                  onMouseLeave={() => setSearchHover(false)}
+                  className="w-12 h-12 flex items-center justify-center rounded-full transition-colors duration-300"
+                  style={{
+                    color: searchHover ? "#02B600" : "white",
+                  }}
                 >
-                  <SearchIcon className="w-6 h-6 mr-3" />
-                  Search
+                  <SearchIcon
+                    className="w-7 h-7 transition-colors duration-300"
+                    style={{
+                      color: searchHover ? "#02B600" : "white",
+                    }}
+                  />
                 </button>
               </li>
             </ul>
           </nav>
 
           {/* Footer Socials */}
-          <div className="p-6 border-t border-[#02B600]/40 mt-auto">
+          <div className="p-4 border-t border-[#02B600]/40">
             {/* Desktop Grid */}
-            <ul className="hidden lg:grid grid-cols-4 gap-4 justify-items-center mb-6">
+            <ul className="hidden lg:grid grid-cols-5 gap-3 justify-items-center mb-4">
               {socialLinks.map((social, i) => (
                 <li key={i}>
                   <a
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative block transition-transform duration-300 hover:-translate-y-2"
                     aria-label={social.label}
+                    className="relative w-10 h-10 overflow-hidden rounded-full group block"
                   >
-                    <span className="flex items-center justify-center w-10 h-10 bg-black/40 rounded-full group-hover:bg-[#02B600] group-hover:shadow-[0_0_12px_#02B600] transition-all">
+                    {/* Default Icon */}
+                    <span className="absolute inset-0 flex items-center justify-center bg-black/40 transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+                      <social.icon className="w-5 h-5 text-white" />
+                    </span>
+                    {/* Hover Green Icon */}
+                    <span className="absolute inset-0 flex items-center justify-center bg-[#02B600] translate-y-full transition-all duration-300 group-hover:translate-y-0">
                       <social.icon className="w-5 h-5 text-white" />
                     </span>
                   </a>
@@ -183,19 +188,22 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
               ))}
             </ul>
 
-            {/* Mobile Horizontal Scroll */}
+            {/* Mobile scrollable icons */}
             <div className="lg:hidden overflow-x-auto">
-              <ul className="flex gap-4 mb-6 px-1">
+              <ul className="flex gap-3 mb-4 px-1">
                 {socialLinks.map((social, i) => (
                   <li key={i} className="flex-shrink-0">
                     <a
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative block transition-transform duration-300 hover:-translate-y-2"
                       aria-label={social.label}
+                      className="relative w-10 h-10 overflow-hidden rounded-full group block"
                     >
-                      <span className="flex items-center justify-center w-10 h-10 bg-black/40 rounded-full group-hover:bg-[#02B600] group-hover:shadow-[0_0_12px_#02B600] transition-all">
+                      <span className="absolute inset-0 flex items-center justify-center bg-black/40 transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+                        <social.icon className="w-5 h-5 text-white" />
+                      </span>
+                      <span className="absolute inset-0 flex items-center justify-center bg-[#02B600] translate-y-full transition-all duration-300 group-hover:translate-y-0">
                         <social.icon className="w-5 h-5 text-white" />
                       </span>
                     </a>
@@ -204,7 +212,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
               </ul>
             </div>
 
-            <p className="text-sm text-center text-gray-400">
+            <p className="text-xs text-center text-gray-400">
               © {new Date().getFullYear()} Entrepreneur Portfolio
             </p>
           </div>

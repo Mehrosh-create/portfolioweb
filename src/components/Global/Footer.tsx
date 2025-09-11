@@ -25,14 +25,16 @@ const Footer = () => {
       return
     }
 
-    // If we get here, the email is valid
     console.log('Submitting email:', email)
     setEmail('')
     setError('')
   }
 
   return (
-    <footer className="text-white" style={{ backgroundColor: '#292526' }}>
+    <footer
+      className="text-white bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/images/Home_Newsletter_Background-2-scaled.jpg')" }}
+    >
       {/* Newsletter Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 text-center border-b border-gray-800">
         <div className="max-w-3xl mx-auto">
@@ -44,10 +46,7 @@ const Footer = () => {
             SIGN UP FOR MY WEEKLY NEWSLETTER
           </p>
 
-          <form
-            onSubmit={handleSubmit}
-            className="max-w-lg mx-auto"
-          >
+          <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
             <div className="text-left mb-4">
               <label
                 htmlFor="email"
@@ -63,15 +62,15 @@ const Footer = () => {
                 required
                 aria-invalid="false"
                 className={`large flex-1 w-full px-6 py-4 rounded bg-neutral-800 text-white 
-  focus:outline-none focus:ring-2 focus:ring-white text-lg ${email ? 'font-bold' : ''}`}
+                focus:outline-none focus:ring-2 focus:ring-white text-lg ${email ? 'font-bold' : ''}`}
                 name="input_3"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value)
-                  // Clear error when user starts typing
                   if (error) setError('')
                 }}
                 placeholder="Enter your email"
+                style={{ backgroundColor: '#353535' }}
               />
               <button
                 type="submit"
@@ -81,7 +80,6 @@ const Footer = () => {
               </button>
             </div>
 
-            {/* Error message */}
             {error && (
               <div
                 id="validation_message"
@@ -241,11 +239,23 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="text-center text-base text-gray-400 pb-10">
-        © {new Date().getFullYear()} SHEIKH NABEEL. All rights reserved.
+      <div className="text-center text-base text-gray-400 pb-6">
+        <p>
+          © Sheikh Nabeel {new Date().getFullYear()}
+        </p>
+        <div className="flex justify-center gap-3 mt-1">
+          <Link href="/privacy-policy" className="hover:text-white transition-colors">
+            Privacy Policy
+          </Link>
+          <span>|</span>
+          <Link href="/terms-of-use" className="hover:text-white transition-colors">
+            Terms of Use
+          </Link>
+        </div>
       </div>
     </footer>
   )
 }
 
 export default Footer
+

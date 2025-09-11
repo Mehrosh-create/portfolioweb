@@ -16,7 +16,7 @@ export default function Home() {
     <main className="min-h-screen flex flex-col">
       <div className="flex-grow">
         <section id="home">
-          <Hero onVideoPlay={handleVideoPlay} showSearch={false} onSearchClose={() => {}} />
+          <Hero onVideoPlay={handleVideoPlay} />
         </section>
 
         <Spacer height={2} />
