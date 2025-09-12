@@ -49,21 +49,24 @@ const CounterSection = () => {
             style={{
               fontSize: "clamp(2.5rem, 8vw, 4rem)",
               lineHeight: 1.1,
-              fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-              fontWeight: 900,
+              fontFamily: '"Bebas Neue", sans-serif',
+              fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.02em",
             }}
           >
-            "LEGACY IS GREATER THAN CURRENCY."
+            "LEGACY IS GREATER THAN <br />
+            <span className="block text-center">CURRENCY."</span>
           </h2>
 
           <div
-            className="inline-block px-6 py-2 text-black font-bold text-xl tracking-wide uppercase"
+            className="inline-block text-black font-bold tracking-wider uppercase whitespace-nowrap px-3 py-1"
             style={{
-              backgroundColor: "#FFFC01",
-              fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-              fontWeight: 900,
+              backgroundColor: "#FFEA00",
+              fontFamily: '"Bebas Neue", sans-serif',
+              fontWeight: 700,
+              fontSize: "1.6rem",
+              letterSpacing: "0.08em",
             }}
           >
             SHEIKH NABEEL
@@ -97,7 +100,10 @@ const CounterSection = () => {
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute inset-0 bg-[#02B600]/30 animate-pulse z-20"></div>
                 <div className="absolute inset-0 bg-gradient-radial from-[#02B600]/40 via-[#02B600]/20 to-transparent animate-ping"></div>
-                <div className="absolute inset-0 bg-[#02B600]/10 animate-pulse" style={{ animationDelay: "0.5s" }}></div>
+                <div
+                  className="absolute inset-0 bg-[#02B600]/10 animate-pulse"
+                  style={{ animationDelay: "0.5s" }}
+                ></div>
               </div>
 
               <div className="relative z-10 w-full h-full flex flex-col">

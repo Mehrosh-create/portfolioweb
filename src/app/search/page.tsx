@@ -33,7 +33,7 @@ export default function Search() {
   return (
     <div className="max-w-4xl mx-auto">
       <h1 className="text-4xl font-bold mb-8"># SEARCH</h1>
-      
+
       <div className="relative mb-12">
         <input
           id="search-input"

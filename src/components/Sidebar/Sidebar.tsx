@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -35,7 +34,6 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
       setIsMobile(window.innerWidth < 1024);
       setIsOpen(window.innerWidth >= 1024);
     };
-
     checkIfMobile();
     window.addEventListener("resize", checkIfMobile);
     return () => window.removeEventListener("resize", checkIfMobile);
@@ -69,6 +67,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
 
   return (
     <>
+      {/* Mobile Hamburger */}
       {isMobile && (
         <div className="fixed top-3 left-3 z-50">
           <button
@@ -89,9 +88,8 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-64 bg-black text-white z-50 transition-transform duration-300 shadow-xl shadow-black/50
-        ${isOpen ? "translate-x-0" : "-translate-x-full"} 
-        lg:translate-x-0`}
+        className={`fixed top-0 left-0 h-screen w-64 bg-black text-white z-50 transition-transform duration-300 shadow-xl shadow-black/50 ${isOpen ? "translate-x-0" : "-translate-x-full"
+          } lg:translate-x-0`}
       >
         <div className="flex flex-col h-full justify-between">
           {/* Logo */}
@@ -113,24 +111,27 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
 
           {/* Navigation */}
           <nav className="flex-1 px-3 flex items-center justify-center">
-            <ul className="space-y-4 w-full text-lg">
+            <ul className="space-y-2 w-full text-base">
               {[
-                { href: "/", label: "Home", id: "home" },
-                { href: "/about", label: "About", id: "about" },
-                { href: "/portfolio", label: "Portfolio", id: "portfolio" },
-                { href: "/services", label: "Services", id: "services" },
-                { href: "/testimonials", label: "Testimonials", id: "testimonials" },
-                { href: "/contact", label: "Contact", id: "contact" },
+                { href: "/", label: "HOME", id: "home" },
+                { href: "/about", label: "ABOUT", id: "about" },
+                { href: "/portfolio", label: "PORTFOLIO", id: "portfolio" },
+                { href: "/services", label: "SERVICES", id: "services" },
+                { href: "/testimonials", label: "TESTIMONIALS", id: "testimonials" },
+                { href: "/contact", label: "CONTACT", id: "contact" },
               ].map((item) => (
                 <li key={item.id} className="relative">
+                  {/* Green hover background (slides left → right, 65% width) */}
                   <div
-                    className={`absolute inset-0 bg-[#02B600] rounded-md transform transition-transform duration-300 ease-out ${hoveredNav === item.id ? "scale-x-100 origin-left" : "scale-x-0 origin-left"
+                    className={`absolute inset-y-0 left-0 w-[65%] bg-[#02B600] transform transition-transform duration-300 ease-out ${hoveredNav === item.id
+                      ? "scale-x-100 origin-left"
+                      : "scale-x-0 origin-left"
                       }`}
                     style={{ zIndex: -1 }}
                   />
                   <Link
                     href={item.href}
-                    className="block px-4 py-2 rounded-md relative font-semibold text-white"
+                    className="block px-2 py-1.5 relative font-bold uppercase text-[15px] text-white transition-colors duration-300 font-[Alumni_Sans]"
                     onClick={() => handleLinkClick(item.id)}
                     onMouseEnter={() => setHoveredNav(item.id)}
                     onMouseLeave={() => setHoveredNav("")}
@@ -140,22 +141,18 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                 </li>
               ))}
 
-              {/* Search Icon (LEFT aligned) */}
-              <li className="flex justify-start pt-4 pl-2">
+              {/* Search Icon */}
+              <li className="flex justify-start pt-2 pl-1">
                 <button
                   onClick={onSearchClick}
                   onMouseEnter={() => setSearchHover(true)}
                   onMouseLeave={() => setSearchHover(false)}
-                  className="w-12 h-12 flex items-center justify-center rounded-full transition-colors duration-300"
-                  style={{
-                    color: searchHover ? "#02B600" : "white",
-                  }}
+                  className="w-9 h-9 flex items-center justify-center rounded-full transition-colors duration-300"
+                  style={{ color: searchHover ? "#02B600" : "white" }}
                 >
                   <SearchIcon
-                    className="w-7 h-7 transition-colors duration-300"
-                    style={{
-                      color: searchHover ? "#02B600" : "white",
-                    }}
+                    className="w-5 h-5 transition-colors duration-300"
+                    style={{ color: searchHover ? "#02B600" : "white" }}
                   />
                 </button>
               </li>
