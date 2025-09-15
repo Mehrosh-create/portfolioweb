@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #e0f7fa;
+  --background: #151515;
+  --foreground: #ffffff;
+  --accent-yellow: #FFEA00;
+  --accent-green: #02B600;
+  --gray-light: #e0f7fa;
+  --gray-medium: #a8e6cf;
+  --gray-dark: #252525;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -10,7 +15,7 @@
 body {
   background: var(--background) !important;
   color: var(--foreground) !important;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @keyframes spin {
@@ -19,9 +24,95 @@ body {
   }
 }
 
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes ping {
+
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 .animate-spin {
   animation: spin 1s linear infinite;
 }
-button, a, [role="button"], input[type="submit"], input[type="button"], .clickable {
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}
+
+button,
+a,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+.clickable {
   cursor: pointer;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #252525;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #02B600;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #028a00;
+}
+
+/* Utility classes */
+.bg-gradient-radial {
+  background: radial-gradient(var(--tw-gradient-stops));
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

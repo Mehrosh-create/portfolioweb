@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -17,8 +16,8 @@ const geistMono = Geist_Mono({
 
 // Metadata must only exist in a Server Component
 export const metadata: Metadata = {
-  title: "Entrepreneur Portfolio",
-  description: "Professional Entrepreneur Website",
+  title: "Sheikh Nabeel - Entrepreneur & Digital Growth Expert",
+  description: "Serial Entrepreneur, Founder & CEO of Euroshub, Business Strategist, & Digital Transformation Expert",
 };
 
 export default function RootLayout({
@@ -29,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#151515] text-white overflow-x-hidden`}
       >
         <ClientLayout>{children}</ClientLayout>
       </body>

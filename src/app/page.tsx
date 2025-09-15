@@ -2,7 +2,6 @@
 
 import Hero from "@/components/Homepage/Hero";
 import CounterSection from "@/components/Homepage/Counter";
-import Footer from "@/components/Global/Footer";
 import Spacer from "@/components/Global/Spacer";
 import New from "@/components/Homepage/New";
 import Blog from "@/components/Homepage/Blog";
@@ -39,7 +38,7 @@ export default function Home() {
 
         <Spacer height={2} />
       </div>
-      <Footer />
+
     </main>
   );
 }

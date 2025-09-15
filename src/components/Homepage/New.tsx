@@ -200,9 +200,8 @@ const NewPage: React.FC = () => {
             {latestUpdates.map((update, index) => (
               <div
                 key={index}
-                className={`grid lg:grid-cols-2 gap-8 items-center ${
-                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-                }`}
+                className={`grid lg:grid-cols-2 gap-8 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                  }`}
               >
                 <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
                   <div className="relative aspect-video rounded-lg overflow-hidden">
@@ -261,8 +260,8 @@ const NewPage: React.FC = () => {
                       {update.type === 'course'
                         ? 'Enroll Now'
                         : update.type === 'toolkit'
-                        ? 'Download'
-                        : 'Join Program'}
+                          ? 'Download'
+                          : 'Join Program'}
                       <ArrowRight className="w-4 h-4" />
                     </button>
                     <button className="border-2 border-yellow-400 text-yellow-400 px-6 py-3 font-bold uppercase tracking-wider hover:bg-yellow-400 hover:text-black transition-colors">
