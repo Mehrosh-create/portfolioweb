@@ -26,7 +26,7 @@ const BlogPage = () => {
             <div className="bg-[#151515] rounded-lg overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="relative h-64 lg:h-auto">
-                  <Image src={featuredPost.image} alt={featuredPost.title} fill className="object-cover"/>
+                  <Image src={featuredPost.image} alt={featuredPost.title} fill className="object-cover" />
                   <div className="absolute top-4 left-4 bg-yellow-400 text-black px-3 py-1 text-xs font-bold uppercase rounded">
                     FEATURED
                   </div>
@@ -39,16 +39,16 @@ const BlogPage = () => {
                   <p className="text-gray-300 mb-8 text-lg">{featuredPost.excerpt}</p>
                   <div className="flex items-center justify-between mb-8">
                     <div className="flex items-center gap-4 text-sm text-gray-400">
-                      <div className="flex items-center gap-1"><Calendar className="w-4 h-4"/> {featuredPost.date}</div>
-                      <div className="flex items-center gap-1"><Clock className="w-4 h-4"/> {featuredPost.readTime}</div>
+                      <div className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {featuredPost.date}</div>
+                      <div className="flex items-center gap-1"><Clock className="w-4 h-4" /> {featuredPost.readTime}</div>
                     </div>
                     <div className="flex gap-3">
-                      <Bookmark className="w-5 h-5 text-gray-400 hover:text-yellow-400 transition-colors"/>
-                      <Share2 className="w-5 h-5 text-gray-400 hover:text-yellow-400 transition-colors"/>
+                      <Bookmark className="w-5 h-5 text-gray-400 hover:text-yellow-400 transition-colors" />
+                      <Share2 className="w-5 h-5 text-gray-400 hover:text-yellow-400 transition-colors" />
                     </div>
                   </div>
                   <Link href={`/blog/${featuredPost.slug}`} className="bg-yellow-400 text-black px-6 py-3 font-bold uppercase tracking-wider hover:bg-yellow-300 transition-colors flex items-center gap-2 w-max">
-                    Read Full Article <ArrowRight className="w-4 h-4"/>
+                    Read Full Article <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
@@ -64,11 +64,10 @@ const BlogPage = () => {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 border font-semibold text-sm transition-colors ${
-                selectedCategory === category
+              className={`px-4 py-2 border font-semibold text-sm transition-colors ${selectedCategory === category
                   ? "bg-yellow-400 text-black border-yellow-400"
                   : "border-gray-600 text-gray-300 hover:bg-yellow-400 hover:text-black hover:border-yellow-400"
-              }`}
+                }`}
             >
               {category}
             </button>
@@ -83,7 +82,7 @@ const BlogPage = () => {
             <Link key={post.slug} href={`/blog/${post.slug}`} className="group cursor-pointer">
               <div className="bg-[#151515] border border-gray-800 overflow-hidden transition-all duration-300 hover:border-yellow-400 hover:scale-105">
                 <div className="relative h-48 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
-                  <Image src={post.image} alt={post.title} fill className="object-cover"/>
+                  <Image src={post.image} alt={post.title} fill className="object-cover" />
                   <div className="absolute top-3 left-3 bg-yellow-400 text-black px-2 py-1 text-xs font-bold uppercase rounded">
                     NEW
                   </div>
@@ -96,10 +95,10 @@ const BlogPage = () => {
                   <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-yellow-400 transition-colors">{post.title}</h3>
                   <p className="text-gray-400 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
                   <div className="flex items-center justify-between text-xs text-gray-500">
-                    <div className="flex items-center gap-1"><Calendar className="w-3 h-3"/> {post.date}</div>
+                    <div className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post.date}</div>
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1"><Heart className="w-3 h-3"/> {post.likes}</div>
-                      <div className="flex items-center gap-1"><MessageCircle className="w-3 h-3"/> {post.comments}</div>
+                      <div className="flex items-center gap-1"><Heart className="w-3 h-3" /> {post.likes}</div>
+                      <div className="flex items-center gap-1"><MessageCircle className="w-3 h-3" /> {post.comments}</div>
                     </div>
                   </div>
                 </div>

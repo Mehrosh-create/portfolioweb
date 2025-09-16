@@ -14,7 +14,7 @@ const Testimonials = () => {
             name: "Alex Johnson",
             company: "TechStart Inc.",
             role: "CEO",
-            image: "/images/testimonials/client1.jpg",
+            image: "/images/client1.jpg",
             content: "Sheikh Nabeel transformed our digital infrastructure completely. His strategic approach to digital transformation helped us increase efficiency by 40% and reduce operational costs significantly.",
             rating: 5
         },
@@ -23,7 +23,7 @@ const Testimonials = () => {
             name: "Sarah Williams",
             company: "GrowthLabs",
             role: "Marketing Director",
-            image: "/images/testimonials/client2.jpg",
+            image: "/images/client2.jpg",
             content: "Working with Sheikh Nabeel was a game-changer for our marketing strategy. His expertise in digital funnels and growth marketing helped us triple our lead generation in just 3 months.",
             rating: 5
         },
@@ -32,7 +32,7 @@ const Testimonials = () => {
             name: "Michael Chen",
             company: "Global Solutions",
             role: "Operations Manager",
-            image: "/images/testimonials/client3.jpg",
+            image: "/images/client3.jpg",
             content: "The CRM implementation and automation systems designed by Sheikh Nabeel have revolutionized our client management process. We've seen a 60% improvement in client satisfaction scores.",
             rating: 5
         },
@@ -41,7 +41,7 @@ const Testimonials = () => {
             name: "Emily Rodriguez",
             company: "InnovateTech",
             role: "Founder",
-            image: "/images/testimonials/client4.jpg",
+            image: "/images/client4.jpg",
             content: "Sheikh Nabeel's business strategy expertise helped us pivot during a challenging market period. His insights and guidance were instrumental in our successful rebranding and market repositioning.",
             rating: 5
         },
@@ -50,7 +50,7 @@ const Testimonials = () => {
             name: "David Kim",
             company: "NextGen Apps",
             role: "CTO",
-            image: "/images/testimonials/client5.jpg",
+            image: "/images/client5.jpg",
             content: "The team management systems implemented by Sheikh Nabeel have dramatically improved our productivity and collaboration. Our project delivery times have decreased by 35% since working with him.",
             rating: 5
         }

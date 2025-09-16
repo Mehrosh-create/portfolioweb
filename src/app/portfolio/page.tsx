@@ -14,7 +14,7 @@ const Portfolio = () => {
             title: "Euroshub Digital Transformation",
             category: "digital",
             description: "Complete digital overhaul for a leading business consultancy",
-            image: "/images/portfolio/euroshub.jpg",
+            image: "/images/euroshub.jpg",
             link: "#",
             github: "#"
         },
@@ -23,7 +23,7 @@ const Portfolio = () => {
             title: "E-Commerce Growth Strategy",
             category: "marketing",
             description: "Tripled revenue for an online retail brand in 6 months",
-            image: "/images/portfolio/ecommerce.jpg",
+            image: "/images/ecommerce.jpg",
             link: "#",
             github: "#"
         },
@@ -32,7 +32,7 @@ const Portfolio = () => {
             title: "CRM Implementation",
             category: "development",
             description: "Custom CRM solution for a service-based business",
-            image: "/images/portfolio/crm.jpg",
+            image: "/images/crm.jpg",
             link: "#",
             github: "#"
         },
@@ -41,7 +41,7 @@ const Portfolio = () => {
             title: "Brand Positioning",
             category: "branding",
             description: "Rebranding and market positioning for tech startup",
-            image: "/images/portfolio/branding.jpg",
+            image: "/images/branding.jpg",
             link: "#",
             github: "#"
         },
@@ -50,7 +50,7 @@ const Portfolio = () => {
             title: "Automation System",
             category: "digital",
             description: "Workflow automation that saved 20+ hours weekly",
-            image: "/images/portfolio/automation.jpg",
+            image: "/images/Automate.jpg",
             link: "#",
             github: "#"
         },
@@ -59,7 +59,7 @@ const Portfolio = () => {
             title: "Digital Marketing Funnel",
             category: "marketing",
             description: "High-conversion funnel generating 500+ leads monthly",
-            image: "/images/portfolio/funnel.jpg",
+            image: "/images/funnel.jpg",
             link: "#",
             github: "#"
         }

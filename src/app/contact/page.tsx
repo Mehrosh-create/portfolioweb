@@ -4,7 +4,7 @@ import ContactForm from "@/components/Contact/ContactForm";
 
 const Contact = () => {
     return (
-        <div className="min-h-screen pt-20 px-6 bg-[#151515] flex flex-col">
+        <div className="min-h-screen pt-20 px-6 pb-16 bg-[#151515] flex flex-col">
             <div className="flex-grow max-w-6xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* Contact Options (Left Column) */}
