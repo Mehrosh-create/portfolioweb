@@ -94,7 +94,7 @@ const CounterSection = () => {
           ].map((card) => (
             <div
               key={card.name}
-              className="group text-center p-0 border-2 rounded-lg transition-all duration-300 cursor-pointer h-96 flex flex-col relative overflow-hidden border-gray-700 hover:border-[#02B600] hover:scale-105"
+              className="group text-center p-0 border-2 rounded-lg transition-all duration-300 cursor-pointer h-96 flex flex-col relative overflow-hidden border-gray-700" // Removed hover:scale-105 and hover:border-[#02B600]
             >
               {/* Pulsating green effect on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

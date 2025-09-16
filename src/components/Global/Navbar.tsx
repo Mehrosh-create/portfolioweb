@@ -23,23 +23,22 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-[#0a4b5c]/95 backdrop-blur-sm shadow-md py-2' : 'bg-[#0a4b5c] py-3'
-    }`}>
+    <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a4b5c]/95 backdrop-blur-sm shadow-md py-2' : 'bg-[#0a4b5c] py-3'
+      }`}>
       <div className="container mx-auto flex items-center justify-between px-4">
         <div className="flex items-center">
           <Link href="/">
-            <Image 
+            <Image
               src="/images/logo.png"
-              alt="Entrepreneur Portfolio Logo" 
-              width={150} 
-              height={50} 
+              alt="Entrepreneur Portfolio Logo"
+              width={150}
+              height={50}
               className={`mr-4 transition-all duration-300 ${scrolled ? 'w-[130px]' : 'w-[150px]'}`}
               priority
             />
           </Link>
         </div>
-        
+
         {/* Desktop Menu */}
         <div className="hidden space-x-6 md:flex">
           <Link href="/" className="text-[#e0f7fa] hover:text-[#a8e6cf] transition-colors duration-300">
@@ -61,10 +60,10 @@ const Navbar = () => {
             Contact
           </Link>
         </div>
-        
+
         {/* Mobile Menu Button */}
         <div className="flex md:hidden">
-          <button 
+          <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-[#e0f7fa]"
             aria-label="Toggle menu"
@@ -81,48 +80,48 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      
+
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="container mx-auto mt-2 rounded-lg bg-[#0a4b5c] px-4 py-4 shadow-lg md:hidden">
           <div className="flex flex-col space-y-3">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="text-[#e0f7fa] hover:text-[#a8e6cf] transition-colors duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Home
             </Link>
-            <Link 
-              href="/about" 
+            <Link
+              href="/about"
               className="text-[#e0f7fa] hover:text-[#a8e6cf] transition-colors duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About
             </Link>
-            <Link 
-              href="/portfolio" 
+            <Link
+              href="/portfolio"
               className="text-[#e0f7fa] hover:text-[#a8e6cf] transition-colors duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Portfolio
             </Link>
-            <Link 
-              href="/services" 
+            <Link
+              href="/services"
               className="text-[#e0f7fa] hover:text-[#a8e6cf] transition-colors duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Services
             </Link>
-            <Link 
-              href="/testimonials" 
+            <Link
+              href="/testimonials"
               className="text-[#e0f7fa] hover:text-[#a8e6cf] transition-colors duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Testimonials
             </Link>
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="text-[#e0f7fa] hover:text-[#a8e6cf] transition-colors duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
