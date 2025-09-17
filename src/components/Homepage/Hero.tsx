@@ -39,46 +39,6 @@ const HeroSection = ({
 
   return (
     <>
-      {/* Search Bar */}
-      {showSearch && (
-        <div className="w-full bg-black py-16 px-8 relative z-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="relative mt-6">
-              <form onSubmit={handleSearchSubmit}>
-                <input
-                  type="text"
-                  placeholder="SEARCH"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-transparent text-white border-0 text-3xl font-bold focus:outline-none focus:ring-0 py-4 placeholder-white tracking-wider pr-16"
-                  autoFocus
-                  style={{
-                    fontSize: "2.5rem",
-                    fontWeight: 900,
-                    letterSpacing: "0.1em",
-                  }}
-                />
-                {/* Green underline */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-[#02B600]"></div>
-
-                {/* Close button positioned above green line at the right */}
-                <button
-                  onClick={handleSearchClose}
-                  className="absolute bottom-4 right-0 text-white hover:text-gray-300 group transition-colors duration-300"
-                >
-                  <X className="w-8 h-8 transition-transform duration-300 group-hover:rotate-90" />
-                </button>
-              </form>
-            </div>
-
-            {/* Search instruction text */}
-            <p className="text-gray-400 text-lg mt-6 font-light">
-              Hit enter to search or ESC to close
-            </p>
-          </div>
-        </div>
-      )}
-
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
         {/* Full Background Image */}
         <div className="absolute inset-0 w-full h-full">
@@ -95,7 +55,8 @@ const HeroSection = ({
           <div className={`absolute inset-0 ${bgColor}`}></div>
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-8">
+        {/* Change this line: Add lg:mr-8 for right margin */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-8 lg:mr-8">
           <div className="flex flex-col items-start text-left">
             {/* Text Content */}
             <div className="max-w-4xl">

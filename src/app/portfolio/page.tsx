@@ -79,7 +79,7 @@ const Portfolio = () => {
 
     return (
         <div className="min-h-screen pt-20 pb-16 px-6 bg-[#151515]">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto lg:mr-8">
                 {/* Header */}
                 <div className="text-center mb-16">
                     <h1 className="text-5xl md:text-7xl font-black uppercase text-white mb-8 leading-tight"

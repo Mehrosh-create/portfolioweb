@@ -94,7 +94,7 @@ const BlogPage = () => {
     <div className="min-h-screen bg-[#151515] text-white">
       {/* Featured Article */}
       <div className="py-16 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto lg:mr-8">
           <div className="bg-gradient-to-r from-yellow-400 to-yellow-300 p-1 rounded-lg mb-12">
             <div className="bg-[#151515] rounded-lg overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">
@@ -109,7 +109,7 @@ const BlogPage = () => {
                     FEATURED
                   </div>
                 </div>
-                
+
                 <div className="p-8 lg:p-12 flex flex-col justify-center">
                   <span className="inline-block bg-yellow-400 text-black px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4">
                     {featuredPost.category}

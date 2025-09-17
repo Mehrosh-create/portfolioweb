@@ -8,7 +8,7 @@ import Stats from "@/components/About/Stats";
 export default function About() {
     return (
         <div className="min-h-screen pt-20 px-6 bg-[#151515] flex flex-col">
-            <div className="flex-grow max-w-7xl mx-auto">
+            <div className="flex-grow max-w-7xl mx-auto lg:mr-8">
                 {/* Header Section */}
                 <div className="text-center mb-16">
                     <h1

@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 
 const Testimonials = () => {
@@ -70,7 +71,7 @@ const Testimonials = () => {
 
     return (
         <div className="min-h-screen pt-20 pb-16 px-6 bg-[#151515]">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto lg:mr-8">
                 {/* Header */}
                 <div className="text-center mb-16">
                     <h1 className="text-5xl md:text-7xl font-black uppercase text-white mb-8 leading-tight"
@@ -242,10 +243,12 @@ const Testimonials = () => {
                                 style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}>
                                 Start Your Project
                             </button>
-                            <button className="border-2 border-[#02B600] text-[#02B600] px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#02B600] hover:text-white transition-colors"
-                                style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}>
-                                Contact Me
-                            </button>
+                            <Link href="/contact">
+                                <button className="border-2 border-[#FFEA00] text-[#FFEA00] px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#FFEA00] hover:text-black transition-colors"
+                                    style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}>
+                                    Contact Me
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

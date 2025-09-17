@@ -1,6 +1,7 @@
 // src/app/services/page.tsx
 "use client";
 
+import Link from "next/link"; // 👈 added import
 import { CheckCircle, ArrowRight, BarChart, Users, Target, TrendingUp, Lightbulb, Zap } from "lucide-react";
 
 const Services = () => {
@@ -45,7 +46,7 @@ const Services = () => {
 
     return (
         <div className="min-h-screen pt-20 pb-16 px-6 bg-[#151515]">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto lg:mr-8">
                 {/* Header */}
                 <div className="text-center mb-16">
                     <h1 className="text-5xl md:text-7xl font-black uppercase text-white mb-8 leading-tight"
@@ -131,10 +132,13 @@ const Services = () => {
                                 style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}>
                                 Get Started
                             </button>
-                            <button className="border-2 border-[#FFEA00] text-[#FFEA00] px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#FFEA00] hover:text-black transition-colors"
-                                style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}>
-                                View Portfolio
-                            </button>
+                            {/* ✅ Updated: View Portfolio navigates to /portfolio */}
+                            <Link href="/portfolio">
+                                <button className="border-2 border-[#FFEA00] text-[#FFEA00] px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#FFEA00] hover:text-black transition-colors"
+                                    style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}>
+                                    View Portfolio
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

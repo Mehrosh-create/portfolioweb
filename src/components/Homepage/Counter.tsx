@@ -41,7 +41,8 @@ const CounterSection = () => {
         }}
       ></div>
 
-      <div ref={ref} className="container mx-auto px-4 relative z-10">
+      {/* Change this line: Add lg:mr-8 for right margin */}
+      <div ref={ref} className="container mx-auto px-4 relative z-10 lg:mr-8">
         {/* Quote section */}
         <div className="text-center mb-16">
           <h2
