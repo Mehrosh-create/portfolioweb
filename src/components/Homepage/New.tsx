@@ -18,8 +18,9 @@ import Image from "next/image";
 import GravWrap from "@/components/Common/GravWrap";
 import { motion } from "framer-motion";
 import ParallaxWrapper from "@/components/Common/ParallaxWrapper";
+import { useInView } from "react-intersection-observer";
 
-// 👇 Reusable fade+slide wrapper with slower animation
+// 👇 Reusable fade+slide wrapper
 const FadeSlide = ({
   children,
   delay = 0,
@@ -44,13 +45,39 @@ const FadeSlide = ({
       whileInView="visible"
       viewport={{ once: true }}
       transition={{
-        duration: 1.2, // ⏳ slower animation
+        duration: 0.6,
         delay,
-        ease: "easeOut", // smooth easing
+        ease: "easeOut",
       }}
     >
       {children}
     </motion.div>
+  );
+};
+
+// 👇 Reusable sliding highlight label
+const SlidingHighlight = ({ text }: { text: string }) => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
+
+  return (
+    <div ref={ref} className="relative inline-block mx-auto mb-6 overflow-hidden">
+      <span
+        className={`absolute top-0 left-0 h-full w-0 bg-[#FFEA00] transition-all duration-700 ease-out ${inView ? "w-full" : "w-0"
+          }`}
+      ></span>
+
+      <span
+        className="relative z-10 text-black font-bold tracking-wider uppercase whitespace-nowrap px-6 py-3 inline-block"
+        style={{
+          fontFamily: '"Bebas Neue", sans-serif',
+          fontWeight: 700,
+          fontSize: "1.6rem",
+          letterSpacing: "0.08em",
+        }}
+      >
+        {text}
+      </span>
+    </div>
   );
 };
 
@@ -164,19 +191,19 @@ const NewPage: React.FC = () => {
     },
   ];
 
-  const [visible, setVisible] = useState(2); // Infinite scroll demo
+  const [visible, setVisible] = useState(2);
 
   return (
     <div className="min-h-screen bg-[#151515] text-white">
       {/* Services Section */}
-      <div className="py-20 px-6">
+      <div className="py-20 px-40">
         <div className="max-w-7xl mx-auto lg:mr-8">
           <div className="text-center mb-16">
-            <div className="inline-block bg-yellow-400 text-black px-4 py-2 text-sm font-bold uppercase tracking-wider mb-6">
-              SPECIALIZATIONS
-            </div>
+            {/* SPECIALIZATIONS with sliding highlight */}
+            <SlidingHighlight text="SPECIALIZATIONS" />
+
             <h2 className="text-5xl md:text-7xl font-black uppercase text-white mb-8">
-              MY <span className="text-yellow-400">EXPERTISE</span>
+              MY <span className="text-[#FFEA00]">EXPERTISE</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               With over 7 years of experience, I specialize in transforming
@@ -184,7 +211,7 @@ const NewPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Masonry Stagger */}
+          {/* Services grid */}
           <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             initial="hidden"
@@ -192,13 +219,13 @@ const NewPage: React.FC = () => {
             viewport={{ once: true }}
             variants={{
               hidden: {},
-              visible: { transition: { staggerChildren: 0.25 } }, // ⏳ slower stagger
+              visible: { transition: { staggerChildren: 0.25 } },
             }}
           >
             {services.map((service, index) => (
               <FadeSlide key={index} delay={index * 0.15}>
                 <ParallaxWrapper strength={40}>
-                  <div className="bg-[#1a1a1a] border border-gray-800 p-6 rounded-lg hover:border-yellow-400 transition-colors group">
+                  <div className="bg-[#1a1a1a] border border-gray-800 p-6 rounded-lg hover:border-[#FFEA00] transition-colors group">
                     <div className="relative h-100 mb-4 rounded-lg overflow-hidden">
                       <Image
                         src={service.image}
@@ -213,7 +240,7 @@ const NewPage: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-[#FFEA00] transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-gray-300 text-sm">{service.description}</p>
@@ -226,17 +253,18 @@ const NewPage: React.FC = () => {
       </div>
 
       {/* Latest Launches */}
-      <div className="py-20 px-6 bg-[#1a1a1a]">
+      <div className="py-20 px-40 bg-[#1a1a1a]">
         <div className="max-w-7xl mx-auto lg:mr-8">
           <div className="text-center mb-16">
-            <div className="inline-block bg-yellow-400 text-black px-4 py-2 text-sm font-bold uppercase tracking-wider mb-6">
-              LATEST LAUNCHES
-            </div>
+            {/* LATEST LAUNCHES with sliding highlight */}
+            <SlidingHighlight text="LATEST LAUNCHES" />
+
             <h2 className="text-5xl md:text-7xl font-black uppercase text-white mb-8">
-              NEW <span className="text-yellow-400">RELEASES</span>
+              NEW <span className="text-[#FFEA00]">RELEASES</span>
             </h2>
           </div>
 
+          {/* Updates list */}
           <div className="space-y-12">
             {latestUpdates.slice(0, visible).map((update, index) => (
               <FadeSlide key={index} delay={index * 0.25} direction="up">
@@ -260,14 +288,38 @@ const NewPage: React.FC = () => {
                           <Play className="w-10 h-10" />
                         </div>
                       </div>
-                      <div className="absolute top-4 left-4 bg-yellow-400 text-black px-3 py-1 text-xs font-bold uppercase rounded">
+                      {/* Status NEW/UPDATED */}
+                      <div
+                        className="absolute top-4 left-4 px-3 py-1 rounded"
+                        style={{
+                          backgroundColor: "#FFEA00",
+                          fontFamily: '"Bebas Neue", sans-serif',
+                          fontWeight: 700,
+                          fontSize: "1.6rem",
+                          letterSpacing: "0.08em",
+                          color: "black",
+                          textTransform: "uppercase",
+                        }}
+                      >
                         {update.status}
                       </div>
                     </div>
                   </div>
 
                   <div className={`${index % 2 === 1 ? "lg:col-start-1" : ""}`}>
-                    <div className="inline-block bg-yellow-400 text-black px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4">
+                    {/* Category */}
+                    <div
+                      className="inline-block px-3 py-1 mb-4"
+                      style={{
+                        backgroundColor: "#FFEA00",
+                        fontFamily: '"Bebas Neue", sans-serif',
+                        fontWeight: 700,
+                        fontSize: "1.6rem",
+                        letterSpacing: "0.08em",
+                        color: "black",
+                        textTransform: "uppercase",
+                      }}
+                    >
                       {update.category}
                     </div>
 
@@ -282,14 +334,14 @@ const NewPage: React.FC = () => {
                     <div className="grid grid-cols-2 gap-4 mb-8">
                       {update.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2">
-                          <CheckCircle className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                          <CheckCircle className="w-5 h-5 text-[#FFEA00] flex-shrink-0" />
                           <span className="text-sm">{feature}</span>
                         </div>
                       ))}
                     </div>
 
                     <div className="flex items-center justify-between mb-8">
-                      <div className="text-3xl font-black text-yellow-400">
+                      <div className="text-3xl font-black text-[#FFEA00]">
                         {update.price}
                       </div>
                       <div className="text-sm text-gray-400 flex items-center gap-2">
@@ -299,7 +351,15 @@ const NewPage: React.FC = () => {
                     </div>
 
                     <div className="flex gap-4">
-                      <button className="bg-yellow-400 text-black px-6 py-3 font-bold uppercase tracking-wider hover:bg-yellow-300 transition-all duration-300 flex items-center gap-2 transform hover:scale-105">
+                      <button
+                        className="bg-[#FFEA00] text-black px-6 py-3 uppercase transition-all duration-300 flex items-center gap-2 transform hover:scale-105"
+                        style={{
+                          fontFamily: '"Bebas Neue", sans-serif',
+                          fontWeight: 700,
+                          fontSize: "1.2rem",
+                          letterSpacing: "0.08em",
+                        }}
+                      >
                         {update.type === "course"
                           ? "Enroll Now"
                           : update.type === "toolkit"
@@ -307,7 +367,15 @@ const NewPage: React.FC = () => {
                             : "Join Program"}
                         <ArrowRight className="w-4 h-4" />
                       </button>
-                      <button className="border-2 border-yellow-400 text-yellow-400 px-6 py-3 font-bold uppercase tracking-wider hover:bg-yellow-400 hover:text-black transition-all duration-300 transform hover:scale-105">
+                      <button
+                        className="border-2 border-[#FFEA00] text-[#FFEA00] px-6 py-3 uppercase transition-all duration-300 transform hover:scale-105"
+                        style={{
+                          fontFamily: '"Bebas Neue", sans-serif',
+                          fontWeight: 700,
+                          fontSize: "1.2rem",
+                          letterSpacing: "0.08em",
+                        }}
+                      >
                         Learn More
                       </button>
                     </div>
@@ -317,12 +385,18 @@ const NewPage: React.FC = () => {
             ))}
           </div>
 
-          {/* Infinite scroll - load more */}
+          {/* Load More */}
           {visible < latestUpdates.length && (
             <div className="text-center mt-12">
               <button
                 onClick={() => setVisible((prev) => prev + 1)}
-                className="px-6 py-3 bg-yellow-400 text-black font-bold uppercase hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105"
+                className="px-6 py-3 bg-[#FFEA00] text-black uppercase transition-all duration-300 transform hover:scale-105"
+                style={{
+                  fontFamily: '"Bebas Neue", sans-serif',
+                  fontWeight: 700,
+                  fontSize: "1.2rem",
+                  letterSpacing: "0.08em",
+                }}
               >
                 Load More
               </button>

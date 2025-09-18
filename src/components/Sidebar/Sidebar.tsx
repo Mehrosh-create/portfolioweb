@@ -111,7 +111,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
 
           {/* Navigation */}
           <nav className="flex-1 px-3 flex items-center justify-center">
-            <ul className="space-y-2 w-full text-base">
+            <ul className="space-y-2 w-full">
               {[
                 { href: "/", label: "HOME", id: "home" },
                 { href: "/about", label: "ABOUT", id: "about" },
@@ -123,18 +123,22 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                 <li key={item.id} className="relative">
                   {/* Green hover background (slides left → right, 65% width) */}
                   <div
-                    className={`absolute inset-y-0 left-0 w-[65%] bg-[#02B600] transform transition-transform duration-300 ease-out ${hoveredNav === item.id
-                      ? "scale-x-100 origin-left"
-                      : "scale-x-0 origin-left"
+                    className={`absolute inset-y-0 left-0 w-[65%] bg-[#02B600] transform transition-transform duration-300 ease-out ${hoveredNav === item.id ? "scale-x-100 origin-left" : "scale-x-0 origin-left"
                       }`}
                     style={{ zIndex: -1 }}
                   />
                   <Link
                     href={item.href}
-                    className="block px-2 py-1.5 relative font-bold uppercase text-[15px] text-white transition-colors duration-300 font-[Alumni_Sans]"
+                    className="block px-2 py-1.5 relative text-white transition-colors duration-300"
                     onClick={() => handleLinkClick(item.id)}
                     onMouseEnter={() => setHoveredNav(item.id)}
                     onMouseLeave={() => setHoveredNav("")}
+                    style={{
+                      fontFamily: '"Bebas Neue", sans-serif',
+                      fontWeight: 100,
+                      fontSize: "1.3rem",
+                      letterSpacing: "0.02em",
+                    }}
                   >
                     {item.label}
                   </Link>

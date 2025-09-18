@@ -25,9 +25,9 @@ const SignatureContent = () => {
             >
                 <span className="text-[#FFEA00]">SIGNATURE</span> CONTENT
             </h2>
-
             {/* Main Content */}
             <div className="grid md:grid-cols-2 gap-12 mb-16">
+
                 {/* Card 1 */}
                 <div className="bg-[#252525] p-8 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-300 group">
                     <h3

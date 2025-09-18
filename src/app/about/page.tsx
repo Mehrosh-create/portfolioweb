@@ -4,10 +4,20 @@
 import Image from "next/image";
 import SignatureContent from "@/components/About/SignatureContent";
 import Stats from "@/components/About/Stats";
+import { InfiniteMovingCards } from "@/ui/infinite-moving-cards";
 
 export default function About() {
+    const services = [
+        "Business Strategy & Digital Growth",
+        "Operations Management & Automation",
+        "CRM & Client Lifecycle Solutions",
+        "Digital Funnels & Brand Positioning",
+        "Team Management & Communication Systems",
+        "Digital Transformation Consulting",
+    ];
+
     return (
-        <div className="min-h-screen pt-20 px-6 bg-[#151515] flex flex-col">
+        <div className="min-h-screen pt-20 px-40 bg-[#151515] flex flex-col">
             <div className="flex-grow max-w-7xl mx-auto lg:mr-8">
                 {/* Header Section */}
                 <div className="text-center mb-16">
@@ -20,11 +30,28 @@ export default function About() {
                     >
                         I <span className="text-[#FFEA00]">TRANSFORM</span> BUSINESSES
                     </h1>
-                    <div
-                        className="inline-block bg-[#FFEA00] text-black px-4 py-2 text-sm font-bold uppercase tracking-wider mb-6"
-                        style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
-                    >
-                        DIGITAL TRANSFORMATION EXPERT
+
+                    {/* DIGITAL TRANSFORMATION EXPERT with sliding background */}
+                    <div className="relative inline-block mx-auto mb-6">
+                        {/* Sliding background (now matches text width) */}
+                        <span
+                            className="absolute top-0 left-0 h-full bg-[#FFEA00] inline-block"
+                            style={{
+                                width: "0%",
+                                animation: "slideRight 2s forwards",
+                            }}
+                        ></span>
+
+                        {/* Text */}
+                        <span
+                            className="relative z-10 text-black text-lg md:text-xl lg:text-2xl font-bold uppercase px-6 py-2 inline-block"
+                            style={{
+                                fontFamily: '"Bebas Neue", Arial, sans-serif',
+                                letterSpacing: "0.05em",
+                            }}
+                        >
+                            DIGITAL TRANSFORMATION EXPERT
+                        </span>
                     </div>
                 </div>
 
@@ -34,7 +61,8 @@ export default function About() {
                         <h2
                             className="text-3xl md:text-4xl font-bold mb-6 text-white"
                             style={{
-                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                fontFamily:
+                                    'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
                         >
                             I'm a Global Strategist & Digital Transformer Leader.
@@ -42,7 +70,8 @@ export default function About() {
                         <p
                             className="text-lg text-[#e0f7fa] mb-6 leading-relaxed"
                             style={{
-                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                fontFamily:
+                                    'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
                         >
                             I'm Sheikh Nabeel — Entrepreneur, Business Strategist & CEO of
@@ -53,7 +82,8 @@ export default function About() {
                         <p
                             className="text-lg text-[#e0f7fa] leading-relaxed"
                             style={{
-                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                fontFamily:
+                                    'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
                         >
                             My mission is to empower businesses with the tools and strategies
@@ -84,48 +114,34 @@ export default function About() {
                     >
                         MY SERVICES & EXPERTISE
                     </h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {[
-                            "Business Strategy & Digital Growth",
-                            "Operations Management & Automation",
-                            "CRM & Client Lifecycle Solutions",
-                            "Digital Funnels & Brand Positioning",
-                            "Team Management & Communication Systems",
-                            "Digital Transformation Consulting",
-                        ].map((service, index) => (
-                            <div
-                                key={index}
-                                className="bg-[#252525] p-6 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-300 group cursor-pointer"
-                            >
-                                <div
-                                    className="text-[#FFEA00] text-2xl font-bold mb-2 group-hover:text-[#02B600] transition-colors"
-                                    style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
-                                >
-                                    0{index + 1}
-                                </div>
-                                <h3
-                                    className="text-xl font-semibold text-white group-hover:text-[#e0f7fa] transition-colors"
-                                    style={{
-                                        fontFamily:
-                                            'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                                    }}
-                                >
-                                    {service}
-                                </h3>
-                                <div className="mt-3 h-1 w-0 bg-[#02B600] group-hover:w-full transition-all duration-300"></div>
-                            </div>
-                        ))}
+
+                    <div className="relative overflow-hidden w-full">
+                        <InfiniteMovingCards
+                            items={services}
+                            direction="right"
+                            speed="slow"
+                        />
                     </div>
                 </div>
 
                 {/* Stats Section */}
                 <Stats />
 
-                {/* Signature Content with Custom Cursor */}
+                {/* Signature Content */}
                 <div className="signature-cursor">
                     <SignatureContent />
                 </div>
             </div>
+
+            {/* Keyframes */}
+            <style>
+                {`
+                    @keyframes slideRight {
+                        0% { width: 0%; }
+                        100% { width: 100%; }
+                    }
+                `}
+            </style>
         </div>
     );
 }

@@ -56,7 +56,7 @@ export default function ClientLayout({
                 {/* Search Overlay */}
                 {showSearch && (
                     <div className="fixed inset-0 bg-black py-16 px-8 z-40">
-                        <div className="max-w-7xl mx-auto lg:ml-72">
+                        <div className="max-w-7xl mx-auto lg:ml-64">
                             <div className="relative mt-6">
                                 <form onSubmit={handleSearchSubmit}>
                                     <input
@@ -96,7 +96,7 @@ export default function ClientLayout({
                 )}
 
                 {/* Main content (pushed by sidebar on desktop) */}
-                <main className="flex-1 ml-0 lg:ml-72 bg-white">{children}</main>
+                <main className="flex-1 ml-0 lg:ml-64">{children}</main>
 
                 {/* Footer */}
                 <Footer />

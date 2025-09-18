@@ -20,7 +20,7 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-[#151515] text-white">
       {/* Featured Article */}
-      <div className="py-16 px-6">
+      <div className="py-16 px-40">
         <div className="max-w-7xl mx-auto lg:mr-8">
           <div className="bg-gradient-to-r from-yellow-400 to-yellow-300 p-1 rounded-lg mb-12">
             <div className="bg-[#151515] rounded-lg overflow-hidden">
@@ -58,7 +58,7 @@ const BlogPage = () => {
       </div>
 
       {/* Category Filter */}
-      <div className="py-8 px-6">
+      <div className="py-8 px-40">
         <div className="max-w-7xl mx-auto flex flex-wrap gap-4 justify-center">
           {categories.map(category => (
             <button
@@ -76,7 +76,7 @@ const BlogPage = () => {
       </div>
 
       {/* Blog Grid */}
-      <div className="py-16 px-6">
+      <div className="py-16 px-40">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredArticles.map(post => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="group cursor-pointer">

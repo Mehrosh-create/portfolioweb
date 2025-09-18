@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, Clock, ArrowRight, Bookmark, Share2, Eye, Heart, MessageCircle } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, Bookmark, Share2, Heart, MessageCircle } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -93,9 +93,9 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-[#151515] text-white">
       {/* Featured Article */}
-      <div className="py-16 px-6">
+      <div className="py-20 px-40">
         <div className="max-w-7xl mx-auto lg:mr-8">
-          <div className="bg-gradient-to-r from-yellow-400 to-yellow-300 p-1 rounded-lg mb-12">
+          <div className="p-1 rounded-lg mb-12" style={{ background: "linear-gradient(to right, #FFEA00, #FFEA00)" }}>
             <div className="bg-[#151515] rounded-lg overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="relative h-64 lg:h-auto">
@@ -105,13 +105,17 @@ const BlogPage = () => {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute top-4 left-4 bg-yellow-400 text-black px-3 py-1 text-xs font-bold uppercase rounded">
+                  <div className="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase rounded"
+                    style={{ backgroundColor: "#FFEA00", color: "#000" }}>
                     FEATURED
                   </div>
                 </div>
 
                 <div className="p-8 lg:p-12 flex flex-col justify-center">
-                  <span className="inline-block bg-yellow-400 text-black px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4">
+                  <span
+                    className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4"
+                    style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                  >
                     {featuredPost.category}
                   </span>
                   <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
@@ -124,11 +128,15 @@ const BlogPage = () => {
                       <div className="flex items-center gap-1"><Clock className="w-4 h-4" /> {featuredPost.readTime}</div>
                     </div>
                     <div className="flex gap-3">
-                      <Bookmark className="w-5 h-5 text-gray-400 hover:text-yellow-400 transition-colors" />
-                      <Share2 className="w-5 h-5 text-gray-400 hover:text-yellow-400 transition-colors" />
+                      <Bookmark className="w-5 h-5 text-gray-400 hover:text-[#FFEA00] transition-colors" />
+                      <Share2 className="w-5 h-5 text-gray-400 hover:text-[#FFEA00] transition-colors" />
                     </div>
                   </div>
-                  <Link href={`/blog/${featuredPost.slug}`} className="bg-yellow-400 text-black px-6 py-3 font-bold uppercase tracking-wider hover:bg-yellow-300 transition-colors flex items-center gap-2 w-max">
+                  <Link
+                    href={`/blog/${featuredPost.slug}`}
+                    className="px-6 py-3 font-bold uppercase tracking-wider transition-colors flex items-center gap-2 w-max"
+                    style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                  >
                     Read Full Article <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -142,7 +150,24 @@ const BlogPage = () => {
       <div className="py-8 px-6">
         <div className="max-w-7xl mx-auto flex flex-wrap gap-4 justify-center">
           {categories.map((category) => (
-            <button key={category} className="px-4 py-2 border border-gray-600 text-gray-300 hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-colors font-semibold text-sm">
+            <button
+              key={category}
+              className="px-4 py-2 border text-sm font-semibold transition-colors"
+              style={{
+                borderColor: "#4B5563",
+                color: "#D1D5DB"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#FFEA00";
+                e.currentTarget.style.color = "#000";
+                e.currentTarget.style.borderColor = "#FFEA00";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.color = "#D1D5DB";
+                e.currentTarget.style.borderColor = "#4B5563";
+              }}
+            >
               {category}
             </button>
           ))}
@@ -154,19 +179,39 @@ const BlogPage = () => {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post) => (
             <Link key={post.id} href={`/blog/${post.slug}`} className="group cursor-pointer">
-              <div className="bg-[#151515] border border-gray-800 overflow-hidden transition-all duration-300 hover:border-yellow-400 hover:scale-105">
-                <div className="relative h-100 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+              <div
+                className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105"
+                style={{ borderColor: "#1F2937" }}
+                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#FFEA00")}
+                onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#1F2937")}
+              >
+                <div className="relative h-100 flex items-center justify-center">
                   <Image src={post.image} alt={post.title} fill className="object-cover" />
-                  <div className="absolute top-3 left-3 bg-yellow-400 text-black px-2 py-1 text-xs font-bold uppercase rounded">
+                  <div
+                    className="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase rounded"
+                    style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                  >
                     NEW
                   </div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="bg-yellow-400 text-black px-2 py-1 text-xs font-bold uppercase rounded">{post.category}</span>
+                    <span
+                      className="px-2 py-1 text-xs font-bold uppercase rounded"
+                      style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                    >
+                      {post.category}
+                    </span>
                     <span className="text-gray-500 text-xs">{post.readTime}</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-yellow-400 transition-colors">{post.title}</h3>
+                  <h3
+                    className="text-xl font-bold mb-3 line-clamp-2 transition-colors"
+                    style={{ color: "white" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#FFEA00")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
+                  >
+                    {post.title}
+                  </h3>
                   <p className="text-gray-400 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
                   <div className="flex items-center justify-between text-xs text-gray-500">
                     <div className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post.date}</div>

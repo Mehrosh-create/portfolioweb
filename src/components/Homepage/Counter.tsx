@@ -30,7 +30,7 @@ const CounterSection = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-[#151515] relative overflow-hidden">
+    <section className="py-16 bg-[#151515] relative overflow-hidden mr-6">
       {/* Background pattern */}
       <div
         className="absolute inset-0 opacity-10"
@@ -41,7 +41,6 @@ const CounterSection = () => {
         }}
       ></div>
 
-      {/* Change this line: Add lg:mr-8 for right margin */}
       <div ref={ref} className="container mx-auto px-4 relative z-10 lg:mr-8">
         {/* Quote section */}
         <div className="text-center mb-16">
@@ -60,22 +59,29 @@ const CounterSection = () => {
             <span className="block text-center">CURRENCY."</span>
           </h2>
 
-          <div
-            className="inline-block text-black font-bold tracking-wider uppercase whitespace-nowrap px-3 py-1"
-            style={{
-              backgroundColor: "#FFEA00",
-              fontFamily: '"Bebas Neue", sans-serif',
-              fontWeight: 700,
-              fontSize: "1.6rem",
-              letterSpacing: "0.08em",
-            }}
-          >
-            SHEIKH NABEEL
+          {/* Sliding background highlight */}
+          <div className="relative inline-block mx-auto">
+            <span
+              className={`absolute top-0 left-0 h-full bg-[#FFEA00] ${inView ? "animate-slideRight" : ""
+                }`}
+            ></span>
+
+            <span
+              className="relative z-10 text-black font-bold tracking-wider uppercase whitespace-nowrap px-3 py-1 inline-block"
+              style={{
+                fontFamily: '"Bebas Neue", sans-serif',
+                fontWeight: 700,
+                fontSize: "1.6rem",
+                letterSpacing: "0.08em",
+              }}
+            >
+              SHEIKH NABEEL
+            </span>
           </div>
         </div>
 
+        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* CARD COMPONENT */}
           {[
             {
               name: "VICE",
@@ -85,7 +91,7 @@ const CounterSection = () => {
             {
               name: "FRIENDS",
               description: "creates meaningful IP",
-              img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+              img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fMHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
             },
             {
               name: "ACT",
@@ -95,9 +101,9 @@ const CounterSection = () => {
           ].map((card) => (
             <div
               key={card.name}
-              className="group text-center p-0 border-2 rounded-lg transition-all duration-300 cursor-pointer h-96 flex flex-col relative overflow-hidden border-gray-700" // Removed hover:scale-105 and hover:border-[#02B600]
+              className="group text-center p-0 border-2 rounded-lg transition-all duration-300 cursor-pointer h-96 flex flex-col relative overflow-hidden border-gray-700"
             >
-              {/* Pulsating green effect on hover */}
+              {/* Hover effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute inset-0 bg-[#02B600]/30 animate-pulse z-20"></div>
                 <div className="absolute inset-0 bg-gradient-radial from-[#02B600]/40 via-[#02B600]/20 to-transparent animate-ping"></div>
@@ -119,7 +125,8 @@ const CounterSection = () => {
                   <h3
                     className="text-2xl font-semibold text-white mb-2 uppercase tracking-wide"
                     style={{
-                      fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                      fontFamily:
+                        'Arial, "Helvetica Neue", Helvetica, sans-serif',
                       fontWeight: 900,
                     }}
                   >
@@ -128,7 +135,8 @@ const CounterSection = () => {
                   <p
                     className="text-sm text-gray-300"
                     style={{
-                      fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                      fontFamily:
+                        'Arial, "Helvetica Neue", Helvetica, sans-serif',
                     }}
                   >
                     {card.description}
@@ -139,6 +147,21 @@ const CounterSection = () => {
           ))}
         </div>
       </div>
+
+      {/* Keyframes */}
+      <style jsx>{`
+        @keyframes slideRight {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: 100%; /* matches text width */
+          }
+        }
+        .animate-slideRight {
+          animation: slideRight 2s forwards;
+        }
+      `}</style>
     </section>
   );
 };
