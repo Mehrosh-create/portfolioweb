@@ -219,7 +219,7 @@ const Footer = () => {
         </a>
       </div>
       {/* Copyright */}
-      <div className="text-center text-base text-gray-400 pb-5 ml-70">
+      <div className="text-center text-base text-gray-400 pb-5 ml-75">
         <p>
           © Sheikh Nabeel {new Date().getFullYear()}
         </p>

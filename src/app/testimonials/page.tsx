@@ -16,8 +16,9 @@ const Testimonials = () => {
             company: "TechStart Inc.",
             role: "CEO",
             image: "/images/client1.jpg",
-            content: "Sheikh Nabeel transformed our digital infrastructure completely. His strategic approach to digital transformation helped us increase efficiency by 40% and reduce operational costs significantly.",
-            rating: 5
+            content:
+                "Sheikh Nabeel transformed our digital infrastructure completely. His strategic approach to digital transformation helped us increase efficiency by 40% and reduce operational costs significantly.",
+            rating: 5,
         },
         {
             id: 2,
@@ -25,8 +26,9 @@ const Testimonials = () => {
             company: "GrowthLabs",
             role: "Marketing Director",
             image: "/images/client2.jpg",
-            content: "Working with Sheikh Nabeel was a game-changer for our marketing strategy. His expertise in digital funnels and growth marketing helped us triple our lead generation in just 3 months.",
-            rating: 5
+            content:
+                "Working with Sheikh Nabeel was a game-changer for our marketing strategy. His expertise in digital funnels and growth marketing helped us triple our lead generation in just 3 months.",
+            rating: 5,
         },
         {
             id: 3,
@@ -34,8 +36,9 @@ const Testimonials = () => {
             company: "Global Solutions",
             role: "Operations Manager",
             image: "/images/client3.jpg",
-            content: "The CRM implementation and automation systems designed by Sheikh Nabeel have revolutionized our client management process. We've seen a 60% improvement in client satisfaction scores.",
-            rating: 5
+            content:
+                "The CRM implementation and automation systems designed by Sheikh Nabeel have revolutionized our client management process. We've seen a 60% improvement in client satisfaction scores.",
+            rating: 5,
         },
         {
             id: 4,
@@ -43,8 +46,9 @@ const Testimonials = () => {
             company: "InnovateTech",
             role: "Founder",
             image: "/images/client4.jpg",
-            content: "Sheikh Nabeel's business strategy expertise helped us pivot during a challenging market period. His insights and guidance were instrumental in our successful rebranding and market repositioning.",
-            rating: 5
+            content:
+                "Sheikh Nabeel's business strategy expertise helped us pivot during a challenging market period. His insights and guidance were instrumental in our successful rebranding and market repositioning.",
+            rating: 5,
         },
         {
             id: 5,
@@ -52,9 +56,10 @@ const Testimonials = () => {
             company: "NextGen Apps",
             role: "CTO",
             image: "/images/client5.jpg",
-            content: "The team management systems implemented by Sheikh Nabeel have dramatically improved our productivity and collaboration. Our project delivery times have decreased by 35% since working with him.",
-            rating: 5
-        }
+            content:
+                "The team management systems implemented by Sheikh Nabeel have dramatically improved our productivity and collaboration. Our project delivery times have decreased by 35% since working with him.",
+            rating: 5,
+        },
     ];
 
     const nextTestimonial = () => {
@@ -70,20 +75,38 @@ const Testimonials = () => {
     };
 
     return (
-        <div className="min-h-screen pt-20 pb-16 px-40 bg-[#151515]">
-            <div className="max-w-7xl mx-auto lg:mr-8">
+        <div className="min-h-screen pt-20 px-40 pb-24 bg-[#151515] flex flex-col">
+            <div className="flex-grow max-w-7xl mx-auto lg:mr-8">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <h1 className="text-5xl md:text-7xl font-black uppercase text-white mb-8 leading-tight"
+                    <h1
+                        className="text-5xl md:text-7xl font-black uppercase text-white mb-8 leading-tight"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
-                            letterSpacing: "0.02em"
-                        }}>
+                            letterSpacing: "0.02em",
+                        }}
+                    >
                         CLIENT <span className="text-[#FFEA00]">TESTIMONIALS</span>
                     </h1>
-                    <div className="inline-block bg-[#FFEA00] text-black px-4 py-2 text-sm font-bold uppercase tracking-wider mb-6"
-                        style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}>
-                        SUCCESS STORIES
+
+                    {/* Sliding background highlight like About page */}
+                    <div className="relative inline-block mx-auto mb-6">
+                        <span
+                            className="absolute top-0 left-0 h-full bg-[#FFEA00] inline-block"
+                            style={{
+                                width: "0%",
+                                animation: "slideRight 2s forwards",
+                            }}
+                        ></span>
+                        <span
+                            className="relative z-10 text-black text-lg md:text-xl lg:text-2xl font-bold uppercase px-6 py-2 inline-block"
+                            style={{
+                                fontFamily: '"Bebas Neue", Arial, sans-serif',
+                                letterSpacing: "0.05em",
+                            }}
+                        >
+                            SUCCESS STORIES
+                        </span>
                     </div>
                 </div>
 
@@ -105,11 +128,18 @@ const Testimonials = () => {
                         <div className="text-center mb-8 relative z-10">
                             <div className="flex justify-center mb-4">
                                 {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                                    <Star key={i} className="w-6 h-6 text-[#FFEA00] fill-current" />
+                                    <Star
+                                        key={i}
+                                        className="w-6 h-6 text-[#FFEA00] fill-current"
+                                    />
                                 ))}
                             </div>
-                            <p className="text-xl text-[#e0f7fa] italic leading-relaxed"
-                                style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}>
+                            <p
+                                className="text-xl text-[#e0f7fa] italic leading-relaxed"
+                                style={{
+                                    fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                }}
+                            >
                                 "{testimonials[currentIndex].content}"
                             </p>
                         </div>
@@ -124,13 +154,22 @@ const Testimonials = () => {
                                 />
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold text-white"
-                                    style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}>
+                                <h3
+                                    className="text-xl font-bold text-white"
+                                    style={{
+                                        fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                    }}
+                                >
                                     {testimonials[currentIndex].name}
                                 </h3>
-                                <p className="text-[#FFEA00]"
-                                    style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}>
-                                    {testimonials[currentIndex].role}, {testimonials[currentIndex].company}
+                                <p
+                                    className="text-[#FFEA00]"
+                                    style={{
+                                        fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                    }}
+                                >
+                                    {testimonials[currentIndex].role},{" "}
+                                    {testimonials[currentIndex].company}
                                 </p>
                             </div>
                         </div>
@@ -156,8 +195,8 @@ const Testimonials = () => {
                                     key={index}
                                     onClick={() => setCurrentIndex(index)}
                                     className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                                        ? 'bg-[#FFEA00] scale-125'
-                                        : 'bg-gray-600 hover:bg-[#02B600]'
+                                        ? "bg-[#FFEA00] scale-125"
+                                        : "bg-gray-600 hover:bg-[#02B600]"
                                         }`}
                                 />
                             ))}
@@ -167,19 +206,24 @@ const Testimonials = () => {
 
                 {/* All Testimonials Grid */}
                 <div>
-                    <h2 className="text-3xl font-bold text-white mb-8 text-center uppercase"
+                    <h2
+                        className="text-3xl md:text-4xl font-bold text-white mb-8 text-center uppercase"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
-                            letterSpacing: "0.05em"
-                        }}>
+                            letterSpacing: "0.05em",
+                        }}
+                    >
                         More Client Feedback
                     </h2>
                     <div className="grid md:grid-cols-2 gap-6">
                         {testimonials.map((testimonial) => (
-                            <div key={testimonial.id} className="bg-[#252525] p-6 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-300 group cursor-pointer">
+                            <div
+                                key={testimonial.id}
+                                className="bg-[#252525] p-6 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-500 group cursor-pointer overflow-hidden"
+                            >
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="flex items-center gap-4">
-                                        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-gray-600 group-hover:border-[#02B600] transition-colors">
+                                        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-gray-600 group-hover:border-[#02B600] transition-all duration-500 group-hover:scale-110">
                                             <Image
                                                 src={testimonial.image}
                                                 alt={testimonial.name}
@@ -188,27 +232,44 @@ const Testimonials = () => {
                                             />
                                         </div>
                                         <div>
-                                            <h3 className="font-bold text-white group-hover:text-[#e0f7fa] transition-colors"
-                                                style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}>
+                                            <h3
+                                                className="font-bold text-white group-hover:text-[#e0f7fa] transition-colors"
+                                                style={{
+                                                    fontFamily:
+                                                        'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                                }}
+                                            >
                                                 {testimonial.name}
                                             </h3>
-                                            <p className="text-sm text-[#FFEA00] group-hover:text-[#02B600] transition-colors"
-                                                style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}>
+                                            <p
+                                                className="text-sm text-[#FFEA00] group-hover:text-[#02B600] transition-colors"
+                                                style={{
+                                                    fontFamily:
+                                                        'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                                }}
+                                            >
                                                 {testimonial.role}
                                             </p>
                                         </div>
                                     </div>
                                     <div className="flex">
                                         {[...Array(testimonial.rating)].map((_, i) => (
-                                            <Star key={i} className="w-4 h-4 text-[#FFEA00] fill-current group-hover:text-[#02B600] transition-colors" />
+                                            <Star
+                                                key={i}
+                                                className="w-4 h-4 text-[#FFEA00] fill-current group-hover:text-[#02B600] transition-colors"
+                                            />
                                         ))}
                                     </div>
                                 </div>
-                                <p className="text-[#e0f7fa] italic"
-                                    style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}>
+                                <p
+                                    className="text-[#e0f7fa] italic"
+                                    style={{
+                                        fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                    }}
+                                >
                                     "{testimonial.content}"
                                 </p>
-                                <div className="mt-3 h-1 w-0 bg-[#02B600] group-hover:w-full transition-all duration-500"></div>
+                                <div className="mt-3 h-1 w-0 bg-[#02B600] group-hover:w-full transition-all duration-700"></div>
                             </div>
                         ))}
                     </div>
@@ -227,25 +288,40 @@ const Testimonials = () => {
                     ></div>
 
                     <div className="relative z-10">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase"
+                        <h2
+                            className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase"
                             style={{
                                 fontFamily: '"Bebas Neue", Arial, sans-serif',
-                                letterSpacing: "0.05em"
-                            }}>
+                                letterSpacing: "0.05em",
+                            }}
+                        >
                             Ready to Join Our Success Stories?
                         </h2>
-                        <p className="text-xl text-[#e0f7fa] mb-8 max-w-2xl mx-auto"
-                            style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}>
-                            Transform your business like our satisfied clients. Let's discuss your project and create your success story.
+                        <p
+                            className="text-lg md:text-xl text-[#e0f7fa] mb-8 max-w-2xl mx-auto leading-relaxed"
+                            style={{
+                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                            }}
+                        >
+                            Transform your business like our satisfied clients. Let's discuss
+                            your project and create your success story.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button className="bg-[#FFEA00] text-black px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-yellow-300 transition-colors"
-                                style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}>
+                            <button
+                                className="bg-[#FFEA00] text-black px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-yellow-300 transition-colors"
+                                style={{
+                                    fontFamily: '"Bebas Neue", Arial, sans-serif',
+                                }}
+                            >
                                 Start Your Project
                             </button>
                             <Link href="/contact">
-                                <button className="border-2 border-[#FFEA00] text-[#FFEA00] px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#FFEA00] hover:text-black transition-colors"
-                                    style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}>
+                                <button
+                                    className="border-2 border-[#FFEA00] text-[#FFEA00] px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#FFEA00] hover:text-black transition-colors"
+                                    style={{
+                                        fontFamily: '"Bebas Neue", Arial, sans-serif',
+                                    }}
+                                >
                                     Contact Me
                                 </button>
                             </Link>
@@ -253,6 +329,16 @@ const Testimonials = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Keyframes (for sliding background effect) */}
+            <style>
+                {`
+          @keyframes slideRight {
+            0% { width: 0%; }
+            100% { width: 100%; }
+          }
+        `}
+            </style>
         </div>
     );
 };
