@@ -1,8 +1,7 @@
-// src/ui/infinite-moving-cards.tsx
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useMotionValue } from "framer-motion";
 
 interface InfiniteMovingCardsProps {
     items: string[];
@@ -18,6 +17,8 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
     const containerRef = useRef<HTMLDivElement>(null);
     const [width, setWidth] = useState(0);
     const controls = useAnimation();
+    const x = useMotionValue(0);
+    const [isDragging, setIsDragging] = useState(false);
 
     const speedValue = speed === "slow" ? 20 : speed === "fast" ? 80 : 40;
 
@@ -25,30 +26,53 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
         if (containerRef.current) {
             setWidth(containerRef.current.scrollWidth / 2);
 
-            const animation = async () => {
-                await controls.start({
-                    x: direction === "right" ? [0, -width] : [0, width],
-                    transition: {
-                        x: {
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            duration: width / speedValue,
-                            ease: "linear",
+            const animateCards = async () => {
+                if (!isDragging) {
+                    await controls.start({
+                        x: direction === "right" ? [0, -width] : [0, width],
+                        transition: {
+                            x: {
+                                repeat: Infinity,
+                                repeatType: "loop",
+                                duration: width / speedValue,
+                                ease: "linear",
+                            },
                         },
-                    },
-                });
+                    });
+                }
             };
 
-            animation();
+            animateCards();
         }
-    }, [width, direction, controls, speedValue]);
+    }, [width, direction, controls, speedValue, isDragging]);
+
+    // Handle drag to loop cards
+    const handleDrag = () => {
+        const currentX = x.get();
+        if (currentX <= -width) {
+            x.set(currentX + width);
+        } else if (currentX >= 0) {
+            x.set(currentX - width);
+        }
+    };
 
     return (
         <div
             ref={containerRef}
             className="flex space-x-6 px-6 overflow-hidden"
         >
-            <motion.div animate={controls} className="flex space-x-6">
+            <motion.div
+                animate={controls}
+                style={{ x }}
+                className="flex space-x-6"
+                drag="x"
+                dragConstraints={false}
+                onDragStart={() => setIsDragging(true)}
+                onDragEnd={() => setIsDragging(false)}
+                onDrag={handleDrag}
+                dragElastic={0.1}
+                dragMomentum={false}
+            >
                 {items.concat(items).map((service, index) => (
                     <div
                         key={index}

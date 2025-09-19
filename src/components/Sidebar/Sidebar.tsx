@@ -25,7 +25,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [activeLink, setActiveLink] = useState("");
+  const [activeLink, setActiveLink] = useState(""); // ✅ active link state
   const [hoveredNav, setHoveredNav] = useState("");
   const [searchHover, setSearchHover] = useState(false);
 
@@ -46,9 +46,8 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
   }, []);
 
   const handleLinkClick = (link: string) => {
-    setActiveLink(link);
+    setActiveLink(link); // ✅ set clicked link as active
     if (isMobile) setIsOpen(false);
-    setTimeout(() => setActiveLink(""), 800);
   };
 
   const socialLinks = [
@@ -94,8 +93,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
         <div className="flex flex-col h-full justify-between">
           {/* Logo */}
           <div
-            className={`p-4 transition-all duration-300 ${scrolled ? "py-3" : "py-4"
-              } flex justify-center`}
+            className={`p-4 transition-all duration-300 ${scrolled ? "py-3" : "py-4"} flex justify-center`}
           >
             <Link href="/" onClick={() => handleLinkClick("home")}>
               <Image
@@ -121,9 +119,13 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                 { href: "/contact", label: "CONTACT", id: "contact" },
               ].map((item) => (
                 <li key={item.id} className="relative">
-                  {/* Green hover background (slides left → right, 65% width) */}
+                  {/* ✅ Keep hover effect AND show full green box when active */}
                   <div
-                    className={`absolute inset-y-0 left-0 w-[65%] bg-[#02B600] transform transition-transform duration-300 ease-out ${hoveredNav === item.id ? "scale-x-100 origin-left" : "scale-x-0 origin-left"
+                    className={`absolute inset-y-0 left-0 w-[65%] bg-[#02B600] transform transition-transform duration-300 ease-out ${activeLink === item.id
+                      ? "scale-x-100 origin-left"
+                      : hoveredNav === item.id
+                        ? "scale-x-100 origin-left"
+                        : "scale-x-0 origin-left"
                       }`}
                     style={{ zIndex: -1 }}
                   />
