@@ -1,4 +1,3 @@
-// src/app/testimonials/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -19,6 +18,7 @@ const Testimonials = () => {
             content:
                 "Sheikh Nabeel transformed our digital infrastructure completely. His strategic approach to digital transformation helped us increase efficiency by 40% and reduce operational costs significantly.",
             rating: 5,
+            hoverBg: "from-blue-600 to-blue-800"
         },
         {
             id: 2,
@@ -29,6 +29,7 @@ const Testimonials = () => {
             content:
                 "Working with Sheikh Nabeel was a game-changer for our marketing strategy. His expertise in digital funnels and growth marketing helped us triple our lead generation in just 3 months.",
             rating: 5,
+            hoverBg: "from-purple-600 to-purple-800"
         },
         {
             id: 3,
@@ -39,6 +40,7 @@ const Testimonials = () => {
             content:
                 "The CRM implementation and automation systems designed by Sheikh Nabeel have revolutionized our client management process. We've seen a 60% improvement in client satisfaction scores.",
             rating: 5,
+            hoverBg: "from-green-600 to-green-800"
         },
         {
             id: 4,
@@ -49,6 +51,7 @@ const Testimonials = () => {
             content:
                 "Sheikh Nabeel's business strategy expertise helped us pivot during a challenging market period. His insights and guidance were instrumental in our successful rebranding and market repositioning.",
             rating: 5,
+            hoverBg: "from-red-600 to-red-800"
         },
         {
             id: 5,
@@ -59,6 +62,18 @@ const Testimonials = () => {
             content:
                 "The team management systems implemented by Sheikh Nabeel have dramatically improved our productivity and collaboration. Our project delivery times have decreased by 35% since working with him.",
             rating: 5,
+            hoverBg: "from-orange-600 to-orange-800"
+        },
+        {
+            id: 6,
+            name: "Lisa Thompson",
+            company: "Digital Dynamics",
+            role: "Product Manager",
+            image: "/images/client6.jpg",
+            content:
+                "Sheikh Nabeel's expertise in product strategy and digital innovation helped us launch our flagship product ahead of schedule. His insights into user experience design resulted in a 50% increase in user engagement.",
+            rating: 5,
+            hoverBg: "from-teal-600 to-teal-800"
         },
     ];
 
@@ -75,7 +90,7 @@ const Testimonials = () => {
     };
 
     return (
-        <div className="min-h-screen pt-20 px-40 pb-24 bg-[#151515] flex flex-col">
+        <div className="min-h-screen pt-20 px-75 pb-24 bg-[#151515] flex flex-col">
             <div className="flex-grow max-w-7xl mx-auto lg:mr-8">
                 {/* Header */}
                 <div className="text-center mb-16">
@@ -204,10 +219,10 @@ const Testimonials = () => {
                     </div>
                 </div>
 
-                {/* All Testimonials Grid */}
+                {/* All Testimonials Grid with Enhanced Slide-Up Effects */}
                 <div>
                     <h2
-                        className="text-3xl md:text-4xl font-bold text-white mb-8 text-center uppercase"
+                        className="text-3xl md:text-4xl font-bold text-white mb-12 text-center uppercase"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
                             letterSpacing: "0.05em",
@@ -215,61 +230,75 @@ const Testimonials = () => {
                     >
                         More Client Feedback
                     </h2>
-                    <div className="grid md:grid-cols-2 gap-6">
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {testimonials.map((testimonial) => (
                             <div
                                 key={testimonial.id}
-                                className="bg-[#252525] p-6 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-500 group cursor-pointer overflow-hidden"
+                                className="relative bg-[#252525] rounded-lg border border-gray-700 hover:border-white transition-all duration-200 group cursor-pointer overflow-hidden h-80 shadow-lg hover:shadow-2xl"
                             >
-                                <div className="flex justify-between items-start mb-4">
-                                    <div className="flex items-center gap-4">
-                                        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-gray-600 group-hover:border-[#02B600] transition-all duration-500 group-hover:scale-110">
-                                            <Image
-                                                src={testimonial.image}
-                                                alt={testimonial.name}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        </div>
-                                        <div>
-                                            <h3
-                                                className="font-bold text-white group-hover:text-[#e0f7fa] transition-colors"
-                                                style={{
-                                                    fontFamily:
-                                                        'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                                                }}
-                                            >
-                                                {testimonial.name}
-                                            </h3>
-                                            <p
-                                                className="text-sm text-[#FFEA00] group-hover:text-[#02B600] transition-colors"
-                                                style={{
-                                                    fontFamily:
-                                                        'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                                                }}
-                                            >
-                                                {testimonial.role}
-                                            </p>
-                                        </div>
+                                {/* Default State - Shows Name, Role, Company */}
+                                <div className="absolute inset-0 p-8 flex flex-col justify-center items-center text-center transition-all duration-50 ease-out group-hover:-translate-y-full group-hover:opacity-0">
+                                    <div className="relative w-24 h-24 rounded-full overflow-hidden border-3 border-gray-600 mb-6 transition-all duration-500">
+                                        <Image
+                                            src={testimonial.image}
+                                            alt={testimonial.name}
+                                            fill
+                                            className="object-cover"
+                                        />
                                     </div>
-                                    <div className="flex">
-                                        {[...Array(testimonial.rating)].map((_, i) => (
-                                            <Star
-                                                key={i}
-                                                className="w-4 h-4 text-[#FFEA00] fill-current group-hover:text-[#02B600] transition-colors"
-                                            />
-                                        ))}
+                                    <h3
+                                        className="text-2xl font-bold text-white mb-3"
+                                        style={{
+                                            fontFamily: '"Bebas Neue", Arial, sans-serif',
+                                            letterSpacing: "0.05em",
+                                        }}
+                                    >
+                                        {testimonial.name}
+                                    </h3>
+                                    <p
+                                        className="text-[#FFEA00] font-semibold uppercase tracking-wider text-lg mb-2"
+                                        style={{
+                                            fontFamily: '"Bebas Neue", Arial, sans-serif',
+                                        }}
+                                    >
+                                        {testimonial.role}
+                                    </p>
+                                    <p
+                                        className="text-gray-300 text-sm font-medium tracking-wide"
+                                        style={{
+                                            fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                        }}
+                                    >
+                                        {testimonial.company}
+                                    </p>
+                                </div>
+
+                                {/* Hover State - Content slides up from bottom  */}
+                                <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.hoverBg} p-6 transition-all duration-200 ease-out transform translate-y-full group-hover:translate-y-0 flex flex-col justify-center`}>
+                                    <div className="text-center">
+                                        <div className="flex justify-center mb-4">
+                                            {[...Array(testimonial.rating)].map((_, i) => (
+                                                <Star
+                                                    key={i}
+                                                    className="w-5 h-5 text-yellow-300 fill-current mx-0.5"
+                                                />
+                                            ))}
+                                        </div>
+                                        <Quote className="w-10 h-10 text-white/30 mb-4 mx-auto" />
+                                        <p
+                                            className="text-white text-sm leading-relaxed italic font-light px-1 max-h-48 overflow-y-auto"
+                                            style={{
+                                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                            }}
+                                        >
+                                            "{testimonial.content}"
+                                        </p>
                                     </div>
                                 </div>
-                                <p
-                                    className="text-[#e0f7fa] italic"
-                                    style={{
-                                        fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                                    }}
-                                >
-                                    "{testimonial.content}"
-                                </p>
-                                <div className="mt-3 h-1 w-0 bg-[#02B600] group-hover:w-full transition-all duration-700"></div>
+
+                                {/* Hover indicator bar */}
+                                <div className="absolute bottom-0 left-0 w-0 h-1 bg-white group-hover:w-full transition-all duration-1000 delay-300"></div>
                             </div>
                         ))}
                     </div>
@@ -330,7 +359,7 @@ const Testimonials = () => {
                 </div>
             </div>
 
-            {/* Keyframes (for sliding background effect) */}
+            {/* Enhanced Keyframes */}
             <style>
                 {`
           @keyframes slideRight {

@@ -53,9 +53,9 @@ export default function ClientLayout({
                 {/* Fixed Sidebar */}
                 <Sidebar onSearchClick={handleSearchClick} />
 
-                {/* Search Overlay */}
+                {/* Search Bar */}
                 {showSearch && (
-                    <div className="fixed inset-0 bg-black py-16 px-8 z-40">
+                    <div className="w-full bg-black py-16 px-8 relative z-50">
                         <div className="max-w-7xl mx-auto lg:ml-64">
                             <div className="relative mt-6">
                                 <form onSubmit={handleSearchSubmit}>
@@ -75,18 +75,18 @@ export default function ClientLayout({
                                     {/* Green underline */}
                                     <div className="absolute bottom-0 left-0 w-full h-1 bg-[#02B600]" />
 
-                                    {/* Close button aligned to input right */}
+                                    {/* Close button above green line */}
                                     <button
                                         type="button"
                                         onClick={handleSearchClose}
-                                        className="absolute top-1/2 right-0 -translate-y-1/2 text-white hover:text-gray-300 group transition-colors duration-300"
+                                        className="absolute bottom-4 right-0 text-white hover:text-gray-300 group transition-colors duration-300"
                                     >
                                         <X className="w-8 h-8 transition-transform duration-300 group-hover:rotate-90" />
                                     </button>
                                 </form>
                             </div>
 
-                            {/* Search instruction text */}
+                            {/* Instruction text */}
                             <p className="text-gray-400 text-lg mt-6 font-light">
                                 Hit <span className="font-semibold">Enter</span> to search or{" "}
                                 <span className="font-semibold">ESC</span> to close
@@ -95,7 +95,7 @@ export default function ClientLayout({
                     </div>
                 )}
 
-                {/* Main content (pushed by sidebar on desktop) */}
+                {/* Main content */}
                 <main className="flex-1 ml-0 lg:ml-64">{children}</main>
 
                 {/* Footer */}

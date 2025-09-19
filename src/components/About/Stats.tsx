@@ -9,7 +9,7 @@ const Stats = () => {
         impressions: 0,
         clients: 0,
         projects: 0,
-        years: 0
+        years: 0,
     });
 
     useEffect(() => {
@@ -18,35 +18,32 @@ const Stats = () => {
             impressions: 3500000,
             clients: 120,
             projects: 250,
-            years: 7
+            years: 7,
         };
 
-        const duration = 2000; // ms
+        const duration = 2000;
         const steps = 60;
         const stepDuration = duration / steps;
 
-        const animateCounters = () => {
-            let currentStep = 0;
+        let currentStep = 0;
+        const timer = setInterval(() => {
+            currentStep += 1;
+            const progress = currentStep / steps;
 
-            const timer = setInterval(() => {
-                currentStep += 1;
-                const progress = currentStep / steps;
+            setCounters({
+                followers: Math.floor(targetValues.followers * progress),
+                impressions: Math.floor(targetValues.impressions * progress),
+                clients: Math.floor(targetValues.clients * progress),
+                projects: Math.floor(targetValues.projects * progress),
+                years: Math.floor(targetValues.years * progress),
+            });
 
-                setCounters({
-                    followers: Math.floor(targetValues.followers * progress),
-                    impressions: Math.floor(targetValues.impressions * progress),
-                    clients: Math.floor(targetValues.clients * progress),
-                    projects: Math.floor(targetValues.projects * progress),
-                    years: Math.floor(targetValues.years * progress)
-                });
+            if (currentStep >= steps) {
+                clearInterval(timer);
+            }
+        }, stepDuration);
 
-                if (currentStep >= steps) {
-                    clearInterval(timer);
-                }
-            }, stepDuration);
-        };
-
-        animateCounters();
+        return () => clearInterval(timer);
     }, []);
 
     const stats = [
@@ -54,11 +51,15 @@ const Stats = () => {
         { value: counters.impressions.toLocaleString(), label: "IMPRESSIONS", suffix: "+" },
         { value: counters.clients, label: "CLIENTS", suffix: "+" },
         { value: counters.projects, label: "PROJECTS", suffix: "+" },
-        { value: counters.years, label: "YEARS EXPERIENCE", suffix: "+" }
+        { value: counters.years, label: "YEARS EXPERIENCE", suffix: "+" },
     ];
 
     return (
-        <div className="py-16 mb-16 relative">
+        <div
+            id="fws_68ccdc3a5efda"
+            className="relative py-16 mb-16 overflow-hidden"
+            style={{ paddingBottom: "2%" }}
+        >
             {/* Background pattern */}
             <div
                 className="absolute inset-0 opacity-5"
@@ -69,24 +70,51 @@ const Stats = () => {
                 }}
             ></div>
 
-            <div className="relative z-10">
+            <div className="row_col_wrap_12_inner relative z-10 max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
                     {stats.map((stat, index) => (
-                        <div key={index} className="text-center group cursor-pointer">
-                            <div className="bg-[#252525] p-6 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-300 hover:scale-105">
-                                <div className="text-3xl md:text-4xl font-bold text-[#FFEA00] mb-2 group-hover:text-[#02B600] transition-colors"
-                                    style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}>
-                                    {stat.value}{stat.suffix}
-                                </div>
-                                <div className="text-sm text-[#e0f7fa] uppercase tracking-wider group-hover:text-white transition-colors"
-                                    style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}>
-                                    {stat.label}
+                        <div
+                            key={index}
+                            className="vc_col-sm-1 child_column transform transition duration-700 opacity-0 translate-y-8 animate-fadeInUp"
+                        >
+                            <div className="relative overflow-hidden bg-[#252525] p-6 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-500 text-center group cursor-pointer">
+                                {/* Sliding green background */}
+                                <div className="absolute inset-0 bg-[#02B600] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-out"></div>
+
+                                {/* Content sits above */}
+                                <div className="relative z-10">
+                                    <div
+                                        className="text-3xl md:text-4xl font-bold text-[#FFEA00] mb-2 transition-colors group-hover:text-white"
+                                        style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
+                                    >
+                                        {stat.value}
+                                        {stat.suffix}
+                                    </div>
+                                    <div
+                                        className="text-sm text-[#e0f7fa] uppercase tracking-wider transition-colors group-hover:text-white"
+                                        style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
+                                    >
+                                        {stat.label}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
+
+            {/* Animations */}
+            <style>
+                {`
+                @keyframes fadeInUp {
+                    0% { opacity: 0; transform: translateY(30px); }
+                    100% { opacity: 1; transform: translateY(0); }
+                }
+                .animate-fadeInUp {
+                    animation: fadeInUp 1s ease forwards;
+                }
+                `}
+            </style>
         </div>
     );
 };

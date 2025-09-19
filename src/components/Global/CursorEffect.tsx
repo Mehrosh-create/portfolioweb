@@ -1,52 +1,59 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
-const Cursor = () => {
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [isHovering, setIsHovering] = useState(false);
+interface CursorProps {
+    mousePos: { x: number; y: number };
+    isDragging: boolean;
+    showCursor: boolean;
+}
+
+export default function Cursor({ mousePos, isDragging, showCursor }: CursorProps) {
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        const updatePosition = (e: MouseEvent) => {
-            setPosition({ x: e.clientX, y: e.clientY });
-        };
-
-        const handleMouseEnter = () => setIsHovering(true);
-        const handleMouseLeave = () => setIsHovering(false);
-
-        document.addEventListener("mousemove", updatePosition);
-        document.querySelectorAll("a, button").forEach((el) => {
-            el.addEventListener("mouseenter", handleMouseEnter);
-            el.addEventListener("mouseleave", handleMouseLeave);
-        });
-
-        return () => {
-            document.removeEventListener("mousemove", updatePosition);
-            document.querySelectorAll("a, button").forEach((el) => {
-                el.removeEventListener("mouseenter", handleMouseEnter);
-                el.removeEventListener("mouseleave", handleMouseLeave);
-            });
-        };
+        setMounted(true);
+        return () => setMounted(false);
     }, []);
 
-    return (
-        <div
-            className="pointer-events-none fixed z-50"
-            style={{
-                left: `${position.x}px`,
-                top: `${position.y}px`,
-                transform: `translate(-50%, -50%) scale(${isHovering ? 2 : 1})`,
-                transition: "transform 0.1s ease-out",
-            }}
-        >
-            <div
-                className="w-4 h-4 rounded-full bg-[#FFEA00]/50 border-2 border-[#FFEA00]"
-                style={{
-                    boxShadow: isHovering ? "0 0 10px #FFEA00" : "none",
-                }}
-            />
-        </div>
-    );
-};
+    if (!mounted) return null;
 
-export default Cursor;
+    const size = isDragging ? 48 : 56;
+    const borderWidth = isDragging ? 2 : 3;
+    const offset = size / 2;
+    const chevronOffset = isDragging ? -26 : -30;
+    const chevronSize = isDragging ? 16 : 18;
+
+    return (
+        <motion.div
+            className="fixed pointer-events-none z-50 flex items-center justify-center"
+            style={{
+                top: mousePos.y - offset,
+                left: mousePos.x - offset,
+                width: size,
+                height: size,
+                borderRadius: '50%',
+                border: `${borderWidth}px solid white`,
+                backgroundColor: 'transparent',
+                mixBlendMode: 'difference',
+                transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showCursor ? 1 : 0 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        >
+            <ChevronLeft
+                className="absolute top-1/2 -translate-y-1/2"
+                style={{ left: chevronOffset, color: 'white' }}
+                size={chevronSize}
+            />
+            <ChevronRight
+                className="absolute top-1/2 -translate-y-1/2"
+                style={{ right: chevronOffset, color: 'white' }}
+                size={chevronSize}
+            />
+        </motion.div>
+    );
+}

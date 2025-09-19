@@ -101,8 +101,8 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
               <Image
                 src="/images/logo.png"
                 alt="Entrepreneur Portfolio Logo"
-                width={120}
-                height={45}
+                width={110}
+                height={40}
                 className="transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_8px_#02B600]"
                 priority
               />

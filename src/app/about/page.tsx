@@ -5,6 +5,8 @@ import Image from "next/image";
 import SignatureContent from "@/components/About/SignatureContent";
 import Stats from "@/components/About/Stats";
 import { InfiniteMovingCards } from "@/ui/infinite-moving-cards";
+import Cursor from "@/components/Global/CursorEffect"; // custom cursor
+import { useState, useEffect } from "react";
 
 export default function About() {
     const services = [
@@ -15,6 +17,34 @@ export default function About() {
         "Team Management & Communication Systems",
         "Digital Transformation Consulting",
     ];
+
+    const [showCursor, setShowCursor] = useState(false);
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const [isDragging, setIsDragging] = useState(false);
+
+    // Track mouse position
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            setMousePos({ x: e.clientX, y: e.clientY });
+        };
+        window.addEventListener("mousemove", handleMouseMove);
+
+        return () => window.removeEventListener("mousemove", handleMouseMove);
+    }, []);
+
+    // (Optional) Track dragging state
+    useEffect(() => {
+        const handleMouseDown = () => setIsDragging(true);
+        const handleMouseUp = () => setIsDragging(false);
+
+        window.addEventListener("mousedown", handleMouseDown);
+        window.addEventListener("mouseup", handleMouseUp);
+
+        return () => {
+            window.removeEventListener("mousedown", handleMouseDown);
+            window.removeEventListener("mouseup", handleMouseUp);
+        };
+    }, []);
 
     return (
         <div className="min-h-screen pt-20 px-40 bg-[#151515] flex flex-col">
@@ -33,7 +63,6 @@ export default function About() {
 
                     {/* DIGITAL TRANSFORMATION EXPERT with sliding background */}
                     <div className="relative inline-block mx-auto mb-6">
-                        {/* Sliding background (now matches text width) */}
                         <span
                             className="absolute top-0 left-0 h-full bg-[#FFEA00] inline-block"
                             style={{
@@ -42,7 +71,6 @@ export default function About() {
                             }}
                         ></span>
 
-                        {/* Text */}
                         <span
                             className="relative z-10 text-black text-lg md:text-xl lg:text-2xl font-bold uppercase px-6 py-2 inline-block"
                             style={{
@@ -61,8 +89,7 @@ export default function About() {
                         <h2
                             className="text-3xl md:text-4xl font-bold mb-6 text-white"
                             style={{
-                                fontFamily:
-                                    'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
                         >
                             I'm a Global Strategist & Digital Transformer Leader.
@@ -70,8 +97,7 @@ export default function About() {
                         <p
                             className="text-lg text-[#e0f7fa] mb-6 leading-relaxed"
                             style={{
-                                fontFamily:
-                                    'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
                         >
                             I'm Sheikh Nabeel — Entrepreneur, Business Strategist & CEO of
@@ -82,8 +108,7 @@ export default function About() {
                         <p
                             className="text-lg text-[#e0f7fa] leading-relaxed"
                             style={{
-                                fontFamily:
-                                    'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
                         >
                             My mission is to empower businesses with the tools and strategies
@@ -103,8 +128,12 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* Services Section */}
-                <div className="mb-20">
+                {/* Services Section with Cursor Effect */}
+                <div
+                    className="mb-20 relative"
+                    onMouseEnter={() => setShowCursor(true)}
+                    onMouseLeave={() => setShowCursor(false)}
+                >
                     <h2
                         className="text-3xl md:text-4xl font-bold mb-8 text-white text-center uppercase"
                         style={{
@@ -122,6 +151,15 @@ export default function About() {
                             speed="slow"
                         />
                     </div>
+
+                    {/* Cursor appears only inside this section */}
+                    {showCursor && (
+                        <Cursor
+                            mousePos={mousePos}
+                            isDragging={isDragging}
+                            showCursor={showCursor}
+                        />
+                    )}
                 </div>
 
                 {/* Stats Section */}
@@ -133,12 +171,22 @@ export default function About() {
                 </div>
             </div>
 
-            {/* Keyframes */}
+            {/* Keyframes + Cursor style */}
             <style>
                 {`
                     @keyframes slideRight {
                         0% { width: 0%; }
                         100% { width: 100%; }
+                    }
+
+                    /* Custom pointer for clickable elements */
+                    button, 
+                    a, 
+                    [role="button"], 
+                    input[type="submit"], 
+                    input[type="button"], 
+                    .clickable {
+                        cursor: pointer;
                     }
                 `}
             </style>
