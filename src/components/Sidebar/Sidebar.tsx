@@ -93,15 +93,20 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
         <div className="flex flex-col h-full justify-between">
           {/* Logo */}
           <div
-            className={`p-4 transition-all duration-300 ${scrolled ? "py-3" : "py-4"} flex justify-center`}
+            className={`px-4 transition-all mt-6 duration-300 ${scrolled ? "py-3" : "py-6"
+              } flex justify-center items-center`}
           >
-            <Link href="/" onClick={() => handleLinkClick("home")}>
+            <Link
+              href="/"
+              onClick={() => handleLinkClick("home")}
+              className="block w-full flex justify-center"
+            >
               <Image
-                src="/images/logo.png"
+                src="/images/sign.png"
                 alt="Entrepreneur Portfolio Logo"
-                width={110}
-                height={40}
-                className="transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_8px_#02B600]"
+                width={160}
+                height={50}
+                className="max-w-[70%] h-auto object-contain"
                 priority
               />
             </Link>

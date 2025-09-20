@@ -1,233 +1,242 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Calendar, Clock, ArrowRight, Bookmark, Share2, Heart, MessageCircle } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import React from "react";
+import { Calendar, ArrowRight, Heart, MessageCircle } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-const BlogPage = () => {
-  const featuredPost = {
-    id: 1,
-    title: "SHEIKH NABEEL ON THE RISE OF DIGITAL TRANSFORMATION: IT WILL TRANSFORM MULTIPLE INDUSTRIES",
-    excerpt: "A comprehensive look at how digital transformation principles are revolutionizing modern commerce and creating sustainable value for businesses worldwide. Discover how businesses are leveraging AI, automation, and data-driven strategies to achieve unprecedented growth.",
-    category: "DIGITAL TRANSFORMATION",
-    readTime: "8 min read",
-    date: "March 15, 2025",
-    image: "/images/featured-post.jpg",
-    views: "15.2K",
-    likes: "892",
-    comments: "156",
-    slug: "rise-of-digital-transformation"
-  };
-
-  const blogPosts = [
-    {
-      id: 2,
-      title: "The Future of CRM Systems in Global Markets",
-      excerpt: "Exploring how CRM solutions are gaining mainstream acceptance and driving business innovation across various industries.",
-      category: "CRM SYSTEMS",
-      readTime: "6 min read",
-      date: "March 12, 2025",
-      image: "/images/crm-future.jpg",
-      views: "8.5K",
-      likes: "443",
-      comments: "89",
-      slug: "future-of-crm-systems"
-    },
-    {
-      id: 3,
-      title: "Building Authentic Leadership in Digital Organizations",
-      excerpt: "Leadership principles derived from digital transformation that create lasting positive impact in modern organizations.",
-      category: "LEADERSHIP",
-      readTime: "5 min read",
-      date: "March 10, 2025",
-      image: "/images/digital-leadership.jpg",
-      views: "12.1K",
-      likes: "678",
-      comments: "124",
-      slug: "authentic-leadership-digital"
-    },
-    {
-      id: 4,
-      title: "Automation: Beyond Efficiency to Business Transformation",
-      excerpt: "Understanding how automation can be leveraged as a tool for business empowerment and operational excellence.",
-      category: "AUTOMATION",
-      readTime: "7 min read",
-      date: "March 8, 2025",
-      image: "/images/automation.jpg",
-      views: "9.8K",
-      likes: "521",
-      comments: "97",
-      slug: "automation-business-transformation"
-    },
-    {
-      id: 5,
-      title: "Technology Ethics Through Business Lens",
-      excerpt: "Navigating the intersection of business values and emerging technologies like AI and blockchain.",
-      category: "TECHNOLOGY",
-      readTime: "9 min read",
-      date: "March 5, 2025",
-      image: "/images/tech.jpg",
-      views: "11.3K",
-      likes: "634",
-      comments: "108",
-      slug: "technology-ethics-business"
-    },
-    {
-      id: 6,
-      title: "Business Building in the Digital Age",
-      excerpt: "Strategies for strengthening businesses through digital platforms and virtual engagement.",
-      category: "BUSINESS STRATEGY",
-      readTime: "4 min read",
-      date: "March 3, 2025",
-      image: "/images/digital-business.jpg",
-      views: "7.2K",
-      likes: "389",
-      comments: "72",
-      slug: "digital-business-strategy"
-    }
-  ];
-
-  const categories = ["ALL", "DIGITAL TRANSFORMATION", "CRM SYSTEMS", "LEADERSHIP", "AUTOMATION", "TECHNOLOGY", "BUSINESS STRATEGY"];
-
-  return (
-    <div className="min-h-screen bg-[#151515] text-white">
-      {/* Featured Article */}
-      <div className="py-20 px-40">
-        <div className="max-w-7xl mx-auto lg:mr-8">
-          <div className="p-1 rounded-lg mb-12" style={{ background: "linear-gradient(to right, #FFEA00, #FFEA00)" }}>
-            <div className="bg-[#151515] rounded-lg overflow-hidden">
-              <div className="grid lg:grid-cols-2 gap-0">
-                <div className="relative h-64 lg:h-auto">
-                  <Image
-                    src={featuredPost.image}
-                    alt={featuredPost.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase rounded"
-                    style={{ backgroundColor: "#FFEA00", color: "#000" }}>
-                    FEATURED
-                  </div>
-                </div>
-
-                <div className="p-8 lg:p-12 flex flex-col justify-center">
-                  <span
-                    className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4"
-                    style={{ backgroundColor: "#FFEA00", color: "#000" }}
-                  >
-                    {featuredPost.category}
-                  </span>
-                  <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-                    {featuredPost.title}
-                  </h2>
-                  <p className="text-gray-300 mb-8 text-lg">{featuredPost.excerpt}</p>
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="flex items-center gap-4 text-sm text-gray-400">
-                      <div className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {featuredPost.date}</div>
-                      <div className="flex items-center gap-1"><Clock className="w-4 h-4" /> {featuredPost.readTime}</div>
-                    </div>
-                    <div className="flex gap-3">
-                      <Bookmark className="w-5 h-5 text-gray-400 hover:text-[#FFEA00] transition-colors" />
-                      <Share2 className="w-5 h-5 text-gray-400 hover:text-[#FFEA00] transition-colors" />
-                    </div>
-                  </div>
-                  <Link
-                    href={`/blog/${featuredPost.slug}`}
-                    className="px-6 py-3 font-bold uppercase tracking-wider transition-colors flex items-center gap-2 w-max"
-                    style={{ backgroundColor: "#FFEA00", color: "#000" }}
-                  >
-                    Read Full Article <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Category Filter */}
-      <div className="py-8 px-6">
-        <div className="max-w-7xl mx-auto flex flex-wrap gap-4 justify-center">
-          {categories.map((category) => (
-            <button
-              key={category}
-              className="px-4 py-2 border text-sm font-semibold transition-colors"
-              style={{
-                borderColor: "#4B5563",
-                color: "#D1D5DB"
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#FFEA00";
-                e.currentTarget.style.color = "#000";
-                e.currentTarget.style.borderColor = "#FFEA00";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.color = "#D1D5DB";
-                e.currentTarget.style.borderColor = "#4B5563";
-              }}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Blog Grid */}
-      <div className="py-16 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
-            <Link key={post.id} href={`/blog/${post.slug}`} className="group cursor-pointer">
-              <div
-                className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105"
-                style={{ borderColor: "#1F2937" }}
-                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#FFEA00")}
-                onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#1F2937")}
-              >
-                <div className="relative h-100 flex items-center justify-center">
-                  <Image src={post.image} alt={post.title} fill className="object-cover" />
-                  <div
-                    className="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase rounded"
-                    style={{ backgroundColor: "#FFEA00", color: "#000" }}
-                  >
-                    NEW
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span
-                      className="px-2 py-1 text-xs font-bold uppercase rounded"
-                      style={{ backgroundColor: "#FFEA00", color: "#000" }}
-                    >
-                      {post.category}
-                    </span>
-                    <span className="text-gray-500 text-xs">{post.readTime}</span>
-                  </div>
-                  <h3
-                    className="text-xl font-bold mb-3 line-clamp-2 transition-colors"
-                    style={{ color: "white" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#FFEA00")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
-                  >
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
-                  <div className="flex items-center justify-between text-xs text-gray-500">
-                    <div className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post.date}</div>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1"><Heart className="w-3 h-3" /> {post.likes}</div>
-                      <div className="flex items-center gap-1"><MessageCircle className="w-3 h-3" /> {post.comments}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+// 👇 Fade + slide animation wrapper
+const FadeSlide = ({
+    children,
+    delay = 0,
+    direction = "up",
+}: {
+    children: React.ReactNode;
+    delay?: number;
+    direction?: "up" | "down" | "left" | "right";
+}) => {
+    const variants = {
+        hidden: {
+            opacity: 0,
+            y: direction === "up" ? 40 : direction === "down" ? -40 : 0,
+            x: direction === "left" ? 40 : direction === "right" ? -40 : 0,
+        },
+        visible: { opacity: 1, x: 0, y: 0 },
+    };
+    return (
+        <motion.div
+            variants={variants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay, ease: "easeOut" }}
+        >
+            {children}
+        </motion.div>
+    );
 };
 
-export default BlogPage;
+// 👇 Sliding highlight label
+const SlidingHighlight = ({ text }: { text: string }) => {
+    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
+
+    return (
+        <div
+            ref={ref}
+            className="relative inline-block mx-auto mb-6 overflow-hidden"
+        >
+            <span
+                className={`absolute top-0 left-0 h-full w-0 bg-[#FFEA00] transition-all duration-700 ease-out ${inView ? "w-full" : "w-0"
+                    }`}
+            ></span>
+            <span
+                className="relative z-10 text-black font-bold tracking-wider uppercase whitespace-nowrap px-6 py-3 inline-block"
+                style={{
+                    fontFamily: '"Bebas Neue", sans-serif',
+                    fontWeight: 700,
+                    fontSize: "1.6rem",
+                    letterSpacing: "0.08em",
+                }}
+            >
+                {text}
+            </span>
+        </div>
+    );
+};
+
+const Blog = () => {
+    const featuredArticles = [
+        {
+            slug: "rise-of-digital-transformation",
+            title: "Sheikh Nabeel on the Rise of Digital Transformation",
+            category: "DIGITAL TRANSFORMATION",
+            readTime: "8 min read",
+            date: "March 15, 2025",
+            image: "/images/featured-post.jpg",
+            likes: "892",
+            comments: "156",
+            excerpt:
+                "Digital transformation is reshaping industries globally with AI, automation, and innovation.",
+        },
+        {
+            slug: "future-of-crm-systems",
+            title: "The Future of CRM Systems in Global Markets",
+            category: "CRM SYSTEMS",
+            readTime: "6 min read",
+            date: "March 12, 2025",
+            image: "/images/crm-future.jpg",
+            likes: "443",
+            comments: "89",
+            excerpt:
+                "CRM systems are becoming more intelligent with AI-driven insights.",
+        },
+        {
+            slug: "authentic-leadership-digital",
+            title: "Building Authentic Leadership in Digital Organizations",
+            category: "LEADERSHIP",
+            readTime: "5 min read",
+            date: "March 10, 2025",
+            image: "/images/digital-leadership.jpg",
+            likes: "678",
+            comments: "124",
+            excerpt:
+                "Leadership in the digital age requires adaptability and empathy.",
+        },
+    ];
+
+    return (
+        <section className="py-20 px-6 bg-[#151515] text-white">
+            <div className="max-w-7xl mx-auto">
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                    <SlidingHighlight text="LATEST INSIGHTS" />
+                    <FadeSlide delay={0.1}>
+                        <h2 className="text-5xl md:text-7xl font-black uppercase text-white mb-6">
+                            STAY <span className="text-[#FFEA00]">UPDATED</span>
+                        </h2>
+                    </FadeSlide>
+                    <FadeSlide delay={0.2}>
+                        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                            Explore expert perspectives on digital transformation, leadership,
+                            CRM systems, and business innovation shaping the future.
+                        </p>
+                    </FadeSlide>
+                </div>
+
+                {/* Featured Articles Grid */}
+                <motion.div
+                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={{
+                        hidden: {},
+                        visible: { transition: { staggerChildren: 0.2 } },
+                    }}
+                >
+                    {featuredArticles.map((article, index) => (
+                        <FadeSlide key={article.slug} delay={index * 0.2}>
+                            <Link
+                                href={`/blog/${article.slug}`}
+                                className="group cursor-pointer"
+                            >
+                                <div
+                                    className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105"
+                                    style={{ borderColor: "#1F2937" }}
+                                    onMouseEnter={(e) =>
+                                        (e.currentTarget.style.borderColor = "#FFEA00")
+                                    }
+                                    onMouseLeave={(e) =>
+                                        (e.currentTarget.style.borderColor = "#1F2937")
+                                    }
+                                >
+                                    <div className="relative h-56 md:h-64 lg:h-72">
+                                        <Image
+                                            src={article.image}
+                                            alt={article.title}
+                                            fill
+                                            className="object-cover"
+                                            sizes="(max-width: 768px) 100vw,
+                             (max-width: 1200px) 50vw,
+                             33vw"
+                                        />
+                                        <div
+                                            className="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase rounded"
+                                            style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                                        >
+                                            NEW
+                                        </div>
+                                    </div>
+                                    <div className="p-6">
+                                        <div className="flex items-center gap-2 mb-4">
+                                            <span
+                                                className="px-2 py-1 text-xs font-bold uppercase rounded"
+                                                style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                                            >
+                                                {article.category}
+                                            </span>
+                                            <span className="text-gray-500 text-xs">
+                                                {article.readTime}
+                                            </span>
+                                        </div>
+                                        <h3
+                                            className="text-xl font-bold mb-3 line-clamp-2 transition-colors"
+                                            onMouseEnter={(e) =>
+                                                (e.currentTarget.style.color = "#FFEA00")
+                                            }
+                                            onMouseLeave={(e) =>
+                                                (e.currentTarget.style.color = "white")
+                                            }
+                                        >
+                                            {article.title}
+                                        </h3>
+                                        <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+                                            {article.excerpt}
+                                        </p>
+                                        <div className="flex items-center justify-between text-xs text-gray-500">
+                                            <div className="flex items-center gap-1">
+                                                <Calendar className="w-3 h-3" /> {article.date}
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <div className="flex items-center gap-1">
+                                                    <Heart className="w-3 h-3" /> {article.likes}
+                                                </div>
+                                                <div className="flex items-center gap-1">
+                                                    <MessageCircle className="w-3 h-3" />{" "}
+                                                    {article.comments}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        </FadeSlide>
+                    ))}
+                </motion.div>
+
+                {/* View All Button */}
+                <FadeSlide delay={0.5}>
+                    <div className="text-center">
+                        <Link
+                            href="/blog"
+                            className="inline-flex items-center gap-2 px-8 py-4 font-bold uppercase tracking-wider transition-colors"
+                            style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                            onMouseEnter={(e) =>
+                                (e.currentTarget.style.backgroundColor = "#FFD700")
+                            }
+                            onMouseLeave={(e) =>
+                                (e.currentTarget.style.backgroundColor = "#FFEA00")
+                            }
+                        >
+                            View All Articles <ArrowRight className="w-5 h-5" />
+                        </Link>
+                    </div>
+                </FadeSlide>
+            </div>
+        </section>
+    );
+};
+
+export default Blog;
