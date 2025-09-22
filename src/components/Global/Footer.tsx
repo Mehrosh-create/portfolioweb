@@ -1,27 +1,63 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+
 const Footer = () => {
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('')
+
   const validateEmail = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return regex.test(email)
   }
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    // Reset states
+    setError('')
+    setSuccessMessage('')
+
     if (!email) {
       setError('At least one field must be filled out.')
       return
     }
+
     if (!validateEmail(email)) {
       setError('Please enter a valid email address.')
       return
     }
-    console.log('Submitting email:', email)
-    setEmail('')
-    setError('')
+
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Subscription failed')
+      }
+
+      // Success
+      setSuccessMessage('Thank you for subscribing! Check your email for confirmation.')
+      setEmail('')
+    } catch (err: any) {
+      console.error('Newsletter subscription error:', err)
+      setError(err.message || 'Failed to subscribe. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
+
   return (
     <footer
       className="text-white bg-cover bg-center bg-no-repeat"
@@ -59,15 +95,18 @@ const Footer = () => {
                 onChange={(e) => {
                   setEmail(e.target.value)
                   if (error) setError('')
+                  if (successMessage) setSuccessMessage('')
                 }}
                 placeholder="Enter your email"
                 style={{ backgroundColor: '#353535' }}
+                disabled={isSubmitting}
               />
               <button
                 type="submit"
-                className="bg-green-500 text-white px-8 py-3.5 rounded-full font-bold text-base hover:bg-green-600 transition-colors whitespace-nowrap"
+                disabled={isSubmitting}
+                className="bg-green-500 text-white px-8 py-3.5 rounded-full font-bold text-base hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors whitespace-nowrap"
               >
-                SUBSCRIBE
+                {isSubmitting ? 'SUBSCRIBING...' : 'SUBSCRIBE'}
               </button>
             </div>
             {error && (
@@ -79,9 +118,18 @@ const Footer = () => {
                 {error}
               </div>
             )}
+            {successMessage && (
+              <div
+                className="text-green-400 text-sm mt-2 text-left"
+                style={{ fontSize: '13px', marginTop: '7px' }}
+              >
+                {successMessage}
+              </div>
+            )}
           </form>
         </div>
       </section>
+
       {/* Social Icons */}
       <div className="flex justify-center flex-wrap gap-4 py-8 ml-70 ">
         {/* Discord */}
@@ -218,6 +266,7 @@ const Footer = () => {
           </svg>
         </a>
       </div>
+
       {/* Copyright */}
       <div className="text-center text-base text-gray-400 pb-5 ml-75">
         <p>
@@ -236,4 +285,5 @@ const Footer = () => {
     </footer>
   )
 }
+
 export default Footer

@@ -20,30 +20,25 @@ const ContactForm = () => {
         message: "",
     });
 
+    const [submitting, setSubmitting] = useState(false);
+    const [statusMessage, setStatusMessage] = useState<{
+        type: "success" | "error";
+        text: string;
+    } | null>(null);
+
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-        setErrors((prev) => ({
-            ...prev,
-            [name]: "",
-        }));
+        setFormData((prev) => ({ ...prev, [name]: value }));
+        setErrors((prev) => ({ ...prev, [name]: "" }));
+        setStatusMessage(null);
     };
 
     const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            subject: value,
-        }));
-        setErrors((prev) => ({
-            ...prev,
-            subject: "",
-        }));
+        setFormData((prev) => ({ ...prev, subject: e.target.value }));
+        setErrors((prev) => ({ ...prev, subject: "" }));
+        setStatusMessage(null);
     };
 
     const validateForm = () => {
@@ -84,11 +79,29 @@ const ContactForm = () => {
         return isValid;
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (validateForm()) {
-            console.log("Form submitted:", formData);
-            alert("Thank you for your message. I'll get back to you soon!");
+
+        if (!validateForm()) return;
+
+        setSubmitting(true);
+        setStatusMessage(null);
+
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await res.json();
+            if (!res.ok) throw new Error(data?.error || "Server error");
+
+            setStatusMessage({
+                type: "success",
+                text: "Thanks — your message was sent!",
+            });
+
             setFormData({
                 firstName: "",
                 lastName: "",
@@ -97,6 +110,7 @@ const ContactForm = () => {
                 subject: "",
                 message: "",
             });
+
             setErrors({
                 firstName: "",
                 lastName: "",
@@ -104,6 +118,14 @@ const ContactForm = () => {
                 subject: "",
                 message: "",
             });
+        } catch (err: any) {
+            console.error("Contact submit error:", err);
+            setStatusMessage({
+                type: "error",
+                text: err.message || "Failed to send. Try again later.",
+            });
+        } finally {
+            setSubmitting(false);
         }
     };
 
@@ -123,8 +145,7 @@ const ContactForm = () => {
             <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Name Fields */}
                 <div>
-                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center"
-                        style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif', }}>
+                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center">
                         <span>Name</span>
                         <span className="text-red-500 ml-1">(Required)</span>
                     </label>
@@ -164,10 +185,9 @@ const ContactForm = () => {
                     </div>
                 </div>
 
-                {/* Email Field */}
+                {/* Email */}
                 <div>
-                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center"
-                        style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif', }}>
+                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center">
                         <span>Email</span>
                         <span className="text-red-500 ml-1">(Required)</span>
                     </label>
@@ -188,10 +208,9 @@ const ContactForm = () => {
                     </div>
                 </div>
 
-                {/* Phone Field */}
+                {/* Phone */}
                 <div>
-                    <label className="block text-white font-semibold mb-3 uppercase text-lg"
-                        style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif', }}>
+                    <label className="block text-white font-semibold mb-3 uppercase text-lg">
                         Phone
                     </label>
                     <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
@@ -201,33 +220,31 @@ const ContactForm = () => {
                             value={formData.phone}
                             onChange={handleChange}
                             className="w-full bg-transparent text-white text-lg placeholder-gray-400 focus:outline-none"
-
                         />
                     </div>
                 </div>
 
-                {/* Subject Options */}
+                {/* Subject */}
                 <div>
-                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center"
-                        style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif', }}>
+                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center">
                         <span>Subject</span>
                         <span className="text-red-500 ml-1">(Required)</span>
                     </label>
                     <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
-                        {subjectOptions.map((option, index) => (
-                            <div key={index} className="flex items-center mb-3">
+                        {subjectOptions.map((option, i) => (
+                            <div key={i} className="flex items-center mb-3">
                                 <input
                                     type="radio"
                                     name="subject"
                                     value={option}
-                                    id={`choice_${index}`}
+                                    id={`choice_${i}`}
                                     checked={formData.subject === option}
                                     onChange={handleRadioChange}
                                     className="mr-3 text-[#02B600] focus:ring-[#FFEA00]"
                                     required
                                 />
                                 <label
-                                    htmlFor={`choice_${index}`}
+                                    htmlFor={`choice_${i}`}
                                     className="text-white text-lg cursor-pointer"
                                 >
                                     {option}
@@ -242,10 +259,9 @@ const ContactForm = () => {
                     </div>
                 </div>
 
-                {/* Message Field */}
+                {/* Message */}
                 <div>
-                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center"
-                        style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif', }}>
+                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center">
                         <span>Message</span>
                         <span className="text-red-500 ml-1">(Required)</span>
                     </label>
@@ -266,13 +282,27 @@ const ContactForm = () => {
                     </div>
                 </div>
 
-                {/* Submit Button */}
-                <button
-                    type="submit"
-                    className="bg-green-500 text-white px-5 py-3 rounded-full font-bold text-lg hover:bg-green-600 transition-colors whitespace-nowrap"
-                >
-                    Submit
-                </button>
+                {/* Submit */}
+                <div>
+                    <button
+                        type="submit"
+                        disabled={submitting}
+                        className="bg-green-500 disabled:opacity-60 text-white px-5 py-3 rounded-full font-bold text-lg hover:bg-green-600 transition-colors whitespace-nowrap"
+                    >
+                        {submitting ? "Sending..." : "Submit"}
+                    </button>
+
+                    {statusMessage && (
+                        <p
+                            className={`mt-4 ${statusMessage.type === "success"
+                                ? "text-green-400"
+                                : "text-red-400"
+                                }`}
+                        >
+                            {statusMessage.text}
+                        </p>
+                    )}
+                </div>
             </form>
         </div>
     );
