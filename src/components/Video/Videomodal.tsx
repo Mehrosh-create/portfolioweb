@@ -1,6 +1,7 @@
+// src/components/Video/VideoModal.tsx
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import {
   X, Volume2, VolumeX, Volume1, Volume,
   Expand, Shrink,
@@ -31,6 +32,51 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps
   const [showSettings, setShowSettings] = useState(false)
   const [playbackRate, setPlaybackRate] = useState(1)
   const [showVolumeSlider, setShowVolumeSlider] = useState(false)
+
+  const togglePlayPause = useCallback(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    if (video.paused || video.ended) {
+      video.play()
+    } else {
+      video.pause()
+    }
+
+    setShowOverlay(true)
+    setTimeout(() => setShowOverlay(false), 600)
+  }, [])
+
+  const updateVolume = useCallback((newVol: number) => {
+    setVolume(newVol)
+    if (videoRef.current) {
+      videoRef.current.volume = newVol
+      setIsMuted(newVol === 0)
+      videoRef.current.muted = newVol === 0
+    }
+  }, [])
+
+  const toggleMute = useCallback(() => {
+    setIsMuted(!isMuted)
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted
+    }
+  }, [isMuted])
+
+  const toggleFullscreen = useCallback(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    if (!document.fullscreenElement) {
+      container.requestFullscreen().catch(err => {
+        console.error("Error attempting fullscreen:", err)
+      })
+    } else {
+      if (document.fullscreenElement === container) {
+        document.exitFullscreen()
+      }
+    }
+  }, [])
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -89,7 +135,7 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps
       document.removeEventListener('keydown', handleKeydown)
       document.body.style.overflow = 'unset'
     }
-  }, [isOpen, onClose, playbackRate, volume, isMuted, duration])
+  }, [isOpen, onClose, playbackRate, volume, isMuted, duration, toggleMute, togglePlayPause, updateVolume, toggleFullscreen])
 
   // Track fullscreen state
   useEffect(() => {
@@ -134,54 +180,9 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps
     }
   }, [])
 
-  const togglePlayPause = () => {
-    const video = videoRef.current
-    if (!video) return
-
-    if (video.paused || video.ended) {
-      video.play()
-    } else {
-      video.pause()
-    }
-
-    setShowOverlay(true)
-    setTimeout(() => setShowOverlay(false), 600)
-  }
-
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (videoRef.current) {
       videoRef.current.currentTime = parseFloat(e.target.value)
-    }
-  }
-
-  const updateVolume = (newVol: number) => {
-    setVolume(newVol)
-    if (videoRef.current) {
-      videoRef.current.volume = newVol
-      setIsMuted(newVol === 0)
-      videoRef.current.muted = newVol === 0
-    }
-  }
-
-  const toggleMute = () => {
-    setIsMuted(!isMuted)
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-    }
-  }
-
-  const toggleFullscreen = () => {
-    const container = containerRef.current
-    if (!container) return
-
-    if (!document.fullscreenElement) {
-      container.requestFullscreen().catch(err => {
-        console.error("Error attempting fullscreen:", err)
-      })
-    } else {
-      if (document.fullscreenElement === container) {
-        document.exitFullscreen()
-      }
     }
   }
 

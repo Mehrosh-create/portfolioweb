@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const SignatureContent = () => {
     const [playVideo, setPlayVideo] = useState<{ [key: string]: boolean }>({});
@@ -56,9 +57,11 @@ const SignatureContent = () => {
                             />
                         ) : (
                             <>
-                                <img
+                                <Image
                                     src="/images/content-creation.jpg"
                                     alt="Content Creation"
+                                    width={640}
+                                    height={360}
                                     className="w-full h-full object-cover"
                                 />
                                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
@@ -95,7 +98,7 @@ const SignatureContent = () => {
                                 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                         }}
                     >
-                        Discover the strategies I've used to help businesses transform their operations and achieve digital excellence.
+                        Discover the strategies I&apos;ve used to help businesses transform their operations and achieve digital excellence.
                     </p>
 
                     <div className="aspect-video relative mb-6 rounded-lg overflow-hidden border border-gray-600 group-hover:border-[#02B600] transition-colors">
@@ -108,9 +111,11 @@ const SignatureContent = () => {
                             />
                         ) : (
                             <>
-                                <img
+                                <Image
                                     src="/images/digital-mastery.jpg"
                                     alt="Digital Transformation"
+                                    width={640}
+                                    height={360}
                                     className="w-full h-full object-cover"
                                 />
                                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">

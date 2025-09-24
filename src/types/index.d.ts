@@ -19,7 +19,9 @@ interface HeroProps {
 
 // Extend global window interface if needed (e.g., for custom properties)
 interface Window {
-    // Add custom window properties here if required
+    // Add specific properties here instead of leaving empty
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
 }
 
 // Declare module for global styles or assets if needed

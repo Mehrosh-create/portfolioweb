@@ -1,10 +1,9 @@
+// src/components/Homepage/Hero.tsx
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import VideoModal from "@/components/Video/Videomodal";
-import { SearchIcon, X } from "lucide-react";
-import { useSearch } from "@/components/Layout/ClientLayout";
 
 interface HeroSectionProps {
   onVideoPlay: () => void;
@@ -18,23 +17,10 @@ const HeroSection = ({
   customHeading,
 }: HeroSectionProps) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const { showSearch, setShowSearch } = useSearch();
 
   const handleVideoPlay = () => {
     setIsVideoOpen(true);
     onVideoPlay();
-  };
-
-  const handleSearchClose = () => {
-    setShowSearch(false);
-    setSearchQuery("");
-  };
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Searching for:", searchQuery);
-    // Add your search logic here
   };
 
   return (

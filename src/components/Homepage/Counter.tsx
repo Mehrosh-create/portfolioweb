@@ -1,10 +1,12 @@
+// src/components/Homepage/Counter.tsx
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 const CounterSection = () => {
   const [inView, setInView] = useState(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -18,13 +20,14 @@ const CounterSection = () => {
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -55,8 +58,8 @@ const CounterSection = () => {
               letterSpacing: "0.02em",
             }}
           >
-            "LEGACY IS GREATER THAN <br />
-            <span className="block text-center">CURRENCY."</span>
+            &ldquo;LEGACY IS GREATER THAN <br />
+            <span className="block text-center">CURRENCY.&rdquo;</span>
           </h2>
 
           {/* Sliding background highlight */}
@@ -91,7 +94,7 @@ const CounterSection = () => {
             {
               name: "FRIENDS",
               description: "creates meaningful IP",
-              img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fMHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+              img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
             },
             {
               name: "ACT",
@@ -115,9 +118,11 @@ const CounterSection = () => {
 
               <div className="relative z-10 w-full h-full flex flex-col">
                 <div className="flex-1 w-full overflow-hidden rounded-t-lg">
-                  <img
+                  <Image
                     src={card.img}
                     alt={card.name}
+                    width={400}
+                    height={300}
                     className="w-full h-full object-cover"
                   />
                 </div>

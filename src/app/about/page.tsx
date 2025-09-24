@@ -92,7 +92,7 @@ export default function About() {
                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
                         >
-                            I'm a Global Strategist & Digital Transformer Leader.
+                            I&apos;m a Global Strategist & Digital Transformer Leader.
                         </h2>
                         <p
                             className="text-lg text-[#e0f7fa] mb-6 leading-relaxed"
@@ -100,7 +100,7 @@ export default function About() {
                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
                         >
-                            I'm Sheikh Nabeel — Entrepreneur, Business Strategist & CEO of
+                            I&apos;m Sheikh Nabeel — Entrepreneur, Business Strategist & CEO of
                             Eurostride. With Over 7 years of experience, I help founders,
                             startups, and global teams simplify complex operations, implement
                             scalable systems, and grow through digital innovation.
@@ -113,7 +113,7 @@ export default function About() {
                         >
                             My mission is to empower businesses with the tools and strategies
                             they need to thrive in the digital age. Through strategic
-                            consulting, digital transformation, and growth marketing, I've
+                            consulting, digital transformation, and growth marketing, I&apos;ve
                             helped countless organizations achieve unprecedented success.
                         </p>
                     </div>

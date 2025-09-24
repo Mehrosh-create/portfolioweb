@@ -38,7 +38,7 @@ const Testimonials = () => {
             role: "Operations Manager",
             image: "/images/client3.jpg",
             content:
-                "The CRM implementation and automation systems designed by Sheikh Nabeel have revolutionized our client management process. We've seen a 60% improvement in client satisfaction scores.",
+                "The CRM implementation and automation systems designed by Sheikh Nabeel have revolutionized our client management process. We&apos;ve seen a 60% improvement in client satisfaction scores.",
             rating: 5,
             hoverBg: "from-green-600 to-green-800"
         },
@@ -49,7 +49,7 @@ const Testimonials = () => {
             role: "Founder",
             image: "/images/client4.jpg",
             content:
-                "Sheikh Nabeel's business strategy expertise helped us pivot during a challenging market period. His insights and guidance were instrumental in our successful rebranding and market repositioning.",
+                "Sheikh Nabeel&apos;s business strategy expertise helped us pivot during a challenging market period. His insights and guidance were instrumental in our successful rebranding and market repositioning.",
             rating: 5,
             hoverBg: "from-red-600 to-red-800"
         },
@@ -71,7 +71,7 @@ const Testimonials = () => {
             role: "Product Manager",
             image: "/images/client6.jpg",
             content:
-                "Sheikh Nabeel's expertise in product strategy and digital innovation helped us launch our flagship product ahead of schedule. His insights into user experience design resulted in a 50% increase in user engagement.",
+                "Sheikh Nabeel&apos;s expertise in product strategy and digital innovation helped us launch our flagship product ahead of schedule. His insights into user experience design resulted in a 50% increase in user engagement.",
             rating: 5,
             hoverBg: "from-teal-600 to-teal-800"
         },
@@ -155,7 +155,7 @@ const Testimonials = () => {
                                     fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                 }}
                             >
-                                "{testimonials[currentIndex].content}"
+                                &ldquo;{testimonials[currentIndex].content}&rdquo;
                             </p>
                         </div>
 
@@ -292,7 +292,7 @@ const Testimonials = () => {
                                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                             }}
                                         >
-                                            "{testimonial.content}"
+                                            &ldquo;{testimonial.content}&rdquo;
                                         </p>
                                     </div>
                                 </div>
@@ -332,7 +332,7 @@ const Testimonials = () => {
                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
                         >
-                            Transform your business like our satisfied clients. Let's discuss
+                            Transform your business like our satisfied clients. Let&apos;s discuss
                             your project and create your success story.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
