@@ -119,11 +119,12 @@ const ContactForm = () => {
                 subject: "",
                 message: "",
             });
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error("Contact submit error:", err);
+            const errorMessage = err instanceof Error ? err.message : "Failed to send. Try again later.";
             setStatusMessage({
                 type: "error",
-                text: err.message || "Failed to send. Try again later.",
+                text: errorMessage,
             });
         } finally {
             setSubmitting(false);
