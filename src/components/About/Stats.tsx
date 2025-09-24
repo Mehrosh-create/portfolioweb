@@ -57,8 +57,7 @@ const Stats = () => {
     return (
         <div
             id="fws_68ccdc3a5efda"
-            className="relative py-16 mb-16 overflow-hidden"
-            style={{ paddingBottom: "2%" }}
+            className="relative py-8 sm:py-12 lg:py-16 mb-8 sm:mb-12 lg:mb-16 overflow-hidden"
         >
             {/* Background pattern */}
             <div
@@ -70,28 +69,29 @@ const Stats = () => {
                 }}
             ></div>
 
-            <div className="row_col_wrap_12_inner relative z-10 max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
                     {stats.map((stat, index) => (
                         <div
                             key={index}
-                            className="vc_col-sm-1 child_column transform transition duration-700 opacity-0 translate-y-8 animate-fadeInUp"
+                            className="transform transition duration-700 opacity-0 translate-y-8 animate-fadeInUp"
+                            style={{ animationDelay: `${index * 100}ms` }}
                         >
-                            <div className="relative overflow-hidden bg-[#252525] p-6 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-500 text-center group cursor-pointer">
+                            <div className="relative overflow-hidden bg-[#252525] p-3 sm:p-4 lg:p-6 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-500 text-center group cursor-pointer">
                                 {/* Sliding green background */}
                                 <div className="absolute inset-0 bg-[#02B600] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-out"></div>
 
                                 {/* Content sits above */}
                                 <div className="relative z-10">
                                     <div
-                                        className="text-3xl md:text-4xl font-bold text-[#FFEA00] mb-2 transition-colors group-hover:text-white"
+                                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#FFEA00] mb-1 sm:mb-2 transition-colors group-hover:text-white"
                                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                                     >
                                         {stat.value}
                                         {stat.suffix}
                                     </div>
                                     <div
-                                        className="text-sm text-[#e0f7fa] uppercase tracking-wider transition-colors group-hover:text-white"
+                                        className="text-xs sm:text-sm text-[#e0f7fa] uppercase tracking-wider transition-colors group-hover:text-white leading-tight"
                                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                                     >
                                         {stat.label}
