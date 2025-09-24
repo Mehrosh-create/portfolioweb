@@ -25,14 +25,14 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [activeLink, setActiveLink] = useState(""); // ✅ active link state
+  const [activeLink, setActiveLink] = useState("");
   const [hoveredNav, setHoveredNav] = useState("");
   const [searchHover, setSearchHover] = useState(false);
 
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 1024);
-      setIsOpen(window.innerWidth >= 1024);
+      setIsOpen(window.innerWidth >= 1024); // auto-open on desktop
     };
     checkIfMobile();
     window.addEventListener("resize", checkIfMobile);
@@ -46,7 +46,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
   }, []);
 
   const handleLinkClick = (link: string) => {
-    setActiveLink(link); // ✅ set clicked link as active
+    setActiveLink(link);
     if (isMobile) setIsOpen(false);
   };
 
@@ -71,24 +71,25 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
         <div className="fixed top-3 left-3 z-50">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white bg-gray-900 px-2 py-1 rounded text-sm transition-all hover:scale-105"
+            className="text-white bg-gray-900 px-3 py-2 rounded-md text-lg transition-all hover:scale-105"
           >
             ☰
           </button>
         </div>
       )}
 
+      {/* Overlay */}
       {isMobile && isOpen && (
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-md z-40 lg:hidden"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-64 bg-black text-white z-50 transition-transform duration-300 shadow-xl shadow-black/50 ${isOpen ? "translate-x-0" : "-translate-x-full"
-          } lg:translate-x-0`}
+        className={`fixed top-0 left-0 h-screen w-64 max-w-[80%] bg-black text-white z-50 transition-transform duration-300 shadow-xl shadow-black/50
+        ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
       >
         <div className="flex flex-col h-full justify-between">
           {/* Logo */}
@@ -113,8 +114,8 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 px-3 flex items-center justify-center">
-            <ul className="space-y-2 w-full">
+          <nav className="flex-1 px-4 flex items-center justify-center">
+            <ul className="space-y-3 w-full">
               {[
                 { href: "/", label: "HOME", id: "home" },
                 { href: "/about", label: "ABOUT", id: "about" },
@@ -124,9 +125,8 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                 { href: "/contact", label: "CONTACT", id: "contact" },
               ].map((item) => (
                 <li key={item.id} className="relative">
-                  {/* ✅ Keep hover effect AND show full green box when active */}
                   <div
-                    className={`absolute inset-y-0 left-0 w-[65%] bg-[#02B600] transform transition-transform duration-300 ease-out ${activeLink === item.id
+                    className={`absolute inset-y-0 left-0 w-[70%] bg-[#02B600] transform transition-transform duration-300 ease-out ${activeLink === item.id
                       ? "scale-x-100 origin-left"
                       : hoveredNav === item.id
                         ? "scale-x-100 origin-left"
@@ -136,14 +136,14 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                   />
                   <Link
                     href={item.href}
-                    className="block px-2 py-1.5 relative text-white transition-colors duration-300"
+                    className="block px-2 py-2 relative text-white transition-colors duration-300"
                     onClick={() => handleLinkClick(item.id)}
                     onMouseEnter={() => setHoveredNav(item.id)}
                     onMouseLeave={() => setHoveredNav("")}
                     style={{
                       fontFamily: '"Bebas Neue", sans-serif',
                       fontWeight: 100,
-                      fontSize: "1.3rem",
+                      fontSize: "1.2rem",
                       letterSpacing: "0.02em",
                     }}
                   >
@@ -183,11 +183,9 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                     aria-label={social.label}
                     className="relative w-10 h-10 overflow-hidden rounded-full group block"
                   >
-                    {/* Default Icon */}
                     <span className="absolute inset-0 flex items-center justify-center bg-black/40 transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
                       <social.icon className="w-5 h-5 text-white" />
                     </span>
-                    {/* Hover Green Icon */}
                     <span className="absolute inset-0 flex items-center justify-center bg-[#02B600] translate-y-full transition-all duration-300 group-hover:translate-y-0">
                       <social.icon className="w-5 h-5 text-white" />
                     </span>
