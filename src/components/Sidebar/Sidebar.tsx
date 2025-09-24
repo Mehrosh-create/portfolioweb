@@ -88,13 +88,13 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-64 max-w-[80%] bg-black text-white z-50 transition-transform duration-300 shadow-xl shadow-black/50
-        ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
+        className={`fixed top-0 left-0 h-screen w-64 max-w-[85%] sm:max-w-[70%] bg-black text-white z-50 transition-transform duration-300 shadow-xl shadow-black/50
+        ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:w-64 lg:translate-x-0`}
       >
-        <div className="flex flex-col h-full justify-between">
+        <div className="flex flex-col h-full justify-between overflow-y-auto">
           {/* Logo */}
           <div
-            className={`px-4 transition-all mt-0 duration-300 ${scrolled ? "py-3" : "py-6"
+            className={`px-4 transition-all mt-2 duration-300 ${scrolled ? "py-3" : "py-6"
               } flex justify-center items-center`}
           >
             <Link
@@ -114,7 +114,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 px-4 flex items-center justify-center">
+          <nav className="flex-1 px-4 flex items-start justify-start">
             <ul className="space-y-3 w-full">
               {[
                 { href: "/", label: "HOME", id: "home" },
