@@ -94,7 +94,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
         <div className="flex flex-col h-full justify-between">
           {/* Logo */}
           <div
-            className={`px-4 transition-all mt-6 duration-300 ${scrolled ? "py-3" : "py-6"
+            className={`px-4 transition-all mt-0 duration-300 ${scrolled ? "py-3" : "py-6"
               } flex justify-center items-center`}
           >
             <Link
