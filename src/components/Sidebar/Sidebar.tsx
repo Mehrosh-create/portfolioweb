@@ -9,11 +9,10 @@ import {
   Youtube,
   Twitter,
   SearchIcon,
-  Phone,
 } from "lucide-react";
 
 // ✅ Correct professional icons
-import { FaDiscord, FaPinterest, FaSnapchatGhost } from "react-icons/fa";
+import { FaDiscord, FaPinterest, FaSnapchatGhost, FaWhatsapp } from "react-icons/fa";
 import { SiThreads, SiTiktok } from "react-icons/si";
 
 interface SidebarProps {
@@ -59,7 +58,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
     if (screenSize !== "desktop") setIsOpen(false);
   };
 
-  // ✅ Updated with correct TikTok + Threads + Snapchat icons
+  // ✅ Updated with WhatsApp, TikTok, Threads, Snapchat
   const socialLinks = [
     { href: "https://twitter.com", icon: Twitter, label: "Twitter" },
     { href: "https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr", icon: Facebook, label: "Facebook" },
@@ -71,7 +70,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
     { href: "https://discord.com", icon: FaDiscord, label: "Discord" },
     { href: "https://www.tiktok.com/@sheikhnabeel.official", icon: SiTiktok, label: "TikTok" },
     { href: "https://www.threads.net", icon: SiThreads, label: "Threads" },
-    { href: "sms:+923000369622", icon: Phone, label: "Phone" },
+    { href: "https://wa.me/923335489622", icon: FaWhatsapp, label: "WhatsApp" },
   ];
 
   const getSidebarWidth = () => {
