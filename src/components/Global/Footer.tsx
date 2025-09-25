@@ -13,7 +13,7 @@ const Footer = () => {
     return regex.test(email)
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     // Reset states
@@ -50,9 +50,13 @@ const Footer = () => {
       // Success
       setSuccessMessage('Thank you for subscribing! Check your email for confirmation.')
       setEmail('')
-    } catch (err: any) {
-      console.error('Newsletter subscription error:', err)
-      setError(err.message || 'Failed to subscribe. Please try again.')
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error('Newsletter subscription error:', err)
+        setError(err.message || 'Failed to subscribe. Please try again.')
+      } else {
+        setError('An unexpected error occurred. Please try again.')
+      }
     } finally {
       setIsSubmitting(false)
     }
@@ -269,9 +273,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="text-center text-base text-gray-400 pb-5 ml-75">
-        <p>
-          © Sheikh Nabeel {new Date().getFullYear()}
-        </p>
+        <p>© Sheikh Nabeel {new Date().getFullYear()}</p>
         <div className="flex justify-center gap-3 mt-1">
           <Link href="/privacy-policy" className="hover:text-white transition-colors text-sm">
             Privacy Policy
