@@ -17,8 +17,8 @@ interface VideoModalProps {
 }
 
 const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps) => {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const containerRef = useRef<HTMLDivElement | null>(null)
 
   const [volume, setVolume] = useState(1)
   const [isPlaying, setIsPlaying] = useState(true)
@@ -32,6 +32,9 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps
   const [showSettings, setShowSettings] = useState(false)
   const [playbackRate, setPlaybackRate] = useState(1)
   const [showVolumeSlider, setShowVolumeSlider] = useState(false)
+
+  // store raf id; typed as number | null to satisfy TS
+  const animationFrameRef = useRef<number | null>(null)
 
   const togglePlayPause = useCallback(() => {
     const video = videoRef.current
@@ -57,11 +60,12 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps
   }, [])
 
   const toggleMute = useCallback(() => {
-    setIsMuted(!isMuted)
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-    }
-  }, [isMuted])
+    setIsMuted((prev) => {
+      const next = !prev
+      if (videoRef.current) videoRef.current.muted = next
+      return next
+    })
+  }, [])
 
   const toggleFullscreen = useCallback(() => {
     const container = containerRef.current
@@ -78,7 +82,45 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps
     }
   }, [])
 
-  // Keyboard shortcuts
+  // Keep timer & slider smooth and perfectly in sync using requestAnimationFrame
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    // animation loop
+    const loop = () => {
+      setCurrentTime(video.currentTime)
+      animationFrameRef.current = requestAnimationFrame(loop)
+    }
+
+    // start loop when playing
+    if (!video.paused && !video.ended) {
+      animationFrameRef.current = requestAnimationFrame(loop)
+    }
+
+    // also react to isPlaying changes (play/pause)
+    if (isPlaying && (video.paused === false)) {
+      // ensure it's running
+      if (animationFrameRef.current == null) {
+        animationFrameRef.current = requestAnimationFrame(loop)
+      }
+    } else if (!isPlaying) {
+      if (animationFrameRef.current != null) {
+        cancelAnimationFrame(animationFrameRef.current)
+        animationFrameRef.current = null
+      }
+    }
+
+    return () => {
+      if (animationFrameRef.current != null) {
+        cancelAnimationFrame(animationFrameRef.current)
+        animationFrameRef.current = null
+      }
+    }
+    // we purposely depend on isPlaying because play/pause should start/stop RAF
+  }, [isPlaying])
+
+  // Keyboard shortcuts + initial play setup when modal opens
   useEffect(() => {
     const handleKeydown = (e: KeyboardEvent) => {
       if (!isOpen) return
@@ -127,6 +169,7 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps
         video.volume = volume
         video.muted = isMuted
         video.playbackRate = playbackRate
+        // attempt autoplay; if fails, we mark as paused
         video.play().catch(() => setIsPlaying(false))
       }
     }
@@ -148,13 +191,16 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps
     }
   }, [])
 
-  // Video events
+  // Video events (duration, play/pause/ended)
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
 
-    const updateTime = () => setCurrentTime(video.currentTime)
-    const updateDuration = () => setDuration(video.duration)
+    const updateDuration = () => {
+      // sometimes duration can be NaN or Infinity; guard
+      const d = isFinite(video.duration) ? video.duration : 0
+      setDuration(d)
+    }
     const handlePlay = () => {
       setIsPlaying(true)
       setIsEnded(false)
@@ -163,26 +209,40 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps
     const handleEnded = () => {
       setIsPlaying(false)
       setIsEnded(true)
+      // ensure RAF stops
+      if (animationFrameRef.current != null) {
+        cancelAnimationFrame(animationFrameRef.current)
+        animationFrameRef.current = null
+      }
+    }
+    const handleTimeUpdate = () => {
+      // fallback update (keeps state in sync if RAF isn't running)
+      setCurrentTime(video.currentTime)
     }
 
-    video.addEventListener('timeupdate', updateTime)
     video.addEventListener('loadedmetadata', updateDuration)
     video.addEventListener('play', handlePlay)
     video.addEventListener('pause', handlePause)
     video.addEventListener('ended', handleEnded)
+    video.addEventListener('timeupdate', handleTimeUpdate)
 
     return () => {
-      video.removeEventListener('timeupdate', updateTime)
       video.removeEventListener('loadedmetadata', updateDuration)
       video.removeEventListener('play', handlePlay)
       video.removeEventListener('pause', handlePause)
       video.removeEventListener('ended', handleEnded)
+      video.removeEventListener('timeupdate', handleTimeUpdate)
     }
   }, [])
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (videoRef.current) {
-      videoRef.current.currentTime = parseFloat(e.target.value)
+      const val = Number(e.target.value)
+      // clamp
+      const clamped = Math.max(0, Math.min(val, duration || Number(val)))
+      videoRef.current.currentTime = clamped
+      // update state immediately so UI responds instantly
+      setCurrentTime(clamped)
     }
   }
 
@@ -278,9 +338,9 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps
           {/* Progress bar */}
           <input
             type="range"
-            min="0"
-            max={duration}
-            value={currentTime}
+            min={0}
+            max={isFinite(duration) ? duration : 0}
+            value={isFinite(currentTime) ? currentTime : 0}
             onChange={handleSeek}
             className="w-full h-1 bg-gray-500 rounded-lg cursor-pointer
               [&::-webkit-slider-thumb]:appearance-none 
@@ -315,9 +375,9 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc }: VideoModalProps
                 {showVolumeSlider && (
                   <input
                     type="range"
-                    min="0"
-                    max="1"
-                    step="0.1"
+                    min={0}
+                    max={1}
+                    step={0.1}
                     value={isMuted ? 0 : volume}
                     onChange={(e) => updateVolume(parseFloat(e.target.value))}
                     className="w-24 accent-white"
