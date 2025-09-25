@@ -17,7 +17,6 @@ import {
 import Image from "next/image";
 import GravWrap from "@/components/Common/GravWrap";
 import { motion } from "framer-motion";
-import ParallaxWrapper from "@/components/Common/ParallaxWrapper";
 import { useInView } from "react-intersection-observer";
 
 // 👇 Reusable fade+slide wrapper
@@ -240,31 +239,29 @@ const NewPage: React.FC = () => {
           >
             {services.map((service, index) => (
               <FadeSlide key={index} delay={index * 0.15}>
-                <ParallaxWrapper strength={40}>
-                  <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl overflow-hidden hover:border-[#FFEA00] transition-colors group">
-                    <div className="relative aspect-[4/3]">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                        <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
-                          {service.icon}
-                        </div>
+                <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl overflow-hidden hover:border-[#FFEA00] transition-colors group">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                      <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
+                        {service.icon}
                       </div>
                     </div>
-                    <div className="p-5">
-                      <h3 className="text-lg md:text-xl font-bold mb-2 text-white group-hover:text-[#FFEA00] transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-300 text-sm md:text-base">
-                        {service.description}
-                      </p>
-                    </div>
                   </div>
-                </ParallaxWrapper>
+                  <div className="p-5">
+                    <h3 className="text-lg md:text-xl font-bold mb-2 text-white group-hover:text-[#FFEA00] transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm md:text-base">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
               </FadeSlide>
             ))}
           </motion.div>
@@ -293,23 +290,12 @@ const NewPage: React.FC = () => {
                   {/* Image */}
                   <div className={`${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
                     <div className="relative aspect-[16/9] rounded-xl overflow-hidden">
-                      <GravWrap strength={40}>
-                        <Image
-                          src={update.image}
-                          alt={update.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </GravWrap>
-
-                      {/* ✅ Only show Play overlay if not update 1 or 2 */}
-                      {update.id !== 1 && update.id !== 2 && (
-                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 rounded-full flex items-center justify-center">
-                            <Play className="w-8 h-8 sm:w-10 sm:h-10" />
-                          </div>
-                        </div>
-                      )}
+                      <Image
+                        src={update.image}
+                        alt={update.title}
+                        fill
+                        className="object-cover"
+                      />
 
                       {/* Status */}
                       <div
@@ -370,21 +356,7 @@ const NewPage: React.FC = () => {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <button
-                        className="bg-[#FFEA00] text-black px-5 py-2 sm:px-6 sm:py-3 uppercase transition-all duration-300 flex items-center gap-2 transform hover:scale-105 text-sm sm:text-base"
-                        style={{
-                          fontFamily: '"Bebas Neue", sans-serif',
-                          fontWeight: 700,
-                          letterSpacing: "0.08em",
-                        }}
-                      >
-                        {update.type === "course"
-                          ? "Enroll Now"
-                          : update.type === "toolkit"
-                            ? "Download"
-                            : "Join Program"}
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
+
                       <button
                         className="border-2 border-[#FFEA00] text-[#FFEA00] px-5 py-2 sm:px-6 sm:py-3 uppercase transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
                         style={{
