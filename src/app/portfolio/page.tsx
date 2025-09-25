@@ -11,7 +11,7 @@ const Portfolio = () => {
     const portfolioItems = [
         {
             id: 1,
-            title: "Euroshub Digital Transformation",
+            title: "Euroshub Digital Solutions",
             category: "digital",
             description:
                 "Complete digital overhaul for a leading business consultancy",

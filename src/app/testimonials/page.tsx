@@ -336,14 +336,7 @@ const Testimonials = () => {
                             your project and create your success story.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button
-                                className="bg-[#FFEA00] text-black px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-yellow-300 transition-colors"
-                                style={{
-                                    fontFamily: '"Bebas Neue", Arial, sans-serif',
-                                }}
-                            >
-                                Start Your Project
-                            </button>
+
                             <Link href="/contact">
                                 <button
                                     className="border-2 border-[#FFEA00] text-[#FFEA00] px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#FFEA00] hover:text-black transition-colors"

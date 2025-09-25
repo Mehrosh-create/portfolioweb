@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation"; // ✅ for active route
 import {
   Facebook,
   Instagram,
@@ -23,9 +24,10 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">("desktop");
-  const [activeLink, setActiveLink] = useState("");
   const [hoveredNav, setHoveredNav] = useState("");
   const [searchHover, setSearchHover] = useState(false);
+
+  const pathname = usePathname(); // ✅ detect active page
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -53,12 +55,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLinkClick = (link: string) => {
-    setActiveLink(link);
-    if (screenSize !== "desktop") setIsOpen(false);
-  };
-
-  // ✅ Updated with WhatsApp, TikTok, Threads, Snapchat
+  // ✅ Updated with correct TikTok + Threads + Snapchat icons
   const socialLinks = [
     { href: "https://twitter.com", icon: Twitter, label: "Twitter" },
     { href: "https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr", icon: Facebook, label: "Facebook" },
@@ -70,7 +67,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
     { href: "https://discord.com", icon: FaDiscord, label: "Discord" },
     { href: "https://www.tiktok.com/@sheikhnabeel.official", icon: SiTiktok, label: "TikTok" },
     { href: "https://www.threads.net", icon: SiThreads, label: "Threads" },
-    { href: "https://wa.me/923335489622", icon: FaWhatsapp, label: "WhatsApp" },
+    { href: "https://wa.me/923000369622", icon: FaWhatsapp, label: "WhatsApp" },
   ];
 
   const getSidebarWidth = () => {
@@ -155,11 +152,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
           <div
             className={`px-4 transition-all duration-300 ${scrolled ? "py-2" : screenSize === "mobile" ? "py-3" : screenSize === "tablet" ? "py-4" : "py-6"} flex justify-center items-center flex-shrink-0`}
           >
-            <Link
-              href="/"
-              onClick={() => handleLinkClick("home")}
-              className="block w-full flex justify-center"
-            >
+            <Link href="/" className="block w-full flex justify-center">
               <Image
                 src="/images/sign.png"
                 alt="Entrepreneur Portfolio Logo"
@@ -174,40 +167,39 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
           <nav className="flex-1 px-4 flex items-start justify-start min-h-0">
             <ul className={`${screenSize === "mobile" ? "space-y-2" : screenSize === "tablet" ? "space-y-2.5" : "space-y-3"} w-full`}>
               {[
-                { href: "/", label: "HOME", id: "home" },
-                { href: "/about", label: "ABOUT", id: "about" },
-                { href: "/portfolio", label: "PORTFOLIO", id: "portfolio" },
-                { href: "/services", label: "SERVICES", id: "services" },
-                { href: "/testimonials", label: "TESTIMONIALS", id: "testimonials" },
-                { href: "/contact", label: "CONTACT", id: "contact" },
-              ].map((item) => (
-                <li key={item.id} className="relative">
-                  <div
-                    className={`absolute inset-y-0 left-0 w-[70%] bg-[#02B600] transform transition-transform duration-300 ease-out ${activeLink === item.id
-                      ? "scale-x-100 origin-left"
-                      : hoveredNav === item.id
-                        ? "scale-x-100 origin-left"
-                        : "scale-x-0 origin-left"
-                      }`}
-                    style={{ zIndex: -1 }}
-                  />
-                  <Link
-                    href={item.href}
-                    className={`block px-2 ${screenSize === "mobile" ? "py-1.5" : "py-2"} relative text-white transition-colors duration-300`}
-                    onClick={() => handleLinkClick(item.id)}
-                    onMouseEnter={() => setHoveredNav(item.id)}
-                    onMouseLeave={() => setHoveredNav("")}
-                    style={{
-                      fontFamily: '"Bebas Neue", sans-serif',
-                      fontWeight: 100,
-                      fontSize: getFontSize(),
-                      letterSpacing: "0.02em",
-                    }}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+                { href: "/", label: "HOME" },
+                { href: "/about", label: "ABOUT" },
+                { href: "/portfolio", label: "PORTFOLIO" },
+                { href: "/services", label: "SERVICES" },
+                { href: "/testimonials", label: "TESTIMONIALS" },
+                { href: "/contact", label: "CONTACT" },
+              ].map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <li key={item.href} className="relative">
+                    {/* ✅ background stays when active */}
+                    <div
+                      className={`absolute inset-y-0 left-0 w-[70%] bg-[#02B600] transform transition-transform duration-300 ease-out 
+                      ${isActive || hoveredNav === item.href ? "scale-x-100 origin-left" : "scale-x-0 origin-left"}`}
+                      style={{ zIndex: -1 }}
+                    />
+                    <Link
+                      href={item.href}
+                      className={`block px-2 ${screenSize === "mobile" ? "py-1.5" : "py-2"} relative text-white transition-colors duration-300`}
+                      onMouseEnter={() => setHoveredNav(item.href)}
+                      onMouseLeave={() => setHoveredNav("")}
+                      style={{
+                        fontFamily: '"Bebas Neue", sans-serif',
+                        fontWeight: 100,
+                        fontSize: getFontSize(),
+                        letterSpacing: "0.02em",
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
 
               <li className="flex justify-start pt-2 pl-1">
                 <button

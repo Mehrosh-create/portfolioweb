@@ -122,7 +122,7 @@ const NewPage: React.FC = () => {
       image: "/images/brand-building.jpg",
     },
     {
-      title: "Client Experience & Account Management",
+      title: "Client Sucess & Account Support",
       description:
         "Enhance customer satisfaction and retention through optimized client experience strategies.",
       icon: <Users className="w-8 h-8" />,
@@ -134,6 +134,20 @@ const NewPage: React.FC = () => {
         "Comprehensive business consulting services to develop strategies for long-term success and scalability.",
       icon: <Lightbulb className="w-8 h-8" />,
       image: "/images/business-strategy.jpg",
+    },
+    {
+      title: "AI & Data Analytics",
+      description:
+        "Leverage artificial intelligence and advanced analytics to gain actionable insights and drive smarter business decisions.",
+      icon: <BarChart className="w-8 h-8" />,
+      image: "/images/ai-analytics.jpg",
+    },
+    {
+      title: "Cloud Solutions & Infrastructure",
+      description:
+        "Implement scalable cloud systems and infrastructure management to ensure security, flexibility, and performance.",
+      icon: <Layers className="w-8 h-8" />,
+      image: "/images/cloud-solutions.jpg",
     },
   ];
 
@@ -287,11 +301,16 @@ const NewPage: React.FC = () => {
                           className="object-cover"
                         />
                       </GravWrap>
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 rounded-full flex items-center justify-center">
-                          <Play className="w-8 h-8 sm:w-10 sm:h-10" />
+
+                      {/* ✅ Only show Play overlay if not update 1 or 2 */}
+                      {update.id !== 1 && update.id !== 2 && (
+                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 rounded-full flex items-center justify-center">
+                            <Play className="w-8 h-8 sm:w-10 sm:h-10" />
+                          </div>
                         </div>
-                      </div>
+                      )}
+
                       {/* Status */}
                       <div
                         className="absolute top-3 left-3 px-2 py-1 rounded text-xs sm:text-sm"
