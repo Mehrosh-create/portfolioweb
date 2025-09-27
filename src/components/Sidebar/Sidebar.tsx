@@ -66,7 +66,6 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
     { href: "https://snapchat.com/add/sheikhnabeel.official", icon: FaSnapchatGhost, label: "Snapchat" },
     { href: "https://discord.com", icon: FaDiscord, label: "Discord" },
     { href: "https://www.tiktok.com/@sheikhnabeel.official", icon: SiTiktok, label: "TikTok" },
-    { href: "https://www.threads.net", icon: SiThreads, label: "Threads" },
     { href: "https://wa.me/923000369622", icon: FaWhatsapp, label: "WhatsApp" },
   ];
 

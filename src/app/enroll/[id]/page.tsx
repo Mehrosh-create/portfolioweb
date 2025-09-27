@@ -24,7 +24,9 @@ export default function EnrollmentFormPage() {
         text: string;
     } | null>(null);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
         setErrors((prev) => ({ ...prev, [name]: "" }));
@@ -99,25 +101,25 @@ export default function EnrollmentFormPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#151515] text-white px-6">
-            <div className="max-w-xl w-full bg-[#151515] p-8 rounded-lg border border-[#606060] hover:border-[#FFEA00] transition-all duration-300">
-                <h1 className="text-2xl font-bold mb-8 text-[#FFEA00] uppercase">
+        <div className="min-h-screen flex items-center justify-center bg-[#151515] text-white px-4 sm:px-6 md:px-8">
+            <div className="w-full max-w-xl bg-[#151515] p-6 sm:p-8 rounded-lg border border-[#606060] hover:border-[#FFEA00] transition-all duration-300">
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 text-[#FFEA00] uppercase text-center">
                     Enroll for Program (ID: {id})
                 </h1>
 
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                     {/* Name */}
                     <div>
-                        <label className="block text-white font-semibold mb-3 uppercase text-lg">
+                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base md:text-lg">
                             Name <span className="text-red-500 ml-1">(Required)</span>
                         </label>
-                        <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
+                        <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
                             <input
                                 type="text"
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full bg-transparent text-white text-lg placeholder-gray-400 focus:outline-none"
+                                className="w-full bg-transparent text-white text-base sm:text-lg placeholder-gray-400 focus:outline-none"
                                 placeholder="Your Full Name"
                                 required
                             />
@@ -131,16 +133,16 @@ export default function EnrollmentFormPage() {
 
                     {/* Email */}
                     <div>
-                        <label className="block text-white font-semibold mb-3 uppercase text-lg">
+                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base md:text-lg">
                             Email <span className="text-red-500 ml-1">(Required)</span>
                         </label>
-                        <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
+                        <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
                             <input
                                 type="email"
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="w-full bg-transparent text-white text-lg placeholder-gray-400 focus:outline-none"
+                                className="w-full bg-transparent text-white text-base sm:text-lg placeholder-gray-400 focus:outline-none"
                                 placeholder="Your Email"
                                 required
                             />
@@ -154,16 +156,16 @@ export default function EnrollmentFormPage() {
 
                     {/* Phone */}
                     <div>
-                        <label className="block text-white font-semibold mb-3 uppercase text-lg">
+                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base md:text-lg">
                             Phone
                         </label>
-                        <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
+                        <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
                             <input
                                 type="tel"
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
-                                className="w-full bg-transparent text-white text-lg placeholder-gray-400 focus:outline-none"
+                                className="w-full bg-transparent text-white text-base sm:text-lg placeholder-gray-400 focus:outline-none"
                                 placeholder="Your Phone (optional)"
                             />
                         </div>
@@ -171,16 +173,16 @@ export default function EnrollmentFormPage() {
 
                     {/* Message */}
                     <div>
-                        <label className="block text-white font-semibold mb-3 uppercase text-lg">
+                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base md:text-lg">
                             Message <span className="text-red-500 ml-1">(Required)</span>
                         </label>
-                        <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
+                        <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
                             <textarea
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}
-                                rows={6}
-                                className="w-full bg-transparent text-white text-lg focus:outline-none resize-none placeholder-gray-400"
+                                rows={5}
+                                className="w-full bg-transparent text-white text-base sm:text-lg focus:outline-none resize-none placeholder-gray-400"
                                 placeholder="Tell us why you want to enroll..."
                                 required
                             />
@@ -193,18 +195,18 @@ export default function EnrollmentFormPage() {
                     </div>
 
                     {/* Submit */}
-                    <div>
+                    <div className="text-center">
                         <button
                             type="submit"
                             disabled={submitting}
-                            className="bg-[#FFEA00] disabled:opacity-60 text-black px-6 py-3 rounded-full font-bold text-lg hover:opacity-90 transition-colors whitespace-nowrap"
+                            className="w-full sm:w-auto bg-[#FFEA00] disabled:opacity-60 text-black px-6 py-3 rounded-full font-bold text-base sm:text-lg hover:opacity-90 transition-colors"
                         >
                             {submitting ? "Submitting..." : "Submit Enrollment"}
                         </button>
 
                         {statusMessage && (
                             <p
-                                className={`mt-4 ${statusMessage.type === "success"
+                                className={`mt-4 text-sm sm:text-base ${statusMessage.type === "success"
                                     ? "text-green-400"
                                     : "text-red-400"
                                     }`}

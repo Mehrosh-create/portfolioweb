@@ -86,7 +86,7 @@ const SlidingHighlight = ({ text }: { text: string }) => {
 const NewPage: React.FC = () => {
   const services = [
     {
-      title: "Digital Transformation & Automation",
+      title: "Digital Transformation",
       description:
         "Complete digital overhaul services to modernize your business operations and implement cutting-edge automation solutions.",
       icon: <Layers className="w-8 h-8" />,
@@ -121,7 +121,7 @@ const NewPage: React.FC = () => {
       image: "/images/brand-building.jpg",
     },
     {
-      title: "Client Sucess & Account Support",
+      title: "Client Sucess",
       description:
         "Enhance customer satisfaction and retention through optimized client experience strategies.",
       icon: <Users className="w-8 h-8" />,
