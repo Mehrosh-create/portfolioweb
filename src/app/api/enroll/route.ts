@@ -12,7 +12,6 @@ export async function POST(req: Request) {
             );
         }
 
-        // ✅ configure transporter (use your Gmail / SMTP credentials)
         const transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
             port: 465,
@@ -44,13 +43,11 @@ export async function POST(req: Request) {
   `,
         });
 
-
         return NextResponse.json({ success: true });
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Enrollment email error:", error);
-        return NextResponse.json(
-            { error: "Failed to send enrollment request." },
-            { status: 500 }
-        );
+        const message =
+            error instanceof Error ? error.message : "Failed to send enrollment request.";
+        return NextResponse.json({ error: message }, { status: 500 });
     }
 }

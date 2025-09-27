@@ -3,10 +3,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import {
-  ArrowRight,
   Calendar,
   CheckCircle,
-  Play,
   Users,
   TrendingUp,
   Lightbulb,
@@ -19,6 +17,7 @@ import Image from "next/image";
 import GravWrap from "@/components/Common/GravWrap";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+
 
 // 👇 Reusable fade+slide wrapper
 const FadeSlide = ({
@@ -227,7 +226,7 @@ const NewPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Services grid */}
+          {/* Services grid with GravWrap applied individually on each card */}
           <motion.div
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
             initial="hidden"
@@ -240,32 +239,36 @@ const NewPage: React.FC = () => {
           >
             {services.map((service, index) => (
               <FadeSlide key={index} delay={index * 0.15}>
-                <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl overflow-hidden hover:border-[#FFEA00] transition-colors group">
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                      <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
-                        {service.icon}
+                {/* 👇 Each card wrapped in GravWrap */}
+                <GravWrap>
+                  <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl overflow-hidden hover:border-[#FFEA00] transition-colors group cursor-pointer">
+                    <div className="relative aspect-[4/3]">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
+                          {service.icon}
+                        </div>
                       </div>
                     </div>
+                    <div className="p-5">
+                      <h3 className="text-lg md:text-xl font-bold mb-2 text-white group-hover:text-[#FFEA00] transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-300 text-sm md:text-base">
+                        {service.description}
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-5">
-                    <h3 className="text-lg md:text-xl font-bold mb-2 text-white group-hover:text-[#FFEA00] transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-300 text-sm md:text-base">
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
+                </GravWrap>
               </FadeSlide>
             ))}
           </motion.div>
+
         </div>
       </div>
 
