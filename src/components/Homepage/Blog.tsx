@@ -45,18 +45,17 @@ const SlidingHighlight = ({ text }: { text: string }) => {
     return (
         <div
             ref={ref}
-            className="relative inline-block mx-auto mb-6 overflow-hidden"
+            className="relative inline-block mx-auto mb-4 sm:mb-6 overflow-hidden"
         >
             <span
                 className={`absolute top-0 left-0 h-full w-0 bg-[#FFEA00] transition-all duration-700 ease-out ${inView ? "w-full" : "w-0"
                     }`}
             ></span>
             <span
-                className="relative z-10 text-black font-bold tracking-wider uppercase whitespace-nowrap px-6 py-3 inline-block"
+                className="relative z-10 text-black font-bold tracking-wider uppercase whitespace-nowrap px-4 sm:px-6 py-2 sm:py-3 inline-block text-sm sm:text-base md:text-lg"
                 style={{
                     fontFamily: '"Bebas Neue", sans-serif',
                     fontWeight: 700,
-                    fontSize: "1.6rem",
                     letterSpacing: "0.08em",
                 }}
             >
@@ -107,18 +106,18 @@ const Blog = () => {
     ];
 
     return (
-        <section className="py-20 px-6 bg-[#151515] text-white">
+        <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-[#151515] text-white">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-12 sm:mb-16">
                     <SlidingHighlight text="LATEST INSIGHTS" />
                     <FadeSlide delay={0.1}>
-                        <h2 className="text-5xl md:text-7xl font-black uppercase text-white mb-6">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white mb-4 sm:mb-6 leading-tight">
                             STAY <span className="text-[#FFEA00]">UPDATED</span>
                         </h2>
                     </FadeSlide>
                     <FadeSlide delay={0.2}>
-                        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                        <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-4">
                             Explore expert perspectives on digital transformation, leadership,
                             CRM systems, and business innovation shaping the future.
                         </p>
@@ -127,7 +126,7 @@ const Blog = () => {
 
                 {/* Featured Articles Grid */}
                 <motion.div
-                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -140,10 +139,10 @@ const Blog = () => {
                         <FadeSlide key={article.slug} delay={index * 0.2}>
                             <Link
                                 href={`/blog/${article.slug}`}
-                                className="group cursor-pointer"
+                                className="group cursor-pointer block"
                             >
                                 <div
-                                    className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105"
+                                    className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105 h-full flex flex-col"
                                     style={{ borderColor: "#1F2937" }}
                                     onMouseEnter={(e) =>
                                         (e.currentTarget.style.borderColor = "#FFEA00")
@@ -152,15 +151,13 @@ const Blog = () => {
                                         (e.currentTarget.style.borderColor = "#1F2937")
                                     }
                                 >
-                                    <div className="relative h-56 md:h-64 lg:h-72">
+                                    <div className="relative h-48 sm:h-56 md:h-64 lg:h-72">
                                         <Image
                                             src={article.image}
                                             alt={article.title}
                                             fill
                                             className="object-cover"
-                                            sizes="(max-width: 768px) 100vw,
-                             (max-width: 1200px) 50vw,
-                             33vw"
+                                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                                         />
                                         <div
                                             className="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase rounded"
@@ -169,8 +166,8 @@ const Blog = () => {
                                             NEW
                                         </div>
                                     </div>
-                                    <div className="p-6">
-                                        <div className="flex items-center gap-2 mb-4">
+                                    <div className="p-4 sm:p-6 flex-1 flex flex-col">
+                                        <div className="flex items-center gap-2 mb-3 sm:mb-4 flex-wrap">
                                             <span
                                                 className="px-2 py-1 text-xs font-bold uppercase rounded"
                                                 style={{ backgroundColor: "#FFEA00", color: "#000" }}
@@ -182,7 +179,7 @@ const Blog = () => {
                                             </span>
                                         </div>
                                         <h3
-                                            className="text-xl font-bold mb-3 line-clamp-2 transition-colors"
+                                            className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 line-clamp-2 transition-colors flex-1"
                                             onMouseEnter={(e) =>
                                                 (e.currentTarget.style.color = "#FFEA00")
                                             }
@@ -192,12 +189,14 @@ const Blog = () => {
                                         >
                                             {article.title}
                                         </h3>
-                                        <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+                                        <p className="text-gray-400 text-sm mb-3 sm:mb-4 line-clamp-3">
                                             {article.excerpt}
                                         </p>
-                                        <div className="flex items-center justify-between text-xs text-gray-500">
+                                        <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">
                                             <div className="flex items-center gap-1">
-                                                <Calendar className="w-3 h-3" /> {article.date}
+                                                <Calendar className="w-3 h-3" />
+                                                <span className="hidden sm:inline">{article.date}</span>
+                                                <span className="sm:hidden">{article.date.split(' ')[0]}</span>
                                             </div>
                                             <div className="flex items-center gap-3">
                                                 <div className="flex items-center gap-1">
@@ -221,7 +220,7 @@ const Blog = () => {
                     <div className="text-center">
                         <Link
                             href="/blog"
-                            className="inline-flex items-center gap-2 px-8 py-4 font-bold uppercase tracking-wider transition-colors"
+                            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 font-bold uppercase tracking-wider transition-colors text-sm sm:text-base"
                             style={{ backgroundColor: "#FFEA00", color: "#000" }}
                             onMouseEnter={(e) =>
                                 (e.currentTarget.style.backgroundColor = "#FFD700")
@@ -230,7 +229,7 @@ const Blog = () => {
                                 (e.currentTarget.style.backgroundColor = "#FFEA00")
                             }
                         >
-                            View All Articles <ArrowRight className="w-5 h-5" />
+                            View All Articles <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                         </Link>
                     </div>
                 </FadeSlide>

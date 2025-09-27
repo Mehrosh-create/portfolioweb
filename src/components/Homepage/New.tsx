@@ -18,7 +18,6 @@ import GravWrap from "@/components/Common/GravWrap";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-
 // 👇 Reusable fade+slide wrapper
 const FadeSlide = ({
   children,
@@ -61,7 +60,7 @@ const SlidingHighlight = ({ text }: { text: string }) => {
   return (
     <div
       ref={ref}
-      className="relative inline-block mx-auto mb-6 overflow-hidden"
+      className="relative inline-block mx-auto mb-4 sm:mb-6 overflow-hidden"
     >
       <span
         className={`absolute top-0 left-0 h-full w-0 bg-[#FFEA00] transition-all duration-700 ease-out ${inView ? "w-full" : "w-0"
@@ -69,11 +68,10 @@ const SlidingHighlight = ({ text }: { text: string }) => {
       ></span>
 
       <span
-        className="relative z-10 text-black font-bold tracking-wider uppercase whitespace-nowrap px-4 sm:px-6 py-2 sm:py-3 inline-block"
+        className="relative z-10 text-black font-bold tracking-wider uppercase whitespace-nowrap px-3 sm:px-4 py-1 sm:py-2 inline-block text-sm sm:text-base"
         style={{
           fontFamily: '"Bebas Neue", sans-serif',
           fontWeight: 700,
-          fontSize: "1.2rem",
           letterSpacing: "0.08em",
         }}
       >
@@ -89,63 +87,63 @@ const NewPage: React.FC = () => {
       title: "Digital Transformation",
       description:
         "Complete digital overhaul services to modernize your business operations and implement cutting-edge automation solutions.",
-      icon: <Layers className="w-8 h-8" />,
+      icon: <Layers className="w-6 h-6 sm:w-8 sm:h-8" />,
       image: "/images/digital-transformation.jpg",
     },
     {
       title: "CRM Systems Implementation",
       description:
         "End-to-end CRM solutions tailored to your business needs, from selection to implementation and training.",
-      icon: <Network className="w-8 h-8" />,
+      icon: <Network className="w-6 h-6 sm:w-8 sm:h-8" />,
       image: "/images/crm-implementation.jpg",
     },
     {
       title: "Project & Operations Management",
       description:
         "Streamline your operations with expert project management methodologies and operational efficiency improvements.",
-      icon: <Activity className="w-8 h-8" />,
+      icon: <Activity className="w-6 h-6 sm:w-8 sm:h-8" />,
       image: "/images/project-management.jpg",
     },
     {
-      title: "Growth Marketing ",
+      title: "Growth Marketing",
       description:
         "Data-driven marketing strategies and sales funnel optimization to accelerate your business growth.",
-      icon: <TrendingUp className="w-8 h-8" />,
+      icon: <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8" />,
       image: "/images/growth-marketing.jpg",
     },
     {
-      title: "Brand Building ",
+      title: "Brand Building",
       description:
         "Develop a powerful brand identity and strategic market positioning to stand out from competitors.",
-      icon: <BarChart className="w-8 h-8" />,
+      icon: <BarChart className="w-6 h-6 sm:w-8 sm:h-8" />,
       image: "/images/brand-building.jpg",
     },
     {
-      title: "Client Sucess",
+      title: "Client Success",
       description:
         "Enhance customer satisfaction and retention through optimized client experience strategies.",
-      icon: <Users className="w-8 h-8" />,
+      icon: <Users className="w-6 h-6 sm:w-8 sm:h-8" />,
       image: "/images/client-experience.jpg",
     },
     {
       title: "Business Strategy & Consulting",
       description:
         "Comprehensive business consulting services to develop strategies for long-term success and scalability.",
-      icon: <Lightbulb className="w-8 h-8" />,
+      icon: <Lightbulb className="w-6 h-6 sm:w-8 sm:h-8" />,
       image: "/images/business-strategy.jpg",
     },
     {
       title: "AI & Data Analytics",
       description:
         "Leverage artificial intelligence and advanced analytics to gain actionable insights and drive smarter business decisions.",
-      icon: <BarChart className="w-8 h-8" />,
+      icon: <BarChart className="w-6 h-6 sm:w-8 sm:h-8" />,
       image: "/images/ai-analytics.jpg",
     },
     {
       title: "Cloud Solutions & Infrastructure",
       description:
         "Implement scalable cloud systems and infrastructure management to ensure security, flexibility, and performance.",
-      icon: <Layers className="w-8 h-8" />,
+      icon: <Layers className="w-6 h-6 sm:w-8 sm:h-8" />,
       image: "/images/cloud-solutions.jpg",
     },
   ];
@@ -212,23 +210,23 @@ const NewPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#151515] text-white">
       {/* Services Section */}
-      <div className="py-20 px-4 sm:px-8 lg:px-12">
+      <div className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 sm:mb-16">
             <SlidingHighlight text="SPECIALIZATIONS" />
 
-            <h2 className="text-4xl md:text-6xl font-black uppercase text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white mb-4 sm:mb-6 leading-tight">
               MY <span className="text-[#FFEA00]">EXPERTISE</span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-4">
               With over 7 years of experience, I specialize in transforming
               businesses through digital innovation and strategic growth
             </p>
           </div>
 
-          {/* Services grid with GravWrap applied individually on each card */}
+          {/* Services grid */}
           <motion.div
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -239,27 +237,27 @@ const NewPage: React.FC = () => {
           >
             {services.map((service, index) => (
               <FadeSlide key={index} delay={index * 0.15}>
-                {/* 👇 Each card wrapped in GravWrap */}
                 <GravWrap>
-                  <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl overflow-hidden hover:border-[#FFEA00] transition-colors group cursor-pointer">
+                  <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl overflow-hidden hover:border-[#FFEA00] transition-colors group cursor-pointer h-full flex flex-col">
                     <div className="relative aspect-[4/3]">
                       <Image
                         src={service.image}
                         alt={service.title}
                         fill
                         className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       />
                       <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                        <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center">
                           {service.icon}
                         </div>
                       </div>
                     </div>
-                    <div className="p-5">
-                      <h3 className="text-lg md:text-xl font-bold mb-2 text-white group-hover:text-[#FFEA00] transition-colors">
+                    <div className="p-4 sm:p-5 flex-1 flex flex-col">
+                      <h3 className="text-lg sm:text-xl font-bold mb-2 text-white group-hover:text-[#FFEA00] transition-colors">
                         {service.title}
                       </h3>
-                      <p className="text-gray-300 text-sm md:text-base">
+                      <p className="text-gray-300 text-sm sm:text-base flex-1">
                         {service.description}
                       </p>
                     </div>
@@ -268,40 +266,38 @@ const NewPage: React.FC = () => {
               </FadeSlide>
             ))}
           </motion.div>
-
         </div>
       </div>
 
       {/* Latest Launches */}
-      <div className="py-20 px-4 sm:px-8 lg:px-12 bg-[#1a1a1a]">
+      <div className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-[#1a1a1a]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 sm:mb-16">
             <SlidingHighlight text="LATEST LAUNCHES" />
 
-            <h2 className="text-4xl md:text-6xl font-black uppercase text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white mb-4 sm:mb-6 leading-tight">
               NEW <span className="text-[#FFEA00]">RELEASES</span>
             </h2>
           </div>
 
           {/* Updates list */}
-          <div className="space-y-20">
+          <div className="space-y-12 sm:space-y-16 lg:space-y-20">
             {latestUpdates.slice(0, visible).map((update, index) => (
-              <FadeSlide key={index} delay={index * 0.25} direction="up">
+              <FadeSlide key={update.id} delay={index * 0.25} direction="up">
                 <div
-                  className={`grid gap-10 items-center lg:grid-cols-2 ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
+                  className={`flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-10 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""
                     }`}
                 >
                   {/* Image */}
-                  <div className={`${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
+                  <div className="lg:flex-1 w-full">
                     <div className="relative aspect-[16/9] rounded-xl overflow-hidden">
                       <Image
                         src={update.image}
                         alt={update.title}
                         fill
                         className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                       />
-
-                      {/* Status */}
                       <div
                         className="absolute top-3 left-3 px-2 py-1 rounded text-xs sm:text-sm"
                         style={{
@@ -318,7 +314,7 @@ const NewPage: React.FC = () => {
                   </div>
 
                   {/* Content */}
-                  <div className={`${index % 2 === 1 ? "lg:col-start-1" : ""}`}>
+                  <div className="lg:flex-1">
                     <div
                       className="inline-block px-2 py-1 mb-3 text-xs sm:text-sm"
                       style={{
@@ -332,38 +328,37 @@ const NewPage: React.FC = () => {
                       {update.category}
                     </div>
 
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight">
                       {update.title}
                     </h3>
 
-                    <p className="text-gray-300 mb-6 text-base sm:text-lg">
+                    <p className="text-gray-300 mb-4 sm:mb-6 text-base sm:text-lg">
                       {update.description}
                     </p>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6">
                       {update.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2">
-                          <CheckCircle className="w-5 h-5 text-[#FFEA00] flex-shrink-0" />
-                          <span className="text-sm">{feature}</span>
+                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#FFEA00] flex-shrink-0" />
+                          <span className="text-sm sm:text-base">{feature}</span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-3">
-                      <div className="text-2xl sm:text-3xl font-black text-[#FFEA00]">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 gap-2 sm:gap-3">
+                      <div className="text-xl sm:text-2xl lg:text-3xl font-black text-[#FFEA00]">
                         {update.price}
                       </div>
                       <div className="text-xs sm:text-sm text-gray-400 flex items-center gap-2">
-                        <Calendar className="w-4 h-4" />
+                        <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                         {update.date}
                       </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-3">
-
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                       <Link
                         href={`/learnmore/${update.id}`}
-                        className="border-2 border-[#FFEA00] text-[#FFEA00] px-5 py-2 sm:px-6 sm:py-3 uppercase transition-all duration-300 transform hover:scale-105 text-sm sm:text-base text-center"
+                        className="border-2 border-[#FFEA00] text-[#FFEA00] px-4 sm:px-5 py-2 sm:py-3 uppercase transition-all duration-300 transform hover:scale-105 text-sm sm:text-base text-center"
                         style={{
                           fontFamily: '"Bebas Neue", sans-serif',
                           fontWeight: 700,
@@ -381,10 +376,10 @@ const NewPage: React.FC = () => {
 
           {/* Load More */}
           {visible < latestUpdates.length && (
-            <div className="text-center mt-14">
+            <div className="text-center mt-8 sm:mt-12">
               <button
                 onClick={() => setVisible((prev) => prev + 1)}
-                className="px-5 py-2 sm:px-6 sm:py-3 bg-[#FFEA00] text-black uppercase transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+                className="px-4 sm:px-5 py-2 sm:py-3 bg-[#FFEA00] text-black uppercase transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
                 style={{
                   fontFamily: '"Bebas Neue", sans-serif',
                   fontWeight: 700,

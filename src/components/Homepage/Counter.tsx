@@ -1,4 +1,3 @@
-// src/components/Homepage/Counter.tsx
 "use client";
 
 import { useEffect, useState, useRef } from "react";
@@ -33,7 +32,7 @@ const CounterSection = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-[#151515] relative overflow-hidden mr-6">
+    <section className="py-12 sm:py-16 bg-[#151515] relative overflow-hidden px-4 sm:px-6 lg:px-8">
       {/* Background pattern */}
       <div
         className="absolute inset-0 opacity-10"
@@ -44,13 +43,13 @@ const CounterSection = () => {
         }}
       ></div>
 
-      <div ref={ref} className="container mx-auto px-4 relative z-10 lg:mr-8">
+      <div ref={ref} className="container mx-auto relative z-10">
         {/* Quote section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <h2
-            className="text-white font-black leading-tight mb-8"
+            className="text-white font-black leading-tight mb-6 sm:mb-8 px-4"
             style={{
-              fontSize: "clamp(2.5rem, 8vw, 4rem)",
+              fontSize: "clamp(2rem, 8vw, 4rem)",
               lineHeight: 1.1,
               fontFamily: '"Bebas Neue", sans-serif',
               fontWeight: 700,
@@ -58,8 +57,8 @@ const CounterSection = () => {
               letterSpacing: "0.02em",
             }}
           >
-            &ldquo;LEGACY IS GREATER THAN <br />
-            <span className="block text-center">CURRENCY.&rdquo;</span>
+            &ldquo;LEGACY IS GREATER THAN <br className="hidden sm:block" />
+            <span className="block text-center mt-2 sm:mt-0">CURRENCY.&rdquo;</span>
           </h2>
 
           {/* Sliding background highlight */}
@@ -70,11 +69,10 @@ const CounterSection = () => {
             ></span>
 
             <span
-              className="relative z-10 text-black font-bold tracking-wider uppercase whitespace-nowrap px-3 py-1 inline-block"
+              className="relative z-10 text-black font-bold tracking-wider uppercase whitespace-nowrap px-3 py-1 inline-block text-sm sm:text-base md:text-lg"
               style={{
                 fontFamily: '"Bebas Neue", sans-serif',
                 fontWeight: 700,
-                fontSize: "1.6rem",
                 letterSpacing: "0.08em",
               }}
             >
@@ -84,7 +82,7 @@ const CounterSection = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {[
             {
               name: "VICE",
@@ -104,7 +102,7 @@ const CounterSection = () => {
           ].map((card) => (
             <div
               key={card.name}
-              className="group text-center p-0 border-2 rounded-lg transition-all duration-300 cursor-pointer h-96 flex flex-col relative overflow-hidden border-gray-700"
+              className="group text-center p-0 border-2 rounded-lg transition-all duration-300 cursor-pointer h-80 sm:h-96 flex flex-col relative overflow-hidden border-gray-700"
             >
               {/* Hover effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -124,11 +122,12 @@ const CounterSection = () => {
                     width={400}
                     height={300}
                     className="w-full h-full object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
-                <div className="p-6 bg-black/80 backdrop-blur-sm">
+                <div className="p-4 sm:p-6 bg-black/80 backdrop-blur-sm">
                   <h3
-                    className="text-2xl font-semibold text-white mb-2 uppercase tracking-wide"
+                    className="text-xl sm:text-2xl font-semibold text-white mb-2 uppercase tracking-wide"
                     style={{
                       fontFamily:
                         'Arial, "Helvetica Neue", Helvetica, sans-serif',
@@ -138,7 +137,7 @@ const CounterSection = () => {
                     {card.name}
                   </h3>
                   <p
-                    className="text-sm text-gray-300"
+                    className="text-xs sm:text-sm text-gray-300"
                     style={{
                       fontFamily:
                         'Arial, "Helvetica Neue", Helvetica, sans-serif',
@@ -160,7 +159,7 @@ const CounterSection = () => {
             width: 0%;
           }
           100% {
-            width: 100%; /* matches text width */
+            width: 100%;
           }
         }
         .animate-slideRight {
