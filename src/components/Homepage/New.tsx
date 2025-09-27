@@ -107,14 +107,14 @@ const NewPage: React.FC = () => {
       image: "/images/project-management.jpg",
     },
     {
-      title: "Growth Marketing & Funnel Strategy",
+      title: "Growth Marketing ",
       description:
         "Data-driven marketing strategies and sales funnel optimization to accelerate your business growth.",
       icon: <TrendingUp className="w-8 h-8" />,
       image: "/images/growth-marketing.jpg",
     },
     {
-      title: "Brand Building & Market Positioning",
+      title: "Brand Building ",
       description:
         "Develop a powerful brand identity and strategic market positioning to stand out from competitors.",
       icon: <BarChart className="w-8 h-8" />,

@@ -101,16 +101,16 @@ export default function EnrollmentFormPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#151515] text-white px-4 sm:px-6 md:px-8">
-            <div className="w-full max-w-xl bg-[#151515] p-6 sm:p-8 rounded-lg border border-[#606060] hover:border-[#FFEA00] transition-all duration-300">
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 text-[#FFEA00] uppercase text-center">
+        <div className="min-h-screen flex items-center justify-center bg-[#151515] text-white px-4 sm:px-6 lg:px-8 py-10">
+            <div className="w-full max-w-md sm:max-w-lg lg:max-w-2xl bg-[#151515] p-6 sm:p-8 lg:p-10 rounded-lg border border-[#606060] hover:border-[#FFEA00] transition-all duration-300">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-8 text-[#FFEA00] uppercase text-center sm:text-left">
                     Enroll for Program (ID: {id})
                 </h1>
 
                 <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                     {/* Name */}
                     <div>
-                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base md:text-lg">
+                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg">
                             Name <span className="text-red-500 ml-1">(Required)</span>
                         </label>
                         <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
@@ -133,7 +133,7 @@ export default function EnrollmentFormPage() {
 
                     {/* Email */}
                     <div>
-                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base md:text-lg">
+                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg">
                             Email <span className="text-red-500 ml-1">(Required)</span>
                         </label>
                         <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
@@ -156,7 +156,7 @@ export default function EnrollmentFormPage() {
 
                     {/* Phone */}
                     <div>
-                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base md:text-lg">
+                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg">
                             Phone
                         </label>
                         <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
@@ -173,7 +173,7 @@ export default function EnrollmentFormPage() {
 
                     {/* Message */}
                     <div>
-                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base md:text-lg">
+                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg">
                             Message <span className="text-red-500 ml-1">(Required)</span>
                         </label>
                         <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
@@ -195,18 +195,18 @@ export default function EnrollmentFormPage() {
                     </div>
 
                     {/* Submit */}
-                    <div className="text-center">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <button
                             type="submit"
                             disabled={submitting}
-                            className="w-full sm:w-auto bg-[#FFEA00] disabled:opacity-60 text-black px-6 py-3 rounded-full font-bold text-base sm:text-lg hover:opacity-90 transition-colors"
+                            className="bg-[#FFEA00] disabled:opacity-60 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-base sm:text-lg hover:opacity-90 transition-colors whitespace-nowrap"
                         >
                             {submitting ? "Submitting..." : "Submit Enrollment"}
                         </button>
 
                         {statusMessage && (
                             <p
-                                className={`mt-4 text-sm sm:text-base ${statusMessage.type === "success"
+                                className={`text-sm sm:text-base ${statusMessage.type === "success"
                                     ? "text-green-400"
                                     : "text-red-400"
                                     }`}
