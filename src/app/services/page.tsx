@@ -4,7 +4,6 @@
 import Link from "next/link";
 import {
     CheckCircle,
-    ArrowRight,
     BarChart,
     Users,
     Target,
@@ -106,7 +105,6 @@ const Services = () => {
 
                     {/* EXPERT SOLUTIONS with sliding background */}
                     <div className="relative inline-block mx-auto mb-6">
-                        {/* Sliding background */}
                         <span
                             className="absolute top-0 left-0 h-full bg-[#FFEA00] inline-block"
                             style={{
@@ -115,7 +113,6 @@ const Services = () => {
                             }}
                         ></span>
 
-                        {/* Text */}
                         <span
                             className="relative z-10 text-black text-lg md:text-xl lg:text-2xl font-bold uppercase px-6 py-2 inline-block"
                             style={{
@@ -146,7 +143,6 @@ const Services = () => {
                             key={index}
                             className="bg-[#252525] p-8 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-300 group cursor-pointer relative overflow-hidden"
                         >
-                            {/* Hover Effect */}
                             <div className="absolute inset-0 bg-[#02B600]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                             <div className="relative z-10">
@@ -184,12 +180,6 @@ const Services = () => {
                                         </li>
                                     ))}
                                 </ul>
-                                <button
-                                    className="flex items-center gap-2 text-[#FFEA00] font-semibold group-hover:gap-3 transition-all uppercase"
-                                    style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
-                                >
-                                    Learn More <ArrowRight className="w-4 h-4" />
-                                </button>
                             </div>
                         </div>
                     ))}
@@ -197,7 +187,6 @@ const Services = () => {
 
                 {/* CTA Section */}
                 <div className="bg-[#252525] rounded-lg p-12 text-center border border-gray-700 relative overflow-hidden">
-                    {/* Background pattern */}
                     <div
                         className="absolute inset-0 opacity-5"
                         style={{
@@ -227,12 +216,15 @@ const Services = () => {
                             goals and drive sustainable growth.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button
-                                className="bg-[#FFEA00] text-black px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-yellow-300 transition-colors"
-                                style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
-                            >
-                                Get Started
-                            </button>
+                            {/* ✅ Updated Get Started Button with Link */}
+                            <Link href="/contact">
+                                <button
+                                    className="bg-[#FFEA00] text-black px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-yellow-300 transition-colors"
+                                    style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
+                                >
+                                    Get Started
+                                </button>
+                            </Link>
                             <Link href="/portfolio">
                                 <button
                                     className="border-2 border-[#FFEA00] text-[#FFEA00] px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#FFEA00] hover:text-black transition-colors"
@@ -246,7 +238,6 @@ const Services = () => {
                 </div>
             </div>
 
-            {/* Keyframes */}
             <style>
                 {`
           @keyframes slideRight {

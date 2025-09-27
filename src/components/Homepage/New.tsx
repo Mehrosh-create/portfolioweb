@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import {
   ArrowRight,
   Calendar,
@@ -357,8 +358,9 @@ const NewPage: React.FC = () => {
 
                     <div className="flex flex-col sm:flex-row gap-3">
 
-                      <button
-                        className="border-2 border-[#FFEA00] text-[#FFEA00] px-5 py-2 sm:px-6 sm:py-3 uppercase transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+                      <Link
+                        href={`/learnmore/${update.id}`}
+                        className="border-2 border-[#FFEA00] text-[#FFEA00] px-5 py-2 sm:px-6 sm:py-3 uppercase transition-all duration-300 transform hover:scale-105 text-sm sm:text-base text-center"
                         style={{
                           fontFamily: '"Bebas Neue", sans-serif',
                           fontWeight: 700,
@@ -366,7 +368,7 @@ const NewPage: React.FC = () => {
                         }}
                       >
                         Learn More
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
