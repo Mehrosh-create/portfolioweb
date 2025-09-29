@@ -1,4 +1,4 @@
-// src/app/about/page.tsx
+// src/app/about/page.tsx - UPDATED
 "use client";
 
 import Image from "next/image";
@@ -47,13 +47,13 @@ export default function About() {
     }, []);
 
     return (
-        <div className="min-h-screen pt-20 bg-[#151515] flex flex-col">
+        <div className="min-h-screen pt-16 sm:pt-20 bg-[#151515] flex flex-col">
             {/* Main Container with responsive padding */}
-            <div className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-40">
+            <div className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-4">
                 {/* Header Section */}
                 <div className="text-center mb-8 sm:mb-12 lg:mb-16">
                     <h1
-                        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase text-white mb-6 lg:mb-8 leading-tight"
+                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white mb-4 sm:mb-6 lg:mb-8 leading-tight"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
                             letterSpacing: "0.02em",
@@ -73,7 +73,7 @@ export default function About() {
                         ></span>
 
                         <span
-                            className="relative z-10 text-black text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase px-4 sm:px-6 py-2 inline-block"
+                            className="relative z-10 text-black text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase px-3 sm:px-4 lg:px-6 py-1 sm:py-2 inline-block"
                             style={{
                                 fontFamily: '"Bebas Neue", Arial, sans-serif',
                                 letterSpacing: "0.05em",
@@ -85,10 +85,10 @@ export default function About() {
                 </div>
 
                 {/* Main Content - Improved grid responsiveness */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-12 lg:mb-20">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 lg:mb-16">
                     <div className="order-2 lg:order-1">
                         <h2
-                            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-white"
+                            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 lg:mb-6 text-white"
                             style={{
                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
@@ -96,7 +96,7 @@ export default function About() {
                             I&apos;m a Global Strategist & Digital Transformer Leader.
                         </h2>
                         <p
-                            className="text-base sm:text-lg text-[#e0f7fa] mb-4 sm:mb-6 leading-relaxed"
+                            className="text-sm sm:text-base lg:text-lg text-[#e0f7fa] mb-3 sm:mb-4 lg:mb-6 leading-relaxed"
                             style={{
                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
@@ -107,7 +107,7 @@ export default function About() {
                             scalable systems, and grow through digital innovation.
                         </p>
                         <p
-                            className="text-base sm:text-lg text-[#e0f7fa] leading-relaxed"
+                            className="text-sm sm:text-base lg:text-lg text-[#e0f7fa] leading-relaxed"
                             style={{
                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
@@ -118,13 +118,14 @@ export default function About() {
                             helped countless organizations achieve unprecedented success.
                         </p>
                     </div>
-                    <div className="order-1 lg:order-2 relative h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden border-2 border-gray-700 hover:border-[#02B600] transition-all duration-300">
+                    <div className="order-1 lg:order-2 relative h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 rounded-lg overflow-hidden border-2 border-gray-700 hover:border-[#02B600] transition-all duration-300">
                         <Image
                             src="/images/about-profile.jpg"
                             alt="Sheikh Nabeel"
                             fill
                             className="object-cover"
                             priority
+                            sizes="(max-width: 1024px) 100vw, 50vw"
                         />
                         <div className="absolute inset-0 bg-[#02B600]/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -132,12 +133,12 @@ export default function About() {
 
                 {/* Services Section with Cursor Effect */}
                 <div
-                    className="mb-12 lg:mb-20 relative"
+                    className="mb-8 sm:mb-12 lg:mb-16 relative"
                     onMouseEnter={() => setShowCursor(true)}
                     onMouseLeave={() => setShowCursor(false)}
                 >
                     <h2
-                        className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 lg:mb-8 text-white text-center uppercase"
+                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 text-white text-center uppercase"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
                             letterSpacing: "0.05em",

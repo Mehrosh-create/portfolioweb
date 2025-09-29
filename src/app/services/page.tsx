@@ -1,4 +1,4 @@
-// src/app/services/page.tsx
+// src/app/services/page.tsx - UPDATED
 "use client";
 
 import Link from "next/link";
@@ -15,7 +15,7 @@ import {
 const Services = () => {
     const services = [
         {
-            icon: <BarChart className="w-12 h-12" />,
+            icon: <BarChart className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
             title: "Business Strategy & Digital Growth",
             description:
                 "Comprehensive business strategies tailored to your goals with data-driven digital growth plans.",
@@ -27,7 +27,7 @@ const Services = () => {
             ],
         },
         {
-            icon: <Zap className="w-12 h-12" />,
+            icon: <Zap className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
             title: "Operations Management & Automation",
             description:
                 "Streamline your operations with cutting-edge automation solutions and efficient management systems.",
@@ -39,7 +39,7 @@ const Services = () => {
             ],
         },
         {
-            icon: <Users className="w-12 h-12" />,
+            icon: <Users className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
             title: "CRM & Client Lifecycle Solutions",
             description:
                 "End-to-end CRM implementation and client management solutions to enhance customer relationships.",
@@ -51,7 +51,7 @@ const Services = () => {
             ],
         },
         {
-            icon: <TrendingUp className="w-12 h-12" />,
+            icon: <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
             title: "Digital Funnels & Brand Positioning",
             description:
                 "Create high-conversion digital funnels and establish powerful brand positioning in your market.",
@@ -63,7 +63,7 @@ const Services = () => {
             ],
         },
         {
-            icon: <Target className="w-12 h-12" />,
+            icon: <Target className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
             title: "Team Management & Communication Systems",
             description:
                 "Implement effective team management structures and communication systems for optimal productivity.",
@@ -75,7 +75,7 @@ const Services = () => {
             ],
         },
         {
-            icon: <Lightbulb className="w-12 h-12" />,
+            icon: <Lightbulb className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
             title: "Digital Transformation Consulting",
             description:
                 "Complete digital transformation services to future-proof your business operations.",
@@ -89,12 +89,12 @@ const Services = () => {
     ];
 
     return (
-        <div className="min-h-screen pt-20 px-40 pb-24 bg-[#151515] flex flex-col">
-            <div className="flex-grow max-w-7xl mx-auto lg:mr-8">
+        <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 xl:px-4 pb-8 sm:pb-16 lg:pb-24 bg-[#151515] flex flex-col">
+            <div className="flex-grow max-w-7xl mx-auto w-full">
                 {/* Header Section */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-8 sm:mb-12 lg:mb-16">
                     <h1
-                        className="text-5xl md:text-7xl font-black uppercase text-white mb-8 leading-tight"
+                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white mb-6 sm:mb-8 leading-tight"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
                             letterSpacing: "0.02em",
@@ -104,7 +104,7 @@ const Services = () => {
                     </h1>
 
                     {/* EXPERT SOLUTIONS with sliding background */}
-                    <div className="relative inline-block mx-auto mb-6">
+                    <div className="relative inline-block mx-auto mb-4 sm:mb-6">
                         <span
                             className="absolute top-0 left-0 h-full bg-[#FFEA00] inline-block"
                             style={{
@@ -114,7 +114,7 @@ const Services = () => {
                         ></span>
 
                         <span
-                            className="relative z-10 text-black text-lg md:text-xl lg:text-2xl font-bold uppercase px-6 py-2 inline-block"
+                            className="relative z-10 text-black text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase px-3 sm:px-4 lg:px-6 py-1 sm:py-2 inline-block"
                             style={{
                                 fontFamily: '"Bebas Neue", Arial, sans-serif',
                                 letterSpacing: "0.05em",
@@ -125,7 +125,7 @@ const Services = () => {
                     </div>
 
                     <p
-                        className="text-lg md:text-xl text-[#E0F7FA] max-w-3xl mx-auto"
+                        className="text-sm sm:text-base lg:text-lg xl:text-xl text-[#E0F7FA] max-w-3xl mx-auto px-2"
                         style={{
                             fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                         }}
@@ -137,20 +137,20 @@ const Services = () => {
                 </div>
 
                 {/* Services Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 lg:mb-20">
                     {services.map((service, index) => (
                         <div
                             key={index}
-                            className="bg-[#252525] p-8 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-300 group cursor-pointer relative overflow-hidden"
+                            className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-300 group cursor-pointer relative overflow-hidden"
                         >
                             <div className="absolute inset-0 bg-[#02B600]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                             <div className="relative z-10">
-                                <div className="text-[#FFEA00] mb-6 group-hover:text-[#02B600] transition-colors duration-300">
+                                <div className="text-[#FFEA00] mb-4 sm:mb-6 group-hover:text-[#02B600] transition-colors duration-300">
                                     {service.icon}
                                 </div>
                                 <h3
-                                    className="text-2xl font-bold text-white mb-4 group-hover:text-[#E0F7FA] transition-colors"
+                                    className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4 group-hover:text-[#E0F7FA] transition-colors"
                                     style={{
                                         fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                     }}
@@ -158,24 +158,24 @@ const Services = () => {
                                     {service.title}
                                 </h3>
                                 <p
-                                    className="text-[#E0F7FA] mb-6"
+                                    className="text-[#E0F7FA] mb-4 sm:mb-6 text-sm sm:text-base"
                                     style={{
                                         fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                     }}
                                 >
                                     {service.description}
                                 </p>
-                                <ul className="space-y-2 mb-6">
+                                <ul className="space-y-1 sm:space-y-2 mb-4 sm:mb-6">
                                     {service.features.map((feature, idx) => (
                                         <li
                                             key={idx}
-                                            className="flex items-center gap-2 text-[#E0F7FA]"
+                                            className="flex items-center gap-2 text-[#E0F7FA] text-xs sm:text-sm"
                                             style={{
                                                 fontFamily:
                                                     'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                             }}
                                         >
-                                            <CheckCircle className="w-5 h-5 text-[#02B600]" />
+                                            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#02B600] flex-shrink-0" />
                                             <span>{feature}</span>
                                         </li>
                                     ))}
@@ -186,7 +186,7 @@ const Services = () => {
                 </div>
 
                 {/* CTA Section */}
-                <div className="bg-[#252525] rounded-lg p-12 text-center border border-gray-700 relative overflow-hidden">
+                <div className="bg-[#252525] rounded-lg p-6 sm:p-8 lg:p-12 text-center border border-gray-700 relative overflow-hidden">
                     <div
                         className="absolute inset-0 opacity-5"
                         style={{
@@ -198,7 +198,7 @@ const Services = () => {
 
                     <div className="relative z-10">
                         <h2
-                            className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase"
+                            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 uppercase"
                             style={{
                                 fontFamily: '"Bebas Neue", Arial, sans-serif',
                                 letterSpacing: "0.05em",
@@ -207,7 +207,7 @@ const Services = () => {
                             Ready to Transform Your Business?
                         </h2>
                         <p
-                            className="text-lg md:text-xl text-[#E0F7FA] mb-8 max-w-2xl mx-auto"
+                            className="text-sm sm:text-base lg:text-lg xl:text-xl text-[#E0F7FA] mb-6 sm:mb-8 max-w-2xl mx-auto"
                             style={{
                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
@@ -215,11 +215,11 @@ const Services = () => {
                             Let&apos;s discuss how my services can help you achieve your business
                             goals and drive sustainable growth.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                             {/* ✅ Updated Get Started Button with Link */}
                             <Link href="/contact">
                                 <button
-                                    className="bg-[#FFEA00] text-black px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-yellow-300 transition-colors"
+                                    className="bg-[#FFEA00] text-black px-6 sm:px-8 py-2 sm:py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-yellow-300 transition-colors text-sm sm:text-base"
                                     style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                                 >
                                     Get Started
@@ -227,7 +227,7 @@ const Services = () => {
                             </Link>
                             <Link href="/portfolio">
                                 <button
-                                    className="border-2 border-[#FFEA00] text-[#FFEA00] px-8 py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#FFEA00] hover:text-black transition-colors"
+                                    className="border-2 border-[#FFEA00] text-[#FFEA00] px-6 sm:px-8 py-2 sm:py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#FFEA00] hover:text-black transition-colors text-sm sm:text-base"
                                     style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                                 >
                                     View Portfolio

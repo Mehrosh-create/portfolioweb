@@ -1,23 +1,24 @@
+// src/app/contact/page.tsx - UPDATED
 "use client";
 
 import ContactForm from "@/components/Contact/ContactForm";
 
 const Contact = () => {
     return (
-        <div className="min-h-screen pt-20 px-40 pb-16 bg-[#151515] flex flex-col">
-            <div className="flex-grow max-w-6xl mx-auto lg:mr-8">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 xl:px-4 pb-8 sm:pb-16 bg-[#151515] flex flex-col">
+            <div className="flex-grow max-w-7xl mx-auto w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
                     {/* Contact Options (Left Column) */}
-                    <div className="lg:col-span-1 space-y-8">
+                    <div className="lg:col-span-1 space-y-6 sm:space-y-8">
                         <div className="wpb_text_column">
                             <h2
-                                className="text-4xl font-bold text-white mb-6 uppercase"
+                                className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 uppercase"
                                 style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                             >
                                 Contact
                             </h2>
                             <p
-                                className="text-lg text-white mb-6"
+                                className="text-sm sm:text-base lg:text-lg text-white mb-4 sm:mb-6"
                                 style={{
                                     fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                 }}
@@ -26,13 +27,13 @@ const Contact = () => {
                                 team.
                             </p>
                             <h3
-                                className="text-3xl font-bold text-white mb-4 uppercase"
+                                className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4 uppercase"
                                 style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                             >
                                 Hire SheikhMedia
                             </h3>
                             <h6
-                                className="text-lg text-white mb-4"
+                                className="text-sm sm:text-base lg:text-lg text-white mb-3 sm:mb-4"
                                 style={{
                                     fontFamily:
                                         'Arial, "Helvetica Neue", Helvetica, sans-serif',
@@ -49,13 +50,13 @@ const Contact = () => {
                                 </a>
                             </h6>
                             <h3
-                                className="text-3xl font-bold text-white mb-4 uppercase"
+                                className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4 uppercase"
                                 style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                             >
                                 Press
                             </h3>
                             <h6
-                                className="text-lg text-white mb-4"
+                                className="text-sm sm:text-base lg:text-lg text-white mb-3 sm:mb-4"
                                 style={{
                                     fontFamily:
                                         'Arial, "Helvetica Neue", Helvetica, sans-serif',
@@ -65,13 +66,13 @@ const Contact = () => {
                                 press-related
                             </h6>
                             <h3
-                                className="text-3xl font-bold text-white mb-4 uppercase"
+                                className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4 uppercase"
                                 style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                             >
                                 General Inquiry
                             </h3>
                             <h6
-                                className="text-lg text-white mb-4"
+                                className="text-sm sm:text-base lg:text-lg text-white mb-3 sm:mb-4"
                                 style={{
                                     fontFamily:
                                         'Arial, "Helvetica Neue", Helvetica, sans-serif',

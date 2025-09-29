@@ -1,4 +1,4 @@
-// src/app/portfolio/page.tsx
+// src/app/portfolio/page.tsx - UPDATED
 "use client";
 
 import Image from "next/image";
@@ -80,12 +80,12 @@ const Portfolio = () => {
             : portfolioItems.filter((item) => item.category === activeFilter);
 
     return (
-        <div className="min-h-screen pt-20 pb-20 px-40 bg-[#151515] flex flex-col">
-            <div className="flex-grow max-w-7xl mx-auto lg:mr-8">
+        <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 xl:px-4 pb-8 sm:pb-16 lg:pb-20 bg-[#151515] flex flex-col">
+            <div className="flex-grow max-w-7xl mx-auto w-full">
                 {/* Header */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-8 sm:mb-12 lg:mb-16">
                     <h1
-                        className="text-5xl md:text-7xl font-black uppercase text-white mb-8 leading-tight"
+                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white mb-6 sm:mb-8 leading-tight"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
                             letterSpacing: "0.02em",
@@ -95,7 +95,7 @@ const Portfolio = () => {
                     </h1>
 
                     {/* CASE STUDIES & PROJECTS with sliding background */}
-                    <div className="relative inline-block mx-auto mb-6">
+                    <div className="relative inline-block mx-auto mb-4 sm:mb-6">
                         <span
                             className="absolute top-0 left-0 h-full bg-[#FFEA00] inline-block"
                             style={{
@@ -105,7 +105,7 @@ const Portfolio = () => {
                         ></span>
 
                         <span
-                            className="relative z-10 text-black text-lg md:text-xl lg:text-2xl font-bold uppercase px-6 py-2 inline-block"
+                            className="relative z-10 text-black text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase px-3 sm:px-4 lg:px-6 py-1 sm:py-2 inline-block"
                             style={{
                                 fontFamily: '"Bebas Neue", Arial, sans-serif',
                                 letterSpacing: "0.05em",
@@ -117,12 +117,12 @@ const Portfolio = () => {
                 </div>
 
                 {/* Filters */}
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
+                <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4 mb-8 sm:mb-10 lg:mb-12">
                     {filters.map((filter) => (
                         <button
                             key={filter.id}
                             onClick={() => setActiveFilter(filter.id)}
-                            className={`px-6 py-2 rounded-full transition-colors uppercase tracking-wide ${activeFilter === filter.id
+                            className={`px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 rounded-full transition-colors uppercase tracking-wide text-xs sm:text-sm ${activeFilter === filter.id
                                 ? "bg-[#FFEA00] text-black"
                                 : "bg-[#252525] text-white hover:bg-[#FFEA00] hover:text-black"
                                 }`}
@@ -137,40 +137,43 @@ const Portfolio = () => {
                 </div>
 
                 {/* Portfolio Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                     {filteredItems.map((item) => (
                         <div
                             key={item.id}
                             className="group relative bg-[#252525] rounded-lg overflow-hidden border border-gray-700 hover:border-[#FFEA00] transition-all duration-500"
                         >
                             {/* Image with hover overlay */}
-                            <div className="relative h-60 overflow-hidden">
+                            <div className="relative h-48 sm:h-56 lg:h-60 xl:h-64 overflow-hidden">
                                 <Image
                                     src={item.image}
                                     alt={item.title}
                                     fill
                                     className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                                 />
-                                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
+                                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-3 sm:gap-4">
                                     <a
                                         href={item.link}
-                                        className="bg-[#FFEA00] text-black p-3 rounded-full hover:scale-110 transition-transform"
+                                        className="bg-[#FFEA00] text-black p-2 sm:p-3 rounded-full hover:scale-110 transition-transform"
+                                        aria-label={`View ${item.title} live demo`}
                                     >
-                                        <ExternalLink size={20} />
+                                        <ExternalLink size={16} className="sm:w-5 sm:h-5" />
                                     </a>
                                     <a
                                         href={item.github}
-                                        className="bg-[#02B600] text-white p-3 rounded-full hover:scale-110 transition-transform"
+                                        className="bg-[#02B600] text-white p-2 sm:p-3 rounded-full hover:scale-110 transition-transform"
+                                        aria-label={`View ${item.title} source code`}
                                     >
-                                        <Github size={20} />
+                                        <Github size={16} className="sm:w-5 sm:h-5" />
                                     </a>
                                 </div>
                             </div>
 
                             {/* Card Content */}
-                            <div className="p-6 relative z-10">
+                            <div className="p-4 sm:p-5 lg:p-6 relative z-10">
                                 <h3
-                                    className="text-2xl font-bold text-white mb-3 group-hover:text-[#FFEA00] transition-colors"
+                                    className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-[#FFEA00] transition-colors"
                                     style={{
                                         fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                     }}
@@ -178,7 +181,7 @@ const Portfolio = () => {
                                     {item.title}
                                 </h3>
                                 <p
-                                    className="text-lg text-[#e0f7fa] mb-4 leading-relaxed"
+                                    className="text-[#E0F7FA] text-sm sm:text-base mb-3 sm:mb-4"
                                     style={{
                                         fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                     }}
@@ -186,19 +189,48 @@ const Portfolio = () => {
                                     {item.description}
                                 </p>
                                 <span
-                                    className="inline-block px-4 py-1 bg-[#02B600] text-white text-sm rounded-full uppercase tracking-wider"
-                                    style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
+                                    className="inline-block px-3 py-1 bg-[#FFEA00]/20 text-[#FFEA00] rounded-full text-xs sm:text-sm uppercase tracking-wider"
+                                    style={{
+                                        fontFamily: '"Bebas Neue", Arial, sans-serif',
+                                        letterSpacing: "0.05em",
+                                    }}
                                 >
-                                    {item.category.charAt(0).toUpperCase() +
-                                        item.category.slice(1)}
+                                    {item.category.charAt(0).toUpperCase() + item.category.slice(1)}
                                 </span>
                             </div>
                         </div>
                     ))}
                 </div>
+
+                {/* CTA Section */}
+                <div className="text-center mt-12 sm:mt-16 lg:mt-20">
+                    <h2
+                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 uppercase"
+                        style={{
+                            fontFamily: '"Bebas Neue", Arial, sans-serif',
+                            letterSpacing: "0.05em",
+                        }}
+                    >
+                        Ready to Start Your Project?
+                    </h2>
+                    <p
+                        className="text-sm sm:text-base lg:text-lg xl:text-xl text-[#E0F7FA] mb-6 sm:mb-8 max-w-2xl mx-auto"
+                        style={{
+                            fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                        }}
+                    >
+                        Let&apos;s discuss how we can bring your vision to life with innovative
+                        digital solutions.
+                    </p>
+                    <button
+                        className="bg-[#FFEA00] text-black px-6 sm:px-8 lg:px-10 py-2.5 sm:py-3 lg:py-4 font-bold uppercase tracking-wider rounded-lg hover:bg-yellow-300 transition-colors text-sm sm:text-base lg:text-lg"
+                        style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
+                    >
+                        Get In Touch
+                    </button>
+                </div>
             </div>
 
-            {/* Keyframes */}
             <style>
                 {`
           @keyframes slideRight {
