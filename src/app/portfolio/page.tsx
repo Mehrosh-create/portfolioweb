@@ -91,13 +91,13 @@ const Portfolio = () => {
                             letterSpacing: "0.02em",
                         }}
                     >
-                        MY <span className="text-[#FFEA00]">PORTFOLIO</span>
+                        MY <span className="text-[#0fb8af]">PORTFOLIO</span>
                     </h1>
 
                     {/* CASE STUDIES & PROJECTS with sliding background */}
                     <div className="relative inline-block mx-auto mb-4 sm:mb-6">
                         <span
-                            className="absolute top-0 left-0 h-full bg-[#FFEA00] inline-block"
+                            className="absolute top-0 left-0 h-full bg-[#0fb8af] inline-block"
                             style={{
                                 width: "0%",
                                 animation: "slideRight 2s forwards",
@@ -123,8 +123,8 @@ const Portfolio = () => {
                             key={filter.id}
                             onClick={() => setActiveFilter(filter.id)}
                             className={`px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 rounded-full transition-colors uppercase tracking-wide text-xs sm:text-sm ${activeFilter === filter.id
-                                ? "bg-[#FFEA00] text-black"
-                                : "bg-[#252525] text-white hover:bg-[#FFEA00] hover:text-black"
+                                ? "bg-[#0fb8af] text-black"
+                                : "bg-[#252525] text-white hover:bg-[#0fb8af] hover:text-black"
                                 }`}
                             style={{
                                 fontFamily: '"Bebas Neue", Arial, sans-serif',
@@ -141,7 +141,7 @@ const Portfolio = () => {
                     {filteredItems.map((item) => (
                         <div
                             key={item.id}
-                            className="group relative bg-[#252525] rounded-lg overflow-hidden border border-gray-700 hover:border-[#FFEA00] transition-all duration-500"
+                            className="group relative bg-[#252525] rounded-lg overflow-hidden border border-gray-700 hover:border-[#0fb8af] transition-all duration-500"
                         >
                             {/* Image with hover overlay */}
                             <div className="relative h-48 sm:h-56 lg:h-60 xl:h-64 overflow-hidden">
@@ -155,7 +155,7 @@ const Portfolio = () => {
                                 <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-3 sm:gap-4">
                                     <a
                                         href={item.link}
-                                        className="bg-[#FFEA00] text-black p-2 sm:p-3 rounded-full hover:scale-110 transition-transform"
+                                        className="bg-[#0fb8af] text-black p-2 sm:p-3 rounded-full hover:scale-110 transition-transform"
                                         aria-label={`View ${item.title} live demo`}
                                     >
                                         <ExternalLink size={16} className="sm:w-5 sm:h-5" />
@@ -173,7 +173,7 @@ const Portfolio = () => {
                             {/* Card Content */}
                             <div className="p-4 sm:p-5 lg:p-6 relative z-10">
                                 <h3
-                                    className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-[#FFEA00] transition-colors"
+                                    className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-[#0fb8af] transition-colors"
                                     style={{
                                         fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                     }}
@@ -189,7 +189,7 @@ const Portfolio = () => {
                                     {item.description}
                                 </p>
                                 <span
-                                    className="inline-block px-3 py-1 bg-[#FFEA00]/20 text-[#FFEA00] rounded-full text-xs sm:text-sm uppercase tracking-wider"
+                                    className="inline-block px-3 py-1 bg-[#0fb8af]/20 text-[#0fb8af] rounded-full text-xs sm:text-sm uppercase tracking-wider"
                                     style={{
                                         fontFamily: '"Bebas Neue", Arial, sans-serif',
                                         letterSpacing: "0.05em",
@@ -223,7 +223,7 @@ const Portfolio = () => {
                         digital solutions.
                     </p>
                     <button
-                        className="bg-[#FFEA00] text-black px-6 sm:px-8 lg:px-10 py-2.5 sm:py-3 lg:py-4 font-bold uppercase tracking-wider rounded-lg hover:bg-yellow-300 transition-colors text-sm sm:text-base lg:text-lg"
+                        className="bg-[#0fb8af] text-black px-6 sm:px-8 lg:px-10 py-2.5 sm:py-3 lg:py-4 font-bold uppercase tracking-wider rounded-lg hover:bg-[#0fb8af]/80 transition-colors text-sm sm:text-base lg:text-lg"
                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                     >
                         Get In Touch

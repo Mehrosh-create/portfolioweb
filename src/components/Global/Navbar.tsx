@@ -72,8 +72,8 @@ const Navbar = () => {
                   key={item.name}
                   href={item.href}
                   className={`text-sm lg:text-base font-medium uppercase tracking-wider transition-colors ${pathname === item.href
-                    ? "text-[#FFEA00]"
-                    : "text-white hover:text-[#FFEA00]"
+                    ? "text-[#0fb8af]"
+                    : "text-white hover:text-[#0fb8af]"
                     }`}
                   style={{
                     fontFamily: '"Bebas Neue", Arial, sans-serif',
@@ -88,7 +88,7 @@ const Navbar = () => {
             {/* Mobile menu button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2 rounded-md text-white hover:text-[#FFEA00] transition-colors"
+              className="md:hidden p-2 rounded-md text-white hover:text-[#0fb8af] transition-colors"
               aria-label="Toggle menu"
             >
               {isOpen ? (
@@ -112,8 +112,8 @@ const Navbar = () => {
                 href={item.href}
                 onClick={closeMenu}
                 className={`block text-base font-medium uppercase tracking-wider transition-colors ${pathname === item.href
-                  ? "text-[#FFEA00]"
-                  : "text-white hover:text-[#FFEA00]"
+                  ? "text-[#0fb8af]"
+                  : "text-white hover:text-[#0fb8af]"
                   }`}
                 style={{
                   fontFamily: '"Bebas Neue", Arial, sans-serif',

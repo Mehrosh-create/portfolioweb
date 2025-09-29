@@ -77,14 +77,14 @@ const Stats = () => {
                             className="transform transition duration-700 opacity-0 translate-y-8 animate-fadeInUp"
                             style={{ animationDelay: `${index * 100}ms` }}
                         >
-                            <div className="relative overflow-hidden bg-[#252525] p-3 sm:p-4 lg:p-6 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-500 text-center group cursor-pointer">
+                            <div className="relative overflow-hidden bg-[#252525] p-3 sm:p-4 lg:p-6 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-500 text-center group cursor-pointer">
                                 {/* Sliding green background */}
                                 <div className="absolute inset-0 bg-[#02B600] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-out"></div>
 
                                 {/* Content sits above */}
                                 <div className="relative z-10">
                                     <div
-                                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#FFEA00] mb-1 sm:mb-2 transition-colors group-hover:text-white"
+                                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#0fb8af] mb-1 sm:mb-2 transition-colors group-hover:text-white"
                                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                                     >
                                         {stat.value}

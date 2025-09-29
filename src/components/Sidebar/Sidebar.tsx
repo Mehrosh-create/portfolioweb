@@ -178,7 +178,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                   <li key={item.href} className="relative">
                     {/* ✅ background stays when active */}
                     <div
-                      className={`absolute inset-y-0 left-0 w-[70%] bg-[#02B600] transform transition-transform duration-300 ease-out 
+                      className={`absolute inset-y-0 left-0 w-[70%] bg-[#0fb8af] transform transition-transform duration-300 ease-out 
                       ${isActive || hoveredNav === item.href ? "scale-x-100 origin-left" : "scale-x-0 origin-left"}`}
                       style={{ zIndex: -1 }}
                     />
@@ -206,18 +206,18 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                   onMouseEnter={() => setSearchHover(true)}
                   onMouseLeave={() => setSearchHover(false)}
                   className={`${screenSize === "mobile" ? "w-8 h-8" : "w-9 h-9"} flex items-center justify-center rounded-full transition-colors duration-300`}
-                  style={{ color: searchHover ? "#02B600" : "white" }}
+                  style={{ color: searchHover ? "#0fb8af" : "white" }}
                 >
                   <SearchIcon
                     className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} transition-colors duration-300`}
-                    style={{ color: searchHover ? "#02B600" : "white" }}
+                    style={{ color: searchHover ? "#0fb8af" : "white" }}
                   />
                 </button>
               </li>
             </ul>
           </nav>
 
-          <div className={`p-4 border-t border-[#02B600]/40 flex-shrink-0 ${screenSize === "mobile" ? "p-3" : ""}`}>
+          <div className={`p-4 border-t border-[#0fb8af]/40 flex-shrink-0 ${screenSize === "mobile" ? "p-3" : ""}`}>
             <div className="mb-3">
               <ul className={`grid ${getSocialGridCols()} gap-2 justify-items-center`}>
                 {socialLinks.slice(0, screenSize === "mobile" ? 8 : socialLinks.length).map((social, i) => (
@@ -232,7 +232,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                       <span className="absolute inset-0 flex items-center justify-center bg-black/40 transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
                         <social.icon className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} text-white`} />
                       </span>
-                      <span className="absolute inset-0 flex items-center justify-center bg-[#02B600] translate-y-full transition-all duration-300 group-hover:translate-y-0">
+                      <span className="absolute inset-0 flex items-center justify-center bg-[#0fb8af] translate-y-full transition-all duration-300 group-hover:translate-y-0">
                         <social.icon className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} text-white`} />
                       </span>
                     </a>

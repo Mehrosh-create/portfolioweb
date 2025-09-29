@@ -239,7 +239,7 @@ const BlogArticlePage = () => {
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider transition-colors"
-            style={{ backgroundColor: "#FFEA00", color: "#000" }}
+            style={{ backgroundColor: "#0fb8af", color: "#000" }}
           >
             <ArrowLeft className="w-4 h-4" /> Back to Blog
           </Link>
@@ -256,7 +256,7 @@ const BlogArticlePage = () => {
           {/* Back Button */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-[#FFEA00] transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-[#0fb8af] transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" /> Back to Blog
           </Link>
@@ -265,7 +265,7 @@ const BlogArticlePage = () => {
           <div className="mb-8">
             <span
               className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider rounded mb-4"
-              style={{ backgroundColor: "#FFEA00", color: "#000" }}
+              style={{ backgroundColor: "#0fb8af", color: "#000" }}
             >
               {article.category}
             </span>
@@ -294,10 +294,10 @@ const BlogArticlePage = () => {
                 </div>
               </div>
               <div className="flex gap-3">
-                <button className="w-5 h-5 text-gray-400 hover:text-[#FFEA00] transition-colors cursor-pointer">
+                <button className="w-5 h-5 text-gray-400 hover:text-[#0fb8af] transition-colors cursor-pointer">
                   <Bookmark className="w-5 h-5" />
                 </button>
-                <button className="w-5 h-5 text-gray-400 hover:text-[#FFEA00] transition-colors cursor-pointer">
+                <button className="w-5 h-5 text-gray-400 hover:text-[#0fb8af] transition-colors cursor-pointer">
                   <Share2 className="w-5 h-5" />
                 </button>
               </div>
@@ -305,7 +305,7 @@ const BlogArticlePage = () => {
 
             {/* Author Info */}
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(to bottom right, #FFEA00, #FFD700)" }}>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(to bottom right, #0fb8af, #0fb8af)" }}>
                 <span className="text-black font-bold text-lg">
                   {article.author ? article.author.charAt(0) : "A"}
                 </span>
@@ -354,10 +354,10 @@ const BlogArticlePage = () => {
               <div className="flex items-center gap-4">
                 <span className="text-gray-400">Share this article:</span>
                 <div className="flex gap-3">
-                  <button className="p-2 border border-gray-600 rounded hover:border-[#FFEA00] hover:text-[#FFEA00] transition-colors">
+                  <button className="p-2 border border-gray-600 rounded hover:border-[#0fb8af] hover:text-[#0fb8af] transition-colors">
                     <Share2 className="w-4 h-4" />
                   </button>
-                  <button className="p-2 border border-gray-600 rounded hover:border-[#FFEA00] hover:text-[#FFEA00] transition-colors">
+                  <button className="p-2 border border-gray-600 rounded hover:border-[#0fb8af] hover:text-[#0fb8af] transition-colors">
                     <Heart className="w-4 h-4" />
                   </button>
                 </div>
@@ -366,7 +366,7 @@ const BlogArticlePage = () => {
               <Link
                 href="/blog"
                 className="inline-flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider transition-colors"
-                style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                style={{ backgroundColor: "#0fb8af", color: "#000" }}
               >
                 <ArrowLeft className="w-4 h-4" /> Back to Blog
               </Link>

@@ -102,8 +102,8 @@ export default function EnrollmentFormPage() {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#151515] text-white px-4 sm:px-6 lg:px-8 py-10">
-            <div className="w-full max-w-md sm:max-w-lg lg:max-w-2xl bg-[#151515] p-6 sm:p-8 lg:p-10 rounded-lg border border-[#606060] hover:border-[#FFEA00] transition-all duration-300">
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-8 text-[#FFEA00] uppercase text-center sm:text-left">
+            <div className="w-full max-w-md sm:max-w-lg lg:max-w-2xl bg-[#151515] p-6 sm:p-8 lg:p-10 rounded-lg border border-[#606060] hover:border-[#0fb8af] transition-all duration-300">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-8 text-[#0fb8af] uppercase text-center sm:text-left">
                     Enroll for Program (ID: {id})
                 </h1>
 
@@ -199,7 +199,7 @@ export default function EnrollmentFormPage() {
                         <button
                             type="submit"
                             disabled={submitting}
-                            className="bg-[#FFEA00] disabled:opacity-60 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-base sm:text-lg hover:opacity-90 transition-colors whitespace-nowrap"
+                            className="bg-[#0fb8af] disabled:opacity-60 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-base sm:text-lg hover:opacity-90 transition-colors whitespace-nowrap"
                         >
                             {submitting ? "Submitting..." : "Submit Enrollment"}
                         </button>

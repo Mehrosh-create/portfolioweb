@@ -42,7 +42,7 @@ export default function Search() {
               letterSpacing: '0.02em',
             }}
           >
-            # <span className="text-[#FFEA00]">SEARCH</span>
+            # <span className="text-[#0fb8af]">SEARCH</span>
           </h1>
 
           {/* Search description */}
@@ -66,7 +66,7 @@ export default function Search() {
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Hit enter to search or ESC to close ______."
-              className="w-full bg-[#252525] border-2 border-gray-700 rounded-lg py-3 sm:py-4 px-4 sm:px-6 text-white placeholder-gray-400 focus:outline-none focus:border-[#FFEA00] focus:ring-2 focus:ring-[#FFEA00]/20 text-base sm:text-lg lg:text-xl transition-all duration-300"
+              className="w-full bg-[#252525] border-2 border-gray-700 rounded-lg py-3 sm:py-4 px-4 sm:px-6 text-white placeholder-gray-400 focus:outline-none focus:border-[#0fb8af] focus:ring-2 focus:ring-[#0fb8af]/20 text-base sm:text-lg lg:text-xl transition-all duration-300"
               autoFocus
             />
 
@@ -155,7 +155,7 @@ export default function Search() {
                   <button
                     key={term}
                     onClick={() => setSearchQuery(term)}
-                    className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-800 hover:bg-[#FFEA00] hover:text-black text-gray-300 rounded-full text-xs sm:text-sm transition-all duration-300 border border-gray-700 hover:border-[#FFEA00]"
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-800 hover:bg-[#0fb8af] hover:text-black text-gray-300 rounded-full text-xs sm:text-sm transition-all duration-300 border border-gray-700 hover:border-[#0fb8af]"
                     style={{
                       fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                     }}
@@ -181,9 +181,9 @@ export default function Search() {
 
               <div className="space-y-4 sm:space-y-6">
                 {/* Sample result items */}
-                <div className="bg-[#1a1a1a] rounded-lg p-4 sm:p-6 border border-gray-700 hover:border-[#FFEA00] transition-all duration-300">
+                <div className="bg-[#1a1a1a] rounded-lg p-4 sm:p-6 border border-gray-700 hover:border-[#0fb8af] transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#FFEA00] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#0fb8af] rounded-lg flex items-center justify-center flex-shrink-0">
                       <span
                         className="text-black font-bold text-sm sm:text-base"
                         style={{

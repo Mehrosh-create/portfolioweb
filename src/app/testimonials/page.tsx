@@ -101,13 +101,13 @@ const Testimonials = () => {
                             letterSpacing: "0.02em",
                         }}
                     >
-                        CLIENT <span className="text-[#FFEA00]">TESTIMONIALS</span>
+                        CLIENT <span className="text-[#0fb8af]">TESTIMONIALS</span>
                     </h1>
 
                     {/* Sliding background highlight like About page */}
                     <div className="relative inline-block mx-auto mb-4 sm:mb-6">
                         <span
-                            className="absolute top-0 left-0 h-full bg-[#FFEA00] inline-block"
+                            className="absolute top-0 left-0 h-full bg-[#0fb8af] inline-block"
                             style={{
                                 width: "0%",
                                 animation: "slideRight 2s forwards",
@@ -127,7 +127,7 @@ const Testimonials = () => {
 
                 {/* Testimonial Carousel */}
                 <div className="relative max-w-4xl mx-auto mb-8 sm:mb-12 lg:mb-16">
-                    <div className="bg-[#252525] rounded-lg p-4 sm:p-6 lg:p-8 xl:p-12 relative border border-gray-700 hover:border-[#FFEA00] transition-all duration-300 overflow-hidden">
+                    <div className="bg-[#252525] rounded-lg p-4 sm:p-6 lg:p-8 xl:p-12 relative border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 overflow-hidden">
                         {/* Background pattern */}
                         <div
                             className="absolute inset-0 opacity-5"
@@ -145,7 +145,7 @@ const Testimonials = () => {
                                 {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
                                     <Star
                                         key={i}
-                                        className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#FFEA00] fill-current"
+                                        className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#0fb8af] fill-current"
                                     />
                                 ))}
                             </div>
@@ -179,7 +179,7 @@ const Testimonials = () => {
                                     {testimonials[currentIndex].name}
                                 </h3>
                                 <p
-                                    className="text-[#FFEA00] text-sm sm:text-base"
+                                    className="text-[#0fb8af] text-sm sm:text-base"
                                     style={{
                                         fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                     }}
@@ -213,7 +213,7 @@ const Testimonials = () => {
                                     key={index}
                                     onClick={() => setCurrentIndex(index)}
                                     className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                                        ? "bg-[#FFEA00] scale-125"
+                                        ? "bg-[#0fb8af] scale-125"
                                         : "bg-gray-600 hover:bg-[#02B600]"
                                         }`}
                                     aria-label={`Go to testimonial ${index + 1}`}
@@ -262,7 +262,7 @@ const Testimonials = () => {
                                         {testimonial.name}
                                     </h3>
                                     <p
-                                        className="text-[#FFEA00] font-semibold uppercase tracking-wider text-sm sm:text-base lg:text-lg mb-1 sm:mb-2"
+                                        className="text-[#0fb8af] font-semibold uppercase tracking-wider text-sm sm:text-base lg:text-lg mb-1 sm:mb-2"
                                         style={{
                                             fontFamily: '"Bebas Neue", Arial, sans-serif',
                                         }}
@@ -343,7 +343,7 @@ const Testimonials = () => {
                         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                             <Link href="/contact">
                                 <button
-                                    className="border-2 border-[#FFEA00] text-[#FFEA00] px-6 sm:px-7 lg:px-8 py-2.5 sm:py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#FFEA00] hover:text-black transition-colors text-sm sm:text-base"
+                                    className="border-2 border-[#0fb8af] text-[#0fb8af] px-6 sm:px-7 lg:px-8 py-2.5 sm:py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#0fb8af] hover:text-black transition-colors text-sm sm:text-base"
                                     style={{
                                         fontFamily: '"Bebas Neue", Arial, sans-serif',
                                     }}

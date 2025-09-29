@@ -143,7 +143,7 @@ const ContactForm = () => {
     ];
 
     return (
-        <div className="bg-[#151515] p-8 rounded-lg border border-[#606060] hover:border-[#FFEA00] transition-all duration-300">
+        <div className="bg-[#151515] p-8 rounded-lg border border-[#606060] hover:border-[#0fb8af] transition-all duration-300">
             <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Name Fields */}
                 <div>
@@ -242,7 +242,7 @@ const ContactForm = () => {
                                     id={`choice_${i}`}
                                     checked={formData.subject === option}
                                     onChange={handleRadioChange}
-                                    className="mr-3 text-[#02B600] focus:ring-[#FFEA00]"
+                                    className="mr-3 text-[#0fb8af] focus:ring-[#0fb8af]"
                                     required
                                 />
                                 <label
@@ -289,7 +289,7 @@ const ContactForm = () => {
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="bg-green-500 disabled:opacity-60 text-white px-5 py-3 rounded-full font-bold text-lg hover:bg-green-600 transition-colors whitespace-nowrap"
+                        className="bg-[#0fb8af] disabled:opacity-60 text-white px-5 py-3 rounded-full font-bold text-lg hover:bg-[#0fb8af] transition-colors whitespace-nowrap"
                     >
                         {submitting ? "Sending..." : "Submit"}
                     </button>

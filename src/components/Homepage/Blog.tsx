@@ -48,7 +48,7 @@ const SlidingHighlight = ({ text }: { text: string }) => {
             className="relative inline-block mx-auto mb-4 sm:mb-6 overflow-hidden"
         >
             <span
-                className={`absolute top-0 left-0 h-full w-0 bg-[#FFEA00] transition-all duration-700 ease-out ${inView ? "w-full" : "w-0"
+                className={`absolute top-0 left-0 h-full w-0 bg-[#0fb8af] transition-all duration-700 ease-out ${inView ? "w-full" : "w-0"
                     }`}
             ></span>
             <span
@@ -113,7 +113,7 @@ const Blog = () => {
                     <SlidingHighlight text="LATEST INSIGHTS" />
                     <FadeSlide delay={0.1}>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white mb-4 sm:mb-6 leading-tight">
-                            STAY <span className="text-[#FFEA00]">UPDATED</span>
+                            STAY <span className="text-[#0fb8af]">UPDATED</span>
                         </h2>
                     </FadeSlide>
                     <FadeSlide delay={0.2}>
@@ -145,7 +145,7 @@ const Blog = () => {
                                     className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105 h-full flex flex-col"
                                     style={{ borderColor: "#1F2937" }}
                                     onMouseEnter={(e) =>
-                                        (e.currentTarget.style.borderColor = "#FFEA00")
+                                        (e.currentTarget.style.borderColor = "#0fb8af")
                                     }
                                     onMouseLeave={(e) =>
                                         (e.currentTarget.style.borderColor = "#1F2937")
@@ -161,7 +161,7 @@ const Blog = () => {
                                         />
                                         <div
                                             className="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase rounded"
-                                            style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                                            style={{ backgroundColor: "#0fb8af", color: "#000" }}
                                         >
                                             NEW
                                         </div>
@@ -170,7 +170,7 @@ const Blog = () => {
                                         <div className="flex items-center gap-2 mb-3 sm:mb-4 flex-wrap">
                                             <span
                                                 className="px-2 py-1 text-xs font-bold uppercase rounded"
-                                                style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                                                style={{ backgroundColor: "#0fb8af", color: "#000" }}
                                             >
                                                 {article.category}
                                             </span>
@@ -181,7 +181,7 @@ const Blog = () => {
                                         <h3
                                             className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 line-clamp-2 transition-colors flex-1"
                                             onMouseEnter={(e) =>
-                                                (e.currentTarget.style.color = "#FFEA00")
+                                                (e.currentTarget.style.color = "#0fb8af")
                                             }
                                             onMouseLeave={(e) =>
                                                 (e.currentTarget.style.color = "white")
@@ -221,12 +221,12 @@ const Blog = () => {
                         <Link
                             href="/blog"
                             className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 font-bold uppercase tracking-wider transition-colors text-sm sm:text-base"
-                            style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                            style={{ backgroundColor: "#0fb8af", color: "#000" }}
                             onMouseEnter={(e) =>
-                                (e.currentTarget.style.backgroundColor = "#FFD700")
+                                (e.currentTarget.style.backgroundColor = "#00b89f")
                             }
                             onMouseLeave={(e) =>
-                                (e.currentTarget.style.backgroundColor = "#FFEA00")
+                                (e.currentTarget.style.backgroundColor = "#0fb8af")
                             }
                         >
                             View All Articles <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />

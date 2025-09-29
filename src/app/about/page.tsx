@@ -59,13 +59,13 @@ export default function About() {
                             letterSpacing: "0.02em",
                         }}
                     >
-                        I <span className="text-[#FFEA00]">TRANSFORM</span> BUSINESSES
+                        I <span className="text-[#0fb8af]">TRANSFORM</span> BUSINESSES
                     </h1>
 
                     {/* DIGITAL TRANSFORMATION EXPERT with sliding background */}
                     <div className="relative inline-block mx-auto mb-4 sm:mb-6">
                         <span
-                            className="absolute top-0 left-0 h-full bg-[#FFEA00] inline-block"
+                            className="absolute top-0 left-0 h-full bg-[#0fb8af] inline-block"
                             style={{
                                 width: "0%",
                                 animation: "slideRight 2s forwards",

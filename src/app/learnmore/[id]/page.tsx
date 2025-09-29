@@ -82,13 +82,13 @@ export default function LearnMorePage() {
         <div className="min-h-screen bg-[#151515] text-white py-16 px-6 sm:px-12">
             <div className="max-w-4xl mx-auto">
                 {/* Title */}
-                <h1 className="text-3xl md:text-5xl font-black mb-6 text-[#FFEA00] uppercase">
+                <h1 className="text-3xl md:text-5xl font-black mb-6 text-[#0fb8af] uppercase">
                     {update.title}
                 </h1>
 
                 {/* Category + Status */}
                 <div className="flex items-center gap-3 mb-6">
-                    <span className="px-3 py-1 bg-[#FFEA00] text-black font-bold uppercase text-xs">
+                    <span className="px-3 py-1 bg-[#0fb8af] text-black font-bold uppercase text-xs">
                         {update.category}
                     </span>
                     <span className="px-3 py-1 bg-white/10 border border-gray-700 text-xs uppercase">
@@ -114,7 +114,7 @@ export default function LearnMorePage() {
                 <div className="grid sm:grid-cols-2 gap-4 mb-10">
                     {update.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2">
-                            <CheckCircle className="w-5 h-5 text-[#FFEA00]" />
+                            <CheckCircle className="w-5 h-5 text-[#0fb8af]" />
                             <span>{feature}</span>
                         </div>
                     ))}
@@ -122,7 +122,7 @@ export default function LearnMorePage() {
 
                 {/* Price + Date */}
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-10 gap-3">
-                    <div className="text-2xl font-black text-[#FFEA00]">
+                    <div className="text-2xl font-black text-#0fb8af]">
                         {update.price}
                     </div>
                     <div className="text-sm text-gray-400 flex items-center gap-2">
@@ -137,7 +137,7 @@ export default function LearnMorePage() {
                     <a
                         href={update.downloadUrl}
                         download
-                        className="px-6 py-3 border-2 border-[#FFEA00] text-[#FFEA00] uppercase font-bold hover:bg-[#FFEA00] hover:text-black transition-all text-center"
+                        className="px-6 py-3 border-2 border-[#0fb8af] text-[#0fb8af] uppercase font-bold hover:bg-[#0fb8af] hover:text-black transition-all text-center"
                     >
                         Download
                     </a>
@@ -145,7 +145,7 @@ export default function LearnMorePage() {
                     {/* Enroll - ✅ Navigates to enrollment form page */}
                     <Link
                         href={`/enroll/${update.id}`}
-                        className="px-6 py-3 bg-[#FFEA00] text-black uppercase font-bold hover:opacity-90 transition-all text-center"
+                        className="px-6 py-3 bg-[#0fb8af] text-black uppercase font-bold hover:opacity-90 transition-all text-center"
                     >
                         Enroll
                     </Link>

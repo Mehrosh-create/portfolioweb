@@ -100,13 +100,13 @@ const Services = () => {
                             letterSpacing: "0.02em",
                         }}
                     >
-                        MY <span className="text-[#FFEA00]">SERVICES</span>
+                        MY <span className="text-[#0fb8af]">SERVICES</span>
                     </h1>
 
                     {/* EXPERT SOLUTIONS with sliding background */}
                     <div className="relative inline-block mx-auto mb-4 sm:mb-6">
                         <span
-                            className="absolute top-0 left-0 h-full bg-[#FFEA00] inline-block"
+                            className="absolute top-0 left-0 h-full bg-[#0fb8af] inline-block"
                             style={{
                                 width: "0%",
                                 animation: "slideRight 2s forwards",
@@ -141,12 +141,12 @@ const Services = () => {
                     {services.map((service, index) => (
                         <div
                             key={index}
-                            className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-300 group cursor-pointer relative overflow-hidden"
+                            className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 group cursor-pointer relative overflow-hidden"
                         >
                             <div className="absolute inset-0 bg-[#02B600]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                             <div className="relative z-10">
-                                <div className="text-[#FFEA00] mb-4 sm:mb-6 group-hover:text-[#02B600] transition-colors duration-300">
+                                <div className="text-[#0fb8af] mb-4 sm:mb-6 group-hover:text-[#02B600] transition-colors duration-300">
                                     {service.icon}
                                 </div>
                                 <h3
@@ -219,7 +219,7 @@ const Services = () => {
                             {/* ✅ Updated Get Started Button with Link */}
                             <Link href="/contact">
                                 <button
-                                    className="bg-[#FFEA00] text-black px-6 sm:px-8 py-2 sm:py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-yellow-300 transition-colors text-sm sm:text-base"
+                                    className="bg-[#0fb8af] text-black px-6 sm:px-8 py-2 sm:py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#0fb8af]/80 transition-colors text-sm sm:text-base"
                                     style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                                 >
                                     Get Started
@@ -227,7 +227,7 @@ const Services = () => {
                             </Link>
                             <Link href="/portfolio">
                                 <button
-                                    className="border-2 border-[#FFEA00] text-[#FFEA00] px-6 sm:px-8 py-2 sm:py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#FFEA00] hover:text-black transition-colors text-sm sm:text-base"
+                                    className="border-2 border-[#0fb8af] text-[#0fb8af] px-6 sm:px-8 py-2 sm:py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#0fb8af]/80 hover:text-black transition-colors text-sm sm:text-base"
                                     style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                                 >
                                     View Portfolio

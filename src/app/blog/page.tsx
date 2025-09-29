@@ -240,7 +240,7 @@ const BlogPage = () => {
       {/* Featured Article */}
       <div className="py-20 px-40">
         <div className="max-w-7xl mx-auto lg:mr-8">
-          <div className="p-1 rounded-lg mb-12" style={{ background: "linear-gradient(to right, #FFEA00, #FFEA00)" }}>
+          <div className="p-1 rounded-lg mb-12" style={{ background: "linear-gradient(to right, #0fb8af, #0fb8af)" }}>
             <div className="bg-[#151515] rounded-lg overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="relative h-64 lg:h-auto">
@@ -251,7 +251,7 @@ const BlogPage = () => {
                     className="object-cover"
                   />
                   <div className="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase rounded"
-                    style={{ backgroundColor: "#FFEA00", color: "#000" }}>
+                    style={{ backgroundColor: "#0fb8af", color: "#000" }}>
                     FEATURED
                   </div>
                 </div>
@@ -259,7 +259,7 @@ const BlogPage = () => {
                 <div className="p-8 lg:p-12 flex flex-col justify-center">
                   <span
                     className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4"
-                    style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                    style={{ backgroundColor: "#0fb8af", color: "#000" }}
                   >
                     {featuredPost.category}
                   </span>
@@ -273,14 +273,14 @@ const BlogPage = () => {
                       <div className="flex items-center gap-1"><Clock className="w-4 h-4" /> {featuredPost.readTime}</div>
                     </div>
                     <div className="flex gap-3">
-                      <Bookmark className="w-5 h-5 text-gray-400 hover:text-[#FFEA00] transition-colors" />
-                      <Share2 className="w-5 h-5 text-gray-400 hover:text-[#FFEA00] transition-colors" />
+                      <Bookmark className="w-5 h-5 text-gray-400 hover:text-[#0fb8af] transition-colors" />
+                      <Share2 className="w-5 h-5 text-gray-400 hover:text-[#0fb8af] transition-colors" />
                     </div>
                   </div>
                   <Link
                     href={`/blog/${featuredPost.slug}`}
                     className="px-6 py-3 font-bold uppercase tracking-wider transition-colors flex items-center gap-2 w-max"
-                    style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                    style={{ backgroundColor: "#0fb8af", color: "#000" }}
                   >
                     Read Full Article <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -300,15 +300,15 @@ const BlogPage = () => {
               onClick={() => setSelectedCategory(category)}
               className="px-4 py-2 border text-sm font-semibold transition-colors"
               style={{
-                backgroundColor: selectedCategory === category ? "#FFEA00" : "transparent",
+                backgroundColor: selectedCategory === category ? "#0fb8af" : "transparent",
                 color: selectedCategory === category ? "#000" : "#D1D5DB",
-                borderColor: selectedCategory === category ? "#FFEA00" : "#4B5563"
+                borderColor: selectedCategory === category ? "#0fb8af" : "#4B5563"
               }}
               onMouseEnter={(e) => {
                 if (selectedCategory !== category) {
-                  e.currentTarget.style.backgroundColor = "#FFEA00";
+                  e.currentTarget.style.backgroundColor = "#0fb8af";
                   e.currentTarget.style.color = "#000";
-                  e.currentTarget.style.borderColor = "#FFEA00";
+                  e.currentTarget.style.borderColor = "#0fb8af";
                 }
               }}
               onMouseLeave={(e) => {
@@ -333,14 +333,14 @@ const BlogPage = () => {
               <div
                 className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105"
                 style={{ borderColor: "#1F2937" }}
-                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#FFEA00")}
+                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#0fb8af")}
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#1F2937")}
               >
                 <div className="relative h-100 flex items-center justify-center">
                   <Image src={post.image} alt={post.title} fill className="object-cover" />
                   <div
                     className="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase rounded"
-                    style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                    style={{ backgroundColor: "#0fb8af", color: "#000" }}
                   >
                     NEW
                   </div>
@@ -349,7 +349,7 @@ const BlogPage = () => {
                   <div className="flex items-center gap-2 mb-4">
                     <span
                       className="px-2 py-1 text-xs font-bold uppercase rounded"
-                      style={{ backgroundColor: "#FFEA00", color: "#000" }}
+                      style={{ backgroundColor: "#0fb8af", color: "#000" }}
                     >
                       {post.category}
                     </span>
@@ -358,7 +358,7 @@ const BlogPage = () => {
                   <h3
                     className="text-xl font-bold mb-3 line-clamp-2 transition-colors"
                     style={{ color: "white" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#FFEA00")}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#0fb8af")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
                   >
                     {post.title}

@@ -63,7 +63,7 @@ const SlidingHighlight = ({ text }: { text: string }) => {
       className="relative inline-block mx-auto mb-4 sm:mb-6 overflow-hidden"
     >
       <span
-        className={`absolute top-0 left-0 h-full w-0 bg-[#FFEA00] transition-all duration-700 ease-out ${inView ? "w-full" : "w-0"
+        className={`absolute top-0 left-0 h-full w-0 bg-[#0fb8af] transition-all duration-700 ease-out ${inView ? "w-full" : "w-0"
           }`}
       ></span>
 
@@ -216,7 +216,7 @@ const NewPage: React.FC = () => {
             <SlidingHighlight text="SPECIALIZATIONS" />
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white mb-4 sm:mb-6 leading-tight">
-              MY <span className="text-[#FFEA00]">EXPERTISE</span>
+              MY <span className="text-[#0fb8af]">EXPERTISE</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-4">
               With over 7 years of experience, I specialize in transforming
@@ -238,7 +238,7 @@ const NewPage: React.FC = () => {
             {services.map((service, index) => (
               <FadeSlide key={index} delay={index * 0.15}>
                 <GravWrap>
-                  <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl overflow-hidden hover:border-[#FFEA00] transition-colors group cursor-pointer h-full flex flex-col">
+                  <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl overflow-hidden hover:border-[#0fb8af] transition-colors group cursor-pointer h-full flex flex-col">
                     <div className="relative aspect-[4/3]">
                       <Image
                         src={service.image}
@@ -254,7 +254,7 @@ const NewPage: React.FC = () => {
                       </div>
                     </div>
                     <div className="p-4 sm:p-5 flex-1 flex flex-col">
-                      <h3 className="text-lg sm:text-xl font-bold mb-2 text-white group-hover:text-[#FFEA00] transition-colors">
+                      <h3 className="text-lg sm:text-xl font-bold mb-2 text-white group-hover:text-[#0fb8af] transition-colors">
                         {service.title}
                       </h3>
                       <p className="text-gray-300 text-sm sm:text-base flex-1">
@@ -276,7 +276,7 @@ const NewPage: React.FC = () => {
             <SlidingHighlight text="LATEST LAUNCHES" />
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white mb-4 sm:mb-6 leading-tight">
-              NEW <span className="text-[#FFEA00]">RELEASES</span>
+              NEW <span className="text-[#0fb8af]">RELEASES</span>
             </h2>
           </div>
 
@@ -301,7 +301,7 @@ const NewPage: React.FC = () => {
                       <div
                         className="absolute top-3 left-3 px-2 py-1 rounded text-xs sm:text-sm"
                         style={{
-                          backgroundColor: "#FFEA00",
+                          backgroundColor: "#0fb8af",
                           fontFamily: '"Bebas Neue", sans-serif',
                           fontWeight: 700,
                           color: "black",
@@ -318,7 +318,7 @@ const NewPage: React.FC = () => {
                     <div
                       className="inline-block px-2 py-1 mb-3 text-xs sm:text-sm"
                       style={{
-                        backgroundColor: "#FFEA00",
+                        backgroundColor: "#0fb8af",
                         fontFamily: '"Bebas Neue", sans-serif',
                         fontWeight: 700,
                         color: "black",
@@ -339,14 +339,14 @@ const NewPage: React.FC = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6">
                       {update.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#FFEA00] flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#0fb8af] flex-shrink-0" />
                           <span className="text-sm sm:text-base">{feature}</span>
                         </div>
                       ))}
                     </div>
 
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 gap-2 sm:gap-3">
-                      <div className="text-xl sm:text-2xl lg:text-3xl font-black text-[#FFEA00]">
+                      <div className="text-xl sm:text-2xl lg:text-3xl font-black text-[#0fb8af]">
                         {update.price}
                       </div>
                       <div className="text-xs sm:text-sm text-gray-400 flex items-center gap-2">
@@ -358,7 +358,7 @@ const NewPage: React.FC = () => {
                     <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                       <Link
                         href={`/learnmore/${update.id}`}
-                        className="border-2 border-[#FFEA00] text-[#FFEA00] px-4 sm:px-5 py-2 sm:py-3 uppercase transition-all duration-300 transform hover:scale-105 text-sm sm:text-base text-center"
+                        className="border-2 border-[#0fb8af] text-[#0fb8af] px-4 sm:px-5 py-2 sm:py-3 uppercase transition-all duration-300 transform hover:scale-105 text-sm sm:text-base text-center"
                         style={{
                           fontFamily: '"Bebas Neue", sans-serif',
                           fontWeight: 700,
@@ -379,7 +379,7 @@ const NewPage: React.FC = () => {
             <div className="text-center mt-8 sm:mt-12">
               <button
                 onClick={() => setVisible((prev) => prev + 1)}
-                className="px-4 sm:px-5 py-2 sm:py-3 bg-[#FFEA00] text-black uppercase transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+                className="px-4 sm:px-5 py-2 sm:py-3 bg-[#0fb8af] text-black uppercase transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
                 style={{
                   fontFamily: '"Bebas Neue", sans-serif',
                   fontWeight: 700,

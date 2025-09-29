@@ -49,7 +49,7 @@ const HeroSection = ({
                 {customHeading || "Entrepreneur & Digital Growth Expert"}
               </h1>
 
-              <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-6 sm:mb-8 text-[#a8e6cf] drop-shadow-xl">
+              <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light mb-6 sm:mb-8 text-[#0fb8af] drop-shadow-xl">
                 SHEIKH NABEEL
               </h2>
 

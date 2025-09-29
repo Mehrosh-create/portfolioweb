@@ -81,7 +81,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
                             p-6 
                             rounded-lg 
                             border border-gray-700 
-                            hover:border-[#FFEA00] 
+                            hover:border-[#0fb8af] 
                             transition-all duration-300 
                             group 
                             cursor-pointer 
@@ -95,7 +95,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
                         "
                     >
                         <div
-                            className="text-[#FFEA00] text-2xl font-bold mb-3 group-hover:text-[#02B600] transition-colors"
+                            className="text-[#0fb8af] text-2xl font-bold mb-3 group-hover:text-[#02B600] transition-colors"
                             style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                         >
                             {((index % items.length) + 1).toString().padStart(2, '0')}

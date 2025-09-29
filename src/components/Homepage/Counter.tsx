@@ -64,7 +64,7 @@ const CounterSection = () => {
           {/* Sliding background highlight */}
           <div className="relative inline-block mx-auto">
             <span
-              className={`absolute top-0 left-0 h-full bg-[#FFEA00] ${inView ? "animate-slideRight" : ""
+              className={`absolute top-0 left-0 h-full bg-[#0fb8af] ${inView ? "animate-slideRight" : ""
                 }`}
             ></span>
 

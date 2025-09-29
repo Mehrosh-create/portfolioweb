@@ -24,15 +24,15 @@ const SignatureContent = () => {
                     letterSpacing: "0.05em",
                 }}
             >
-                <span className="text-[#FFEA00]">SIGNATURE</span> CONTENT
+                <span className="text-[#0fb8af]">SIGNATURE</span> CONTENT
             </h2>
 
             {/* Main Content - Improved grid responsiveness */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 lg:mb-16">
                 {/* Card 1 */}
-                <div className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-300 group">
+                <div className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 group">
                     <h3
-                        className="text-xl sm:text-2xl font-bold text-[#FFEA00] mb-3 sm:mb-4 group-hover:text-[#02B600] transition-colors"
+                        className="text-xl sm:text-2xl font-bold text-[#0fb8af] mb-3 sm:mb-4 group-hover:text-[#02B600] transition-colors"
                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                     >
                         How To Create Content Efficiently
@@ -66,7 +66,7 @@ const SignatureContent = () => {
                                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                                     <button
                                         onClick={() => toggleVideo("content")}
-                                        className="w-12 h-12 sm:w-16 sm:h-16 bg-[#FFEA00] rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                                        className="w-12 h-12 sm:w-16 sm:h-16 bg-[#0fb8af] rounded-full flex items-center justify-center hover:scale-110 transition-transform"
                                     >
                                         <svg
                                             className="w-6 h-6 sm:w-8 sm:h-8 text-black"
@@ -83,9 +83,9 @@ const SignatureContent = () => {
                 </div>
 
                 {/* Card 2 */}
-                <div className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#FFEA00] transition-all duration-300 group">
+                <div className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 group">
                     <h3
-                        className="text-xl sm:text-2xl font-bold text-[#FFEA00] mb-3 sm:mb-4 group-hover:text-[#02B600] transition-colors"
+                        className="text-xl sm:text-2xl font-bold text-[#0fb8af] mb-3 sm:mb-4 group-hover:text-[#02B600] transition-colors"
                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                     >
                         Digital Transformation Mastery
@@ -119,7 +119,7 @@ const SignatureContent = () => {
                                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                                     <button
                                         onClick={() => toggleVideo("digital")}
-                                        className="w-12 h-12 sm:w-16 sm:h-16 bg-[#FFEA00] rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                                        className="w-12 h-12 sm:w-16 sm:h-16 bg-[#0fb8af] rounded-full flex items-center justify-center hover:scale-110 transition-transform"
                                     >
                                         <svg
                                             className="w-6 h-6 sm:w-8 sm:h-8 text-black"
