@@ -44,7 +44,7 @@ const Contact = () => {
                                 and more –{" "}
                                 <a
                                     href="https://sheikhmedia.com/#services"
-                                    className="text-[#02B600] hover:underline"
+                                    className="text-[#0fb8af] hover:underline"
                                 >
                                     explore the full range of services here.
                                 </a>

@@ -73,7 +73,7 @@ export default function ClientLayout({
                                         }}
                                     />
                                     {/* Green underline */}
-                                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[#02B600]" />
+                                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[#0FB8AF]" />
 
                                     {/* Close button above green line */}
                                     <button

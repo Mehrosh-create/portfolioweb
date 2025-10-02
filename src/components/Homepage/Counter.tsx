@@ -106,10 +106,10 @@ const CounterSection = () => {
             >
               {/* Hover effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute inset-0 bg-[#02B600]/30 animate-pulse z-20"></div>
-                <div className="absolute inset-0 bg-gradient-radial from-[#02B600]/40 via-[#02B600]/20 to-transparent animate-ping"></div>
+                <div className="absolute inset-0 bg-[#0FB8AF]/30 animate-pulse z-20"></div>
+                <div className="absolute inset-0 bg-gradient-radial from-[#0FB8AF]/40 via-[#0FB8AF]/20 to-transparent animate-ping"></div>
                 <div
-                  className="absolute inset-0 bg-[#02B600]/10 animate-pulse"
+                  className="absolute inset-0 bg-[#0FB8AF]/10 animate-pulse"
                   style={{ animationDelay: "0.5s" }}
                 ></div>
               </div>

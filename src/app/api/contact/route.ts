@@ -3,58 +3,58 @@ import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
-    try {
-        const body = await request.json();
-        const { firstName, lastName, email, phone, subject, message } = body;
+  try {
+    const body = await request.json();
+    const { firstName, lastName, email, phone, subject, message } = body;
 
-        // Validate required fields
-        if (!firstName || !lastName || !email || !subject || !message) {
-            return NextResponse.json(
-                { error: 'Missing required fields' },
-                { status: 400 }
-            );
-        }
+    // Validate required fields
+    if (!firstName || !lastName || !email || !subject || !message) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
 
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return NextResponse.json(
-                { error: 'Invalid email format' },
-                { status: 400 }
-            );
-        }
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: 'Invalid email format' },
+        { status: 400 }
+      );
+    }
 
-        // Debug logging (remove in production)
-        console.log('Email config:', {
-            user: process.env.EMAIL_USERNAME,
-            hasPassword: !!process.env.EMAIL_PASSWORD,
-            passwordLength: process.env.EMAIL_PASSWORD?.length
-        });
+    // Debug logging (remove in production)
+    console.log('Email config:', {
+      user: process.env.EMAIL_USERNAME,
+      hasPassword: !!process.env.EMAIL_PASSWORD,
+      passwordLength: process.env.EMAIL_PASSWORD?.length
+    });
 
-        // Create transporter with explicit Gmail SMTP settings
-        const transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 465,
-            secure: true, // SSL
-            auth: {
-                user: process.env.EMAIL_USERNAME,
-                pass: process.env.EMAIL_PASSWORD,
-            },
-        });
+    // Create transporter with explicit Gmail SMTP settings
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true, // SSL
+      auth: {
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
 
-        // Email content for you (notification)
-        const notificationMailOptions = {
-            from: process.env.EMAIL_FROM,
-            to: process.env.EMAIL_USERNAME, // Your email
-            subject: `New Contact Form Submission: ${subject}`,
-            html: `
+    // Email content for you (notification)
+    const notificationMailOptions = {
+      from: process.env.EMAIL_FROM,
+      to: process.env.EMAIL_USERNAME, // Your email
+      subject: `New Contact Form Submission: ${subject}`,
+      html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333; border-bottom: 2px solid #02B600; padding-bottom: 10px;">
+          <h2 style="color: #333; border-bottom: 2px solid #0fb8af; padding-bottom: 10px;">
             New Contact Form Submission
           </h2>
           
           <div style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; margin: 20px 0;">
-            <h3 style="color: #02B600; margin-top: 0;">Contact Details</h3>
+            <h3 style="color: #0fb8af; margin-top: 0;">Contact Details</h3>
             <p><strong>Name:</strong> ${firstName} ${lastName}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
           </div>
           
           <div style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; margin: 20px 0;">
-            <h3 style="color: #02B600; margin-top: 0;">Message</h3>
+            <h3 style="color: #0fb8af; margin-top: 0;">Message</h3>
             <p style="white-space: pre-wrap; line-height: 1.6;">${message}</p>
           </div>
           
@@ -73,16 +73,16 @@ export async function POST(request: NextRequest) {
           </div>
         </div>
       `,
-        };
+    };
 
-        // Confirmation email for the user
-        const confirmationMailOptions = {
-            from: process.env.EMAIL_FROM,
-            to: email,
-            subject: 'Thank you for contacting us!',
-            html: `
+    // Confirmation email for the user
+    const confirmationMailOptions = {
+      from: process.env.EMAIL_FROM,
+      to: email,
+      subject: 'Thank you for contacting us!',
+      html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333; border-bottom: 2px solid #02B600; padding-bottom: 10px;">
+          <h2 style="color: #333; border-bottom: 2px solid #0fb8af; padding-bottom: 10px;">
             Thank You for Your Message!
           </h2>
           
@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
           <p>Thank you for reaching out to us. We have received your message and will get back to you as soon as possible.</p>
           
           <div style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; margin: 20px 0;">
-            <h3 style="color: #02B600; margin-top: 0;">Your Message Summary</h3>
+            <h3 style="color: #0fb8af; margin-top: 0;">Your Message Summary</h3>
             <p><strong>Subject:</strong> ${subject}</p>
             <p><strong>Message:</strong></p>
             <p style="white-space: pre-wrap; line-height: 1.6; font-style: italic;">"${message}"</p>
@@ -107,24 +107,24 @@ export async function POST(request: NextRequest) {
           </div>
         </div>
       `,
-        };
+    };
 
-        // Send both emails
-        await Promise.all([
-            transporter.sendMail(notificationMailOptions),
-            transporter.sendMail(confirmationMailOptions)
-        ]);
+    // Send both emails
+    await Promise.all([
+      transporter.sendMail(notificationMailOptions),
+      transporter.sendMail(confirmationMailOptions)
+    ]);
 
-        return NextResponse.json(
-            { message: 'Email sent successfully' },
-            { status: 200 }
-        );
+    return NextResponse.json(
+      { message: 'Email sent successfully' },
+      { status: 200 }
+    );
 
-    } catch (error) {
-        console.error('Contact form error:', error);
-        return NextResponse.json(
-            { error: 'Failed to send email' },
-            { status: 500 }
-        );
-    }
+  } catch (error) {
+    console.error('Contact form error:', error);
+    return NextResponse.json(
+      { error: 'Failed to send email' },
+      { status: 500 }
+    );
+  }
 }

@@ -69,12 +69,12 @@ Date: ${new Date().toLocaleString()}
             `.trim(),
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #333; border-bottom: 2px solid #02B600; padding-bottom: 10px;">
+                    <h2 style="color: #333; border-bottom: 2px solid #0fb8af; padding-bottom: 10px;">
                         New Newsletter Subscription
                     </h2>
                     
                     <div style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; margin: 20px 0;">
-                        <h3 style="color: #02B600; margin-top: 0;">Subscriber Details</h3>
+                        <h3 style="color: #0fb8af; margin-top: 0;">Subscriber Details</h3>
                         <p><strong>Email:</strong> ${email}</p>
                         <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
                     </div>
@@ -105,14 +105,14 @@ Sheikh Nabeel
             `.trim(),
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #333; border-bottom: 2px solid #02B600; padding-bottom: 10px;">
+                    <h2 style="color: #333; border-bottom: 2px solid #0fb8af; padding-bottom: 10px;">
                         Welcome to Sheikh Nabeel's Newsletter!
                     </h2>
                     
                     <p>Thank you for subscribing to my weekly newsletter!</p>
                     
                     <div style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; margin: 20px 0;">
-                        <h3 style="color: #02B600; margin-top: 0;">What to Expect</h3>
+                        <h3 style="color: #0fb8af; margin-top: 0;">What to Expect</h3>
                         <ul style="line-height: 1.6;">
                             <li>Weekly insights and updates</li>
                             <li>Exclusive content and tips</li>

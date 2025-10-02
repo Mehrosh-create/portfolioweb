@@ -95,7 +95,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
                         "
                     >
                         <div
-                            className="text-[#0fb8af] text-2xl font-bold mb-3 group-hover:text-[#02B600] transition-colors"
+                            className="text-[#0fb8af] text-2xl font-bold mb-3 group-hover:text-[#0fb8af] transition-colors"
                             style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                         >
                             {((index % items.length) + 1).toString().padStart(2, '0')}
@@ -111,7 +111,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
                         >
                             {service}
                         </h3>
-                        <div className="mt-4 h-1 w-0 bg-[#02B600] group-hover:w-full transition-all duration-300 absolute bottom-4 left-1/2 transform -translate-x-1/2"></div>
+                        <div className="mt-4 h-1 w-0 bg-[#0fb8af] group-hover:w-full transition-all duration-300 absolute bottom-4 left-1/2 transform -translate-x-1/2"></div>
                     </div>
                 ))}
             </motion.div>

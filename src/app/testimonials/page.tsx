@@ -138,7 +138,7 @@ const Testimonials = () => {
                             }}
                         ></div>
 
-                        <Quote className="absolute top-3 sm:top-4 lg:top-6 left-3 sm:left-4 lg:left-6 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-[#02B600]/20 z-10" />
+                        <Quote className="absolute top-3 sm:top-4 lg:top-6 left-3 sm:left-4 lg:left-6 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-[#0fb8af]/20 z-10" />
 
                         <div className="text-center mb-4 sm:mb-6 lg:mb-8 relative z-10">
                             <div className="flex justify-center mb-3 sm:mb-4">
@@ -160,7 +160,7 @@ const Testimonials = () => {
                         </div>
 
                         <div className="flex items-center justify-center gap-3 sm:gap-4 relative z-10">
-                            <div className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden border-2 border-[#02B600]">
+                            <div className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden border-2 border-[#0fb8af]">
                                 <Image
                                     src={testimonials[currentIndex].image}
                                     alt={testimonials[currentIndex].name}
@@ -193,14 +193,14 @@ const Testimonials = () => {
                         {/* Navigation */}
                         <button
                             onClick={prevTestimonial}
-                            className="absolute left-2 sm:left-3 lg:left-4 top-1/2 transform -translate-y-1/2 bg-[#02B600] p-1.5 sm:p-2 rounded-full hover:bg-green-600 hover:scale-110 transition-all duration-300 z-20"
+                            className="absolute left-2 sm:left-3 lg:left-4 top-1/2 transform -translate-y-1/2 bg-[#0fb8af] p-1.5 sm:p-2 rounded-full hover:bg-green-600 hover:scale-110 transition-all duration-300 z-20"
                             aria-label="Previous testimonial"
                         >
                             <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                         </button>
                         <button
                             onClick={nextTestimonial}
-                            className="absolute right-2 sm:right-3 lg:right-4 top-1/2 transform -translate-y-1/2 bg-[#02B600] p-1.5 sm:p-2 rounded-full hover:bg-green-600 hover:scale-110 transition-all duration-300 z-20"
+                            className="absolute right-2 sm:right-3 lg:right-4 top-1/2 transform -translate-y-1/2 bg-[#0fb8af] p-1.5 sm:p-2 rounded-full hover:bg-green-600 hover:scale-110 transition-all duration-300 z-20"
                             aria-label="Next testimonial"
                         >
                             <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
@@ -214,7 +214,7 @@ const Testimonials = () => {
                                     onClick={() => setCurrentIndex(index)}
                                     className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${index === currentIndex
                                         ? "bg-[#0fb8af] scale-125"
-                                        : "bg-gray-600 hover:bg-[#02B600]"
+                                        : "bg-gray-600 hover:bg-[#0fb8af]"
                                         }`}
                                     aria-label={`Go to testimonial ${index + 1}`}
                                 />

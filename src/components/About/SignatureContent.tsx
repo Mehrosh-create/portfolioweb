@@ -32,7 +32,7 @@ const SignatureContent = () => {
                 {/* Card 1 */}
                 <div className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 group">
                     <h3
-                        className="text-xl sm:text-2xl font-bold text-[#0fb8af] mb-3 sm:mb-4 group-hover:text-[#02B600] transition-colors"
+                        className="text-xl sm:text-2xl font-bold text-[#0fb8af] mb-3 sm:mb-4 group-hover:text-[#0fb8af] transition-colors"
                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                     >
                         How To Create Content Efficiently
@@ -46,7 +46,7 @@ const SignatureContent = () => {
                         Learn my proven framework for creating high-quality content that resonates with your audience and drives engagement.
                     </p>
 
-                    <div className="aspect-video relative mb-4 sm:mb-6 rounded-lg overflow-hidden border border-gray-600 group-hover:border-[#02B600] transition-colors">
+                    <div className="aspect-video relative mb-4 sm:mb-6 rounded-lg overflow-hidden border border-gray-600 group-hover:border-[#0fb8af] transition-colors">
                         {playVideo["content"] ? (
                             <video
                                 src="/videos/content-creation.mp4"
@@ -85,7 +85,7 @@ const SignatureContent = () => {
                 {/* Card 2 */}
                 <div className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 group">
                     <h3
-                        className="text-xl sm:text-2xl font-bold text-[#0fb8af] mb-3 sm:mb-4 group-hover:text-[#02B600] transition-colors"
+                        className="text-xl sm:text-2xl font-bold text-[#0fb8af] mb-3 sm:mb-4 group-hover:text-[#0fb8af] transition-colors"
                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                     >
                         Digital Transformation Mastery
@@ -99,7 +99,7 @@ const SignatureContent = () => {
                         Discover the strategies I&apos;ve used to help businesses transform their operations and achieve digital excellence.
                     </p>
 
-                    <div className="aspect-video relative mb-4 sm:mb-6 rounded-lg overflow-hidden border border-gray-600 group-hover:border-[#02B600] transition-colors">
+                    <div className="aspect-video relative mb-4 sm:mb-6 rounded-lg overflow-hidden border border-gray-600 group-hover:border-[#0fb8af] transition-colors">
                         {playVideo["digital"] ? (
                             <video
                                 src="/videos/digital-mastery.mp4"

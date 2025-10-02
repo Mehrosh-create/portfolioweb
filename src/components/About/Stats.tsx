@@ -79,7 +79,7 @@ const Stats = () => {
                         >
                             <div className="relative overflow-hidden bg-[#252525] p-3 sm:p-4 lg:p-6 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-500 text-center group cursor-pointer">
                                 {/* Sliding green background */}
-                                <div className="absolute inset-0 bg-[#02B600] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-out"></div>
+                                <div className="absolute inset-0 bg-[#0fb8af] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-out"></div>
 
                                 {/* Content sits above */}
                                 <div className="relative z-10">

@@ -1,7 +1,8 @@
-// src/app/portfolio/page.tsx - UPDATED
+// src/app/portfolio/page.tsx - UPDATED WITH CONTACT NAVIGATION
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
 
@@ -162,7 +163,7 @@ const Portfolio = () => {
                                     </a>
                                     <a
                                         href={item.github}
-                                        className="bg-[#02B600] text-white p-2 sm:p-3 rounded-full hover:scale-110 transition-transform"
+                                        className="bg-[#0fb8af] text-white p-2 sm:p-3 rounded-full hover:scale-110 transition-transform"
                                         aria-label={`View ${item.title} source code`}
                                     >
                                         <Github size={16} className="sm:w-5 sm:h-5" />
@@ -222,12 +223,15 @@ const Portfolio = () => {
                         Let&apos;s discuss how we can bring your vision to life with innovative
                         digital solutions.
                     </p>
-                    <button
+
+                    {/* ✅ Updated with Link to Contact Page */}
+                    <Link
+                        href="/contact"
                         className="bg-[#0fb8af] text-black px-6 sm:px-8 lg:px-10 py-2.5 sm:py-3 lg:py-4 font-bold uppercase tracking-wider rounded-lg hover:bg-[#0fb8af]/80 transition-colors text-sm sm:text-base lg:text-lg"
                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
                     >
                         Get In Touch
-                    </button>
+                    </Link>
                 </div>
             </div>
 

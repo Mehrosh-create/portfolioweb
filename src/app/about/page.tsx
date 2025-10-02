@@ -118,7 +118,7 @@ export default function About() {
                             helped countless organizations achieve unprecedented success.
                         </p>
                     </div>
-                    <div className="order-1 lg:order-2 relative h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 rounded-lg overflow-hidden border-2 border-gray-700 hover:border-[#02B600] transition-all duration-300">
+                    <div className="order-1 lg:order-2 relative h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 rounded-lg overflow-hidden border-2 border-gray-700 hover:border-[#0fb8af] transition-all duration-300">
                         <Image
                             src="/images/about-profile.jpg"
                             alt="Sheikh Nabeel"
@@ -127,7 +127,7 @@ export default function About() {
                             priority
                             sizes="(max-width: 1024px) 100vw, 50vw"
                         />
-                        <div className="absolute inset-0 bg-[#02B600]/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-[#0fb8af]/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                 </div>
 

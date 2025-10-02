@@ -4,7 +4,7 @@
   --background: #151515;
   --foreground: #ffffff;
   --accent-yellow: #0fb8af;
-  --accent-green: #02B600;
+  --accent-green: #0fb8af;
   --gray-light: #e0f7fa;
   --gray-medium: #a8e6cf;
   --gray-dark: #252525;
@@ -90,12 +90,12 @@ input[type="button"],
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #02B600;
+  background: #17B6B2;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #028a00;
+  background: #17B6B2;
 }
 
 /* Utility classes */
