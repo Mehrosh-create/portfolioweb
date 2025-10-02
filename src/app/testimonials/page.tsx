@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 
 const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
     const testimonials = [
         {
@@ -89,6 +90,17 @@ const Testimonials = () => {
         );
     };
 
+    // Auto-rotate testimonials
+    useEffect(() => {
+        if (!isPaused) {
+            const interval = setInterval(() => {
+                nextTestimonial();
+            }, 2000); // Change every 2 seconds
+
+            return () => clearInterval(interval);
+        }
+    }, [currentIndex, isPaused]);
+
     return (
         <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 xl:px-4 pb-8 sm:pb-12 lg:pb-16 bg-[#151515] flex flex-col">
             <div className="flex-grow max-w-7xl mx-auto w-full">
@@ -126,7 +138,11 @@ const Testimonials = () => {
                 </div>
 
                 {/* Testimonial Carousel */}
-                <div className="relative max-w-4xl mx-auto mb-8 sm:mb-12 lg:mb-16">
+                <div
+                    className="relative max-w-4xl mx-auto mb-8 sm:mb-12 lg:mb-16"
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                >
                     <div className="bg-[#252525] rounded-lg p-4 sm:p-6 lg:p-8 xl:p-12 relative border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 overflow-hidden">
                         {/* Background pattern */}
                         <div
