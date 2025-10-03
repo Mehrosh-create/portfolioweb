@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 
+
 const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
@@ -99,7 +100,7 @@ const Testimonials = () => {
 
             return () => clearInterval(interval);
         }
-    }, [currentIndex, isPaused]);
+    }, [currentIndex, isPaused, nextTestimonial]);
 
     return (
         <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 xl:px-4 pb-8 sm:pb-12 lg:pb-16 bg-[#151515] flex flex-col">
@@ -209,14 +210,14 @@ const Testimonials = () => {
                         {/* Navigation */}
                         <button
                             onClick={prevTestimonial}
-                            className="absolute left-2 sm:left-3 lg:left-4 top-1/2 transform -translate-y-1/2 bg-[#0fb8af] p-1.5 sm:p-2 rounded-full hover:bg-green-600 hover:scale-110 transition-all duration-300 z-20"
+                            className="absolute left-2 sm:left-3 lg:left-4 top-1/2 transform -translate-y-1/2 bg-[#0fb8af] p-1.5 sm:p-2 rounded-full hover:bg-[#0fb8af] hover:scale-110 transition-all duration-300 z-20"
                             aria-label="Previous testimonial"
                         >
                             <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                         </button>
                         <button
                             onClick={nextTestimonial}
-                            className="absolute right-2 sm:right-3 lg:right-4 top-1/2 transform -translate-y-1/2 bg-[#0fb8af] p-1.5 sm:p-2 rounded-full hover:bg-green-600 hover:scale-110 transition-all duration-300 z-20"
+                            className="absolute right-2 sm:right-3 lg:right-4 top-1/2 transform -translate-y-1/2 bg-[#0fb8af] p-1.5 sm:p-2 rounded-full hover:bg-[#0fb8af]hover:scale-110 transition-all duration-300 z-20"
                             aria-label="Next testimonial"
                         >
                             <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />

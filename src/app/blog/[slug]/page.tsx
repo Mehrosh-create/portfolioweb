@@ -172,7 +172,7 @@ const articles = [
   },
   {
     slug: "emerging-tech-trends",
-    title: "Emerging Tech Trends Shaping the Future",
+    title: "Emerging Tech Trends Shaping  Future",
     category: "TECHNOLOGY",
     readTime: "8 min read",
     date: "March 4, 2025",
@@ -208,7 +208,7 @@ const articles = [
   },
   {
     slug: "growth-strategies-for-startups",
-    title: "Growth Strategies for Startups in 2025",
+    title: "Growth Strategies for Startups ",
     category: "BUSINESS STRATEGY",
     readTime: "5 min read",
     date: "March 2, 2025",

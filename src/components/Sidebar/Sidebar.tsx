@@ -2,19 +2,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation"; // ✅ for active route
+import { usePathname } from "next/navigation";
 import {
   Facebook,
   Instagram,
   Linkedin,
   Youtube,
   Twitter,
-  SearchIcon,
+  Search,
 } from "lucide-react";
 
-// ✅ Correct professional icons
+// Extra icons
 import { FaDiscord, FaPinterest, FaSnapchatGhost, FaWhatsapp } from "react-icons/fa";
-import { SiThreads, SiTiktok } from "react-icons/si";
+import { SiTiktok } from "react-icons/si";
 
 interface SidebarProps {
   onSearchClick?: () => void;
@@ -27,7 +27,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
   const [hoveredNav, setHoveredNav] = useState("");
   const [searchHover, setSearchHover] = useState(false);
 
-  const pathname = usePathname(); // ✅ detect active page
+  const pathname = usePathname();
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -55,7 +55,6 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ✅ Updated with correct TikTok + Threads + Snapchat icons
   const socialLinks = [
     { href: "https://twitter.com", icon: Twitter, label: "Twitter" },
     { href: "https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr", icon: Facebook, label: "Facebook" },
@@ -148,8 +147,16 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
         ${isOpen ? "translate-x-0" : "-translate-x-full"} ${screenSize === "desktop" ? "translate-x-0" : ""}`}
       >
         <div className="flex flex-col h-full">
+          {/* Logo */}
           <div
-            className={`px-4 transition-all duration-300 ${scrolled ? "py-2" : screenSize === "mobile" ? "py-3" : screenSize === "tablet" ? "py-4" : "py-6"} flex justify-center items-center flex-shrink-0`}
+            className={`px-4 transition-all duration-300 ${scrolled
+              ? "py-2"
+              : screenSize === "mobile"
+                ? "py-3"
+                : screenSize === "tablet"
+                  ? "py-4"
+                  : "py-6"
+              } flex justify-center items-center flex-shrink-0`}
           >
             <Link href="/" className="block w-full flex justify-center">
               <Image
@@ -163,8 +170,16 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
             </Link>
           </div>
 
+          {/* Nav Links */}
           <nav className="flex-1 px-4 flex items-start justify-start min-h-0">
-            <ul className={`${screenSize === "mobile" ? "space-y-2" : screenSize === "tablet" ? "space-y-2.5" : "space-y-3"} w-full`}>
+            <ul
+              className={`${screenSize === "mobile"
+                ? "space-y-2"
+                : screenSize === "tablet"
+                  ? "space-y-2.5"
+                  : "space-y-3"
+                } w-full`}
+            >
               {[
                 { href: "/", label: "HOME" },
                 { href: "/about", label: "ABOUT" },
@@ -176,15 +191,18 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                 const isActive = pathname === item.href;
                 return (
                   <li key={item.href} className="relative">
-                    {/* ✅ background stays when active */}
                     <div
                       className={`absolute inset-y-0 left-0 w-[70%] bg-[#0fb8af] transform transition-transform duration-300 ease-out 
-                      ${isActive || hoveredNav === item.href ? "scale-x-100 origin-left" : "scale-x-0 origin-left"}`}
+                      ${isActive || hoveredNav === item.href
+                          ? "scale-x-100 origin-left"
+                          : "scale-x-0 origin-left"
+                        }`}
                       style={{ zIndex: -1 }}
                     />
                     <Link
                       href={item.href}
-                      className={`block px-2 ${screenSize === "mobile" ? "py-1.5" : "py-2"} relative text-white transition-colors duration-300`}
+                      className={`block px-2 ${screenSize === "mobile" ? "py-1.5" : "py-2"
+                        } relative text-white transition-colors duration-300`}
                       onMouseEnter={() => setHoveredNav(item.href)}
                       onMouseLeave={() => setHoveredNav("")}
                       style={{
@@ -200,16 +218,19 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                 );
               })}
 
+              {/* Search Button */}
               <li className="flex justify-start pt-2 pl-1">
                 <button
                   onClick={onSearchClick}
                   onMouseEnter={() => setSearchHover(true)}
                   onMouseLeave={() => setSearchHover(false)}
-                  className={`${screenSize === "mobile" ? "w-8 h-8" : "w-9 h-9"} flex items-center justify-center rounded-full transition-colors duration-300`}
+                  className={`${screenSize === "mobile" ? "w-8 h-8" : "w-9 h-9"
+                    } flex items-center justify-center rounded-full transition-colors duration-300`}
                   style={{ color: searchHover ? "#0fb8af" : "white" }}
                 >
-                  <SearchIcon
-                    className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} transition-colors duration-300`}
+                  <Search
+                    className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"
+                      } transition-colors duration-300`}
                     style={{ color: searchHover ? "#0fb8af" : "white" }}
                   />
                 </button>
@@ -217,31 +238,49 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
             </ul>
           </nav>
 
-          <div className={`p-4 border-t border-[#0fb8af]/40 flex-shrink-0 ${screenSize === "mobile" ? "p-3" : ""}`}>
+          {/* Social Links */}
+          <div
+            className={`p-4 border-t border-[#0fb8af]/40 flex-shrink-0 ${screenSize === "mobile" ? "p-3" : ""
+              }`}
+          >
             <div className="mb-3">
-              <ul className={`grid ${getSocialGridCols()} gap-2 justify-items-center`}>
-                {socialLinks.slice(0, screenSize === "mobile" ? 8 : socialLinks.length).map((social, i) => (
-                  <li key={i}>
-                    <a
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      className={`relative ${screenSize === "mobile" ? "w-8 h-8" : "w-10 h-10"} overflow-hidden rounded-full group block`}
-                    >
-                      <span className="absolute inset-0 flex items-center justify-center bg-black/40 transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
-                        <social.icon className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} text-white`} />
-                      </span>
-                      <span className="absolute inset-0 flex items-center justify-center bg-[#0fb8af] translate-y-full transition-all duration-300 group-hover:translate-y-0">
-                        <social.icon className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} text-white`} />
-                      </span>
-                    </a>
-                  </li>
-                ))}
+              <ul
+                className={`grid ${getSocialGridCols()} gap-2 justify-items-center`}
+              >
+                {socialLinks
+                  .slice(0, screenSize === "mobile" ? 8 : socialLinks.length)
+                  .map((social, i) => (
+                    <li key={i}>
+                      <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                        className={`relative ${screenSize === "mobile" ? "w-8 h-8" : "w-10 h-10"
+                          } overflow-hidden rounded-full group block`}
+                      >
+                        <span className="absolute inset-0 flex items-center justify-center bg-black/40 transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+                          <social.icon
+                            className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"
+                              } text-white`}
+                          />
+                        </span>
+                        <span className="absolute inset-0 flex items-center justify-center bg-[#0fb8af] translate-y-full transition-all duration-300 group-hover:translate-y-0">
+                          <social.icon
+                            className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"
+                              } text-white`}
+                          />
+                        </span>
+                      </a>
+                    </li>
+                  ))}
               </ul>
             </div>
 
-            <p className={`${screenSize === "mobile" ? "text-[10px]" : "text-xs"} text-center text-gray-400`}>
+            <p
+              className={`${screenSize === "mobile" ? "text-[10px]" : "text-xs"
+                } text-center text-gray-400`}
+            >
               © {new Date().getFullYear()} Entrepreneur Portfolio
             </p>
           </div>

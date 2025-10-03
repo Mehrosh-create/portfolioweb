@@ -19,7 +19,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
     const controls = useAnimation();
     const x = useMotionValue(0);
     const [isDragging, setIsDragging] = useState(false);
-    const animationRef = useRef<any>(null);
+    const animationRef = useRef<ReturnType<typeof controls.start> | null>(null);
 
     const speedValue = speed === "slow" ? 20 : speed === "fast" ? 80 : 40;
 
@@ -65,14 +65,14 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
                 controls.stop();
             }
         };
-    }, [width, direction, speedValue, isDragging]);
+    }, [width, direction, speedValue, isDragging, controls]);
 
     const handleDragStart = () => {
         setIsDragging(true);
         controls.stop();
     };
 
-    const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const handleDragEnd = () => {
         let currentX = x.get();
 
         // Normalize position for seamless loop
@@ -102,7 +102,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
     };
 
     const handleDrag = () => {
-        let currentX = x.get();
+        const currentX = x.get();
 
         // Handle looping during drag
         if (direction === "right") {
