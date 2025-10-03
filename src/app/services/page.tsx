@@ -11,6 +11,7 @@ import {
     Lightbulb,
     Zap,
 } from "lucide-react";
+// import { div } from "framer-motion/client";
 
 const Services = () => {
     const services = [
@@ -91,11 +92,22 @@ const Services = () => {
     return (
         <div className="min-h-screen bg-[#151515] text-white">
             {/* Header Section */}
-            <div className="py-20 px-40">
+            <div className="py-20 px-4 sm:px-6 lg:px-8 xl:px-40">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-12">
-                        {/* EXPERT SOLUTIONS with sliding background */}
-                        <div className="relative inline-block mx-auto mb-4 overflow-hidden">
+                        {/* Main Heading - SERVICES first */}
+                        <h1
+                            className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white mb-4 sm:mb-6 lg:mb-8 leading-tight"
+                            style={{
+                                fontFamily: '"Bebas Neue", Arial, sans-serif',
+                                letterSpacing: "0.02em",
+                            }}
+                        >
+                            MY <span className="text-[#0fb8af]">SERVICES</span>
+                        </h1>
+
+                        {/* Sliding background highlight - EXPERT SOLUTIONS second */}
+                        <div className="relative inline-block mx-auto">
                             <span
                                 className="absolute top-0 left-0 h-full bg-[#0fb8af] inline-block"
                                 style={{
@@ -103,66 +115,61 @@ const Services = () => {
                                     animation: "slideRight 2s forwards",
                                 }}
                             ></span>
-
                             <span
-                                className="relative z-10 text-black text-xs font-bold uppercase px-3 py-1 inline-block"
+                                className="relative z-10 text-black text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase px-3 sm:px-4 lg:px-6 py-1 sm:py-2 inline-block"
                                 style={{
-                                    fontWeight: 700,
-                                    letterSpacing: "0.08em",
+                                    fontFamily: '"Bebas Neue", Arial, sans-serif',
+                                    letterSpacing: "0.05em",
                                 }}
                             >
                                 EXPERT SOLUTIONS
                             </span>
                         </div>
-
-                        <h1 className="text-3xl lg:text-4xl font-bold uppercase text-white mb-6 leading-tight">
-                            MY <span className="text-[#0fb8af]">SERVICES</span>
-                        </h1>
-
-                        <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-                            With over 7 years of experience, I provide comprehensive digital
-                            transformation and business growth services to help your business
-                            thrive.
-                        </p>
                     </div>
-
-                    {/* Services Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {services.map((service, index) => (
-                            <div
-                                key={index}
-                                className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105 group cursor-pointer"
-                                style={{ borderColor: "#1F2937" }}
-                                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#0fb8af")}
-                                onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#1F2937")}
-                            >
-                                <div className="p-6">
-                                    <div className="text-[#0fb8af] mb-4 group-hover:text-[#0fb8af] transition-colors duration-300">
-                                        {service.icon}
-                                    </div>
-                                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-[#0fb8af] transition-colors">
-                                        {service.title}
-                                    </h3>
-                                    <p className="text-gray-400 text-sm mb-4">
-                                        {service.description}
-                                    </p>
-                                    <ul className="space-y-2 mb-4">
-                                        {service.features.map((feature, idx) => (
-                                            <li
-                                                key={idx}
-                                                className="flex items-center gap-2 text-gray-300 text-sm"
-                                            >
-                                                <CheckCircle className="w-4 h-4 text-[#0fb8af] flex-shrink-0" />
-                                                <span>{feature}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+                        With over 7 years of experience, I provide comprehensive digital
+                        transformation and business growth services to help your business
+                        thrive.
+                    </p>
                 </div>
             </div>
+
+            {/* Services Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-6 lg:px-8 xl:px-40 pb-20">
+                {services.map((service, index) => (
+                    <div
+                        key={index}
+                        className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105 group cursor-pointer"
+                        style={{ borderColor: "#1F2937" }}
+                        onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#0fb8af")}
+                        onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#1F2937")}
+                    >
+                        <div className="p-6">
+                            <div className="text-[#0fb8af] mb-4 group-hover:text-[#0fb8af] transition-colors duration-300">
+                                {service.icon}
+                            </div>
+                            <h3 className="text-xl font-bold mb-3 text-white group-hover:text-[#0fb8af] transition-colors">
+                                {service.title}
+                            </h3>
+                            <p className="text-gray-400 text-sm mb-4">
+                                {service.description}
+                            </p>
+                            <ul className="space-y-2 mb-4">
+                                {service.features.map((feature, idx) => (
+                                    <li
+                                        key={idx}
+                                        className="flex items-center gap-2 text-gray-300 text-sm"
+                                    >
+                                        <CheckCircle className="w-4 h-4 text-[#0fb8af] flex-shrink-0" />
+                                        <span>{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
 
             {/* CTA Section */}
             <div className="py-16 px-6 bg-[#1a1a1a]">
@@ -172,14 +179,14 @@ const Services = () => {
                         <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4 uppercase">
                             Ready to Transform Your Business?
                         </h2>
-                        <p className="text-gray-300 text-base mb-6 max-w-2xl mx-auto">
+                        <p className="text-black-300 text-base mb-6 max-w-2xl mx-auto">
                             Let&apos;s discuss how my services can help you achieve your business
                             goals and drive sustainable growth.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3 justify-center">
                             <Link href="/contact">
                                 <button
-                                    className="px-6 py-3 font-bold uppercase tracking-wider transition-colors text-sm"
+                                    className="px-5 py-2 font-bold uppercase tracking-wider transition-colors text-sm"
                                     style={{ backgroundColor: "#0fb8af", color: "#000" }}
                                 >
                                     Get Started
@@ -187,14 +194,15 @@ const Services = () => {
                             </Link>
                             <Link href="/portfolio">
                                 <button
-                                    className="border-2 border-[#0fb8af] text-[#0fb8af] px-6 py-3 uppercase transition-all duration-300 transform hover:scale-105 text-sm text-center font-semibold"
+                                    className="border-2 border-[#0fb8af] text-[#0fb8af] px-5 py-2 uppercase transition-all duration-300 transform hover:scale-105 text-sm text-center font-semibold hover:bg-[#0fb8af] hover:text-black active:bg-[#0fb8af] active:text-black"
                                     style={{
-                                        letterSpacing: "0.08em",
+                                        letterSpacing: "0.06em",
                                     }}
                                 >
                                     View Portfolio
                                 </button>
                             </Link>
+
                         </div>
                     </div>
                 </div>
@@ -211,5 +219,4 @@ const Services = () => {
         </div>
     );
 };
-
 export default Services;

@@ -1,4 +1,4 @@
-// src/app/portfolio/page.tsx - UPDATED WITH CONTACT NAVIGATION
+// src/app/portfolio/page.tsx - UPDATED WITH NEW FILTER BUTTONS
 "use client";
 
 import Image from "next/image";
@@ -68,11 +68,11 @@ const Portfolio = () => {
     ];
 
     const filters = [
-        { id: "all", name: "All Projects" },
-        { id: "digital", name: "Digital Transformation" },
-        { id: "marketing", name: "Growth Marketing" },
-        { id: "development", name: "Development" },
-        { id: "branding", name: "Branding" },
+        { id: "all", name: "ALL" },
+        { id: "digital", name: "DIGITAL TRANSFORMATION" },
+        { id: "marketing", name: "CRM SYSTEMS" },
+        { id: "development", name: "LEADERSHIP" },
+        { id: "branding", name: "AUTOMATION" },
     ];
 
     const filteredItems =
@@ -117,7 +117,7 @@ const Portfolio = () => {
                     </div>
                 </div>
 
-                {/* Filters */}
+                {/* Filters - UPDATED WITH NEW BUTTON STYLE */}
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4 mb-8 sm:mb-10 lg:mb-12">
                     {filters.map((filter) => (
                         <button
@@ -196,42 +196,53 @@ const Portfolio = () => {
                                         letterSpacing: "0.05em",
                                     }}
                                 >
-                                    {item.category.charAt(0).toUpperCase() + item.category.slice(1)}
+                                    {item.category.charAt(0).toUpperCase() +
+                                        item.category.slice(1)}
                                 </span>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* CTA Section */}
-                <div className="text-center mt-12 sm:mt-16 lg:mt-20">
-                    <h2
-                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 uppercase"
-                        style={{
-                            fontFamily: '"Bebas Neue", Arial, sans-serif',
-                            letterSpacing: "0.05em",
-                        }}
-                    >
-                        Ready to Start Your Project?
-                    </h2>
-                    <p
-                        className="text-sm sm:text-base lg:text-lg xl:text-xl text-[#E0F7FA] mb-6 sm:mb-8 max-w-2xl mx-auto"
-                        style={{
-                            fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                        }}
-                    >
-                        Let&apos;s discuss how we can bring your vision to life with innovative
-                        digital solutions.
-                    </p>
-
-                    {/* ✅ Updated with Link to Contact Page */}
-                    <Link
-                        href="/contact"
-                        className="bg-[#0fb8af] text-black px-6 sm:px-8 lg:px-10 py-2.5 sm:py-3 lg:py-4 font-bold uppercase tracking-wider rounded-lg hover:bg-[#0fb8af]/80 transition-colors text-sm sm:text-base lg:text-lg"
-                        style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
-                    >
-                        Get In Touch
-                    </Link>
+                {/* CTA Section (Updated like testimonial CTA style) */}
+                <div className="py-16 px-6 bg-[#1a1a1a]">
+                    <div className="max-w-7xl mx-auto">
+                        <div
+                            className="bg-[#151515] border rounded-lg p-8 lg:p-12 text-center"
+                            style={{ borderColor: "#1F2937" }}
+                        >
+                            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 uppercase"
+                                style={{
+                                    fontFamily: '"Bebas Neue", Arial, sans-serif',
+                                    letterSpacing: "0.05em",
+                                }}
+                            >
+                                Ready to Start Your Project?
+                            </h2>
+                            <p
+                                className="text-sm sm:text-base lg:text-lg xl:text-xl text-[#E0F7FA] mb-6 sm:mb-8 max-w-2xl mx-auto"
+                                style={{
+                                    fontFamily:
+                                        'Arial, "Helvetica Neue", Helvetica, sans-serif',
+                                }}
+                            >
+                                Let&apos;s discuss how we can bring your vision to life with
+                                innovative digital solutions.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                                <Link href="/contact">
+                                    <button
+                                        className="relative px-6 py-3 border-2 border-[#0fb8af] text-[#0fb8af] font-semibold 
+                      transition-all duration-300 ease-in-out
+                      hover:bg-[#0fb8af] hover:text-black
+                      active:bg-[#0fb8af] active:text-black"
+                                    >
+                                        Get In Touch
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

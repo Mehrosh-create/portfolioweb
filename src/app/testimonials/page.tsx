@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 
-
 const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
@@ -100,7 +99,7 @@ const Testimonials = () => {
 
             return () => clearInterval(interval);
         }
-    }, [currentIndex, isPaused, nextTestimonial]);
+    }, [currentIndex, isPaused]);
 
     return (
         <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 xl:px-4 pb-8 sm:pb-12 lg:pb-16 bg-[#151515] flex flex-col">
@@ -117,7 +116,7 @@ const Testimonials = () => {
                         CLIENT <span className="text-[#0fb8af]">TESTIMONIALS</span>
                     </h1>
 
-                    {/* Sliding background highlight like About page */}
+                    {/* Sliding background highlight */}
                     <div className="relative inline-block mx-auto mb-4 sm:mb-6">
                         <span
                             className="absolute top-0 left-0 h-full bg-[#0fb8af] inline-block"
@@ -187,20 +186,10 @@ const Testimonials = () => {
                                 />
                             </div>
                             <div>
-                                <h3
-                                    className="text-base sm:text-lg lg:text-xl font-bold text-white"
-                                    style={{
-                                        fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                                    }}
-                                >
+                                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white">
                                     {testimonials[currentIndex].name}
                                 </h3>
-                                <p
-                                    className="text-[#0fb8af] text-sm sm:text-base"
-                                    style={{
-                                        fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                                    }}
-                                >
+                                <p className="text-[#0fb8af] text-sm sm:text-base">
                                     {testimonials[currentIndex].role},{" "}
                                     {testimonials[currentIndex].company}
                                 </p>
@@ -210,14 +199,14 @@ const Testimonials = () => {
                         {/* Navigation */}
                         <button
                             onClick={prevTestimonial}
-                            className="absolute left-2 sm:left-3 lg:left-4 top-1/2 transform -translate-y-1/2 bg-[#0fb8af] p-1.5 sm:p-2 rounded-full hover:bg-[#0fb8af] hover:scale-110 transition-all duration-300 z-20"
+                            className="absolute left-2 sm:left-3 lg:left-4 top-1/2 transform -translate-y-1/2 bg-[#0fb8af] p-1.5 sm:p-2 rounded-full hover:scale-110 transition-all duration-300 z-20"
                             aria-label="Previous testimonial"
                         >
                             <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                         </button>
                         <button
                             onClick={nextTestimonial}
-                            className="absolute right-2 sm:right-3 lg:right-4 top-1/2 transform -translate-y-1/2 bg-[#0fb8af] p-1.5 sm:p-2 rounded-full hover:bg-[#0fb8af]hover:scale-110 transition-all duration-300 z-20"
+                            className="absolute right-2 sm:right-3 lg:right-4 top-1/2 transform -translate-y-1/2 bg-[#0fb8af] p-1.5 sm:p-2 rounded-full hover:scale-110 transition-all duration-300 z-20"
                             aria-label="Next testimonial"
                         >
                             <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
@@ -240,7 +229,7 @@ const Testimonials = () => {
                     </div>
                 </div>
 
-                {/* All Testimonials Grid with Enhanced Slide-Up Effects */}
+                {/* All Testimonials Grid */}
                 <div className="mb-8 sm:mb-12 lg:mb-16">
                     <h2
                         className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8 lg:mb-12 text-center uppercase"
@@ -258,7 +247,7 @@ const Testimonials = () => {
                                 key={testimonial.id}
                                 className="relative bg-[#252525] rounded-lg border border-gray-700 hover:border-white transition-all duration-200 group cursor-pointer overflow-hidden h-64 sm:h-72 lg:h-80 shadow-lg hover:shadow-2xl"
                             >
-                                {/* Default State - Shows Name, Role, Company */}
+                                {/* Default State */}
                                 <div className="absolute inset-0 p-4 sm:p-6 lg:p-8 flex flex-col justify-center items-center text-center transition-all duration-300 ease-out group-hover:-translate-y-full group-hover:opacity-0">
                                     <div className="relative w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden border-2 border-gray-600 mb-4 sm:mb-5 lg:mb-6 transition-all duration-500">
                                         <Image
@@ -269,34 +258,18 @@ const Testimonials = () => {
                                             sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 96px"
                                         />
                                     </div>
-                                    <h3
-                                        className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3"
-                                        style={{
-                                            fontFamily: '"Bebas Neue", Arial, sans-serif',
-                                            letterSpacing: "0.05em",
-                                        }}
-                                    >
+                                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3">
                                         {testimonial.name}
                                     </h3>
-                                    <p
-                                        className="text-[#0fb8af] font-semibold uppercase tracking-wider text-sm sm:text-base lg:text-lg mb-1 sm:mb-2"
-                                        style={{
-                                            fontFamily: '"Bebas Neue", Arial, sans-serif',
-                                        }}
-                                    >
+                                    <p className="text-[#0fb8af] font-semibold uppercase tracking-wider text-sm sm:text-base lg:text-lg mb-1 sm:mb-2">
                                         {testimonial.role}
                                     </p>
-                                    <p
-                                        className="text-gray-300 text-xs sm:text-sm font-medium tracking-wide"
-                                        style={{
-                                            fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                                        }}
-                                    >
+                                    <p className="text-gray-300 text-xs sm:text-sm font-medium tracking-wide">
                                         {testimonial.company}
                                     </p>
                                 </div>
 
-                                {/* Hover State - Content slides up from bottom */}
+                                {/* Hover State */}
                                 <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.hoverBg} p-4 sm:p-5 lg:p-6 transition-all duration-300 ease-out transform translate-y-full group-hover:translate-y-0 flex flex-col justify-center`}>
                                     <div className="text-center">
                                         <div className="flex justify-center mb-3 sm:mb-4">
@@ -308,72 +281,47 @@ const Testimonials = () => {
                                             ))}
                                         </div>
                                         <Quote className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white/30 mb-3 sm:mb-4 mx-auto" />
-                                        <p
-                                            className="text-white text-xs sm:text-sm leading-relaxed italic font-light px-1 max-h-32 sm:max-h-36 lg:max-h-40 overflow-y-auto"
-                                            style={{
-                                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                                            }}
-                                        >
+                                        <p className="text-white text-xs sm:text-sm leading-relaxed italic font-light px-1 max-h-32 sm:max-h-36 lg:max-h-40 overflow-y-auto">
                                             &ldquo;{testimonial.content}&rdquo;
                                         </p>
                                     </div>
                                 </div>
 
-                                {/* Hover indicator bar */}
                                 <div className="absolute bottom-0 left-0 w-0 h-1 bg-white group-hover:w-full transition-all duration-700 delay-200"></div>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* CTA Section */}
-                <div className="bg-[#252525] rounded-lg p-6 sm:p-8 lg:p-10 xl:p-12 text-center border border-gray-700 relative overflow-hidden">
-                    {/* Background pattern */}
-                    <div
-                        className="absolute inset-0 opacity-5"
-                        style={{
-                            backgroundImage:
-                                'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/svg%3E")',
-                            backgroundSize: "60px 60px",
-                        }}
-                    ></div>
-
-                    <div className="relative z-10">
-                        <h2
-                            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-5 lg:mb-6 uppercase"
-                            style={{
-                                fontFamily: '"Bebas Neue", Arial, sans-serif',
-                                letterSpacing: "0.05em",
-                            }}
-                        >
-                            Ready to Join Our Success Stories?
-                        </h2>
-                        <p
-                            className="text-sm sm:text-base lg:text-lg xl:text-xl text-[#e0f7fa] mb-6 sm:mb-7 lg:mb-8 max-w-2xl mx-auto leading-relaxed px-2"
-                            style={{
-                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                            }}
-                        >
-                            Transform your business like our satisfied clients. Let&apos;s discuss
-                            your project and create your success story.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                            <Link href="/contact">
-                                <button
-                                    className="border-2 border-[#0fb8af] text-[#0fb8af] px-6 sm:px-7 lg:px-8 py-2.5 sm:py-3 font-bold uppercase tracking-wider rounded-lg hover:bg-[#0fb8af] hover:text-black transition-colors text-sm sm:text-base"
-                                    style={{
-                                        fontFamily: '"Bebas Neue", Arial, sans-serif',
-                                    }}
-                                >
-                                    Contact Me
-                                </button>
-                            </Link>
+                {/* CTA Section (updated like services page) */}
+                <div className="py-16 px-6 bg-[#1a1a1a]">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="bg-[#151515] border rounded-lg p-8 lg:p-12 text-center"
+                            style={{ borderColor: "#1F2937" }}>
+                            <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4 uppercase">
+                                Ready to Join Our Success Stories?
+                            </h2>
+                            <p className="text-gray-300 text-base mb-6 max-w-2xl mx-auto">
+                                Transform your business like our satisfied clients. Let&apos;s discuss
+                                your project and create your success story.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                                <Link href="/contact">
+                                    <button
+                                        className="relative px-6 py-3 border-2 border-[#0fb8af] text-[#0fb8af] font-semibold 
+             transition-all duration-300 ease-in-out
+             hover:bg-[#0fb8af] hover:text-black
+             active:bg-[#0fb8af] active:text-black"
+                                    >
+                                        Contact Me
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Enhanced Keyframes */}
             <style>
                 {`
           @keyframes slideRight {
