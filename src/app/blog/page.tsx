@@ -71,7 +71,7 @@ const articles = [
     author: "Michael Brown",
     likes: "376",
     comments: "47",
-    excerpt: "Automation enhances efficiency and satisfaction in CRM.",
+    excerpt: "Automation in CRM enhances efficiency while driving customer satisfaction and loyalty.",
     contents: [
       "Automation improves response times and customer satisfaction in CRM.",
       "Sales teams can focus on high-value interactions rather than repetitive tasks.",
@@ -190,7 +190,7 @@ const articles = [
   // BUSINESS STRATEGY
   {
     slug: "digital-business-strategy",
-    title: "Business Building in the Digital Age",
+    title: "Business Building in the Digital Age of 2025",
     category: "BUSINESS STRATEGY",
     readTime: "4 min read",
     date: "March 3, 2025",
@@ -207,7 +207,7 @@ const articles = [
   },
   {
     slug: "growth-strategies-for-startups",
-    title: "Growth Strategies for Startups in 2025",
+    title: "Building a Thriving Business in the Digital Age of 2025",
     category: "BUSINESS STRATEGY",
     readTime: "5 min read",
     date: "March 2, 2025",
@@ -215,7 +215,7 @@ const articles = [
     author: "Sophia Martinez",
     likes: "421",
     comments: "68",
-    excerpt: "Startups must focus on product-market fit and scalability.",
+    excerpt: "Startups must focus on product-market fit and scalability to drive sustainable growth and long-term success.",
     contents: [
       "Startups must focus on product-market fit and scalability.",
       "Leveraging digital marketing accelerates growth in competitive markets.",
