@@ -2,6 +2,7 @@
 "use client";
 
 import ContactForm from "@/components/Contact/ContactForm";
+import Link from "next/link";
 
 const Contact = () => {
     return (
@@ -42,12 +43,12 @@ const Contact = () => {
                                 SheikhMedia is a full-service digital agency built for the
                                 now. We handle strategy, creative, paid media, production,
                                 and more –{" "}
-                                <a
-                                    href="https://sheikhmedia.com/#services"
+                                <Link
+                                    href="/services"
                                     className="text-[#0fb8af] hover:underline"
                                 >
                                     explore the full range of services here.
-                                </a>
+                                </Link>
                             </h6>
                             <h3
                                 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4 uppercase"
