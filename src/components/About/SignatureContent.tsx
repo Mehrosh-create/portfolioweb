@@ -30,7 +30,7 @@ const SignatureContent = () => {
             {/* Main Content - Improved grid responsiveness */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 lg:mb-16">
                 {/* Card 1 */}
-                <div className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 group">
+                <div className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-100 group">
                     <h3
                         className="text-xl sm:text-2xl font-bold text-[#0fb8af] mb-3 sm:mb-4 group-hover:text-[#0fb8af] transition-colors"
                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
