@@ -18,9 +18,9 @@ const articles = [
     author: "Sheikh Nabeel",
     likes: "892",
     comments: "156",
-    excerpt: "Digital transformation is reshaping industries globally with AI, automation, and innovation.",
+    excerpt: "Digital transformation is reshaping industries globally with AI and automation.",
     contents: [
-      "Digital transformation is reshaping industries globally with AI, automation, and innovation.",
+      "Digital transformation is reshaping industries globally with AI and automation.",
       "Businesses leveraging digital strategies are seeing unprecedented growth and efficiency.",
       "The future of commerce is digital-first, and organizations must adapt quickly."
     ]
