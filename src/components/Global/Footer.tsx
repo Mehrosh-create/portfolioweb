@@ -64,7 +64,7 @@ const Footer = () => {
       }}
     >
       {/* Newsletter Section */}
-      <section className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 lg:px-10 xl:ml-80 xl:mr-auto text-center border-b border-gray-800">
+      <section className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 lg:px-10 lg:ml-64 text-center border-b border-gray-800">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wide mb-2 sm:mb-3">
             SHEIKH NABEEL
@@ -121,7 +121,7 @@ const Footer = () => {
       </section>
 
       {/* Social Icons */}
-      <div className="flex justify-center flex-wrap gap-3 sm:gap-4 py-6 sm:py-8 px-4 xl:ml-80 xl:mr-auto">
+      <div className="flex justify-center flex-wrap gap-3 sm:gap-4 py-6 sm:py-8 px-4 lg:ml-64">
         {/* Discord */}
         <a
           href="#"
@@ -258,7 +258,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="text-center text-xs sm:text-sm md:text-base lg:text-lg text-gray-400 pb-5 sm:pb-7 px-4 xl:ml-80 xl:mr-auto">
+      <div className="text-center text-xs sm:text-sm md:text-base lg:text-lg text-gray-400 pb-5 sm:pb-7 px-4 lg:ml-64">
         <p className="mb-2 sm:mb-3">© Sheikh Nabeel {new Date().getFullYear()}</p>
         <div className="flex justify-center gap-3 sm:gap-4 md:gap-5 mt-1">
           <Link

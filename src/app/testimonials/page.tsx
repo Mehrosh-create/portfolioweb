@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
@@ -8,6 +8,11 @@ import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+    useEffect(() => {
+        setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    }, []);
 
     const testimonials = [
         {
@@ -78,11 +83,11 @@ const Testimonials = () => {
         },
     ];
 
-    const nextTestimonial = () => {
+    const nextTestimonial = useCallback(() => {
         setCurrentIndex((prevIndex) =>
             prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
         );
-    };
+    }, [testimonials.length]);
 
     const prevTestimonial = () => {
         setCurrentIndex((prevIndex) =>
@@ -99,7 +104,7 @@ const Testimonials = () => {
 
             return () => clearInterval(interval);
         }
-    }, [currentIndex, isPaused]);
+    }, [currentIndex, isPaused, nextTestimonial]);
 
     return (
         <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 xl:px-4 pb-8 sm:pb-12 lg:pb-16 bg-[#151515] flex flex-col">
@@ -140,8 +145,8 @@ const Testimonials = () => {
                 {/* Testimonial Carousel */}
                 <div
                     className="relative max-w-4xl mx-auto mb-8 sm:mb-12 lg:mb-16"
-                    onMouseEnter={() => setIsPaused(true)}
-                    onMouseLeave={() => setIsPaused(false)}
+                    onMouseEnter={() => !isTouchDevice && setIsPaused(true)}
+                    onMouseLeave={() => !isTouchDevice && setIsPaused(false)}
                 >
                     <div className="bg-[#252525] rounded-lg p-4 sm:p-6 lg:p-8 xl:p-12 relative border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 overflow-hidden">
                         {/* Background pattern */}

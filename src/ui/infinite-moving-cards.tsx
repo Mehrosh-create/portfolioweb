@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
-import { motion, useAnimation, useMotionValue, PanInfo } from "framer-motion";
+import React, { useRef, useEffect, useState, useCallback } from "react";
+import { motion, useAnimation, useMotionValue } from "framer-motion";
 
 interface InfiniteMovingCardsProps {
     items: string[];
@@ -30,7 +30,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
     }, []);
 
     // Start continuous animation
-    const startAnimation = () => {
+    const startAnimation = useCallback(() => {
         if (width <= 0) return;
 
         const currentX = x.get();
@@ -53,7 +53,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
                 startAnimation();
             }
         });
-    };
+    }, [width, direction, speedValue, isDragging, controls, x]);
 
     useEffect(() => {
         if (width > 0 && !isDragging) {
@@ -65,7 +65,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
                 controls.stop();
             }
         };
-    }, [width, direction, speedValue, isDragging, controls]);
+    }, [width, direction, speedValue, isDragging, controls, startAnimation]);
 
     const handleDragStart = () => {
         setIsDragging(true);

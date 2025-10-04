@@ -22,7 +22,6 @@ interface SidebarProps {
 
 const Sidebar = ({ onSearchClick }: SidebarProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">("desktop");
   const [hoveredNav, setHoveredNav] = useState("");
   const [searchHover, setSearchHover] = useState(false);
@@ -49,18 +48,13 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const socialLinks = [
     { href: "https://twitter.com", icon: Twitter, label: "Twitter" },
     { href: "https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr", icon: Facebook, label: "Facebook" },
     { href: "https://www.pinterest.com", icon: FaPinterest, label: "Pinterest" },
     { href: "https://pk.linkedin.com/in/sheikhnabeelofficial", icon: Linkedin, label: "Linkedin" },
-    { href: "https://www.youtube.com", icon: Youtube, label: "YouTube" },
+    { href: "https://www.youtube.com/@EurosHub", icon: Youtube, label: "YouTube" },
     { href: "https://www.instagram.com/sheikhnabeel.official/?hl=en", icon: Instagram, label: "Instagram" },
     { href: "https://snapchat.com/add/sheikhnabeel.official", icon: FaSnapchatGhost, label: "Snapchat" },
     { href: "https://discord.com", icon: FaDiscord, label: "Discord" },
@@ -128,9 +122,14 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
         <div className="fixed top-3 left-3 z-50">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white bg-gray-900 px-3 py-2 rounded-md text-lg transition-all hover:scale-105 shadow-lg"
+            className="text-white bg-gradient-to-br from-gray-900 to-black p-3 rounded-xl transition-all hover:scale-105 shadow-xl hover:shadow-2xl hover:from-[#0fb8af] hover:to-gray-900 group"
+            aria-label="Toggle Menu"
           >
-            ☰
+            <div className="w-6 h-5 flex flex-col justify-between">
+              <span className={`h-0.5 w-full bg-white rounded-full transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`h-0.5 w-full bg-white rounded-full transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`h-0.5 w-full bg-white rounded-full transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            </div>
           </button>
         </div>
       )}
@@ -143,20 +142,36 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
       )}
 
       <aside
-        className={`fixed top-0 left-0 h-screen ${getSidebarWidth()} bg-black text-white z-50 transition-all duration-300 shadow-xl shadow-black/50
+        className={`fixed top-0 left-0 h-screen ${getSidebarWidth()} bg-black text-white z-50 transition-all duration-300 shadow-xl shadow-black/50 overflow-hidden
         ${isOpen ? "translate-x-0" : "-translate-x-full"} ${screenSize === "desktop" ? "translate-x-0" : ""}`}
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full overflow-hidden">
+          {/* Close button for mobile/tablet */}
+          {screenSize !== "desktop" && (
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-3 right-3 text-white hover:text-[#0fb8af] transition-colors z-10 p-2 hover:bg-white/10 rounded-lg"
+              aria-label="Close Menu"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          )}
+
           {/* Logo */}
           <div
-            className={`px-4 transition-all duration-300 ${scrolled
-              ? "py-2"
-              : screenSize === "mobile"
-                ? "py-3"
-                : screenSize === "tablet"
-                  ? "py-4"
-                  : "py-6"
-              } flex justify-center items-center flex-shrink-0`}
+            className={`px-4 py-3 flex justify-center items-center flex-shrink-0`}
           >
             <Link href="/" className="block w-full flex justify-center">
               <Image
@@ -171,13 +186,13 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
           </div>
 
           {/* Nav Links */}
-          <nav className="flex-1 px-4 flex items-start justify-start min-h-0">
+          <nav className="px-4 py-2">
             <ul
               className={`${screenSize === "mobile"
-                ? "space-y-2"
+                ? "space-y-1"
                 : screenSize === "tablet"
-                  ? "space-y-2.5"
-                  : "space-y-3"
+                  ? "space-y-1.5"
+                  : "space-y-2"
                 } w-full`}
             >
               {[
@@ -201,10 +216,16 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                     />
                     <Link
                       href={item.href}
+                      prefetch={true}
                       className={`block px-2 ${screenSize === "mobile" ? "py-1.5" : "py-2"
                         } relative text-white transition-colors duration-300`}
                       onMouseEnter={() => setHoveredNav(item.href)}
                       onMouseLeave={() => setHoveredNav("")}
+                      onClick={() => {
+                        if (screenSize !== "desktop") {
+                          setIsOpen(false);
+                        }
+                      }}
                       style={{
                         fontFamily: '"Bebas Neue", sans-serif',
                         fontWeight: 100,
@@ -237,6 +258,9 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
               </li>
             </ul>
           </nav>
+
+          {/* Spacer */}
+          <div className="flex-1"></div>
 
           {/* Social Links */}
           <div

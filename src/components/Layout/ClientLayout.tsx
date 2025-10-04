@@ -24,12 +24,21 @@ export default function ClientLayout({
     children: React.ReactNode;
 }) {
     const [showSearch, setShowSearch] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
 
-    const handleSearchClick = () => setShowSearch(true);
+    const handleSearchClick = () => {
+        setShowSearch(true);
+        setIsClosing(false);
+    };
+
     const handleSearchClose = () => {
-        setShowSearch(false);
-        setSearchQuery("");
+        setIsClosing(true);
+        setTimeout(() => {
+            setShowSearch(false);
+            setIsClosing(false);
+            setSearchQuery("");
+        }, 400);
     };
 
     const handleSearchSubmit = (e: React.FormEvent) => {
@@ -55,8 +64,8 @@ export default function ClientLayout({
 
                 {/* Search Bar */}
                 {showSearch && (
-                    <div className="w-full bg-black py-16 px-8 relative z-50">
-                        <div className="max-w-7xl mx-auto lg:ml-64">
+                    <div className={`fixed top-0 left-0 lg:left-64 right-0 bg-black py-16 px-8 z-40 ${isClosing ? 'animate-slideUp' : 'animate-slideDown'}`}>
+                        <div className="max-w-7xl mx-auto">
                             <div className="relative mt-6">
                                 <form onSubmit={handleSearchSubmit}>
                                     <input
