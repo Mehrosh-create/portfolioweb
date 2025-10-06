@@ -57,15 +57,14 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: "discord", url: "https://discord.com" },
-    { name: "facebook", url: "https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr" },
-    { name: "linkedin", url: "https://pk.linkedin.com/in/sheikhnabeelofficial" },
-    { name: "twitter", url: "https://twitter.com/sheikhnabeel" },
-    { name: "youtube", url: "https://www.youtube.com/@EurosHub" },
-    { name: "tik-tok", url: "https://www.tiktok.com/@sheikhnabeel.official" },
-    { name: "instagram", url: "https://www.instagram.com/sheikhnabeel.official/?hl=en" },
-        { name: "upwork", url: "https://www.upwork.com/freelancers/sheikhnabeelofficial" },
-
+    { name: "discord", url: "https://discord.com", size: 60 },
+    { name: "facebook", url: "https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr", size: 60 },
+    { name: "linkedin", url: "https://pk.linkedin.com/in/sheikhnabeelofficial", size: 60 },
+    { name: "twitter", url: "https://twitter.com/sheikhnabeel", size: 60 },
+    { name: "youtube", url: "https://www.youtube.com/@EurosHub", size: 60 },
+    { name: "tik-tok", url: "https://www.tiktok.com/@sheikhnabeel.official", size: 60 },
+    { name: "instagram", url: "https://www.instagram.com/sheikhnabeel.official/?hl=en", size: 60 },
+    { name: "upwork", url: "https://www.upwork.com/freelancers/sheikhnabeelofficial", size: 63.5},
   ];
 
   return (
@@ -143,13 +142,18 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="hover:scale-110 transition-transform duration-200"
           >
-            <Image
-              src={`/icons/${social.name}.png`}
-              alt={social.name}
-              width={60}
-              height={60}
-              className="rounded-full object-contain"
-            />
+            <div 
+              className="flex items-center justify-center"
+              style={{ width: `${social.size}px`, height: `${social.size}px` }}
+            >
+              <Image
+                src={`/icons/${social.name}.png`}
+                alt={social.name}
+                width={social.size}
+                height={social.size}
+                className="rounded-full object-cover w-full h-full"
+              />
+            </div>
           </a>
         ))}
       </div>
