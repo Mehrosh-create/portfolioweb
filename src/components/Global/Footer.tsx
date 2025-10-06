@@ -60,11 +60,12 @@ const Footer = () => {
     { name: "discord", url: "https://discord.com" },
     { name: "facebook", url: "https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr" },
     { name: "linkedin", url: "https://pk.linkedin.com/in/sheikhnabeelofficial" },
-    { name: "upwork", url: "https://www.upwork.com/freelancers/sheikhnabeelofficial" },
     { name: "twitter", url: "https://twitter.com/sheikhnabeel" },
     { name: "youtube", url: "https://www.youtube.com/@EurosHub" },
     { name: "tik-tok", url: "https://www.tiktok.com/@sheikhnabeel.official" },
     { name: "instagram", url: "https://www.instagram.com/sheikhnabeel.official/?hl=en" },
+        { name: "upwork", url: "https://www.upwork.com/freelancers/sheikhnabeelofficial" },
+
   ];
 
   return (
