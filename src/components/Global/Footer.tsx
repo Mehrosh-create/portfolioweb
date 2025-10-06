@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { SocialIcon } from 'react-social-icons';
+import Image from "next/image";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -57,14 +57,14 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { url: "https://discord.com", network: "discord" },
-    { url: "https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr", network: "facebook" },
-    { url: "https://pk.linkedin.com/in/sheikhnabeelofficial", network: "linkedin" },
-    { url: "https://www.upwork.com/freelancers/sheikhnabeelofficial", network: "upwork" },
-    { url: "https://twitter.com", network: "x" },
-    { url: "https://www.youtube.com/@EurosHub", network: "youtube" },
-    { url: "https://snapchat.com/add/sheikhnabeel.official", network: "snapchat" },
-    { url: "https://www.tiktok.com/@sheikhnabeel.official", network: "tiktok" },
+    { name: "discord", url: "https://discord.com" },
+    { name: "facebook", url: "https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr" },
+    { name: "linkedin", url: "https://pk.linkedin.com/in/sheikhnabeelofficial" },
+    { name: "upwork", url: "https://www.upwork.com/freelancers/sheikhnabeelofficial" },
+    { name: "twitter", url: "https://twitter.com/sheikhnabeel" },
+    { name: "youtube", url: "https://www.youtube.com/@EurosHub" },
+    { name: "tik-tok", url: "https://www.tiktok.com/@sheikhnabeel.official" },
+    { name: "instagram", url: "https://www.instagram.com/sheikhnabeel.official/?hl=en" },
   ];
 
   return (
@@ -135,28 +135,22 @@ const Footer = () => {
       {/* Social Icons */}
       <div className="flex justify-center flex-wrap gap-4 sm:gap-5 py-6 sm:py-8 px-4 lg:ml-64">
         {socialLinks.map((social) => (
-          <SocialIcon
-            key={social.network}
-            url={social.url}
-            network={social.network}
+          <a
+            key={social.name}
+            href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ height: 60, width: 60 }}
             className="hover:scale-110 transition-transform duration-200"
-          />
+          >
+            <Image
+              src={`/icons/${social.name}.png`}
+              alt={social.name}
+              width={60}
+              height={60}
+              className="rounded-full object-contain"
+            />
+          </a>
         ))}
-        
-        {/* Custom Instagram Gradient Icon */}
-        <a
-          href="https://www.instagram.com/sheikhnabeel.official/?hl=en"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-[60px] h-[60px] rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center hover:scale-110 transition-transform duration-200"
-        >
-          <svg className="w-8 h-8" fill="white" viewBox="0 0 24 24">
-            <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm4.8-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z" />
-          </svg>
-        </a>
       </div>
 
       {/* Copyright */}
