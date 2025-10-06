@@ -125,6 +125,8 @@ const Footer = () => {
         {/* Discord */}
         <a
           href="https://discord.com"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#5865F2' }}
         >
@@ -135,6 +137,8 @@ const Footer = () => {
         {/* Facebook */}
         <a
           href="https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#1877F2' }}
         >
@@ -151,6 +155,8 @@ const Footer = () => {
         {/* Instagram Gradient */}
         <a
           href="https://www.instagram.com/sheikhnabeel.official/?hl=en"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center flex-shrink-0"
         >
           <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" fill="white" viewBox="0 0 24 24">
@@ -160,6 +166,8 @@ const Footer = () => {
         {/* LinkedIn */}
         <a
           href="https://pk.linkedin.com/in/sheikhnabeelofficial"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#0A66C2' }}
         >
@@ -175,6 +183,8 @@ const Footer = () => {
         {/* Pinterest */}
         <a
           href="https://www.pinterest.com"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#E60023' }}
         >
@@ -200,7 +210,8 @@ const Footer = () => {
         </a>
         {/* Twitter / X */}
         <a
-          href="https://twitter.com"
+          href="https://twitter.com" target="_blank"
+          rel="noopener noreferrer"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#000000' }}
         >
@@ -214,6 +225,8 @@ const Footer = () => {
         {/* YouTube */}
         <a
           href="https://www.youtube.com/@EurosHub"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#FF0000' }}
         >
@@ -234,6 +247,8 @@ const Footer = () => {
         {/* Snapchat */}
         <a
           href="https://snapchat.com/add/sheikhnabeel.official"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#FFFC00' }}
         >
@@ -251,6 +266,8 @@ const Footer = () => {
         {/* TikTok */}
         <a
           href="https://www.tiktok.com/@sheikhnabeel.official"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#000000' }}
         >
