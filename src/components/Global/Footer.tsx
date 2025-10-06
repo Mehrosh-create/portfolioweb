@@ -64,7 +64,7 @@ const Footer = () => {
     { name: "youtube", url: "https://www.youtube.com/@EurosHub", size: 60 },
     { name: "tik-tok", url: "https://www.tiktok.com/@sheikhnabeel.official", size: 60 },
     { name: "instagram", url: "https://www.instagram.com/sheikhnabeel.official/?hl=en", size: 60 },
-    { name: "upwork", url: "https://www.upwork.com/freelancers/sheikhnabeelofficial", size: 63.5},
+    { name: "upwork", url: "https://www.upwork.com/freelancers/sheikhnabeelofficial", size: 63.5 },
   ];
 
   return (
@@ -142,7 +142,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="hover:scale-110 transition-transform duration-200"
           >
-            <div 
+            <div
               className="flex items-center justify-center"
               style={{ width: `${social.size}px`, height: `${social.size}px` }}
             >
