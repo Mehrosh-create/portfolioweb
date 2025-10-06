@@ -124,7 +124,7 @@ const Footer = () => {
       <div className="flex justify-center flex-wrap gap-3 sm:gap-4 py-6 sm:py-8 px-4 lg:ml-64">
         {/* Discord */}
         <a
-          href="#"
+          href="https://discord.com"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#5865F2' }}
         >
@@ -134,7 +134,7 @@ const Footer = () => {
         </a>
         {/* Facebook */}
         <a
-          href="#"
+          href="https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#1877F2' }}
         >
@@ -149,14 +149,17 @@ const Footer = () => {
           </svg>
         </a>
         {/* Instagram Gradient */}
-        <a href="#" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+        <a
+          href="https://www.instagram.com/sheikhnabeel.official/?hl=en"
+          className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center flex-shrink-0"
+        >
           <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" fill="white" viewBox="0 0 24 24">
             <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm4.8-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z" />
           </svg>
         </a>
         {/* LinkedIn */}
         <a
-          href="#"
+          href="https://pk.linkedin.com/in/sheikhnabeelofficial"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#0A66C2' }}
         >
@@ -171,7 +174,7 @@ const Footer = () => {
         </a>
         {/* Pinterest */}
         <a
-          href="#"
+          href="https://www.pinterest.com"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#E60023' }}
         >
@@ -197,7 +200,7 @@ const Footer = () => {
         </a>
         {/* Twitter / X */}
         <a
-          href="#"
+          href="https://twitter.com"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#000000' }}
         >
@@ -210,7 +213,7 @@ const Footer = () => {
         </a>
         {/* YouTube */}
         <a
-          href="#"
+          href="https://www.youtube.com/@EurosHub"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#FF0000' }}
         >
@@ -230,7 +233,7 @@ const Footer = () => {
         </a>
         {/* Snapchat */}
         <a
-          href="#"
+          href="https://snapchat.com/add/sheikhnabeel.official"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#FFFC00' }}
         >
@@ -247,7 +250,7 @@ const Footer = () => {
         </a>
         {/* TikTok */}
         <a
-          href="#"
+          href="https://www.tiktok.com/@sheikhnabeel.official"
           className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: '#000000' }}
         >
