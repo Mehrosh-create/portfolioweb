@@ -230,12 +230,16 @@ const Portfolio = () => {
                                 innovative digital solutions.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                                <Link href="/contact">
+                                <Link
+                                    href="https://www.upwork.com/freelancers/sheikhnabeelofficial"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     <button
                                         className="relative px-6 py-3 border-2 border-[#0fb8af] text-[#0fb8af] font-semibold 
-                      transition-all duration-300 ease-in-out
-                      hover:bg-[#0fb8af] hover:text-black
-                      active:bg-[#0fb8af] active:text-black"
+             transition-all duration-300 ease-in-out
+             hover:bg-[#0fb8af] hover:text-black
+             active:bg-[#0fb8af] active:text-black"
                                     >
                                         Get In Touch
                                     </button>

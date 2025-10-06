@@ -29,11 +29,11 @@ const Testimonials = () => {
         {
             id: 2,
             name: "Sarah Williams",
-            company: "GrowthLabs",
+            company: "ZuriBella Jewelry",
             role: "Marketing Director",
             image: "/images/client2.jpg",
             content:
-                "Working with Sheikh Nabeel was a game-changer for our marketing strategy. His expertise in digital funnels and growth marketing helped us triple our lead generation in just 3 months.",
+                "Thank you for the outstanding work you did with ZuriBella Jewelry. I truly appreciate your commitment, expertise, and professionalism throughout the project. Your communication and engagement were exceptional, and your recommendations on how to strengthen the brand were invaluable. I would highly recommend and I look forward to future engagement with you. Thank you.",
             rating: 5,
             hoverBg: "from-purple-600 to-purple-800"
         },
@@ -44,7 +44,7 @@ const Testimonials = () => {
             role: "Operations Manager",
             image: "/images/client3.jpg",
             content:
-                "The CRM implementation and automation systems designed by Sheikh Nabeel have revolutionized our client management process. We've seen a 60% improvement in client satisfaction scores.",
+                "Euroshub, was very diligent and communication was clear and consistent from the start. I was pleased with the outcome.",
             rating: 5,
             hoverBg: "from-green-600 to-green-800"
         },
@@ -55,7 +55,7 @@ const Testimonials = () => {
             role: "Founder",
             image: "/images/client4.jpg",
             content:
-                "Sheikh Nabeel's business strategy expertise helped us pivot during a challenging market period. His insights and guidance were instrumental in our successful rebranding and market repositioning.",
+                "Nabeel did a great job for me. He helped me get a lot of projects completed and new systems built. He was easy to work with, good communication, and well versed in the systems.",
             rating: 5,
             hoverBg: "from-red-600 to-red-800"
         },
@@ -311,14 +311,18 @@ const Testimonials = () => {
                                 your project and create your success story.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                                <Link href="/contact">
+                                <Link
+                                    href="https://www.upwork.com/freelancers/sheikhnabeelofficial"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     <button
                                         className="relative px-6 py-3 border-2 border-[#0fb8af] text-[#0fb8af] font-semibold 
              transition-all duration-300 ease-in-out
              hover:bg-[#0fb8af] hover:text-black
              active:bg-[#0fb8af] active:text-black"
                                     >
-                                        Contact Me
+                                        Hire Me on Upwork
                                     </button>
                                 </Link>
                             </div>
