@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Roboto_Mono, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/Layout/ClientLayout";
+import ThemeToggle from "@/components/Global/ThemeToggle"; // ✅ Import
 
 // Fonts
 const inter = Inter({
@@ -20,7 +21,7 @@ const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
 });
 
-// Metadata must only exist in a Server Component
+// Metadata
 export const metadata: Metadata = {
   title: "Sheikh Nabeel - Entrepreneur & Digital Growth Expert",
   description:
@@ -33,10 +34,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${robotoMono.variable} ${bebasNeue.variable} antialiased bg-[#151515] text-white overflow-x-hidden`}
+        className={`${inter.variable} ${robotoMono.variable} ${bebasNeue.variable} antialiased bg-[#151515] text-white overflow-x-hidden transition-colors duration-500`}
       >
+        {/* 🔘 Theme Toggle - Fixed Top Right */}
+        <div className="fixed top-6 right-6 z-50">
+          <ThemeToggle />
+        </div>
+
+        {/* Main Client Layout */}
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

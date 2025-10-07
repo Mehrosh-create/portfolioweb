@@ -1,10 +1,10 @@
-// src/app/portfolio/page.tsx - UPDATED WITH NEW FILTER BUTTONS
+// src/app/portfolio/page.tsx - UPDATED WITH ANIMATED ICON HOVER EFFECT
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const Portfolio = () => {
     const [activeFilter, setActiveFilter] = useState("all");
@@ -18,7 +18,6 @@ const Portfolio = () => {
                 "Complete digital overhaul for a leading business consultancy",
             image: "/images/euroshub.jpg",
             link: "https://euroshub.com/expertise/business/erp-crm-software",
-
         },
         {
             id: 2,
@@ -27,7 +26,6 @@ const Portfolio = () => {
             description: "Tripled revenue for an online retail brand in 6 months",
             image: "/images/ecommerce.jpg",
             link: "https://euroshub.com/expertise/business/erp-crm-software",
-
         },
         {
             id: 3,
@@ -36,7 +34,6 @@ const Portfolio = () => {
             description: "Custom CRM solution for a service-based business",
             image: "/images/crm.jpg",
             link: "https://euroshub.com/expertise/business/erp-crm-software",
-
         },
         {
             id: 4,
@@ -45,7 +42,6 @@ const Portfolio = () => {
             description: "Rebranding and market positioning for tech startup",
             image: "/images/branding.jpg",
             link: "https://euroshub.com/expertise/business/erp-crm-software",
-
         },
         {
             id: 5,
@@ -54,7 +50,6 @@ const Portfolio = () => {
             description: "Workflow automation that saved 20+ hours weekly",
             image: "/images/Automate.jpg",
             link: "https://euroshub.com/expertise/business/erp-crm-software",
-
         },
         {
             id: 6,
@@ -63,7 +58,6 @@ const Portfolio = () => {
             description: "High-conversion funnel generating 500+ leads monthly",
             image: "/images/funnel.jpg",
             link: "https://euroshub.com/expertise/business/erp-crm-software",
-
         },
     ];
 
@@ -95,7 +89,6 @@ const Portfolio = () => {
                         MY <span className="text-[#0fb8af]">PORTFOLIO</span>
                     </h1>
 
-                    {/* CASE STUDIES & PROJECTS with sliding background */}
                     <div className="relative inline-block mx-auto mb-4 sm:mb-6">
                         <span
                             className="absolute top-0 left-0 h-full bg-[#0fb8af] inline-block"
@@ -117,7 +110,7 @@ const Portfolio = () => {
                     </div>
                 </div>
 
-                {/* Filters - UPDATED WITH NEW BUTTON STYLE */}
+                {/* Filters */}
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4 mb-8 sm:mb-10 lg:mb-12">
                     {filters.map((filter) => (
                         <button
@@ -154,14 +147,21 @@ const Portfolio = () => {
                                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                                 />
                                 <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-3 sm:gap-4">
+                                    {/* Updated Animated Icon Link */}
                                     <a
                                         href={item.link}
-                                        className="bg-[#0fb8af] text-black p-2 sm:p-3 rounded-full hover:scale-110 transition-transform"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         aria-label={`View ${item.title} live demo`}
+                                        className="relative w-10 h-10 overflow-hidden rounded-full group/link block"
                                     >
-                                        <ExternalLink size={16} className="sm:w-5 sm:h-5" />
+                                        <span className="absolute inset-0 flex items-center justify-center bg-black/40 transition-all duration-300 group-hover/link:-translate-y-full group-hover/link:opacity-0">
+                                            <ExternalLink className="w-5 h-5 text-white" />
+                                        </span>
+                                        <span className="absolute inset-0 flex items-center justify-center bg-[#0fb8af] translate-y-full transition-all duration-300 group-hover/link:translate-y-0">
+                                            <ExternalLink className="w-5 h-5 text-white" />
+                                        </span>
                                     </a>
-
                                 </div>
                             </div>
 
@@ -190,22 +190,22 @@ const Portfolio = () => {
                                         letterSpacing: "0.05em",
                                     }}
                                 >
-                                    {item.category.charAt(0).toUpperCase() +
-                                        item.category.slice(1)}
+                                    {item.category.charAt(0).toUpperCase() + item.category.slice(1)}
                                 </span>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* CTA Section (Updated like testimonial CTA style) */}
+                {/* CTA Section */}
                 <div className="py-16 px-6 bg-[#1a1a1a]">
                     <div className="max-w-7xl mx-auto">
                         <div
                             className="bg-[#151515] border rounded-lg p-8 lg:p-12 text-center"
                             style={{ borderColor: "#1F2937" }}
                         >
-                            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 uppercase"
+                            <h2
+                                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 uppercase"
                                 style={{
                                     fontFamily: '"Bebas Neue", Arial, sans-serif',
                                     letterSpacing: "0.05em",
