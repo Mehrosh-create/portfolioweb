@@ -50,7 +50,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
   }, []);
 
   const socialLinks = [
-    { href: "https://twitter.com", icon: Twitter, label: "Twitter" },
+    { href: "https://x.com/nabeel1sheikh", icon: Twitter, label: "Twitter" },
     { href: "https://www.facebook.com/sheikh.nabeel.ali.2025/about/?_rdr", icon: Facebook, label: "Facebook" },
     { href: "https://www.upwork.com/freelancers/sheikhnabeelofficial", icon: FaUpwork, label: "Upwork" },
     { href: "https://pk.linkedin.com/in/sheikhnabeelofficial", icon: Linkedin, label: "Linkedin" },
