@@ -161,13 +161,7 @@ const Portfolio = () => {
                                     >
                                         <ExternalLink size={16} className="sm:w-5 sm:h-5" />
                                     </a>
-                                    <a
-                                        href={item.github}
-                                        className="bg-[#0fb8af] text-white p-2 sm:p-3 rounded-full hover:scale-110 transition-transform"
-                                        aria-label={`View ${item.title} source code`}
-                                    >
-                                        <Github size={16} className="sm:w-5 sm:h-5" />
-                                    </a>
+
                                 </div>
                             </div>
 
