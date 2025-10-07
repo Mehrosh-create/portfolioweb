@@ -47,13 +47,13 @@ export default function About() {
     }, []);
 
     return (
-        <div className="min-h-screen pt-16 sm:pt-20 bg-[#151515] flex flex-col">
+        <div className="min-h-screen pt-16 sm:pt-20 bg-background flex flex-col">
             {/* Main Container with responsive padding */}
             <div className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-4">
                 {/* Header Section */}
                 <div className="text-center mb-8 sm:mb-12 lg:mb-16">
                     <h1
-                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white mb-4 sm:mb-6 lg:mb-8 leading-tight"
+                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-foreground mb-4 sm:mb-6 lg:mb-8 leading-tight"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
                             letterSpacing: "0.02em",
@@ -88,7 +88,7 @@ export default function About() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 lg:mb-16">
                     <div className="order-2 lg:order-1">
                         <h2
-                            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 lg:mb-6 text-white"
+                            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 lg:mb-6 text-foreground"
                             style={{
                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
@@ -96,7 +96,7 @@ export default function About() {
                             I&apos;m a Global Strategist & Digital Transformer Leader.
                         </h2>
                         <p
-                            className="text-sm sm:text-base lg:text-lg text-[#e0f7fa] mb-3 sm:mb-4 lg:mb-6 leading-relaxed"
+                            className="text-sm sm:text-base lg:text-lg text-gray-light mb-3 sm:mb-4 lg:mb-6 leading-relaxed"
                             style={{
                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
@@ -107,7 +107,7 @@ export default function About() {
                             scalable systems, and grow through digital innovation.
                         </p>
                         <p
-                            className="text-sm sm:text-base lg:text-lg text-[#e0f7fa] leading-relaxed"
+                            className="text-sm sm:text-base lg:text-lg text-gray-light leading-relaxed"
                             style={{
                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                             }}
@@ -138,7 +138,7 @@ export default function About() {
                     onMouseLeave={() => setShowCursor(false)}
                 >
                     <h2
-                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 text-white text-center uppercase"
+                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 text-foreground text-center uppercase"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
                             letterSpacing: "0.05em",
@@ -195,4 +195,4 @@ export default function About() {
             </style>
         </div>
     );
-}
+};

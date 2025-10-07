@@ -1,4 +1,3 @@
-// src/components/About/SignatureContent.tsx
 "use client";
 
 import { useState } from "react";
@@ -18,7 +17,7 @@ const SignatureContent = () => {
         <div className="py-8 sm:py-12 lg:py-16">
             {/* Header */}
             <h2
-                className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-white mb-8 sm:mb-12 text-center"
+                className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-foreground mb-8 sm:mb-12 text-center"
                 style={{
                     fontFamily: '"Bebas Neue", Arial, sans-serif',
                     letterSpacing: "0.05em",
@@ -30,7 +29,7 @@ const SignatureContent = () => {
             {/* Main Content - Improved grid responsiveness */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 lg:mb-16">
                 {/* Card 1 */}
-                <div className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-100 group">
+                <div className="bg-gray-dark p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-100 group">
                     <h3
                         className="text-xl sm:text-2xl font-bold text-[#0fb8af] mb-3 sm:mb-4 group-hover:text-[#0fb8af] transition-colors"
                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
@@ -38,7 +37,7 @@ const SignatureContent = () => {
                         How To Create Content Efficiently
                     </h3>
                     <p
-                        className="text-[#e0f7fa] mb-4 sm:mb-6 text-sm sm:text-base"
+                        className="text-gray-light mb-4 sm:mb-6 text-sm sm:text-base"
                         style={{
                             fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                         }}
@@ -83,7 +82,7 @@ const SignatureContent = () => {
                 </div>
 
                 {/* Card 2 */}
-                <div className="bg-[#252525] p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 group">
+                <div className="bg-gray-dark p-4 sm:p-6 lg:p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 group">
                     <h3
                         className="text-xl sm:text-2xl font-bold text-[#0fb8af] mb-3 sm:mb-4 group-hover:text-[#0fb8af] transition-colors"
                         style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
@@ -91,7 +90,7 @@ const SignatureContent = () => {
                         Digital Transformation Mastery
                     </h3>
                     <p
-                        className="text-[#e0f7fa] mb-4 sm:mb-6 text-sm sm:text-base"
+                        className="text-gray-light mb-4 sm:mb-6 text-sm sm:text-base"
                         style={{
                             fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                         }}

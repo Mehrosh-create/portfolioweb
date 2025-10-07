@@ -236,12 +236,12 @@ const BlogPage = () => {
   const featuredPost = articles[0]; // First article as featured
 
   return (
-    <div className="min-h-screen bg-[#151515] text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Featured Article */}
       <div className="py-20 px-40">
         <div className="max-w-7xl mx-auto lg:mr-8">
           <div className="p-1 rounded-lg mb-12" style={{ background: "linear-gradient(to right, #0fb8af, #0fb8af)" }}>
-            <div className="bg-[#151515] rounded-lg overflow-hidden">
+            <div className="bg-background rounded-lg overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="relative h-64 lg:h-auto">
                   <Image
@@ -263,19 +263,16 @@ const BlogPage = () => {
                   >
                     {featuredPost.category}
                   </span>
-                  <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
+                  <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight text-foreground">
                     {featuredPost.title}
                   </h2>
-                  <p className="text-gray-300 mb-8 text-lg">{featuredPost.excerpt}</p>
+                  <p className="text-gray-light mb-8 text-lg">{featuredPost.excerpt}</p>
                   <div className="flex items-center justify-between mb-8">
                     <div className="flex items-center gap-4 text-sm text-gray-400">
                       <div className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {featuredPost.date}</div>
                       <div className="flex items-center gap-1"><Clock className="w-4 h-4" /> {featuredPost.readTime}</div>
                     </div>
-                    <div className="flex gap-3">
-                      <Bookmark className="w-5 h-5 text-gray-400 hover:text-[#0fb8af] transition-colors" />
-                      <Share2 className="w-5 h-5 text-gray-400 hover:text-[#0fb8af] transition-colors" />
-                    </div>
+
                   </div>
                   <Link
                     href={`/blog/${featuredPost.slug}`}
@@ -331,7 +328,7 @@ const BlogPage = () => {
           {filteredArticles.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="group cursor-pointer">
               <div
-                className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105"
+                className="bg-background border overflow-hidden transition-all duration-300 hover:scale-105"
                 style={{ borderColor: "#1F2937" }}
                 onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#0fb8af")}
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#1F2937")}
@@ -356,14 +353,13 @@ const BlogPage = () => {
                     <span className="text-gray-500 text-xs">{post.readTime}</span>
                   </div>
                   <h3
-                    className="text-xl font-bold mb-3 line-clamp-2 transition-colors"
-                    style={{ color: "white" }}
+                    className="text-xl font-bold mb-3 line-clamp-2 transition-colors text-foreground"
                     onMouseEnter={(e) => (e.currentTarget.style.color = "#0fb8af")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--foreground)")}
                   >
                     {post.title}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
+                  <p className="text-gray-light text-sm mb-4 line-clamp-3">{post.excerpt}</p>
                   <div className="flex items-center justify-between text-xs text-gray-500">
                     <div className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post.date}</div>
                     <div className="flex items-center gap-3">

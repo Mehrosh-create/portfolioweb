@@ -233,7 +233,7 @@ const BlogArticlePage = () => {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-[#151515] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Article not found</h1>
           <Link
@@ -249,7 +249,7 @@ const BlogArticlePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#151515] text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header Section */}
       <div className="py-20 px-6 md:px-40">
         <div className="max-w-4xl mx-auto">
@@ -269,7 +269,7 @@ const BlogArticlePage = () => {
             >
               {article.category}
             </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-foreground">
               {article.title}
             </h1>
 
@@ -294,12 +294,7 @@ const BlogArticlePage = () => {
                 </div>
               </div>
               <div className="flex gap-3">
-                <button className="w-5 h-5 text-gray-400 hover:text-[#0fb8af] transition-colors cursor-pointer">
-                  <Bookmark className="w-5 h-5" />
-                </button>
-                <button className="w-5 h-5 text-gray-400 hover:text-[#0fb8af] transition-colors cursor-pointer">
-                  <Share2 className="w-5 h-5" />
-                </button>
+
               </div>
             </div>
 
@@ -311,7 +306,7 @@ const BlogArticlePage = () => {
                 </span>
               </div>
               <div>
-                <p className="text-white font-semibold">By {article.author || "Unknown Author"}</p>
+                <p className="text-foreground font-semibold">By {article.author || "Unknown Author"}</p>
                 <p className="text-gray-400 text-sm">Digital Transformation Expert</p>
               </div>
             </div>
@@ -331,18 +326,18 @@ const BlogArticlePage = () => {
 
           {/* Article Content */}
           <div className="max-w-none">
-            <div className="text-lg md:text-xl text-gray-300 mb-8 font-medium leading-relaxed">
+            <div className="text-lg md:text-xl text-gray-light mb-8 font-medium leading-relaxed">
               {article.excerpt}
             </div>
 
             {article.contents && article.contents.length > 0 ? (
               article.contents.map((paragraph, idx) => (
-                <p key={idx} className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+                <p key={idx} className="text-gray-light text-base md:text-lg leading-relaxed mb-6">
                   {paragraph}
                 </p>
               ))
             ) : (
-              <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-gray-light text-base md:text-lg leading-relaxed mb-6">
                 Content coming soon...
               </p>
             )}

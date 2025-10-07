@@ -141,7 +141,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
                     <div
                         key={index}
                         className="
-                            bg-[#252525] 
+                            bg-gray-dark 
                             p-6 
                             rounded-lg 
                             border border-gray-700 
@@ -167,7 +167,7 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
                             {((index % items.length) + 1).toString().padStart(2, '0')}
                         </div>
                         <h3
-                            className="text-lg font-semibold text-white group-hover:text-[#e0f7fa] transition-colors leading-tight px-2 pointer-events-none"
+                            className="text-lg font-semibold text-foreground group-hover:text-gray-light transition-colors leading-tight px-2 pointer-events-none"
                             style={{
                                 fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                 wordWrap: 'break-word',
