@@ -1,4 +1,4 @@
-// src/app/services/page.tsx - UPDATED
+// src/app/services/page.tsx - UPDATED WITH THEME SUPPORT
 "use client";
 
 import Link from "next/link";
@@ -11,7 +11,6 @@ import {
     Lightbulb,
     Zap,
 } from "lucide-react";
-// import { div } from "framer-motion/client";
 
 const Services = () => {
     const services = [
@@ -90,14 +89,14 @@ const Services = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[#151515] text-white">
+        <div className="min-h-screen bg-background text-foreground">
             {/* Header Section */}
             <div className="py-20 px-4 sm:px-6 lg:px-8 xl:px-40">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-12">
                         {/* Main Heading - SERVICES first */}
                         <h1
-                            className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white mb-4 sm:mb-6 lg:mb-8 leading-tight"
+                            className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-foreground mb-4 sm:mb-6 lg:mb-8 leading-tight"
                             style={{
                                 fontFamily: '"Bebas Neue", Arial, sans-serif',
                                 letterSpacing: "0.02em",
@@ -126,7 +125,7 @@ const Services = () => {
                             </span>
                         </div>
                     </div>
-                    <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+                    <p className="text-gray-light text-lg max-w-3xl mx-auto">
                         With over 7 years of experience, I provide comprehensive digital
                         transformation and business growth services to help your business
                         thrive.
@@ -139,26 +138,23 @@ const Services = () => {
                 {services.map((service, index) => (
                     <div
                         key={index}
-                        className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105 group cursor-pointer"
-                        style={{ borderColor: "#1F2937" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#0fb8af")}
-                        onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#1F2937")}
+                        className="bg-background border border-gray-700 overflow-hidden transition-all duration-300 hover:scale-105 hover:border-[#0fb8af] group cursor-pointer"
                     >
                         <div className="p-6">
                             <div className="text-[#0fb8af] mb-4 group-hover:text-[#0fb8af] transition-colors duration-300">
                                 {service.icon}
                             </div>
-                            <h3 className="text-xl font-bold mb-3 text-white group-hover:text-[#0fb8af] transition-colors">
+                            <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-[#0fb8af] transition-colors">
                                 {service.title}
                             </h3>
-                            <p className="text-gray-400 text-sm mb-4">
+                            <p className="text-gray-light text-sm mb-4">
                                 {service.description}
                             </p>
                             <ul className="space-y-2 mb-4">
                                 {service.features.map((feature, idx) => (
                                     <li
                                         key={idx}
-                                        className="flex items-center gap-2 text-gray-300 text-sm"
+                                        className="flex items-center gap-2 text-gray-light text-sm"
                                     >
                                         <CheckCircle className="w-4 h-4 text-[#0fb8af] flex-shrink-0" />
                                         <span>{feature}</span>
@@ -172,14 +168,13 @@ const Services = () => {
 
 
             {/* CTA Section */}
-            <div className="py-16 px-6 bg-[#1a1a1a]">
+            <div className="py-16 px-6 bg-gray-dark">
                 <div className="max-w-7xl mx-auto">
-                    <div className="bg-[#151515] border rounded-lg p-8 lg:p-12 text-center"
-                        style={{ borderColor: "#1F2937" }}>
-                        <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4 uppercase">
+                    <div className="bg-background border border-gray-700 rounded-lg p-8 lg:p-12 text-center">
+                        <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 uppercase">
                             Ready to Transform Your Business?
                         </h2>
-                        <p className="text-black-300 text-base mb-6 max-w-2xl mx-auto">
+                        <p className="text-gray-light text-base mb-6 max-w-2xl mx-auto">
                             Let&apos;s discuss how my services can help you achieve your business
                             goals and drive sustainable growth.
                         </p>

@@ -143,22 +143,22 @@ const ContactForm = () => {
     ];
 
     return (
-        <div className="bg-[#151515] p-8 rounded-lg border border-[#606060] hover:border-[#0fb8af] transition-all duration-300">
+        <div className="bg-gray-dark p-8 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-all duration-300">
             <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Name Fields */}
                 <div>
-                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center">
+                    <label className="block text-foreground font-semibold mb-3 uppercase text-lg flex items-center">
                         <span>Name</span>
                         <span className="text-red-500 ml-1">(Required)</span>
                     </label>
                     <div className="grid grid-cols-2 gap-6">
-                        <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
+                        <div className="border border-gray-700 p-4 rounded-lg bg-background hover:border-foreground transition-colors">
                             <input
                                 type="text"
                                 name="firstName"
                                 value={formData.firstName}
                                 onChange={handleChange}
-                                className="w-full bg-transparent text-white text-lg placeholder-gray-400 focus:outline-none"
+                                className="w-full bg-transparent text-foreground text-lg placeholder-gray-400 focus:outline-none"
                                 placeholder="First Name"
                                 required
                             />
@@ -168,13 +168,13 @@ const ContactForm = () => {
                                 </span>
                             )}
                         </div>
-                        <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
+                        <div className="border border-gray-700 p-4 rounded-lg bg-background hover:border-foreground transition-colors">
                             <input
                                 type="text"
                                 name="lastName"
                                 value={formData.lastName}
                                 onChange={handleChange}
-                                className="w-full bg-transparent text-white text-lg placeholder-gray-400 focus:outline-none"
+                                className="w-full bg-transparent text-foreground text-lg placeholder-gray-400 focus:outline-none"
                                 placeholder="Last Name"
                                 required
                             />
@@ -189,17 +189,17 @@ const ContactForm = () => {
 
                 {/* Email */}
                 <div>
-                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center">
+                    <label className="block text-foreground font-semibold mb-3 uppercase text-lg flex items-center">
                         <span>Email</span>
                         <span className="text-red-500 ml-1">(Required)</span>
                     </label>
-                    <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
+                    <div className="border border-gray-700 p-4 rounded-lg bg-background hover:border-foreground transition-colors">
                         <input
                             type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full bg-transparent text-white text-lg focus:outline-none"
+                            className="w-full bg-transparent text-foreground text-lg focus:outline-none"
                             required
                         />
                         {errors.email && (
@@ -212,27 +212,27 @@ const ContactForm = () => {
 
                 {/* Phone */}
                 <div>
-                    <label className="block text-white font-semibold mb-3 uppercase text-lg">
+                    <label className="block text-foreground font-semibold mb-3 uppercase text-lg">
                         Phone
                     </label>
-                    <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
+                    <div className="border border-gray-700 p-4 rounded-lg bg-background hover:border-foreground transition-colors">
                         <input
                             type="tel"
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full bg-transparent text-white text-lg placeholder-gray-400 focus:outline-none"
+                            className="w-full bg-transparent text-foreground text-lg placeholder-gray-400 focus:outline-none"
                         />
                     </div>
                 </div>
 
                 {/* Subject */}
                 <div>
-                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center">
+                    <label className="block text-foreground font-semibold mb-3 uppercase text-lg flex items-center">
                         <span>Subject</span>
                         <span className="text-red-500 ml-1">(Required)</span>
                     </label>
-                    <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
+                    <div className="border border-gray-700 p-4 rounded-lg bg-background hover:border-foreground transition-colors">
                         {subjectOptions.map((option, i) => (
                             <div key={i} className="flex items-center mb-3">
                                 <input
@@ -247,7 +247,7 @@ const ContactForm = () => {
                                 />
                                 <label
                                     htmlFor={`choice_${i}`}
-                                    className="text-white text-lg cursor-pointer"
+                                    className="text-foreground text-lg cursor-pointer"
                                 >
                                     {option}
                                 </label>
@@ -263,17 +263,17 @@ const ContactForm = () => {
 
                 {/* Message */}
                 <div>
-                    <label className="block text-white font-semibold mb-3 uppercase text-lg flex items-center">
+                    <label className="block text-foreground font-semibold mb-3 uppercase text-lg flex items-center">
                         <span>Message</span>
                         <span className="text-red-500 ml-1">(Required)</span>
                     </label>
-                    <div className="border border-[#151515] p-4 rounded-lg bg-[#252525] hover:border-white">
+                    <div className="border border-gray-700 p-4 rounded-lg bg-background hover:border-foreground transition-colors">
                         <textarea
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
                             rows={8}
-                            className="w-full bg-transparent text-white text-lg focus:outline-none resize-none placeholder-gray-400"
+                            className="w-full bg-transparent text-foreground text-lg focus:outline-none resize-none placeholder-gray-400"
                             required
                         />
                         {errors.message && (
@@ -289,7 +289,7 @@ const ContactForm = () => {
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="bg-[#0fb8af] disabled:opacity-60 text-white px-5 py-3 rounded-full font-bold text-lg hover:bg-[#0fb8af] transition-colors whitespace-nowrap"
+                        className="bg-[#0fb8af] disabled:opacity-60 text-black px-5 py-3 rounded-full font-bold text-lg hover:bg-[#0d9e96] transition-colors whitespace-nowrap"
                     >
                         {submitting ? "Sending..." : "Submit"}
                     </button>

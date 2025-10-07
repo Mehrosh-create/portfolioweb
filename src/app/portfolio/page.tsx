@@ -1,4 +1,4 @@
-// src/app/portfolio/page.tsx - UPDATED WITH ANIMATED ICON HOVER EFFECT
+// src/app/portfolio/page.tsx - UPDATED WITH THEME SUPPORT
 "use client";
 
 import Image from "next/image";
@@ -75,12 +75,12 @@ const Portfolio = () => {
             : portfolioItems.filter((item) => item.category === activeFilter);
 
     return (
-        <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 xl:px-4 pb-8 sm:pb-16 lg:pb-20 bg-[#151515] flex flex-col">
+        <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 xl:px-4 pb-8 sm:pb-16 lg:pb-20 bg-background flex flex-col">
             <div className="flex-grow max-w-7xl mx-auto w-full">
                 {/* Header */}
                 <div className="text-center mb-8 sm:mb-12 lg:mb-16">
                     <h1
-                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white mb-6 sm:mb-8 leading-tight"
+                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-foreground mb-6 sm:mb-8 leading-tight"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
                             letterSpacing: "0.02em",
@@ -116,10 +116,11 @@ const Portfolio = () => {
                         <button
                             key={filter.id}
                             onClick={() => setActiveFilter(filter.id)}
-                            className={`px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 rounded-full transition-colors uppercase tracking-wide text-xs sm:text-sm ${activeFilter === filter.id
-                                ? "bg-[#0fb8af] text-black"
-                                : "bg-[#252525] text-white hover:bg-[#0fb8af] hover:text-black"
-                                }`}
+                            className={`px-4 sm:px-5 lg:px-6 py-1.5 sm:py-2 rounded-full transition-colors uppercase tracking-wide text-xs sm:text-sm ${
+                                activeFilter === filter.id
+                                    ? "bg-[#0fb8af] text-black"
+                                    : "bg-gray-dark text-foreground hover:bg-[#0fb8af] hover:text-black"
+                            }`}
                             style={{
                                 fontFamily: '"Bebas Neue", Arial, sans-serif',
                                 letterSpacing: "0.04em",
@@ -135,7 +136,7 @@ const Portfolio = () => {
                     {filteredItems.map((item) => (
                         <div
                             key={item.id}
-                            className="group relative bg-[#252525] rounded-lg overflow-hidden border border-gray-700 hover:border-[#0fb8af] transition-all duration-500"
+                            className="group relative bg-gray-dark rounded-lg overflow-hidden border border-gray-700 hover:border-[#0fb8af] transition-all duration-500"
                         >
                             {/* Image with hover overlay */}
                             <div className="relative h-48 sm:h-56 lg:h-60 xl:h-64 overflow-hidden">
@@ -168,7 +169,7 @@ const Portfolio = () => {
                             {/* Card Content */}
                             <div className="p-4 sm:p-5 lg:p-6 relative z-10">
                                 <h3
-                                    className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:text-[#0fb8af] transition-colors"
+                                    className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-[#0fb8af] transition-colors"
                                     style={{
                                         fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                     }}
@@ -176,7 +177,7 @@ const Portfolio = () => {
                                     {item.title}
                                 </h3>
                                 <p
-                                    className="text-[#E0F7FA] text-sm sm:text-base mb-3 sm:mb-4"
+                                    className="text-gray-light text-sm sm:text-base mb-3 sm:mb-4"
                                     style={{
                                         fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                     }}
@@ -198,14 +199,11 @@ const Portfolio = () => {
                 </div>
 
                 {/* CTA Section */}
-                <div className="py-16 px-6 bg-[#1a1a1a]">
+                <div className="py-16 px-6 bg-gray-dark mt-12">
                     <div className="max-w-7xl mx-auto">
-                        <div
-                            className="bg-[#151515] border rounded-lg p-8 lg:p-12 text-center"
-                            style={{ borderColor: "#1F2937" }}
-                        >
+                        <div className="bg-background border border-gray-700 rounded-lg p-8 lg:p-12 text-center">
                             <h2
-                                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 uppercase"
+                                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 sm:mb-6 uppercase"
                                 style={{
                                     fontFamily: '"Bebas Neue", Arial, sans-serif',
                                     letterSpacing: "0.05em",
@@ -214,7 +212,7 @@ const Portfolio = () => {
                                 Ready to Start Your Project?
                             </h2>
                             <p
-                                className="text-sm sm:text-base lg:text-lg xl:text-xl text-[#E0F7FA] mb-6 sm:mb-8 max-w-2xl mx-auto"
+                                className="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-light mb-6 sm:mb-8 max-w-2xl mx-auto"
                                 style={{
                                     fontFamily:
                                         'Arial, "Helvetica Neue", Helvetica, sans-serif',

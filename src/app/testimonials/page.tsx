@@ -107,12 +107,12 @@ const Testimonials = () => {
     }, [currentIndex, isPaused, nextTestimonial]);
 
     return (
-        <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 xl:px-4 pb-8 sm:pb-12 lg:pb-16 bg-[#151515] flex flex-col">
+        <div className="min-h-screen pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 xl:px-4 pb-8 sm:pb-12 lg:pb-16 bg-background flex flex-col">
             <div className="flex-grow max-w-7xl mx-auto w-full">
                 {/* Header */}
                 <div className="text-center mb-8 sm:mb-12 lg:mb-16">
                     <h1
-                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white mb-4 sm:mb-6 lg:mb-8 leading-tight"
+                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-foreground mb-4 sm:mb-6 lg:mb-8 leading-tight"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
                             letterSpacing: "0.02em",
@@ -148,7 +148,7 @@ const Testimonials = () => {
                     onMouseEnter={() => !isTouchDevice && setIsPaused(true)}
                     onMouseLeave={() => !isTouchDevice && setIsPaused(false)}
                 >
-                    <div className="bg-[#252525] rounded-lg p-4 sm:p-6 lg:p-8 xl:p-12 relative border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 overflow-hidden">
+                    <div className="bg-gray-dark rounded-lg p-4 sm:p-6 lg:p-8 xl:p-12 relative border border-gray-700 hover:border-[#0fb8af] transition-all duration-300 overflow-hidden">
                         {/* Background pattern */}
                         <div
                             className="absolute inset-0 opacity-5"
@@ -171,7 +171,7 @@ const Testimonials = () => {
                                 ))}
                             </div>
                             <p
-                                className="text-sm sm:text-base lg:text-lg xl:text-xl text-[#e0f7fa] italic leading-relaxed px-2 sm:px-4"
+                                className="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-light italic leading-relaxed px-2 sm:px-4"
                                 style={{
                                     fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                                 }}
@@ -191,7 +191,7 @@ const Testimonials = () => {
                                 />
                             </div>
                             <div>
-                                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white">
+                                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-foreground">
                                     {testimonials[currentIndex].name}
                                 </h3>
                                 <p className="text-[#0fb8af] text-sm sm:text-base">
@@ -237,7 +237,7 @@ const Testimonials = () => {
                 {/* All Testimonials Grid */}
                 <div className="mb-8 sm:mb-12 lg:mb-16">
                     <h2
-                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8 lg:mb-12 text-center uppercase"
+                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-6 sm:mb-8 lg:mb-12 text-center uppercase"
                         style={{
                             fontFamily: '"Bebas Neue", Arial, sans-serif',
                             letterSpacing: "0.05em",
@@ -250,7 +250,7 @@ const Testimonials = () => {
                         {testimonials.map((testimonial) => (
                             <div
                                 key={testimonial.id}
-                                className="relative bg-[#252525] rounded-lg border border-gray-700 hover:border-white transition-all duration-200 group cursor-pointer overflow-hidden h-64 sm:h-72 lg:h-80 shadow-lg hover:shadow-2xl"
+                                className="relative bg-gray-dark rounded-lg border border-gray-700 hover:border-foreground transition-all duration-200 group cursor-pointer overflow-hidden h-64 sm:h-72 lg:h-80 shadow-lg hover:shadow-2xl"
                             >
                                 {/* Default State */}
                                 <div className="absolute inset-0 p-4 sm:p-6 lg:p-8 flex flex-col justify-center items-center text-center transition-all duration-300 ease-out group-hover:-translate-y-full group-hover:opacity-0">
@@ -263,13 +263,13 @@ const Testimonials = () => {
                                             sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, 96px"
                                         />
                                     </div>
-                                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3">
+                                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-2 sm:mb-3">
                                         {testimonial.name}
                                     </h3>
                                     <p className="text-[#0fb8af] font-semibold uppercase tracking-wider text-sm sm:text-base lg:text-lg mb-1 sm:mb-2">
                                         {testimonial.role}
                                     </p>
-                                    <p className="text-gray-300 text-xs sm:text-sm font-medium tracking-wide">
+                                    <p className="text-gray-light text-xs sm:text-sm font-medium tracking-wide">
                                         {testimonial.company}
                                     </p>
                                 </div>
@@ -292,21 +292,20 @@ const Testimonials = () => {
                                     </div>
                                 </div>
 
-                                <div className="absolute bottom-0 left-0 w-0 h-1 bg-white group-hover:w-full transition-all duration-700 delay-200"></div>
+                                <div className="absolute bottom-0 left-0 w-0 h-1 bg-foreground group-hover:w-full transition-all duration-700 delay-200"></div>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* CTA Section (updated like services page) */}
-                <div className="py-16 px-6 bg-[#1a1a1a]">
+                {/* CTA Section */}
+                <div className="py-16 px-6 bg-gray-dark">
                     <div className="max-w-7xl mx-auto">
-                        <div className="bg-[#151515] border rounded-lg p-8 lg:p-12 text-center"
-                            style={{ borderColor: "#1F2937" }}>
-                            <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4 uppercase">
+                        <div className="bg-background border border-gray-700 rounded-lg p-8 lg:p-12 text-center">
+                            <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 uppercase">
                                 Ready to Join Our Success Stories?
                             </h2>
-                            <p className="text-gray-300 text-base mb-6 max-w-2xl mx-auto">
+                            <p className="text-gray-light text-base mb-6 max-w-2xl mx-auto">
                                 Transform your business like our satisfied clients. Let&apos;s discuss
                                 your project and create your success story.
                             </p>
