@@ -70,18 +70,18 @@ const Blog = () => {
     const featuredArticles = blogArticles;
 
     return (
-        <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-[#151515] text-white">
+        <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-background text-foreground">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-12 sm:mb-16">
                     <SlidingHighlight text="LATEST INSIGHTS" />
                     <FadeSlide delay={0.1}>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-white mb-4 sm:mb-6 leading-tight">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-foreground mb-4 sm:mb-6 leading-tight">
                             STAY <span className="text-[#0fb8af]">UPDATED</span>
                         </h2>
                     </FadeSlide>
                     <FadeSlide delay={0.2}>
-                        <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-4">
+                        <p className="text-base sm:text-lg lg:text-xl text-gray-light max-w-3xl mx-auto px-4">
                             Explore expert perspectives on digital transformation, leadership,
                             CRM systems, and business innovation shaping the future.
                         </p>
@@ -106,7 +106,7 @@ const Blog = () => {
                                 className="group cursor-pointer block"
                             >
                                 <div
-                                    className="bg-[#151515] border overflow-hidden transition-all duration-300 hover:scale-105 h-full flex flex-col"
+                                    className="bg-background border overflow-hidden transition-all duration-300 hover:scale-105 h-full flex flex-col"
                                     style={{ borderColor: "#1F2937" }}
                                     onMouseEnter={(e) =>
                                         (e.currentTarget.style.borderColor = "#0fb8af")
@@ -143,17 +143,17 @@ const Blog = () => {
                                             </span>
                                         </div>
                                         <h3
-                                            className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 line-clamp-2 transition-colors flex-1"
+                                            className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 line-clamp-2 transition-colors flex-1 text-foreground"
                                             onMouseEnter={(e) =>
                                                 (e.currentTarget.style.color = "#0fb8af")
                                             }
                                             onMouseLeave={(e) =>
-                                                (e.currentTarget.style.color = "white")
+                                                (e.currentTarget.style.color = "var(--foreground)")
                                             }
                                         >
                                             {article.title}
                                         </h3>
-                                        <p className="text-gray-400 text-sm mb-3 sm:mb-4 line-clamp-3">
+                                        <p className="text-gray-light text-sm mb-3 sm:mb-4 line-clamp-3">
                                             {article.excerpt}
                                         </p>
                                         <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">

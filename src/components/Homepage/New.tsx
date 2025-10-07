@@ -208,17 +208,17 @@ const NewPage: React.FC = () => {
   const [visible, setVisible] = useState(2);
 
   return (
-    <div className="min-h-screen bg-[#151515] text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Services Section */}
       <div className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <SlidingHighlight text="SPECIALIZATIONS" />
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white mb-4 sm:mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-foreground mb-4 sm:mb-6 leading-tight">
               MY <span className="text-[#0fb8af]">EXPERTISE</span>
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-4">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-light max-w-3xl mx-auto px-4">
               With over 7 years of experience, I specialize in transforming
               businesses through digital innovation and strategic growth
             </p>
@@ -238,7 +238,7 @@ const NewPage: React.FC = () => {
             {services.map((service, index) => (
               <FadeSlide key={index} delay={index * 0.15}>
                 <GravWrap>
-                  <div className="bg-[#1a1a1a] border border-gray-800 rounded-xl overflow-hidden hover:border-[#0fb8af] transition-colors group cursor-pointer h-full flex flex-col">
+                  <div className="bg-gray-dark border border-gray-800 rounded-xl overflow-hidden hover:border-[#0fb8af] transition-colors group cursor-pointer h-full flex flex-col">
                     <div className="relative aspect-[4/3]">
                       <Image
                         src={service.image}
@@ -254,10 +254,10 @@ const NewPage: React.FC = () => {
                       </div>
                     </div>
                     <div className="p-4 sm:p-5 flex-1 flex flex-col">
-                      <h3 className="text-lg sm:text-xl font-bold mb-2 text-white group-hover:text-[#0fb8af] transition-colors">
+                      <h3 className="text-lg sm:text-xl font-bold mb-2 text-foreground group-hover:text-[#0fb8af] transition-colors">
                         {service.title}
                       </h3>
-                      <p className="text-gray-300 text-sm sm:text-base flex-1">
+                      <p className="text-gray-light text-sm sm:text-base flex-1">
                         {service.description}
                       </p>
                     </div>
@@ -270,12 +270,12 @@ const NewPage: React.FC = () => {
       </div>
 
       {/* Latest Launches */}
-      <div className="py-16 px-6 bg-[#1a1a1a]">
+      <div className="py-16 px-6 bg-gray-dark">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <SlidingHighlight text="LATEST LAUNCHES" />
 
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight text-foreground">
               NEW <span className="text-[#0fb8af]">RELEASES</span>
             </h2>
           </div>
@@ -321,11 +321,11 @@ const NewPage: React.FC = () => {
                       {update.category}
                     </div>
 
-                    <h3 className="text-2xl lg:text-3xl font-bold mb-4 leading-tight">
+                    <h3 className="text-2xl lg:text-3xl font-bold mb-4 leading-tight text-foreground">
                       {update.title}
                     </h3>
 
-                    <p className="text-gray-300 mb-6 text-base">
+                    <p className="text-gray-light mb-6 text-base">
                       {update.description}
                     </p>
 
@@ -333,7 +333,7 @@ const NewPage: React.FC = () => {
                       {update.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2">
                           <CheckCircle className="w-4 h-4 text-[#0fb8af] flex-shrink-0" />
-                          <span className="text-sm">{feature}</span>
+                          <span className="text-sm text-foreground">{feature}</span>
                         </div>
                       ))}
                     </div>

@@ -148,3 +148,113 @@ input[type="button"],
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Light theme variables */
+.light {
+  --background: #ffffff;
+  --foreground: #151515;
+  --accent-yellow: #0fb8af;
+  --accent-green: #0fb8af;
+  --gray-light: #252525;
+  --gray-medium: #374151;
+  --gray-dark: #f5f5f5;
+}
+
+/* Dark theme variables */
+.dark {
+  --background: #151515;
+  --foreground: #ffffff;
+  --accent-yellow: #0fb8af;
+  --accent-green: #0fb8af;
+  --gray-light: #e0f7fa;
+  --gray-medium: #a8e6cf;
+  --gray-dark: #252525;
+}
+
+/* Theme-specific background and text colors */
+.bg-background {
+  background-color: var(--background) !important;
+}
+
+.text-foreground {
+  color: var(--foreground) !important;
+}
+
+.bg-gray-dark {
+  background-color: var(--gray-dark) !important;
+}
+
+.text-gray-light {
+  color: var(--gray-light) !important;
+}
+
+/* Light theme specific overrides */
+.light .text-white {
+  color: #151515 !important;
+}
+
+.light .text-gray-300 {
+  color: #666666 !important;
+}
+
+.light .text-gray-400 {
+  color: #888888 !important;
+}
+
+.light .border-gray-700 {
+  border-color: #e5e5e5 !important;
+}
+
+.light .bg-black\/60 {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light .bg-white\/20 {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light .border-white {
+  border-color: #151515 !important;
+}
+
+.light .text-gray-200 {
+  color: #333333 !important;
+}
+
+/* Dark theme specific overrides */
+.dark .text-white {
+  color: #ffffff !important;
+}
+
+.dark .text-gray-300 {
+  color: #d1d5db !important;
+}
+
+.dark .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+.dark .border-gray-700 {
+  border-color: #374151 !important;
+}
+
+.dark .bg-black\/60 {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.dark .bg-white\/20 {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark .border-white {
+  border-color: #ffffff !important;
+}
+
+.dark .text-gray-200 {
+  color: #e5e7eb !important;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

@@ -32,7 +32,7 @@ const CounterSection = () => {
   }, []);
 
   return (
-    <section className="py-12 sm:py-16 bg-[#151515] relative overflow-hidden px-4 sm:px-6 lg:px-8">
+    <section className="py-12 sm:py-16 bg-background relative overflow-hidden px-4 sm:px-6 lg:px-8">
       {/* Background pattern */}
       <div
         className="absolute inset-0 opacity-10"
@@ -47,7 +47,7 @@ const CounterSection = () => {
         {/* Quote section */}
         <div className="text-center mb-12 sm:mb-16">
           <h2
-            className="text-white font-black leading-tight mb-6 sm:mb-8 px-4"
+            className="text-foreground font-black leading-tight mb-6 sm:mb-8 px-4"
             style={{
               fontSize: "clamp(2rem, 8vw, 4rem)",
               lineHeight: 1.1,
