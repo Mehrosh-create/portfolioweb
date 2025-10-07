@@ -17,8 +17,8 @@ const Portfolio = () => {
             description:
                 "Complete digital overhaul for a leading business consultancy",
             image: "/images/euroshub.jpg",
-            link: "#",
-            github: "#",
+            link: "https://euroshub.com/expertise/business/erp-crm-software",
+
         },
         {
             id: 2,
@@ -26,8 +26,8 @@ const Portfolio = () => {
             category: "marketing",
             description: "Tripled revenue for an online retail brand in 6 months",
             image: "/images/ecommerce.jpg",
-            link: "#",
-            github: "#",
+            link: "https://euroshub.com/expertise/business/erp-crm-software",
+
         },
         {
             id: 3,
@@ -35,8 +35,8 @@ const Portfolio = () => {
             category: "development",
             description: "Custom CRM solution for a service-based business",
             image: "/images/crm.jpg",
-            link: "#",
-            github: "#",
+            link: "https://euroshub.com/expertise/business/erp-crm-software",
+
         },
         {
             id: 4,
@@ -44,8 +44,8 @@ const Portfolio = () => {
             category: "branding",
             description: "Rebranding and market positioning for tech startup",
             image: "/images/branding.jpg",
-            link: "#",
-            github: "#",
+            link: "https://euroshub.com/expertise/business/erp-crm-software",
+
         },
         {
             id: 5,
@@ -53,8 +53,8 @@ const Portfolio = () => {
             category: "digital",
             description: "Workflow automation that saved 20+ hours weekly",
             image: "/images/Automate.jpg",
-            link: "#",
-            github: "#",
+            link: "https://euroshub.com/expertise/business/erp-crm-software",
+
         },
         {
             id: 6,
@@ -62,8 +62,8 @@ const Portfolio = () => {
             category: "marketing",
             description: "High-conversion funnel generating 500+ leads monthly",
             image: "/images/funnel.jpg",
-            link: "#",
-            github: "#",
+            link: "https://euroshub.com/expertise/business/erp-crm-software",
+
         },
     ];
 
