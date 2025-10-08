@@ -311,3 +311,22 @@ input[type="button"],
 .light .min-h-screen .bg-black\/60 {
   background-color: rgba(0, 0, 0, 0.6) !important;
 }
+
+/* Category buttons should have black text in light mode */
+.light .py-8.px-6 button {
+  color: #000000 !important;
+}
+
+/* Ensure all states are black in light mode */
+.light .py-8.px-6 button:hover {
+  color: #000000 !important;
+}
+
+.light .py-8.px-6 button:focus {
+  color: #000000 !important;
+}
+
+/* More specific targeting if needed */
+.light button[style*="color"] {
+  color: #000000 !important;
+}
