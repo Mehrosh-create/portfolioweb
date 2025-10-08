@@ -83,6 +83,7 @@ const SlidingHighlight = ({ text }: { text: string }) => {
 };
 
 const NewPage: React.FC = () => {
+  const { theme } = useTheme();
   const services = [
     {
       title: "Digital Transformation",
@@ -270,13 +271,13 @@ const NewPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Latest Launches - Changed to solid white background */}
-      <div className="py-16 px-6 bg-white">
+      {/* Latest Launches - Solid White only in Light Mode */}
+      <div className={`py-16 px-6 ${theme === 'light' ? 'bg-white' : 'bg-gray-dark'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <SlidingHighlight text="LATEST LAUNCHES" />
 
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight text-black">
+            <h2 className={`text-3xl lg:text-4xl font-bold mb-6 leading-tight ${theme === 'light' ? 'text-black' : 'text-white'}`}>
               NEW <span className="text-[#0fb8af]">RELEASES</span>
             </h2>
           </div>
@@ -322,11 +323,11 @@ const NewPage: React.FC = () => {
                       {update.category}
                     </div>
 
-                    <h3 className="text-2xl lg:text-3xl font-bold mb-4 leading-tight text-black">
+                    <h3 className={`text-2xl lg:text-3xl font-bold mb-4 leading-tight ${theme === 'light' ? 'text-black' : 'text-white'}`}>
                       {update.title}
                     </h3>
 
-                    <p className="text-gray-700 mb-6 text-base">
+                    <p className={`mb-6 text-base ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
                       {update.description}
                     </p>
 
@@ -334,7 +335,7 @@ const NewPage: React.FC = () => {
                       {update.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2">
                           <CheckCircle className="w-4 h-4 text-[#0fb8af] flex-shrink-0" />
-                          <span className="text-sm text-black">{feature}</span>
+                          <span className={`text-sm ${theme === 'light' ? 'text-black' : 'text-white'}`}>{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -343,7 +344,7 @@ const NewPage: React.FC = () => {
                       <div className="text-2xl lg:text-3xl font-black text-[#0fb8af]">
                         {update.price}
                       </div>
-                      <div className="text-xs text-gray-600 flex items-center gap-2">
+                      <div className={`text-xs flex items-center gap-2 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
                         <Calendar className="w-3 h-3" />
                         {update.date}
                       </div>

@@ -7,6 +7,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 const CounterSection = () => {
   const [inView, setInView] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,13 +34,14 @@ const CounterSection = () => {
   }, []);
 
   return (
-    <section className="py-12 sm:py-16 bg-background relative overflow-hidden px-4 sm:px-6 lg:px-8">
+    <section className={`py-12 sm:py-16 ${theme === 'dark' ? 'bg-[#151515]' : 'bg-white'} relative overflow-hidden px-4 sm:px-6 lg:px-8`}>
       {/* Background pattern */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
-          backgroundImage:
-            'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/svg%3E")',
+          backgroundImage: theme === 'dark'
+            ? 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/svg%3E")'
+            : 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'0.1\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/svg%3E")',
           backgroundSize: "60px 60px",
         }}
       ></div>
@@ -48,7 +50,7 @@ const CounterSection = () => {
         {/* Quote section */}
         <div className="text-center mb-12 sm:mb-16">
           <h2
-            className="text-foreground font-black leading-tight mb-6 sm:mb-8 px-4"
+            className={`${theme === 'dark' ? 'text-white' : 'text-black'} font-black leading-tight mb-6 sm:mb-8 px-4`}
             style={{
               fontSize: "clamp(2rem, 8vw, 4rem)",
               lineHeight: 1.1,
@@ -103,7 +105,7 @@ const CounterSection = () => {
           ].map((card) => (
             <div
               key={card.name}
-              className="group text-center p-0 border-2 rounded-lg transition-all duration-300 cursor-pointer h-80 sm:h-96 flex flex-col relative overflow-hidden border-gray-700"
+              className={`group text-center p-0 border-2 rounded-lg transition-all duration-300 cursor-pointer h-80 sm:h-96 flex flex-col relative overflow-hidden ${theme === 'dark' ? 'border-gray-700' : 'border-gray-300'}`}
             >
               {/* Hover effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-50">
@@ -126,9 +128,9 @@ const CounterSection = () => {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
-                <div className="p-4 sm:p-6 bg-black/80 backdrop-blur-sm">
+                <div className={`p-4 sm:p-6 ${theme === 'dark' ? 'bg-black/80' : 'bg-white/80'} backdrop-blur-sm`}>
                   <h3
-                    className="text-xl sm:text-2xl font-semibold text-white mb-2 uppercase tracking-wide"
+                    className={`text-xl sm:text-2xl font-semibold ${theme === 'dark' ? 'text-white' : 'text-black'} mb-2 uppercase tracking-wide`}
                     style={{
                       fontFamily:
                         'Arial, "Helvetica Neue", Helvetica, sans-serif',
@@ -138,7 +140,7 @@ const CounterSection = () => {
                     {card.name}
                   </h3>
                   <p
-                    className="text-xs sm:text-sm text-gray-300"
+                    className={`text-xs sm:text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}
                     style={{
                       fontFamily:
                         'Arial, "Helvetica Neue", Helvetica, sans-serif',
