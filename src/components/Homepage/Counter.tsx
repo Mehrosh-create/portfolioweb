@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const CounterSection = () => {
   const [inView, setInView] = useState(false);

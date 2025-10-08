@@ -1,41 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
-export default function ThemeToggle() {
-    const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-    useEffect(() => {
-        const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-        const appliedTheme = savedTheme || "dark";
-        setTheme(appliedTheme);
-        applyTheme(appliedTheme);
-    }, []);
-
-    const applyTheme = (mode: "light" | "dark") => {
-        const root = document.documentElement;
-
-        if (mode === "light") {
-            root.style.setProperty("--background", "#ffffff");
-            root.style.setProperty("--foreground", "#151515");
-            root.style.setProperty("--gray-dark", "#e0e0e0");
-            root.style.setProperty("--gray-light", "#252525");
-        } else {
-            root.style.setProperty("--background", "#151515");
-            root.style.setProperty("--foreground", "#ffffff");
-            root.style.setProperty("--gray-dark", "#252525");
-            root.style.setProperty("--gray-light", "#e0f7fa");
-        }
-
-        localStorage.setItem("theme", mode);
-    };
-
-    const toggleTheme = () => {
-        const newTheme = theme === "dark" ? "light" : "dark";
-        setTheme(newTheme);
-        applyTheme(newTheme);
-    };
+// Safe wrapper component
+function ThemeToggleContent() {
+    const { theme, toggleTheme } = useTheme();
 
     return (
         <button
@@ -89,4 +59,31 @@ export default function ThemeToggle() {
             </div>
         </button>
     );
+}
+
+// Main component with error handling
+export default function ThemeToggle() {
+    try {
+        return <ThemeToggleContent />;
+    } catch (error) {
+        // Fallback if theme context is not available
+        console.warn("Theme context not available, showing fallback toggle");
+
+        return (
+            <button
+                aria-label="Toggle Theme (Fallback)"
+                className="relative flex items-center rounded-full p-1 w-16 h-8 bg-gray-300"
+                onClick={() => {
+                    // Simple fallback toggle
+                    const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+                    document.documentElement.classList.toggle('light', newTheme === 'light');
+                    localStorage.setItem('theme', newTheme);
+                }}
+            >
+                <div className="absolute w-6 h-6 rounded-full bg-white border border-gray-400 transform translate-x-0"></div>
+            </button>
+        );
+    }
 }

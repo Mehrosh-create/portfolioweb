@@ -2,9 +2,11 @@
 
 import { useParams } from "next/navigation";
 import { useState } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function EnrollmentFormPage() {
     const { id } = useParams(); // capture which program/toolkit/course
+    const { theme } = useTheme();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -100,9 +102,15 @@ export default function EnrollmentFormPage() {
         }
     };
 
+    const backgroundColor = theme === 'dark' ? 'bg-[#151515]' : 'bg-white';
+    const textColor = theme === 'dark' ? 'text-white' : 'text-black';
+    const borderColor = theme === 'dark' ? 'border-[#606060]' : 'border-gray-300';
+    const inputBackground = theme === 'dark' ? 'bg-[#252525]' : 'bg-gray-100';
+    const hoverBorder = theme === 'dark' ? 'hover:border-white' : 'hover:border-gray-500';
+
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#151515] text-white px-4 sm:px-6 lg:px-8 py-10">
-            <div className="w-full max-w-md sm:max-w-lg lg:max-w-2xl bg-[#151515] p-6 sm:p-8 lg:p-10 rounded-lg border border-[#606060] hover:border-[#0fb8af] transition-all duration-300">
+        <div className={`min-h-screen flex items-center justify-center ${backgroundColor} ${textColor} px-4 sm:px-6 lg:px-8 py-10`}>
+            <div className={`w-full max-w-md sm:max-w-lg lg:max-w-2xl ${backgroundColor} p-6 sm:p-8 lg:p-10 rounded-lg border ${borderColor} hover:border-[#0fb8af] transition-all duration-300`}>
                 <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-8 text-[#0fb8af] uppercase text-center sm:text-left">
                     Enroll for Program (ID: {id})
                 </h1>
@@ -110,16 +118,16 @@ export default function EnrollmentFormPage() {
                 <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                     {/* Name */}
                     <div>
-                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg">
+                        <label className={`block ${textColor} font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg`}>
                             Name <span className="text-red-500 ml-1">(Required)</span>
                         </label>
-                        <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
+                        <div className={`border ${theme === 'dark' ? 'border-[#151515]' : 'border-gray-200'} p-3 sm:p-4 rounded-lg ${inputBackground} ${hoverBorder}`}>
                             <input
                                 type="text"
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full bg-transparent text-white text-base sm:text-lg placeholder-gray-400 focus:outline-none"
+                                className={`w-full bg-transparent ${textColor} text-base sm:text-lg ${theme === 'dark' ? 'placeholder-gray-400' : 'placeholder-gray-500'} focus:outline-none`}
                                 placeholder="Your Full Name"
                                 required
                             />
@@ -133,16 +141,16 @@ export default function EnrollmentFormPage() {
 
                     {/* Email */}
                     <div>
-                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg">
+                        <label className={`block ${textColor} font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg`}>
                             Email <span className="text-red-500 ml-1">(Required)</span>
                         </label>
-                        <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
+                        <div className={`border ${theme === 'dark' ? 'border-[#151515]' : 'border-gray-200'} p-3 sm:p-4 rounded-lg ${inputBackground} ${hoverBorder}`}>
                             <input
                                 type="email"
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="w-full bg-transparent text-white text-base sm:text-lg placeholder-gray-400 focus:outline-none"
+                                className={`w-full bg-transparent ${textColor} text-base sm:text-lg ${theme === 'dark' ? 'placeholder-gray-400' : 'placeholder-gray-500'} focus:outline-none`}
                                 placeholder="Your Email"
                                 required
                             />
@@ -156,16 +164,16 @@ export default function EnrollmentFormPage() {
 
                     {/* Phone */}
                     <div>
-                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg">
+                        <label className={`block ${textColor} font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg`}>
                             Phone
                         </label>
-                        <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
+                        <div className={`border ${theme === 'dark' ? 'border-[#151515]' : 'border-gray-200'} p-3 sm:p-4 rounded-lg ${inputBackground} ${hoverBorder}`}>
                             <input
                                 type="tel"
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
-                                className="w-full bg-transparent text-white text-base sm:text-lg placeholder-gray-400 focus:outline-none"
+                                className={`w-full bg-transparent ${textColor} text-base sm:text-lg ${theme === 'dark' ? 'placeholder-gray-400' : 'placeholder-gray-500'} focus:outline-none`}
                                 placeholder="Your Phone (optional)"
                             />
                         </div>
@@ -173,16 +181,16 @@ export default function EnrollmentFormPage() {
 
                     {/* Message */}
                     <div>
-                        <label className="block text-white font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg">
+                        <label className={`block ${textColor} font-semibold mb-2 sm:mb-3 uppercase text-sm sm:text-base lg:text-lg`}>
                             Message <span className="text-red-500 ml-1">(Required)</span>
                         </label>
-                        <div className="border border-[#151515] p-3 sm:p-4 rounded-lg bg-[#252525] hover:border-white">
+                        <div className={`border ${theme === 'dark' ? 'border-[#151515]' : 'border-gray-200'} p-3 sm:p-4 rounded-lg ${inputBackground} ${hoverBorder}`}>
                             <textarea
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}
                                 rows={5}
-                                className="w-full bg-transparent text-white text-base sm:text-lg focus:outline-none resize-none placeholder-gray-400"
+                                className={`w-full bg-transparent ${textColor} text-base sm:text-lg focus:outline-none resize-none ${theme === 'dark' ? 'placeholder-gray-400' : 'placeholder-gray-500'}`}
                                 placeholder="Tell us why you want to enroll..."
                                 required
                             />

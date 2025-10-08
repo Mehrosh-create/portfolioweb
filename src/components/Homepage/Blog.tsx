@@ -7,6 +7,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { blogArticles } from "@/data/blogArticles";
+import { useTheme } from "@/contexts/ThemeContext";
 
 // 👇 Fade + slide animation wrapper
 const FadeSlide = ({

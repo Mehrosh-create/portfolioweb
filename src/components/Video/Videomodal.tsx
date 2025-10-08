@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import {
   X, Expand, Shrink, Settings, Play, Pause
 } from 'lucide-react'
+import { useTheme } from '@/contexts/ThemeContext'
 
 interface VideoModalProps {
   isOpen: boolean
@@ -17,6 +18,7 @@ interface VideoModalProps {
 const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc, isYouTube = false }: VideoModalProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const { theme } = useTheme()
 
   const [volume, setVolume] = useState(1)
   const [isPlaying, setIsPlaying] = useState(true)
@@ -31,6 +33,15 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc, isYouTube = false
 
   // store raf id; typed as number | null to satisfy TS
   const animationFrameRef = useRef<number | null>(null)
+
+  // Theme-based styles
+  const textColor = theme === 'dark' ? 'text-white' : 'text-black'
+  const hoverTextColor = theme === 'dark' ? 'hover:text-gray-300' : 'hover:text-gray-700'
+  const bgOverlay = theme === 'dark' ? 'bg-black/50' : 'bg-white/50'
+  const settingsBg = theme === 'dark' ? 'bg-black/90' : 'bg-white/90'
+  const settingsText = theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+  const settingsHoverBg = theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-gray-300'
+  const settingsActiveBg = theme === 'dark' ? 'bg-gray-700' : 'bg-gray-300'
 
   const togglePlayPause = useCallback(() => {
     const video = videoRef.current
@@ -283,14 +294,14 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc, isYouTube = false
         <div className="absolute top-4 right-4 flex items-center gap-3 z-20">
           <button
             onClick={toggleFullscreen}
-            className="text-white hover:text-gray-300 transition-colors bg-black/50 rounded-full p-2"
+            className={`${textColor} ${hoverTextColor} transition-colors ${bgOverlay} rounded-full p-2`}
             aria-label="Fullscreen"
           >
             {isFullscreen ? <Shrink size={28} /> : <Expand size={28} />}
           </button>
           <button
             onClick={onClose}
-            className="text-white hover:text-gray-300 transition-colors bg-black/50 rounded-full p-2"
+            className={`${textColor} ${hoverTextColor} transition-colors ${bgOverlay} rounded-full p-2`}
             aria-label="Close"
           >
             <X size={28} />
@@ -344,16 +355,20 @@ const VideoModal = ({ isOpen, onClose, videoSrc, subtitlesSrc, isYouTube = false
           <div className="absolute bottom-4 left-4 z-20">
             {/* Settings - Playback Speed */}
             <div className="relative">
-              <button onClick={() => setShowSettings(!showSettings)} className="text-white hover:text-gray-300 transition-colors bg-black/50 rounded-full p-2" aria-label="Settings">
+              <button
+                onClick={() => setShowSettings(!showSettings)}
+                className={`${textColor} ${hoverTextColor} transition-colors ${bgOverlay} rounded-full p-2`}
+                aria-label="Settings"
+              >
                 <Settings size={28} />
               </button>
               {showSettings && (
-                <div className="absolute bottom-12 left-0 bg-black/90 rounded-lg text-sm p-3 w-40 space-y-2">
-                  <p className="text-gray-300 text-xs mb-1">Playback Speed</p>
+                <div className={`absolute bottom-12 left-0 ${settingsBg} rounded-lg text-sm p-3 w-40 space-y-2`}>
+                  <p className={`${settingsText} text-xs mb-1`}>Playback Speed</p>
                   {[0.5, 0.75, 1, 1.25, 1.5, 2].map(rate => (
                     <button
                       key={rate}
-                      className={`w-full text-left px-2 py-1 rounded hover:bg-gray-700 ${playbackRate === rate ? 'text-white bg-gray-700' : 'text-gray-400'}`}
+                      className={`w-full text-left px-2 py-1 rounded ${settingsHoverBg} ${playbackRate === rate ? `${textColor} ${settingsActiveBg}` : settingsText}`}
                       onClick={() => changePlaybackRate(rate)}
                     >
                       {rate}x {rate === 1 && '(Normal)'}

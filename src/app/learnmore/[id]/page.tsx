@@ -2,8 +2,9 @@
 
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link"; // ✅ added
+import Link from "next/link";
 import { Calendar, CheckCircle } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 // ✅ Reuse same updates data from Homepage/New.tsx
 const latestUpdates = [
@@ -68,18 +69,19 @@ const latestUpdates = [
 
 export default function LearnMorePage() {
     const { id } = useParams();
+    const { theme } = useTheme();
     const update = latestUpdates.find((item) => item.id.toString() === id);
 
     if (!update) {
         return (
-            <div className="min-h-screen flex items-center justify-center text-white bg-[#151515]">
+            <div className={`min-h-screen flex items-center justify-center ${theme === 'dark' ? 'bg-[#151515] text-white' : 'bg-white text-black'}`}>
                 <h2 className="text-2xl font-bold">Update not found</h2>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-[#151515] text-white py-16 px-6 sm:px-12">
+        <div className={`min-h-screen ${theme === 'dark' ? 'bg-[#151515] text-white' : 'bg-white text-black'} py-16 px-6 sm:px-12`}>
             <div className="max-w-4xl mx-auto">
                 {/* Title */}
                 <h1 className="text-3xl md:text-5xl font-black mb-6 text-[#0fb8af] uppercase">
@@ -91,7 +93,7 @@ export default function LearnMorePage() {
                     <span className="px-3 py-1 bg-[#0fb8af] text-black font-bold uppercase text-xs">
                         {update.category}
                     </span>
-                    <span className="px-3 py-1 bg-white/10 border border-gray-700 text-xs uppercase">
+                    <span className={`px-3 py-1 ${theme === 'dark' ? 'bg-white/10 border border-gray-700' : 'bg-black/10 border border-gray-300'} text-xs uppercase`}>
                         {update.status}
                     </span>
                 </div>
@@ -106,7 +108,7 @@ export default function LearnMorePage() {
                 />
 
                 {/* Description */}
-                <p className="text-lg text-gray-300 mb-8 text-center">
+                <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-8 text-center`}>
                     {update.description}
                 </p>
 
@@ -122,10 +124,10 @@ export default function LearnMorePage() {
 
                 {/* Price + Date */}
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-10 gap-3">
-                    <div className="text-2xl font-black text-#0fb8af]">
+                    <div className="text-2xl font-black text-[#0fb8af]">
                         {update.price}
                     </div>
-                    <div className="text-sm text-gray-400 flex items-center gap-2">
+                    <div className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} flex items-center gap-2`}>
                         <Calendar className="w-4 h-4" />
                         {update.date}
                     </div>

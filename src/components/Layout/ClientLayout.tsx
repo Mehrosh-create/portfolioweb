@@ -86,7 +86,7 @@ export default function ClientLayout({
 
                 {/* Search Bar */}
                 {showSearch && (
-                    <div className={`fixed top-0 left-0 lg:left-64 right-0 bg-black py-16 px-8 z-40 ${isClosing ? 'animate-slideUp' : 'animate-slideDown'}`}>
+                    <div className={`fixed top-0 left-0 lg:left-64 right-0 bg-background py-16 px-8 z-40 ${isClosing ? 'animate-slideUp' : 'animate-slideDown'}`}>
                         <div className="max-w-7xl mx-auto">
                             <div className="relative mt-6">
                                 <form onSubmit={handleSearchSubmit}>
@@ -95,7 +95,7 @@ export default function ClientLayout({
                                         placeholder="SEARCH"
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
-                                        className="w-full bg-transparent text-white border-0 text-3xl font-bold focus:outline-none focus:ring-0 py-4 placeholder-white tracking-wider pr-16"
+                                        className="w-full bg-transparent text-foreground border-0 text-3xl font-bold focus:outline-none focus:ring-0 py-4 placeholder-foreground tracking-wider pr-16"
                                         autoFocus
                                         style={{
                                             fontSize: "2.5rem",
@@ -110,7 +110,7 @@ export default function ClientLayout({
                                     <button
                                         type="button"
                                         onClick={handleSearchClose}
-                                        className="absolute bottom-4 right-0 text-white hover:text-gray-300 group transition-colors duration-300"
+                                        className="absolute bottom-4 right-0 text-foreground hover:text-gray-300 group transition-colors duration-300"
                                     >
                                         <X className="w-8 h-8 transition-transform duration-300 group-hover:rotate-90" />
                                     </button>
@@ -118,7 +118,7 @@ export default function ClientLayout({
                             </div>
 
                             {/* Instruction text */}
-                            <p className="text-gray-400 text-lg mt-6 font-light">
+                            <p className="text-gray-light text-lg mt-6 font-light">
                                 Type to search or press{" "}
                                 <span className="font-semibold">ESC</span> to close
                             </p>
@@ -128,7 +128,7 @@ export default function ClientLayout({
                                 <div className="mt-8">
                                     {filteredArticles.length > 0 ? (
                                         <>
-                                            <h3 className="text-white text-xl font-bold mb-6">
+                                            <h3 className="text-foreground text-xl font-bold mb-6">
                                                 Found {filteredArticles.length} article{filteredArticles.length !== 1 ? 's' : ''}
                                             </h3>
                                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -140,7 +140,7 @@ export default function ClientLayout({
                                                         className="group cursor-pointer block"
                                                     >
                                                         <div
-                                                            className="bg-[#1a1a1a] border overflow-hidden transition-all duration-300 hover:scale-105 h-full flex flex-col"
+                                                            className="bg-gray-dark border overflow-hidden transition-all duration-300 hover:scale-105 h-full flex flex-col"
                                                             style={{ borderColor: "#1F2937" }}
                                                             onMouseEnter={(e) =>
                                                                 (e.currentTarget.style.borderColor = "#0fb8af")
@@ -171,17 +171,17 @@ export default function ClientLayout({
                                                                     </span>
                                                                 </div>
                                                                 <h4
-                                                                    className="text-lg font-bold mb-2 line-clamp-2 transition-colors flex-1"
+                                                                    className="text-lg font-bold mb-2 line-clamp-2 transition-colors flex-1 text-foreground"
                                                                     onMouseEnter={(e) =>
                                                                         (e.currentTarget.style.color = "#0fb8af")
                                                                     }
                                                                     onMouseLeave={(e) =>
-                                                                        (e.currentTarget.style.color = "white")
+                                                                        (e.currentTarget.style.color = "var(--foreground)")
                                                                     }
                                                                 >
                                                                     {article.title}
                                                                 </h4>
-                                                                <p className="text-gray-400 text-sm mb-3 line-clamp-2">
+                                                                <p className="text-gray-light text-sm mb-3 line-clamp-2">
                                                                     {article.excerpt}
                                                                 </p>
                                                                 <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">
@@ -207,7 +207,7 @@ export default function ClientLayout({
                                         </>
                                     ) : (
                                         <div className="text-center py-12">
-                                            <p className="text-gray-400 text-xl">
+                                            <p className="text-gray-light text-xl">
                                                 No articles found for &ldquo;{searchQuery}&rdquo;
                                             </p>
                                             <p className="text-gray-500 text-sm mt-2">

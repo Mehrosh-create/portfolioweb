@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({

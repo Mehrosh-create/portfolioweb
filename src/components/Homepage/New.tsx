@@ -17,6 +17,7 @@ import Image from "next/image";
 import GravWrap from "@/components/Common/GravWrap";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useTheme } from "@/contexts/ThemeContext";
 
 // 👇 Reusable fade+slide wrapper
 const FadeSlide = ({
@@ -269,13 +270,13 @@ const NewPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Latest Launches */}
-      <div className="py-16 px-6 bg-gray-dark dark:bg-gray-100">
+      {/* Latest Launches - Changed to solid white background */}
+      <div className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <SlidingHighlight text="LATEST LAUNCHES" />
 
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight text-foreground dark:text-black">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight text-black">
               NEW <span className="text-[#0fb8af]">RELEASES</span>
             </h2>
           </div>
@@ -321,11 +322,11 @@ const NewPage: React.FC = () => {
                       {update.category}
                     </div>
 
-                    <h3 className="text-2xl lg:text-3xl font-bold mb-4 leading-tight text-foreground dark:text-black">
+                    <h3 className="text-2xl lg:text-3xl font-bold mb-4 leading-tight text-black">
                       {update.title}
                     </h3>
 
-                    <p className="text-gray-light dark:text-gray-700 mb-6 text-base">
+                    <p className="text-gray-700 mb-6 text-base">
                       {update.description}
                     </p>
 
@@ -333,7 +334,7 @@ const NewPage: React.FC = () => {
                       {update.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2">
                           <CheckCircle className="w-4 h-4 text-[#0fb8af] flex-shrink-0" />
-                          <span className="text-sm text-foreground dark:text-black">{feature}</span>
+                          <span className="text-sm text-black">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -342,7 +343,7 @@ const NewPage: React.FC = () => {
                       <div className="text-2xl lg:text-3xl font-black text-[#0fb8af]">
                         {update.price}
                       </div>
-                      <div className="text-xs text-gray-400 dark:text-gray-600 flex items-center gap-2">
+                      <div className="text-xs text-gray-600 flex items-center gap-2">
                         <Calendar className="w-3 h-3" />
                         {update.date}
                       </div>

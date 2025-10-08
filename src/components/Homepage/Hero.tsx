@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import VideoModal from "@/components/Video/Videomodal";
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface HeroSectionProps {
   onVideoPlay: () => void;

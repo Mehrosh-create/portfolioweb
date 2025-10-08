@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { FaUpwork } from "react-icons/fa6"; // ✅ Correct import (was "react-icons/fa" before)
+import { FaUpwork } from "react-icons/fa6";
 import {
   Facebook,
   Instagram,
@@ -12,10 +12,9 @@ import {
   Twitter,
   Search,
 } from "lucide-react";
-
-// Extra icons
 import { FaDiscord, FaSnapchatGhost, FaWhatsapp } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
+import { useTheme } from "@/contexts/ThemeContext"; // ✅ Correct path
 
 interface SidebarProps {
   onSearchClick?: () => void;
@@ -25,9 +24,9 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">("desktop");
   const [hoveredNav, setHoveredNav] = useState("");
-  const [searchHover, setSearchHover] = useState(false);
 
   const pathname = usePathname();
+  const { theme } = useTheme(); // ✅ Use theme context
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -61,6 +60,40 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
     { href: "https://www.tiktok.com/@sheikhnabeel.official", icon: SiTiktok, label: "TikTok" },
     { href: "https://wa.me/923000369622", icon: FaWhatsapp, label: "WhatsApp" },
   ];
+
+  // Theme-based styling
+  const themeStyles = {
+    dark: {
+      sidebar: "bg-black text-white",
+      overlay: "bg-black/70 backdrop-blur-sm",
+      menuButton: "text-white bg-gradient-to-br from-gray-900 to-black hover:from-[#0fb8af] hover:to-gray-900",
+      menuButtonBars: "bg-white",
+      closeButton: "text-white hover:text-[#0fb8af] hover:bg-white/10",
+      navText: "text-white",
+      searchButton: "text-white hover:text-[#0fb8af]",
+      searchIcon: "text-white",
+      socialIcon: "text-white",
+      copyright: "text-gray-400",
+      logoFilter: "filter-none",
+      border: "border-[#0fb8af]/40",
+    },
+    light: {
+      sidebar: "bg-white text-black",
+      overlay: "bg-black/50 backdrop-blur-sm",
+      menuButton: "text-black bg-white hover:bg-[#0fb8af] border border-gray-300",
+      menuButtonBars: "bg-black",
+      closeButton: "text-black hover:text-[#0fb8af] hover:bg-black/10",
+      navText: "text-black",
+      searchButton: "border border-gray-400 hover:border-[#0fb8af]",
+      searchIcon: "text-black hover:text-[#0fb8af]",
+      socialIcon: "text-black",
+      copyright: "text-gray-600",
+      logoFilter: "filter invert",
+      border: "border-[#0fb8af]/40",
+    }
+  };
+
+  const currentTheme = theme === "dark" ? themeStyles.dark : themeStyles.light;
 
   const getSidebarWidth = () => {
     switch (screenSize) {
@@ -102,13 +135,19 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
         <div className="fixed top-3 left-3 z-50">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white bg-gradient-to-br from-gray-900 to-black p-3 rounded-xl transition-all hover:scale-105 shadow-xl hover:shadow-2xl hover:from-[#0fb8af] hover:to-gray-900 group"
+            className={`p-3 rounded-xl transition-all hover:scale-105 shadow-xl hover:shadow-2xl ${currentTheme.menuButton}`}
             aria-label="Toggle Menu"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
-              <span className={`h-0.5 w-full bg-white rounded-full transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-              <span className={`h-0.5 w-full bg-white rounded-full transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`h-0.5 w-full bg-white rounded-full transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+              <span
+                className={`h-0.5 w-full rounded-full transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''} ${currentTheme.menuButtonBars}`}
+              ></span>
+              <span
+                className={`h-0.5 w-full rounded-full transition-all duration-300 ${isOpen ? 'opacity-0' : ''} ${currentTheme.menuButtonBars}`}
+              ></span>
+              <span
+                className={`h-0.5 w-full rounded-full transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''} ${currentTheme.menuButtonBars}`}
+              ></span>
             </div>
           </button>
         </div>
@@ -116,21 +155,20 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
 
       {screenSize !== "desktop" && isOpen && (
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40"
+          className={`fixed inset-0 z-40 ${currentTheme.overlay}`}
           onClick={() => setIsOpen(false)}
         />
       )}
 
       <aside
-        className={`fixed top-0 left-0 h-screen ${getSidebarWidth()} bg-black text-white z-50 transition-all duration-300 shadow-xl shadow-black/50 overflow-hidden
+        className={`fixed top-0 left-0 h-screen ${getSidebarWidth()} ${currentTheme.sidebar} z-50 transition-all duration-300 shadow-xl shadow-black/50 overflow-hidden
         ${isOpen ? "translate-x-0" : "-translate-x-full"} ${screenSize === "desktop" ? "translate-x-0" : ""}`}
       >
         <div className="flex flex-col h-full overflow-hidden">
-          {/* Close button */}
           {screenSize !== "desktop" && (
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-3 right-3 text-white hover:text-[#0fb8af] transition-colors z-10 p-2 hover:bg-white/10 rounded-lg"
+              className={`absolute top-3 right-3 transition-colors z-10 p-2 rounded-lg ${currentTheme.closeButton}`}
               aria-label="Close Menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -147,7 +185,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                 alt="Entrepreneur Portfolio Logo"
                 width={logoSize.width}
                 height={logoSize.height}
-                className="h-auto object-contain"
+                className={`h-auto object-contain ${currentTheme.logoFilter}`}
                 priority
               />
             </Link>
@@ -177,7 +215,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                     <Link
                       href={item.href}
                       prefetch={true}
-                      className={`block px-2 ${screenSize === "mobile" ? "py-1.5" : "py-2"} relative text-white transition-colors duration-300`}
+                      className={`block px-2 ${screenSize === "mobile" ? "py-1.5" : "py-2"} relative transition-colors duration-300 ${currentTheme.navText}`}
                       onMouseEnter={() => setHoveredNav(item.href)}
                       onMouseLeave={() => setHoveredNav("")}
                       onClick={() => {
@@ -196,18 +234,14 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                 );
               })}
 
-              {/* Search */}
+              {/* Search Button Only */}
               <li className="flex justify-start pt-2 pl-1">
                 <button
                   onClick={onSearchClick}
-                  onMouseEnter={() => setSearchHover(true)}
-                  onMouseLeave={() => setSearchHover(false)}
-                  className={`${screenSize === "mobile" ? "w-8 h-8" : "w-9 h-9"} flex items-center justify-center rounded-full transition-colors duration-300`}
-                  style={{ color: searchHover ? "#0fb8af" : "white" }}
+                  className={`${screenSize === "mobile" ? "w-8 h-8" : "w-9 h-9"} flex items-center justify-center rounded-full transition-colors duration-300 ${currentTheme.searchButton}`}
                 >
                   <Search
-                    className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} transition-colors duration-300`}
-                    style={{ color: searchHover ? "#0fb8af" : "white" }}
+                    className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} transition-colors duration-300 ${currentTheme.searchIcon}`}
                   />
                 </button>
               </li>
@@ -217,7 +251,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
           <div className="flex-1" />
 
           {/* Social Links */}
-          <div className={`p-4 border-t border-[#0fb8af]/40 flex-shrink-0 ${screenSize === "mobile" ? "p-3" : ""}`}>
+          <div className={`p-4 border-t ${currentTheme.border} flex-shrink-0 ${screenSize === "mobile" ? "p-3" : ""}`}>
             <div className="mb-3">
               <ul className={`grid ${getSocialGridCols()} gap-2 justify-items-center`}>
                 {socialLinks
@@ -231,8 +265,13 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                         aria-label={social.label}
                         className={`relative ${screenSize === "mobile" ? "w-8 h-8" : "w-10 h-10"} overflow-hidden rounded-full group block`}
                       >
-                        <span className="absolute inset-0 flex items-center justify-center bg-black/40 transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
-                          <social.icon className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} text-white`} />
+                        <span
+                          className="absolute inset-0 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0"
+                          style={{
+                            backgroundColor: theme === "dark" ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.2)'
+                          }}
+                        >
+                          <social.icon className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} ${currentTheme.socialIcon}`} />
                         </span>
                         <span className="absolute inset-0 flex items-center justify-center bg-[#0fb8af] translate-y-full transition-all duration-300 group-hover:translate-y-0">
                           <social.icon className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} text-white`} />
@@ -243,7 +282,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
               </ul>
             </div>
 
-            <p className={`${screenSize === "mobile" ? "text-[10px]" : "text-xs"} text-center text-gray-400`}>
+            <p className={`${screenSize === "mobile" ? "text-[10px]" : "text-xs"} text-center ${currentTheme.copyright}`}>
               © {new Date().getFullYear()} Entrepreneur Portfolio
             </p>
           </div>

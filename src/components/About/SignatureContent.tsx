@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const SignatureContent = () => {
     const [playVideo, setPlayVideo] = useState<{ [key: string]: boolean }>({});
