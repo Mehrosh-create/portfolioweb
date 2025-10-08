@@ -1,6 +1,6 @@
 'use client';
 
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -228,8 +228,26 @@ const articles = [
 const BlogArticlePage = () => {
   const params = useParams();
   const slug = params?.slug as string;
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
 
   const article = articles.find(a => a.slug === slug);
+
+  // Initialize like count from article data
+  React.useEffect(() => {
+    if (article) {
+      setLikeCount(parseInt(article.likes) || 0);
+    }
+  }, [article]);
+
+  const handleLikeClick = () => {
+    if (isLiked) {
+      setLikeCount(prev => prev - 1);
+    } else {
+      setLikeCount(prev => prev + 1);
+    }
+    setIsLiked(!isLiked);
+  };
 
   if (!article) {
     return (
@@ -285,13 +303,25 @@ const BlogArticlePage = () => {
                   {article.readTime}
                 </div>
                 <div className="flex items-center gap-2">
-                  <Heart className="w-4 h-4" />
-                  {article.likes}
+                  <button
+                    onClick={handleLikeClick}
+                    className="flex items-center gap-2 transition-all duration-300 hover:text-red-500"
+                  >
+                    <div className="relative">
+                      <Heart
+                        className={`w-4 h-4 transition-all duration-300 ${isLiked
+                          ? 'fill-red-500 text-red-500 scale-110'
+                          : 'text-gray-400'
+                          }`}
+                      />
+                      {isLiked && (
+                        <div className="absolute inset-0 animate-ping bg-red-500 rounded-full opacity-75"></div>
+                      )}
+                    </div>
+                    {likeCount}
+                  </button>
                 </div>
-                <div className="flex items-center gap-2">
-                  <MessageCircle className="w-4 h-4" />
-                  {article.comments}
-                </div>
+
               </div>
               <div className="flex gap-3">
 
@@ -349,11 +379,24 @@ const BlogArticlePage = () => {
               <div className="flex items-center gap-4">
                 <span className="text-gray-400">Share this article:</span>
                 <div className="flex gap-3">
-                  <button className="p-2 border border-gray-600 rounded hover:border-[#0fb8af] hover:text-[#0fb8af] transition-colors">
-                    <Share2 className="w-4 h-4" />
-                  </button>
-                  <button className="p-2 border border-gray-600 rounded hover:border-[#0fb8af] hover:text-[#0fb8af] transition-colors">
-                    <Heart className="w-4 h-4" />
+                  <button
+                    onClick={handleLikeClick}
+                    className="p-2 border border-gray-600 rounded hover:border-red-500 transition-colors group relative overflow-hidden"
+                  >
+                    <div className="relative">
+                      <Heart
+                        className={`w-4 h-4 transition-all duration-300 ${isLiked
+                          ? 'fill-red-500 text-red-500 scale-110'
+                          : 'text-gray-400 group-hover:text-red-500'
+                          }`}
+                      />
+                      {isLiked && (
+                        <>
+                          <div className="absolute inset-0 animate-ping bg-red-500 rounded-full opacity-75"></div>
+                          <div className="absolute inset-0 bg-red-500 rounded-full opacity-20 animate-pulse"></div>
+                        </>
+                      )}
+                    </div>
                   </button>
                 </div>
               </div>

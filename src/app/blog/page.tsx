@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState } from "react";
-import Link from "next/link";
+import React from "react";
+import { useParams } from "next/navigation";
 import Image from "next/image";
-import { Calendar, Clock, ArrowRight, Bookmark, Share2, Heart, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { Calendar, Clock, Heart, MessageCircle, ArrowLeft, Bookmark, Share2 } from "lucide-react";
 
-// Article data moved inline
+// Article data moved inline (same as the articles.ts file)
 const articles = [
   // DIGITAL TRANSFORMATION
   {
@@ -18,9 +19,9 @@ const articles = [
     author: "Sheikh Nabeel",
     likes: "892",
     comments: "156",
-    excerpt: "Digital transformation is reshaping industries globally with AI and automation.",
+    excerpt: "Digital transformation is reshaping industries globally with AI, automation, and innovation.",
     contents: [
-      "Digital transformation is reshaping industries globally with AI and automation.",
+      "Digital transformation is reshaping industries globally with AI, automation, and innovation.",
       "Businesses leveraging digital strategies are seeing unprecedented growth and efficiency.",
       "The future of commerce is digital-first, and organizations must adapt quickly."
     ]
@@ -71,7 +72,7 @@ const articles = [
     author: "Michael Brown",
     likes: "376",
     comments: "47",
-    excerpt: "Automation in CRM enhances efficiency while driving customer satisfaction and loyalty.",
+    excerpt: "Automation enhances efficiency and satisfaction in CRM.",
     contents: [
       "Automation improves response times and customer satisfaction in CRM.",
       "Sales teams can focus on high-value interactions rather than repetitive tasks.",
@@ -171,7 +172,7 @@ const articles = [
   },
   {
     slug: "emerging-tech-trends",
-    title: "Emerging Tech Trends Shaping the Future",
+    title: "Emerging Tech Trends Shaping  Future",
     category: "TECHNOLOGY",
     readTime: "8 min read",
     date: "March 4, 2025",
@@ -190,7 +191,7 @@ const articles = [
   // BUSINESS STRATEGY
   {
     slug: "digital-business-strategy",
-    title: "Business Building in the Digital Age of 2025",
+    title: "Business Building in the Digital Age",
     category: "BUSINESS STRATEGY",
     readTime: "4 min read",
     date: "March 3, 2025",
@@ -207,7 +208,7 @@ const articles = [
   },
   {
     slug: "growth-strategies-for-startups",
-    title: "Building a Thriving Business in the Digital Age of 2025",
+    title: "Growth Strategies for Startups ",
     category: "BUSINESS STRATEGY",
     readTime: "5 min read",
     date: "March 2, 2025",
@@ -215,7 +216,7 @@ const articles = [
     author: "Sophia Martinez",
     likes: "421",
     comments: "68",
-    excerpt: "Startups must focus on product-market fit and scalability to drive sustainable growth and long-term success.",
+    excerpt: "Startups must focus on product-market fit and scalability.",
     contents: [
       "Startups must focus on product-market fit and scalability.",
       "Leveraging digital marketing accelerates growth in competitive markets.",
@@ -224,157 +225,147 @@ const articles = [
   }
 ];
 
-const categories = ["ALL", "DIGITAL TRANSFORMATION", "CRM SYSTEMS", "LEADERSHIP", "AUTOMATION", "TECHNOLOGY", "BUSINESS STRATEGY"];
+const BlogArticlePage = () => {
+  const params = useParams();
+  const slug = params?.slug as string;
 
-const BlogPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("ALL");
+  const article = articles.find(a => a.slug === slug);
 
-  const filteredArticles = selectedCategory === "ALL"
-    ? articles
-    : articles.filter(article => article.category === selectedCategory);
-
-  const featuredPost = articles[0]; // First article as featured
+  if (!article) {
+    return (
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Article not found</h1>
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider transition-colors"
+            style={{ backgroundColor: "#0fb8af", color: "#000" }}
+          >
+            <ArrowLeft className="w-4 h-4" /> Back to Blog
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Featured Article */}
-      <div className="py-20 px-40">
-        <div className="max-w-7xl mx-auto lg:mr-8">
-          <div className="p-1 rounded-lg mb-12" style={{ background: "linear-gradient(to right, #0fb8af, #0fb8af)" }}>
-            <div className="bg-background rounded-lg overflow-hidden">
-              <div className="grid lg:grid-cols-2 gap-0">
-                <div className="relative h-64 lg:h-auto">
-                  <Image
-                    src={featuredPost.image}
-                    alt={featuredPost.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase rounded"
-                    style={{ backgroundColor: "#0fb8af", color: "#000" }}>
-                    FEATURED
-                  </div>
+      {/* Header Section */}
+      <div className="py-20 px-6 md:px-40">
+        <div className="max-w-4xl mx-auto">
+          {/* Back Button */}
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-[#0fb8af] transition-colors mb-8"
+          >
+            <ArrowLeft className="w-4 h-4" /> Back to Blog
+          </Link>
+
+          {/* Article Header */}
+          <div className="mb-8">
+            <span
+              className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider rounded mb-4"
+              style={{ backgroundColor: "#0fb8af", color: "#000" }}
+            >
+              {article.category}
+            </span>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-foreground">
+              {article.title}
+            </h1>
+
+            {/* Article Meta */}
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 border-b border-gray-700 pb-6">
+              <div className="flex flex-wrap items-center gap-4 md:gap-6 text-gray-400 text-sm mb-4 md:mb-0">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  {article.date}
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  {article.readTime}
+                </div>
+                <div className="flex items-center gap-2">
+                  <Heart className="w-4 h-4" />
+                  {article.likes}
                 </div>
 
-                <div className="p-8 lg:p-12 flex flex-col justify-center">
-                  <span
-                    className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4"
-                    style={{ backgroundColor: "#0fb8af", color: "#000" }}
-                  >
-                    {featuredPost.category}
-                  </span>
-                  <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight text-foreground">
-                    {featuredPost.title}
-                  </h2>
-                  <p className="text-gray-light mb-8 text-lg">{featuredPost.excerpt}</p>
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="flex items-center gap-4 text-sm text-gray-400">
-                      <div className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {featuredPost.date}</div>
-                      <div className="flex items-center gap-1"><Clock className="w-4 h-4" /> {featuredPost.readTime}</div>
-                    </div>
+              </div>
+              <div className="flex gap-3">
 
-                  </div>
-                  <Link
-                    href={`/blog/${featuredPost.slug}`}
-                    className="px-6 py-3 font-bold uppercase tracking-wider transition-colors flex items-center gap-2 w-max"
-                    style={{ backgroundColor: "#0fb8af", color: "#000" }}
-                  >
-                    Read Full Article <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
+              </div>
+            </div>
+
+            {/* Author Info */}
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(to bottom right, #0fb8af, #0fb8af)" }}>
+                <span className="text-black font-bold text-lg">
+                  {article.author ? article.author.charAt(0) : "A"}
+                </span>
+              </div>
+              <div>
+                <p className="text-foreground font-semibold">By {article.author || "Unknown Author"}</p>
+                <p className="text-gray-400 text-sm">Digital Transformation Expert</p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Category Filter */}
-      <div className="py-8 px-6">
-        <div className="max-w-7xl mx-auto flex flex-wrap gap-4 justify-center">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className="px-4 py-2 border text-sm font-semibold transition-colors"
-              style={{
-                backgroundColor: selectedCategory === category ? "#0fb8af" : "transparent",
-                color: selectedCategory === category ? "#000" : "#D1D5DB",
-                borderColor: selectedCategory === category ? "#0fb8af" : "#4B5563"
-              }}
-              onMouseEnter={(e) => {
-                if (selectedCategory !== category) {
-                  e.currentTarget.style.backgroundColor = "#0fb8af";
-                  e.currentTarget.style.color = "#000";
-                  e.currentTarget.style.borderColor = "#0fb8af";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (selectedCategory !== category) {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                  e.currentTarget.style.color = "#D1D5DB";
-                  e.currentTarget.style.borderColor = "#4B5563";
-                }
-              }}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
+          {/* Featured Image */}
+          <div className="relative h-64 md:h-96 lg:h-[500px] mb-12 rounded-lg overflow-hidden">
+            <Image
+              src={article.image}
+              alt={article.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+          </div>
 
-      {/* Blog Grid */}
-      <div className="py-16 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredArticles.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="group cursor-pointer">
-              <div
-                className="bg-background border overflow-hidden transition-all duration-300 hover:scale-105"
-                style={{ borderColor: "#1F2937" }}
-                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#0fb8af")}
-                onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#1F2937")}
-              >
-                <div className="relative h-100 flex items-center justify-center">
-                  <Image src={post.image} alt={post.title} fill className="object-cover" />
-                  <div
-                    className="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase rounded"
-                    style={{ backgroundColor: "#0fb8af", color: "#000" }}
-                  >
-                    NEW
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span
-                      className="px-2 py-1 text-xs font-bold uppercase rounded"
-                      style={{ backgroundColor: "#0fb8af", color: "#000" }}
-                    >
-                      {post.category}
-                    </span>
-                    <span className="text-gray-500 text-xs">{post.readTime}</span>
-                  </div>
-                  <h3
-                    className="text-xl font-bold mb-3 line-clamp-2 transition-colors text-foreground"
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#0fb8af")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--foreground)")}
-                  >
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-light text-sm mb-4 line-clamp-3">{post.excerpt}</p>
-                  <div className="flex items-center justify-between text-xs text-gray-500">
-                    <div className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post.date}</div>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1"><Heart className="w-3 h-3" /> {post.likes}</div>
-                      <div className="flex items-center gap-1"><MessageCircle className="w-3 h-3" /> {post.comments}</div>
-                    </div>
-                  </div>
+          {/* Article Content */}
+          <div className="max-w-none">
+            <div className="text-lg md:text-xl text-gray-light mb-8 font-medium leading-relaxed">
+              {article.excerpt}
+            </div>
+
+            {article.contents && article.contents.length > 0 ? (
+              article.contents.map((paragraph, idx) => (
+                <p key={idx} className="text-gray-light text-base md:text-lg leading-relaxed mb-6">
+                  {paragraph}
+                </p>
+              ))
+            ) : (
+              <p className="text-gray-light text-base md:text-lg leading-relaxed mb-6">
+                Content coming soon...
+              </p>
+            )}
+          </div>
+
+          {/* Article Footer */}
+          <div className="mt-16 pt-8 border-t border-gray-700">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <span className="text-gray-400">Share this article:</span>
+                <div className="flex gap-3">
+
+                  <button className="p-2 border border-gray-600 rounded hover:border-[#0fb8af] hover:text-[#0fb8af] transition-colors">
+                    <Heart className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
-            </Link>
-          ))}
+
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider transition-colors"
+                style={{ backgroundColor: "#0fb8af", color: "#000" }}
+              >
+                <ArrowLeft className="w-4 h-4" /> Back to Blog
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default BlogPage;
+export default BlogArticlePage;
