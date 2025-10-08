@@ -18,14 +18,27 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [heroHeight, setHeroHeight] = useState(800); // Default fallback height
 
   useEffect(() => {
+    // Set the actual window height after component mounts
+    setHeroHeight(window.innerHeight);
+
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
 
+    const handleResize = () => {
+      setHeroHeight(window.innerHeight);
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const handleVideoPlay = () => {
@@ -34,7 +47,6 @@ const HeroSection = ({
   };
 
   // Calculate transform values - longer effect duration
-  const heroHeight = window.innerHeight;
   const effectDuration = heroHeight * 3; // Extended to 3 screen heights for complete reveal
   const scrollProgress = Math.min(scrollY / effectDuration, 1);
   const translateY = scrollProgress * heroHeight * 2; // Move content up more than screen height
@@ -107,17 +119,11 @@ const HeroSection = ({
               </div>
             </div>
           </div>
-
-          {/* Static Decorative elements */}
-          <div className="absolute top-4 sm:top-10 left-4 sm:left-10 w-2 h-2 bg-white rounded-full opacity-30"></div>
-          <div className="absolute bottom-16 sm:bottom-20 left-8 sm:left-20 w-3 h-3 bg-white rounded-full opacity-20"></div>
-          <div className="absolute top-16 sm:top-20 right-8 sm:right-20 w-1 h-1 bg-white rounded-full opacity-40"></div>
-          <div className="absolute bottom-4 sm:bottom-10 right-4 sm:right-10 w-2 h-2 bg-white rounded-full opacity-25"></div>
         </section>
       </div>
 
       {/* Extended Spacer - Creates more scroll distance before next section appears */}
-      <div style={{ height: `${window.innerHeight * 2}px` }}></div>
+      <div style={{ height: `${heroHeight * 2}px` }}></div>
 
       {/* Video Modal */}
       <VideoModal
