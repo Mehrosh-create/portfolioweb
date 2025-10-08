@@ -281,3 +281,33 @@ input[type="button"],
 .light footer {
   color: #ffffff !important;
 }
+
+
+/* Hero section should keep white text in both themes */
+.light section .text-gray-200 {
+  color: #e5e7eb !important;
+}
+
+/* More specific for hero section if needed */
+.light .min-h-screen .text-gray-200 {
+  color: #e5e7eb !important;
+}
+
+.light section .text-white {
+  color: #e5e7eb !important;
+}
+
+/* More specific for hero section if needed */
+.light .min-h-screen .text-white {
+  color: #e5e7eb !important;
+}
+
+/* Keep hero section overlay dark in both themes */
+.light section.min-h-screen .bg-black\/60 {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Alternative - target any hero section overlay */
+.light .min-h-screen .bg-black\/60 {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
