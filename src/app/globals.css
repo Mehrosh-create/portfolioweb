@@ -253,3 +253,31 @@ input[type="button"],
 .dark .text-gray-200 {
   color: #e5e7eb !important;
 }
+
+/* Footer should stay dark in both themes - COMPLETE FIX */
+.light footer .text-white {
+  color: #ffffff !important;
+}
+
+.light footer .text-gray-300 {
+  color: #d1d5db !important;
+}
+
+.light footer .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+/* Fix for SHEIKH NABEEL text (no color class specified) */
+.light footer h2 {
+  color: #ffffff !important;
+}
+
+/* Fix for EMAIL text */
+.light footer .text-gray-200 {
+  color: #e5e7eb !important;
+}
+
+/* Fix any other footer text that might be affected */
+.light footer {
+  color: #ffffff !important;
+}
