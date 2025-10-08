@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 
 const Footer = () => {
@@ -162,19 +161,13 @@ const Footer = () => {
       <div className="text-center text-xs sm:text-sm md:text-base lg:text-lg text-gray-400 pb-5 sm:pb-7 px-4 lg:ml-64">
         <p className="mb-2 sm:mb-3">© Sheikh Nabeel {new Date().getFullYear()}</p>
         <div className="flex justify-center gap-3 sm:gap-4 md:gap-5 mt-1">
-          <Link
-            href="/privacy-policy"
-            className="hover:text-white transition-colors text-xs sm:text-sm md:text-base"
-          >
+          <span className="text-xs sm:text-sm md:text-base">
             Privacy Policy
-          </Link>
+          </span>
           <span className="text-xs sm:text-sm md:text-base">|</span>
-          <Link
-            href="/terms-of-use"
-            className="hover:text-white transition-colors text-xs sm:text-sm md:text-base"
-          >
+          <span className="text-xs sm:text-sm md:text-base">
             Terms of Use
-          </Link>
+          </span>
         </div>
       </div>
     </footer>
