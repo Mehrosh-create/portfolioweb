@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Calendar, ArrowRight, Heart, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -69,6 +69,37 @@ const SlidingHighlight = ({ text }: { text: string }) => {
 
 const Blog = () => {
     const featuredArticles = blogArticles;
+    const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
+    const [likeCounts, setLikeCounts] = useState<{ [key: string]: number }>(() => {
+        const initialCounts: { [key: string]: number } = {};
+        blogArticles.forEach(article => {
+            initialCounts[article.slug] = parseInt(article.likes) || 0;
+        });
+        return initialCounts;
+    });
+
+    const handleLikeClick = (slug: string, e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const newLikedPosts = new Set(likedPosts);
+        const isCurrentlyLiked = newLikedPosts.has(slug);
+
+        if (isCurrentlyLiked) {
+            newLikedPosts.delete(slug);
+            setLikeCounts(prev => ({
+                ...prev,
+                [slug]: prev[slug] - 1
+            }));
+        } else {
+            newLikedPosts.add(slug);
+            setLikeCounts(prev => ({
+                ...prev,
+                [slug]: prev[slug] + 1
+            }));
+        }
+        setLikedPosts(newLikedPosts);
+    };
 
     return (
         <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-background text-foreground">
@@ -164,13 +195,18 @@ const Blog = () => {
                                                 <span className="sm:hidden">{article.date.split(' ')[0]}</span>
                                             </div>
                                             <div className="flex items-center gap-3">
-                                                <div className="flex items-center gap-1">
-                                                    <Heart className="w-3 h-3" /> {article.likes}
-                                                </div>
-                                                <div className="flex items-center gap-1">
-                                                    <MessageCircle className="w-3 h-3" />{" "}
-                                                    {article.comments}
-                                                </div>
+                                                <button
+                                                    onClick={(e) => handleLikeClick(article.slug, e)}
+                                                    className="flex items-center gap-1"
+                                                >
+                                                    <Heart
+                                                        className={`w-3 h-3 ${likedPosts.has(article.slug)
+                                                            ? 'fill-red-500 text-red-500'
+                                                            : 'text-gray-500'
+                                                            }`}
+                                                    />
+                                                    {likeCounts[article.slug]}
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

@@ -305,19 +305,14 @@ const BlogArticlePage = () => {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handleLikeClick}
-                    className="flex items-center gap-2 transition-all duration-300 hover:text-red-500"
+                    className="flex items-center gap-2"
                   >
-                    <div className="relative">
-                      <Heart
-                        className={`w-4 h-4 transition-all duration-300 ${isLiked
-                          ? 'fill-red-500 text-red-500 scale-110'
-                          : 'text-gray-400'
-                          }`}
-                      />
-                      {isLiked && (
-                        <div className="absolute inset-0 animate-ping bg-red-500 rounded-full opacity-75"></div>
-                      )}
-                    </div>
+                    <Heart
+                      className={`w-4 h-4 ${isLiked
+                        ? 'fill-red-500 text-red-500'
+                        : 'text-gray-400'
+                        }`}
+                    />
                     {likeCount}
                   </button>
                 </div>
@@ -377,26 +372,13 @@ const BlogArticlePage = () => {
           <div className="mt-16 pt-8 border-t border-gray-700">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div className="flex items-center gap-4">
-                <span className="text-gray-400">Share this article:</span>
+
                 <div className="flex gap-3">
                   <button
                     onClick={handleLikeClick}
-                    className="p-2 border border-gray-600 rounded hover:border-red-500 transition-colors group relative overflow-hidden"
+                    className="p-2"
                   >
-                    <div className="relative">
-                      <Heart
-                        className={`w-4 h-4 transition-all duration-300 ${isLiked
-                          ? 'fill-red-500 text-red-500 scale-110'
-                          : 'text-gray-400 group-hover:text-red-500'
-                          }`}
-                      />
-                      {isLiked && (
-                        <>
-                          <div className="absolute inset-0 animate-ping bg-red-500 rounded-full opacity-75"></div>
-                          <div className="absolute inset-0 bg-red-500 rounded-full opacity-20 animate-pulse"></div>
-                        </>
-                      )}
-                    </div>
+
                   </button>
                 </div>
               </div>
