@@ -18,9 +18,9 @@ const articles = [
     author: "Sheikh Nabeel",
     likes: "892",
     comments: "156",
-    excerpt: "Digital transformation is reshaping industries globally with AI and automation.",
+    excerpt: "Digital transformation is reshaping industries globally with AI.",
     contents: [
-      "Digital transformation is reshaping industries globally with AI and automation.",
+      "Digital transformation is reshaping industries globally with AI.",
       "Businesses leveraging digital strategies are seeing unprecedented growth and efficiency.",
       "The future of commerce is digital-first, and organizations must adapt quickly."
     ]
@@ -71,7 +71,7 @@ const articles = [
     author: "Michael Brown",
     likes: "376",
     comments: "47",
-    excerpt: "Automation in CRM enhances efficiency while driving customer satisfaction and loyalty.",
+    excerpt: "Automation in CRM enhances efficiency while driving customer satisfaction.",
     contents: [
       "Automation improves response times and customer satisfaction in CRM.",
       "Sales teams can focus on high-value interactions rather than repetitive tasks.",
@@ -215,7 +215,7 @@ const articles = [
     author: "Sophia Martinez",
     likes: "421",
     comments: "68",
-    excerpt: "Startups must focus on product-market fit and scalability to drive sustainable growth and long-term success.",
+    excerpt: "Startups must focus on product-market fit and scalability.",
     contents: [
       "Startups must focus on product-market fit and scalability.",
       "Leveraging digital marketing accelerates growth in competitive markets.",
