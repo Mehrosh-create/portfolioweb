@@ -1,4 +1,4 @@
-// src/app/about/page.tsx - UPDATED
+// src/app/about/page.tsx
 "use client";
 
 import Image from "next/image";
@@ -22,24 +22,19 @@ export default function About() {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [isDragging, setIsDragging] = useState(false);
 
-    // Track mouse position
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
             setMousePos({ x: e.clientX, y: e.clientY });
         };
         window.addEventListener("mousemove", handleMouseMove);
-
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
-    // (Optional) Track dragging state
     useEffect(() => {
         const handleMouseDown = () => setIsDragging(true);
         const handleMouseUp = () => setIsDragging(false);
-
         window.addEventListener("mousedown", handleMouseDown);
         window.addEventListener("mouseup", handleMouseUp);
-
         return () => {
             window.removeEventListener("mousedown", handleMouseDown);
             window.removeEventListener("mouseup", handleMouseUp);
@@ -47,166 +42,154 @@ export default function About() {
     }, []);
 
     return (
-        <div className="min-h-screen pt-16 sm:pt-20 bg-background flex flex-col">
-            {/* Main Container with responsive padding */}
-            <div className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-4">
-                {/* Header Section */}
-                <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+        <div className="min-h-screen bg-background flex flex-col w-full overflow-x-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-28 xl:pt-32">
+            <div className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-6 sm:py-8 md:py-10 lg:py-12 xl:py-16">
+
+                {/* HERO SECTION */}
+                <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-14 xl:mb-16">
                     <h1
-                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase text-foreground mb-4 sm:mb-6 lg:mb-8 leading-tight"
-                        style={{
-                            fontFamily: '"Bebas Neue", Arial, sans-serif',
-                            letterSpacing: "0.02em",
-                        }}
+                        className="font-black uppercase text-foreground leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl mb-4"
+                        style={{ fontFamily: '"Bebas Neue", Arial, sans-serif', letterSpacing: "0.02em" }}
                     >
                         I <span className="text-[#0fb8af]">TRANSFORM</span> BUSINESSES
                     </h1>
 
-                    {/* DIGITAL TRANSFORMATION EXPERT with sliding background */}
-                    <div className="relative inline-block mx-auto mb-4 sm:mb-6">
+                    <div className="relative inline-block mx-auto">
+                        <span className="slideright-bg"></span>
                         <span
-                            className="absolute top-0 left-0 h-full bg-[#0fb8af] inline-block"
-                            style={{
-                                width: "0%",
-                                animation: "slideRight 2s forwards",
-                            }}
-                        ></span>
-
-                        <span
-                            className="relative z-10 text-black text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase px-3 sm:px-4 lg:px-6 py-1 sm:py-2 inline-block"
-                            style={{
-                                fontFamily: '"Bebas Neue", Arial, sans-serif',
-                                letterSpacing: "0.05em",
-                            }}
+                            className="relative z-10 text-black font-bold uppercase inline-block text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl px-4 sm:px-5 md:px-6 lg:px-7 xl:px-8 py-1.5 sm:py-2 md:py-2.5 leading-tight"
+                            style={{ fontFamily: '"Bebas Neue", Arial, sans-serif', letterSpacing: "0.05em" }}
                         >
                             DIGITAL TRANSFORMATION EXPERT
                         </span>
                     </div>
                 </div>
 
-                {/* Main Content - Improved grid responsiveness */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 lg:mb-16">
-                    <div className="order-2 lg:order-1">
+                {/* MAIN CONTENT GRID */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 xl:gap-14 mb-12">
+
+                    {/* TEXT CONTENT */}
+                    <div className="order-2 lg:order-1 flex flex-col justify-center">
                         <h2
-                            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 lg:mb-6 text-foreground"
-                            style={{
-                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                            }}
+                            className="font-bold text-foreground leading-tight text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-5"
+                            style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}
                         >
-                            I&apos;m a Global Strategist & Digital Transformer Leader.
+                            I&apos;m a Global Strategist & Digital Transformation Leader.
                         </h2>
+
                         <p
-                            className="text-sm sm:text-base lg:text-lg text-gray-light mb-3 sm:mb-4 lg:mb-6 leading-relaxed"
-                            style={{
-                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                            }}
+                            className="text-gray-light leading-relaxed text-sm sm:text-base md:text-lg mb-4"
+                            style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}
                         >
-                            I&apos;m Sheikh Nabeel — Entrepreneur, Business Strategist & CEO of
-                            Eurostride. With Over 7 years of experience, I help founders,
-                            startups, and global teams simplify complex operations, implement
-                            scalable systems, and grow through digital innovation.
+                            I&apos;m Sheikh Nabeel — Entrepreneur, Business Strategist & CEO of Eurostride.
+                            With over 7 years of experience, I help founders, startups, and global teams simplify complex operations,
+                            implement scalable systems, and grow through digital innovation.
                         </p>
+
                         <p
-                            className="text-sm sm:text-base lg:text-lg text-gray-light leading-relaxed"
-                            style={{
-                                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-                            }}
+                            className="text-gray-light leading-relaxed text-sm sm:text-base md:text-lg"
+                            style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}
                         >
-                            My mission is to empower businesses with the tools and strategies
-                            they need to thrive in the digital age. Through strategic
-                            consulting, digital transformation, and growth marketing, I&apos;ve
-                            helped countless organizations achieve unprecedented success.
+                            My mission is to empower businesses with the tools and strategies they need to thrive in the digital age.
+                            Through strategic consulting, digital transformation, and growth marketing, I&apos;ve helped countless
+                            organizations achieve unprecedented success.
                         </p>
                     </div>
 
-                    {/* Updated Image Container with Green Hover Effect Only */}
-                    <div className="order-1 lg:order-2 group relative h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 rounded-lg overflow-hidden border-2 border-gray-700 transition-all duration-300 cursor-pointer">
-                        {/* Hover effect layers - same as CounterSection */}
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-50 z-20">
-                            <div className="absolute inset-0 bg-[#0FB8AF]/30 animate-pulse z-20"></div>
-                            <div className="absolute inset-0 bg-gradient-radial from-[#0FB8AF]/40 via-[#0FB8AF]/20 to-transparent animate-ping"></div>
-                            <div
-                                className="absolute inset-0 bg-[#0FB8AF]/10 animate-pulse"
-                                style={{ animationDelay: "0.5s" }}
-                            ></div>
-                        </div>
+                    {/* PROFILE IMAGE */}
+                    <div className="order-1 lg:order-2 flex justify-center items-center">
+                        <div className="group relative rounded-lg overflow-hidden border-2 border-gray-700 transition-all duration-300 cursor-pointer w-full max-w-[480px] sm:max-w-[520px] md:max-w-[560px] lg:max-w-[600px] xl:max-w-[640px] h-auto">
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                                <div className="absolute inset-0 bg-[#0FB8AF]/30 animate-pulse z-20"></div>
+                                <div className="absolute inset-0 bg-gradient-radial from-[#0FB8AF]/40 via-[#0FB8AF]/20 to-transparent animate-ping"></div>
+                            </div>
 
-                        {/* Image */}
-                        <div className="relative z-10 w-full h-full">
-                            <Image
-                                src="/images/about-profile.jpg"
-                                alt="Sheikh Nabeel"
-                                fill
-                                className="object-cover"
-                                priority
-                                sizes="(max-width: 1024px) 100vw, 50vw"
-                            />
+                            <div className="relative z-10 w-full h-full">
+                                <Image
+                                    src="/images/about-profile.jpg"
+                                    alt="Sheikh Nabeel"
+                                    width={800}
+                                    height={900}
+                                    className="w-full h-auto object-contain md:object-cover lg:object-contain xl:object-cover"
+                                    priority
+                                    quality={95}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Services Section with Cursor Effect */}
+                {/* SERVICES SECTION */}
                 <div
-                    className="mb-8 sm:mb-12 lg:mb-16 relative"
+                    className="relative mb-12"
                     onMouseEnter={() => setShowCursor(true)}
                     onMouseLeave={() => setShowCursor(false)}
                 >
                     <h2
-                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 text-foreground text-center uppercase"
-                        style={{
-                            fontFamily: '"Bebas Neue", Arial, sans-serif',
-                            letterSpacing: "0.05em",
-                        }}
+                        className="font-bold text-foreground text-center uppercase leading-tight text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-6"
+                        style={{ fontFamily: '"Bebas Neue", Arial, sans-serif', letterSpacing: "0.05em" }}
                     >
                         MY SERVICES & EXPERTISE
                     </h2>
 
                     <div className="relative overflow-hidden w-full">
-                        <InfiniteMovingCards
-                            items={services}
-                            direction="right"
-                            speed="slow"
-                        />
+                        <InfiniteMovingCards items={services} direction="right" speed="slow" />
                     </div>
 
-                    {/* Cursor appears only inside this section */}
                     {showCursor && (
-                        <Cursor
-                            mousePos={mousePos}
-                            isDragging={isDragging}
-                            showCursor={showCursor}
-                        />
+                        <Cursor mousePos={mousePos} isDragging={isDragging} showCursor={showCursor} />
                     )}
                 </div>
 
-                {/* Stats Section */}
+                {/* STATS SECTION */}
                 <Stats />
 
-                {/* Signature Content */}
-                <div className="signature-cursor">
+                {/* SIGNATURE SECTION */}
+                <div className="signature-cursor mt-10">
                     <SignatureContent />
                 </div>
             </div>
 
-            {/* Keyframes + Cursor style */}
-            <style>
-                {`
-                    @keyframes slideRight {
-                        0% { width: 0%; }
-                        100% { width: 100%; }
-                    }
+            {/* STYLING */}
+            <style>{`
+        @keyframes slideRight {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
 
-                    /* Custom pointer for clickable elements */
-                    button, 
-                    a, 
-                    [role="button"], 
-                    input[type="submit"], 
-                    input[type="button"], 
-                    .clickable {
-                        cursor: pointer;
-                    }
-                `}
-            </style>
+        .slideright-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          background-color: #0fb8af;
+          display: inline-block;
+          animation: slideRight 2s forwards;
+        }
+
+        html, body {
+          overflow-x: hidden;
+          max-width: 100vw;
+        }
+
+        @media (max-width: 640px) {
+          body {
+            font-size: 14px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .grid {
+            gap: 1.5rem;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .grid {
+            gap: 3rem;
+          }
+        }
+      `}</style>
         </div>
     );
-};
+}
