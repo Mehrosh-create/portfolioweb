@@ -118,16 +118,30 @@ export default function About() {
                             helped countless organizations achieve unprecedented success.
                         </p>
                     </div>
-                    <div className="order-1 lg:order-2 relative h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 rounded-lg overflow-hidden border-2 border-gray-700 hover:border-[#0fb8af] transition-all duration-50">
-                        <Image
-                            src="/images/about-profile.jpg"
-                            alt="Sheikh Nabeel"
-                            fill
-                            className="object-cover"
-                            priority
-                            sizes="(max-width: 1024px) 100vw, 50vw"
-                        />
-                        <div className="absolute inset-0 bg-[#0fb8af]/10 opacity-0 hover:opacity-50 transition-opacity duration-300"></div>
+
+                    {/* Updated Image Container with Green Hover Effect Only */}
+                    <div className="order-1 lg:order-2 group relative h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 rounded-lg overflow-hidden border-2 border-gray-700 transition-all duration-300 cursor-pointer">
+                        {/* Hover effect layers - same as CounterSection */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-50 z-20">
+                            <div className="absolute inset-0 bg-[#0FB8AF]/30 animate-pulse z-20"></div>
+                            <div className="absolute inset-0 bg-gradient-radial from-[#0FB8AF]/40 via-[#0FB8AF]/20 to-transparent animate-ping"></div>
+                            <div
+                                className="absolute inset-0 bg-[#0FB8AF]/10 animate-pulse"
+                                style={{ animationDelay: "0.5s" }}
+                            ></div>
+                        </div>
+
+                        {/* Image */}
+                        <div className="relative z-10 w-full h-full">
+                            <Image
+                                src="/images/about-profile.jpg"
+                                alt="Sheikh Nabeel"
+                                fill
+                                className="object-cover"
+                                priority
+                                sizes="(max-width: 1024px) 100vw, 50vw"
+                            />
+                        </div>
                     </div>
                 </div>
 
