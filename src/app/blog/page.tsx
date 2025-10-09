@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, Clock, ArrowRight, Bookmark, Share2, Heart, MessageCircle } from "lucide-react";
+import { Calendar, Clock, ArrowRight, Heart } from "lucide-react";
 
 // Article data moved inline
 const articles = [
@@ -241,7 +241,7 @@ const BlogPage = () => {
     ? articles
     : articles.filter(article => article.category === selectedCategory);
 
-  const featuredPost = articles[0]; // First article as featured
+  const featuredPost = articles[0];
 
   const handleLikeClick = (slug: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -269,48 +269,51 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Featured Article */}
-      <div className="py-20 px-40">
-        <div className="max-w-7xl mx-auto lg:mr-8">
-          <div className="p-1 rounded-lg mb-12" style={{ background: "linear-gradient(to right, #0fb8af, #0fb8af)" }}>
+      <div className="py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-40">
+        <div className="max-w-7xl mx-auto">
+          <div className="p-1 rounded-lg mb-8 md:mb-12" style={{ background: "linear-gradient(to right, #0fb8af, #0fb8af)" }}>
             <div className="bg-background rounded-lg overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">
-                <div className="relative h-64 lg:h-auto">
+                <div className="relative h-56 sm:h-64 md:h-80 lg:h-auto min-h-[300px]">
                   <Image
                     src={featuredPost.image}
                     alt={featuredPost.title}
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase rounded"
+                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4 px-2 sm:px-3 py-1 text-xs font-bold uppercase rounded"
                     style={{ backgroundColor: "#0fb8af", color: "#000" }}>
                     FEATURED
                   </div>
                 </div>
 
-                <div className="p-8 lg:p-12 flex flex-col justify-center">
+                <div className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center">
                   <span
-                    className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4"
+                    className="inline-block px-2 sm:px-3 py-1 text-xs font-bold uppercase tracking-wider mb-3 sm:mb-4 w-fit"
                     style={{ backgroundColor: "#0fb8af", color: "#000" }}
                   >
                     {featuredPost.category}
                   </span>
-                  <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight text-foreground">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 leading-tight text-foreground">
                     {featuredPost.title}
                   </h2>
-                  <p className="text-gray-light mb-8 text-lg">{featuredPost.excerpt}</p>
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="flex items-center gap-4 text-sm text-gray-400">
-                      <div className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {featuredPost.date}</div>
-                      <div className="flex items-center gap-1"><Clock className="w-4 h-4" /> {featuredPost.readTime}</div>
+                  <p className="text-gray-light mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg">{featuredPost.excerpt}</p>
+                  <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 sm:mb-8 text-xs sm:text-sm text-gray-400">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
+                      <span className="whitespace-nowrap">{featuredPost.date}</span>
                     </div>
-
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
+                      <span className="whitespace-nowrap">{featuredPost.readTime}</span>
+                    </div>
                   </div>
                   <Link
                     href={`/blog/${featuredPost.slug}`}
-                    className="px-6 py-3 font-bold uppercase tracking-wider transition-colors flex items-center gap-2 w-max"
+                    className="px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors flex items-center gap-2 w-fit"
                     style={{ backgroundColor: "#0fb8af", color: "#000" }}
                   >
-                    Read Full Article <ArrowRight className="w-4 h-4" />
+                    Read Full Article <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
                   </Link>
                 </div>
               </div>
@@ -320,13 +323,13 @@ const BlogPage = () => {
       </div>
 
       {/* Category Filter */}
-      <div className="py-8 px-6">
-        <div className="max-w-7xl mx-auto flex flex-wrap gap-4 justify-center">
+      <div className="py-6 sm:py-8 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto flex flex-wrap gap-2 sm:gap-3 md:gap-4 justify-center">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className="px-4 py-2 border text-sm font-semibold transition-colors"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 border text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap"
               style={{
                 backgroundColor: selectedCategory === category ? "#0fb8af" : "transparent",
                 color: selectedCategory === category ? "#000" : "#D1D5DB",
@@ -354,8 +357,8 @@ const BlogPage = () => {
       </div>
 
       {/* Blog Grid */}
-      <div className="py-16 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="py-8 sm:py-12 md:py-16 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredArticles.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="group cursor-pointer">
               <div
@@ -364,7 +367,7 @@ const BlogPage = () => {
                 onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#0fb8af")}
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#1F2937")}
               >
-                <div className="relative h-100 flex items-center justify-center">
+                <div className="relative h-48 sm:h-56 md:h-64 flex items-center justify-center">
                   <Image src={post.image} alt={post.title} fill className="object-cover" />
                   <div
                     className="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase rounded"
@@ -373,26 +376,30 @@ const BlogPage = () => {
                     NEW
                   </div>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-4">
+                <div className="p-4 sm:p-5 md:p-6">
+                  <div className="flex items-center gap-2 mb-3 sm:mb-4">
                     <span
-                      className="px-2 py-1 text-xs font-bold uppercase rounded"
+                      className="px-2 py-1 text-xs font-bold uppercase rounded whitespace-nowrap"
                       style={{ backgroundColor: "#0fb8af", color: "#000" }}
                     >
                       {post.category}
                     </span>
-                    <span className="text-gray-500 text-xs">{post.readTime}</span>
+                    <span className="text-gray-500 text-xs whitespace-nowrap">{post.readTime}</span>
                   </div>
                   <h3
-                    className="text-xl font-bold mb-3 line-clamp-2 transition-colors text-foreground"
+                    className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 line-clamp-2 transition-colors text-foreground"
                     onMouseEnter={(e) => (e.currentTarget.style.color = "#0fb8af")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "var(--foreground)")}
                   >
                     {post.title}
                   </h3>
-                  <p className="text-gray-light text-sm mb-4 line-clamp-3">{post.excerpt}</p>
+                  <p className="text-gray-light text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-3">{post.excerpt}</p>
                   <div className="flex items-center justify-between text-xs text-gray-500">
-                    <div className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post.date}</div>
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      <span className="hidden sm:inline">{post.date}</span>
+                      <span className="sm:hidden">{post.date.split(' ')[0]} {post.date.split(' ')[1]}</span>
+                    </div>
                     <div className="flex items-center gap-3">
                       <button
                         onClick={(e) => handleLikeClick(post.slug, e)}
