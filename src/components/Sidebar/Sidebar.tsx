@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { FaDiscord, FaSnapchatGhost, FaWhatsapp } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
-import { useTheme } from "@/contexts/ThemeContext"; // ✅ Correct path
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface SidebarProps {
   onSearchClick?: () => void;
@@ -22,16 +22,23 @@ interface SidebarProps {
 
 const Sidebar = ({ onSearchClick }: SidebarProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">("desktop");
+  const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop" | "foldable">("desktop");
   const [hoveredNav, setHoveredNav] = useState("");
 
   const pathname = usePathname();
-  const { theme } = useTheme(); // ✅ Use theme context
+  const { theme } = useTheme();
 
   useEffect(() => {
     const checkScreenSize = () => {
       const width = window.innerWidth;
-      if (width < 640) {
+      const height = window.innerHeight;
+      const aspectRatio = width / height;
+
+      // Foldable devices detection
+      if (width >= 700 && width <= 900 && aspectRatio < 1.3) {
+        setScreenSize("foldable");
+        setIsOpen(false);
+      } else if (width < 640) {
         setScreenSize("mobile");
         setIsOpen(false);
       } else if (width < 1024) {
@@ -97,33 +104,100 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
 
   const getSidebarWidth = () => {
     switch (screenSize) {
-      case "mobile": return "w-[85vw] max-w-[280px]";
-      case "tablet": return "w-[60vw] max-w-[320px]";
-      default: return "w-64";
+      case "mobile": return "w-[85vw] max-w-[300px]";
+      case "tablet": return "w-[70vw] max-w-[350px]";
+      case "foldable": return "w-[65vw] max-w-[320px]";
+      default: return "w-72";
+    }
+  };
+
+  const getSidebarHeight = () => {
+    switch (screenSize) {
+      case "mobile": return "h-full";
+      case "tablet": return "h-full";
+      case "foldable": return "h-full";
+      default: return "h-screen";
     }
   };
 
   const getLogoSize = () => {
     switch (screenSize) {
-      case "mobile": return { width: 120, height: 38 };
-      case "tablet": return { width: 140, height: 44 };
-      default: return { width: 160, height: 50 };
+      case "mobile": return { width: 130, height: 42 };
+      case "tablet": return { width: 150, height: 48 };
+      case "foldable": return { width: 140, height: 45 };
+      default: return { width: 170, height: 55 };
     }
   };
 
   const getFontSize = () => {
     switch (screenSize) {
-      case "mobile": return "1rem";
-      case "tablet": return "1.1rem";
-      default: return "1.2rem";
+      case "mobile": return "1.1rem";
+      case "tablet": return "1.25rem";
+      case "foldable": return "1.15rem";
+      default: return "1.3rem";
     }
   };
 
   const getSocialGridCols = () => {
     switch (screenSize) {
-      case "mobile": return "grid-cols-4";
-      case "tablet": return "grid-cols-5";
-      default: return "grid-cols-5";
+      case "mobile": return "grid-cols-4 gap-3";
+      case "tablet": return "grid-cols-5 gap-3";
+      case "foldable": return "grid-cols-4 gap-3";
+      default: return "grid-cols-5 gap-3";
+    }
+  };
+
+  const getPadding = () => {
+    switch (screenSize) {
+      case "mobile": return "px-4 py-3";
+      case "tablet": return "px-5 py-4";
+      case "foldable": return "px-4 py-3";
+      default: return "px-6 py-5";
+    }
+  };
+
+  const getNavSpacing = () => {
+    switch (screenSize) {
+      case "mobile": return "space-y-2";
+      case "tablet": return "space-y-2.5";
+      case "foldable": return "space-y-2";
+      default: return "space-y-3";
+    }
+  };
+
+  const getButtonSize = () => {
+    switch (screenSize) {
+      case "mobile": return "w-9 h-9";
+      case "tablet": return "w-10 h-10";
+      case "foldable": return "w-9 h-9";
+      default: return "w-11 h-11";
+    }
+  };
+
+  const getIconSize = () => {
+    switch (screenSize) {
+      case "mobile": return "w-4 h-4";
+      case "tablet": return "w-5 h-5";
+      case "foldable": return "w-4.5 h-4.5";
+      default: return "w-5 h-5";
+    }
+  };
+
+  const getSocialIconSize = () => {
+    switch (screenSize) {
+      case "mobile": return "w-4 h-4";
+      case "tablet": return "w-5 h-5";
+      case "foldable": return "w-4.5 h-4.5";
+      default: return "w-5 h-5";
+    }
+  };
+
+  const getSocialButtonSize = () => {
+    switch (screenSize) {
+      case "mobile": return "w-9 h-9";
+      case "tablet": return "w-10 h-10";
+      case "foldable": return "w-9 h-9";
+      default: return "w-11 h-11";
     }
   };
 
@@ -132,7 +206,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
   return (
     <>
       {screenSize !== "desktop" && (
-        <div className="fixed top-3 left-3 z-50">
+        <div className="fixed top-4 left-4 z-50">
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`p-3 rounded-xl transition-all hover:scale-105 shadow-xl hover:shadow-2xl ${currentTheme.menuButton}`}
@@ -161,14 +235,14 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
       )}
 
       <aside
-        className={`fixed top-0 left-0 h-screen ${getSidebarWidth()} ${currentTheme.sidebar} z-50 transition-all duration-300 shadow-xl shadow-black/50 overflow-hidden
+        className={`fixed top-0 left-0 ${getSidebarHeight()} ${getSidebarWidth()} ${currentTheme.sidebar} z-50 transition-all duration-300 shadow-xl shadow-black/50 overflow-hidden
         ${isOpen ? "translate-x-0" : "-translate-x-full"} ${screenSize === "desktop" ? "translate-x-0" : ""}`}
       >
-        <div className="flex flex-col h-full overflow-hidden">
+        <div className="flex flex-col h-full overflow-y-auto">
           {screenSize !== "desktop" && (
             <button
               onClick={() => setIsOpen(false)}
-              className={`absolute top-3 right-3 transition-colors z-10 p-2 rounded-lg ${currentTheme.closeButton}`}
+              className={`absolute top-4 right-4 transition-colors z-10 p-2 rounded-lg ${currentTheme.closeButton}`}
               aria-label="Close Menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -178,7 +252,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
           )}
 
           {/* Logo */}
-          <div className="px-4 py-3 flex justify-center items-center flex-shrink-0">
+          <div className={`${getPadding()} flex justify-center items-center flex-shrink-0`}>
             <Link href="/" className="block w-full flex justify-center">
               <Image
                 src="/images/sign.png"
@@ -187,15 +261,14 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                 height={logoSize.height}
                 className={`h-auto object-contain ${currentTheme.logoFilter}`}
                 priority
+                sizes="(max-width: 640px) 130px, (max-width: 768px) 150px, (max-width: 1024px) 140px, 170px"
               />
             </Link>
           </div>
 
           {/* Navigation */}
-          <nav className="px-4 py-2">
-            <ul
-              className={`${screenSize === "mobile" ? "space-y-1" : screenSize === "tablet" ? "space-y-1.5" : "space-y-2"} w-full`}
-            >
+          <nav className={`${getPadding()} py-2`}>
+            <ul className={`${getNavSpacing()} w-full`}>
               {[
                 { href: "/", label: "HOME" },
                 { href: "/about", label: "ABOUT" },
@@ -215,7 +288,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                     <Link
                       href={item.href}
                       prefetch={true}
-                      className={`block px-2 ${screenSize === "mobile" ? "py-1.5" : "py-2"} relative transition-colors duration-300 ${currentTheme.navText}`}
+                      className={`block px-3 py-2.5 relative transition-colors duration-300 ${currentTheme.navText}`}
                       onMouseEnter={() => setHoveredNav(item.href)}
                       onMouseLeave={() => setHoveredNav("")}
                       onClick={() => {
@@ -234,14 +307,14 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                 );
               })}
 
-              {/* Search Button Only */}
-              <li className="flex justify-start pt-2 pl-1">
+              {/* Search Button */}
+              <li className="flex justify-start pt-3 pl-2">
                 <button
                   onClick={onSearchClick}
-                  className={`${screenSize === "mobile" ? "w-8 h-8" : "w-9 h-9"} flex items-center justify-center rounded-full transition-colors duration-300 ${currentTheme.searchButton}`}
+                  className={`${getButtonSize()} flex items-center justify-center rounded-full transition-colors duration-300 ${currentTheme.searchButton}`}
                 >
                   <Search
-                    className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} transition-colors duration-300 ${currentTheme.searchIcon}`}
+                    className={`${getIconSize()} transition-colors duration-300 ${currentTheme.searchIcon}`}
                   />
                 </button>
               </li>
@@ -251,9 +324,9 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
           <div className="flex-1" />
 
           {/* Social Links */}
-          <div className={`p-4 border-t ${currentTheme.border} flex-shrink-0 ${screenSize === "mobile" ? "p-3" : ""}`}>
-            <div className="mb-3">
-              <ul className={`grid ${getSocialGridCols()} gap-2 justify-items-center`}>
+          <div className={`${getPadding()} border-t ${currentTheme.border} flex-shrink-0`}>
+            <div className="mb-4">
+              <ul className={`grid ${getSocialGridCols()} justify-items-center`}>
                 {socialLinks
                   .slice(0, screenSize === "mobile" ? 8 : socialLinks.length)
                   .map((social, i) => (
@@ -263,7 +336,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={social.label}
-                        className={`relative ${screenSize === "mobile" ? "w-8 h-8" : "w-10 h-10"} overflow-hidden rounded-full group block`}
+                        className={`relative ${getSocialButtonSize()} overflow-hidden rounded-full group block`}
                       >
                         <span
                           className="absolute inset-0 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0"
@@ -271,10 +344,10 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
                             backgroundColor: theme === "dark" ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.2)'
                           }}
                         >
-                          <social.icon className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} ${currentTheme.socialIcon}`} />
+                          <social.icon className={`${getSocialIconSize()} ${currentTheme.socialIcon}`} />
                         </span>
                         <span className="absolute inset-0 flex items-center justify-center bg-[#0fb8af] translate-y-full transition-all duration-300 group-hover:translate-y-0">
-                          <social.icon className={`${screenSize === "mobile" ? "w-4 h-4" : "w-5 h-5"} text-white`} />
+                          <social.icon className={`${getSocialIconSize()} text-white`} />
                         </span>
                       </a>
                     </li>
@@ -282,7 +355,7 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
               </ul>
             </div>
 
-            <p className={`${screenSize === "mobile" ? "text-[10px]" : "text-xs"} text-center ${currentTheme.copyright}`}>
+            <p className={`text-xs text-center ${currentTheme.copyright}`}>
               © {new Date().getFullYear()} Entrepreneur Portfolio
             </p>
           </div>

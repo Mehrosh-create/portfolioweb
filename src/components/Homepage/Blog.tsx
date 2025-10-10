@@ -133,85 +133,95 @@ const Blog = () => {
                 >
                     {featuredArticles.map((article, index) => (
                         <FadeSlide key={article.slug} delay={index * 0.2}>
-                            <Link
-                                href={`/blog/${article.slug}`}
-                                className="group cursor-pointer block"
-                            >
-                                <div
-                                    className="bg-background border overflow-hidden transition-all duration-300 hover:scale-105 h-full flex flex-col"
-                                    style={{ borderColor: "#1F2937" }}
-                                    onMouseEnter={(e) =>
-                                        (e.currentTarget.style.borderColor = "#0fb8af")
-                                    }
-                                    onMouseLeave={(e) =>
-                                        (e.currentTarget.style.borderColor = "#1F2937")
-                                    }
+                            <div className="h-full"> {/* Ensure full height container */}
+                                <Link
+                                    href={`/blog/${article.slug}`}
+                                    className="group cursor-pointer block h-full"
                                 >
-                                    <div className="relative h-48 sm:h-56 md:h-64 lg:h-72">
-                                        <Image
-                                            src={article.image}
-                                            alt={article.title}
-                                            fill
-                                            className="object-cover"
-                                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                                        />
-                                        <div
-                                            className="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase rounded"
-                                            style={{ backgroundColor: "#0fb8af", color: "#000" }}
-                                        >
-                                            NEW
-                                        </div>
-                                    </div>
-                                    <div className="p-4 sm:p-6 flex-1 flex flex-col">
-                                        <div className="flex items-center gap-2 mb-3 sm:mb-4 flex-wrap">
-                                            <span
-                                                className="px-2 py-1 text-xs font-bold uppercase rounded"
+                                    <div
+                                        className="bg-background border overflow-hidden transition-all duration-300 hover:scale-105 h-full flex flex-col rounded-lg"
+                                        style={{ borderColor: "#1F2937" }}
+                                        onMouseEnter={(e) =>
+                                            (e.currentTarget.style.borderColor = "#0fb8af")
+                                        }
+                                        onMouseLeave={(e) =>
+                                            (e.currentTarget.style.borderColor = "#1F2937")
+                                        }
+                                    >
+                                        {/* Card Image - PERFECTLY ADJUSTED WITH SAME CONTAINER SIZE */}
+                                        <div className="relative w-full aspect-[4/3] bg-gray-800 overflow-hidden flex-shrink-0">
+                                            <Image
+                                                src={article.image}
+                                                alt={article.title}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                                style={{
+                                                    objectPosition: 'center',
+                                                    width: '100%',
+                                                    height: '100%'
+                                                }}
+                                            />
+                                            <div
+                                                className="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase rounded"
                                                 style={{ backgroundColor: "#0fb8af", color: "#000" }}
                                             >
-                                                {article.category}
-                                            </span>
-                                            <span className="text-gray-500 text-xs">
-                                                {article.readTime}
-                                            </span>
-                                        </div>
-                                        <h3
-                                            className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 line-clamp-2 transition-colors flex-1 text-foreground"
-                                            onMouseEnter={(e) =>
-                                                (e.currentTarget.style.color = "#0fb8af")
-                                            }
-                                            onMouseLeave={(e) =>
-                                                (e.currentTarget.style.color = "var(--foreground)")
-                                            }
-                                        >
-                                            {article.title}
-                                        </h3>
-                                        <p className="text-gray-light text-sm mb-3 sm:mb-4 line-clamp-3">
-                                            {article.excerpt}
-                                        </p>
-                                        <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">
-                                            <div className="flex items-center gap-1">
-                                                <Calendar className="w-3 h-3" />
-                                                <span className="hidden sm:inline">{article.date}</span>
-                                                <span className="sm:hidden">{article.date.split(' ')[0]}</span>
+                                                NEW
                                             </div>
-                                            <div className="flex items-center gap-3">
-                                                <button
-                                                    onClick={(e) => handleLikeClick(article.slug, e)}
-                                                    className="flex items-center gap-1"
+                                        </div>
+
+                                        {/* Card Content - FIXED HEIGHT FOR CONSISTENCY */}
+                                        <div className="p-4 sm:p-6 flex flex-col flex-grow min-h-[180px]">
+                                            <div className="flex items-center gap-2 mb-3 sm:mb-4 flex-wrap">
+                                                <span
+                                                    className="px-2 py-1 text-xs font-bold uppercase rounded"
+                                                    style={{ backgroundColor: "#0fb8af", color: "#000" }}
                                                 >
-                                                    <Heart
-                                                        className={`w-3 h-3 ${likedPosts.has(article.slug)
-                                                            ? 'fill-red-500 text-red-500'
-                                                            : 'text-gray-500'
-                                                            }`}
-                                                    />
-                                                    {likeCounts[article.slug]}
-                                                </button>
+                                                    {article.category}
+                                                </span>
+                                                <span className="text-gray-500 text-xs">
+                                                    {article.readTime}
+                                                </span>
+                                            </div>
+                                            <h3
+                                                className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 line-clamp-2 transition-colors text-foreground flex-grow"
+                                                onMouseEnter={(e) =>
+                                                    (e.currentTarget.style.color = "#0fb8af")
+                                                }
+                                                onMouseLeave={(e) =>
+                                                    (e.currentTarget.style.color = "var(--foreground)")
+                                                }
+                                            >
+                                                {article.title}
+                                            </h3>
+                                            <p className="text-gray-light text-sm mb-3 sm:mb-4 line-clamp-3">
+                                                {article.excerpt}
+                                            </p>
+                                            <div className="flex items-center justify-between text-xs text-gray-500 mt-auto pt-2 border-t border-gray-800">
+                                                <div className="flex items-center gap-1">
+                                                    <Calendar className="w-3 h-3" />
+                                                    <span className="hidden sm:inline">{article.date}</span>
+                                                    <span className="sm:hidden">{article.date.split(' ')[0]}</span>
+                                                </div>
+                                                <div className="flex items-center gap-3">
+                                                    <button
+                                                        onClick={(e) => handleLikeClick(article.slug, e)}
+                                                        className="flex items-center gap-1"
+                                                    >
+                                                        <Heart
+                                                            className={`w-3 h-3 ${likedPosts.has(article.slug)
+                                                                ? 'fill-red-500 text-red-500'
+                                                                : 'text-gray-500'
+                                                                }`}
+                                                        />
+                                                        {likeCounts[article.slug]}
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </Link>
+                                </Link>
+                            </div>
                         </FadeSlide>
                     ))}
                 </motion.div>
@@ -221,7 +231,7 @@ const Blog = () => {
                     <div className="text-center">
                         <Link
                             href="/blog"
-                            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 font-bold uppercase tracking-wider transition-colors text-sm sm:text-base"
+                            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 font-bold uppercase tracking-wider transition-colors text-sm sm:text-base rounded"
                             style={{ backgroundColor: "#0fb8af", color: "#000" }}
                             onMouseEnter={(e) =>
                                 (e.currentTarget.style.backgroundColor = "#00b89f")
