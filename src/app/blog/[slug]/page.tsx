@@ -268,47 +268,47 @@ const BlogArticlePage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header Section */}
-      <div className="py-20 px-6 md:px-40">
+      {/* Header Section - Improved responsive padding */}
+      <div className="py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 px-4 xs:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-40">
         <div className="max-w-4xl mx-auto">
           {/* Back Button */}
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-[#0fb8af] transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-[#0fb8af] transition-colors mb-6 sm:mb-8"
           >
             <ArrowLeft className="w-4 h-4" /> Back to Blog
           </Link>
 
           {/* Article Header */}
-          <div className="mb-8">
+          <div className="mb-6 sm:mb-8">
             <span
-              className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider rounded mb-4"
+              className="inline-block px-2 xs:px-3 py-1 text-xs font-bold uppercase tracking-wider rounded mb-3 sm:mb-4"
               style={{ backgroundColor: "#0fb8af", color: "#000" }}
             >
               {article.category}
             </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-foreground">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight text-foreground">
               {article.title}
             </h1>
 
             {/* Article Meta */}
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 border-b border-gray-700 pb-6">
-              <div className="flex flex-wrap items-center gap-4 md:gap-6 text-gray-400 text-sm mb-4 md:mb-0">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 sm:mb-8 border-b border-gray-700 pb-4 sm:pb-6">
+              <div className="flex flex-wrap items-center gap-3 xs:gap-4 md:gap-6 text-gray-400 text-xs xs:text-sm mb-3 md:mb-0">
+                <div className="flex items-center gap-1 xs:gap-2">
+                  <Calendar className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
                   {article.date}
                 </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
+                <div className="flex items-center gap-1 xs:gap-2">
+                  <Clock className="w-3.5 h-3.5 xs:w-4 xs:h-4" />
                   {article.readTime}
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 xs:gap-2">
                   <button
                     onClick={handleLikeClick}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-1 xs:gap-2 hover:text-red-500 transition-colors"
                   >
                     <Heart
-                      className={`w-4 h-4 ${isLiked
+                      className={`w-3.5 h-3.5 xs:w-4 xs:h-4 ${isLiked
                         ? 'fill-red-500 text-red-500'
                         : 'text-gray-400'
                         }`}
@@ -316,79 +316,84 @@ const BlogArticlePage = () => {
                     {likeCount}
                   </button>
                 </div>
-
-              </div>
-              <div className="flex gap-3">
-
               </div>
             </div>
 
             {/* Author Info */}
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(to bottom right, #0fb8af, #0fb8af)" }}>
-                <span className="text-black font-bold text-lg">
+            <div className="flex items-center gap-3 xs:gap-4 mb-6 sm:mb-8">
+              <div className="w-10 h-10 xs:w-12 xs:h-12 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(to bottom right, #0fb8af, #0fb8af)" }}>
+                <span className="text-black font-bold text-sm xs:text-lg">
                   {article.author ? article.author.charAt(0) : "A"}
                 </span>
               </div>
               <div>
-                <p className="text-foreground font-semibold">By {article.author || "Unknown Author"}</p>
-                <p className="text-gray-400 text-sm">Digital Transformation Expert</p>
+                <p className="text-foreground font-semibold text-sm xs:text-base">By {article.author || "Unknown Author"}</p>
+                <p className="text-gray-400 text-xs xs:text-sm">Digital Transformation Expert</p>
               </div>
             </div>
           </div>
 
-          {/* Featured Image */}
-          <div className="relative h-64 md:h-96 lg:h-[500px] mb-12 rounded-lg overflow-hidden">
-            <Image
-              src={article.image}
-              alt={article.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+          {/* Featured Image - FIXED: Shows complete image without cropping */}
+          <div className="relative w-full h-auto min-h-[200px] xs:min-h-[250px] sm:min-h-[300px] md:min-h-[350px] lg:min-h-[400px] xl:min-h-[450px] mb-8 sm:mb-10 md:mb-12 rounded-lg overflow-hidden bg-gray-800 flex items-center justify-center">
+            <div className="relative w-full h-full max-w-4xl mx-auto">
+              <Image
+                src={article.image}
+                alt={article.title}
+                width={800}
+                height={450}
+                className="w-full h-full object-contain"
+                priority
+                sizes="(max-width: 320px) 100vw, (max-width: 375px) 100vw, (max-width: 425px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, (max-width: 1440px) 100vw, 1200px"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
           </div>
 
           {/* Article Content */}
           <div className="max-w-none">
-            <div className="text-lg md:text-xl text-gray-light mb-8 font-medium leading-relaxed">
+            <div className="text-base xs:text-lg sm:text-xl text-gray-light mb-6 sm:mb-8 font-medium leading-relaxed">
               {article.excerpt}
             </div>
 
             {article.contents && article.contents.length > 0 ? (
               article.contents.map((paragraph, idx) => (
-                <p key={idx} className="text-gray-light text-base md:text-lg leading-relaxed mb-6">
+                <p key={idx} className="text-gray-light text-sm xs:text-base sm:text-lg leading-relaxed mb-4 xs:mb-6">
                   {paragraph}
                 </p>
               ))
             ) : (
-              <p className="text-gray-light text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-gray-light text-sm xs:text-base sm:text-lg leading-relaxed mb-4 xs:mb-6">
                 Content coming soon...
               </p>
             )}
           </div>
 
           {/* Article Footer */}
-          <div className="mt-16 pt-8 border-t border-gray-700">
+          <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-700">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div className="flex items-center gap-4">
-
                 <div className="flex gap-3">
                   <button
                     onClick={handleLikeClick}
-                    className="p-2"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-700 hover:border-[#0fb8af] transition-colors"
                   >
-
+                    <Heart
+                      className={`w-5 h-5 ${isLiked
+                        ? 'fill-red-500 text-red-500'
+                        : 'text-gray-400'
+                        }`}
+                    />
+                    <span className="text-sm">{likeCount}</span>
                   </button>
                 </div>
               </div>
 
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider transition-colors"
+                className="inline-flex items-center gap-2 px-4 xs:px-6 py-2 xs:py-3 text-xs xs:text-sm font-bold uppercase tracking-wider transition-colors rounded"
                 style={{ backgroundColor: "#0fb8af", color: "#000" }}
               >
-                <ArrowLeft className="w-4 h-4" /> Back to Blog
+                <ArrowLeft className="w-3.5 h-3.5 xs:w-4 xs:h-4" /> Back to Blog
               </Link>
             </div>
           </div>
