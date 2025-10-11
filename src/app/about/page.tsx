@@ -7,6 +7,7 @@ import Stats from "@/components/About/Stats";
 import { InfiniteMovingCards } from "@/ui/infinite-moving-cards";
 import Cursor from "@/components/Global/CursorEffect";
 import { useState, useEffect } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function About() {
     const services = [
@@ -21,6 +22,7 @@ export default function About() {
     const [showCursor, setShowCursor] = useState(false);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [isDragging, setIsDragging] = useState(false);
+    const { theme } = useTheme();
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -78,7 +80,7 @@ export default function About() {
                         </h2>
 
                         <p
-                            className="text-gray-light leading-relaxed text-sm sm:text-base md:text-lg mb-4"
+                            className="text-foreground leading-relaxed text-sm sm:text-base md:text-lg mb-4"
                             style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}
                         >
                             I&apos;m Sheikh Nabeel — Entrepreneur, Business Strategist & CEO of Eurostride.
@@ -87,7 +89,7 @@ export default function About() {
                         </p>
 
                         <p
-                            className="text-gray-light leading-relaxed text-sm sm:text-base md:text-lg"
+                            className="text-foreground leading-relaxed text-sm sm:text-base md:text-lg"
                             style={{ fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif' }}
                         >
                             My mission is to empower businesses with the tools and strategies they need to thrive in the digital age.

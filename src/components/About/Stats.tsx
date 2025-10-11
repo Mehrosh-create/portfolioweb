@@ -12,6 +12,8 @@ const Stats = () => {
         years: 0,
     });
 
+    const { theme } = useTheme();
+
     useEffect(() => {
         const targetValues = {
             followers: 680000,
@@ -135,7 +137,7 @@ const Stats = () => {
                                                 {stat.suffix}
                                             </div>
                                             <div
-                                                className="text-gray-light uppercase tracking-wider transition-colors group-hover:text-white leading-tight w-full px-2
+                                                className="text-foreground uppercase tracking-wider transition-colors group-hover:text-white leading-tight w-full px-2
                                                     text-xs xs:text-sm sm:text-base
                                                     md:text-sm lg:text-base xl:text-lg"
                                                 style={{ fontFamily: '"Bebas Neue", Arial, sans-serif' }}
@@ -162,7 +164,7 @@ const Stats = () => {
                         >
                             TRUSTED BY INDUSTRY LEADERS
                         </h2>
-                        <p className="text-gray-light text-base sm:text-lg lg:text-xl mb-8 leading-relaxed">
+                        <p className="text-foreground text-base sm:text-lg lg:text-xl mb-8 leading-relaxed">
                             These numbers represent real results delivered to clients worldwide through
                             strategic digital transformation and innovative business solutions.
                         </p>
@@ -236,6 +238,3 @@ const Stats = () => {
 };
 
 export default Stats;
-
-
-

@@ -6,6 +6,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 const SignatureContent = () => {
     const [playVideo, setPlayVideo] = useState<{ [key: string]: boolean }>({});
+    const { theme } = useTheme();
 
     const toggleVideo = (key: string) => {
         setPlayVideo((prev) => ({
@@ -38,7 +39,7 @@ const SignatureContent = () => {
                         How To Create Content Efficiently
                     </h3>
                     <p
-                        className="text-gray-light mb-4 sm:mb-6 text-sm sm:text-base"
+                        className="text-foreground mb-4 sm:mb-6 text-sm sm:text-base"
                         style={{
                             fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                         }}
@@ -91,7 +92,7 @@ const SignatureContent = () => {
                         Digital Transformation Mastery
                     </h3>
                     <p
-                        className="text-gray-light mb-4 sm:mb-6 text-sm sm:text-base"
+                        className="text-foreground mb-4 sm:mb-6 text-sm sm:text-base"
                         style={{
                             fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
                         }}

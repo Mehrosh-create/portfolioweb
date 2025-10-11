@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+
 interface CursorProps {
     mousePos: { x: number; y: number };
     isDragging: boolean;
