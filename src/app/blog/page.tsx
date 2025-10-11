@@ -319,7 +319,7 @@ const BlogPage = () => {
                   </div>
                   <Link
                     href={`/blog/${featuredPost.slug}`}
-                    className="px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 text-[10px] xs:text-xs sm:text-sm font-bold uppercase tracking-wider transition-all hover:opacity-90 flex items-center justify-center sm:justify-start gap-1.5 xs:gap-2 w-full sm:w-auto rounded"
+                    className="px-3 xs:px-4 sm:px-5 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 text-[10px] xs:text-xs sm:text-sm font-bold uppercase tracking-wider transition-all hover:opacity-90 flex items-center justify-center sm:justify-start gap-1.5 xs:gap-2 w-full sm:w-60 rounded"
                     style={{ backgroundColor: "#0fb8af", color: "#000" }}
                   >
                     <span>Read Full Article</span> <ArrowRight className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4" />

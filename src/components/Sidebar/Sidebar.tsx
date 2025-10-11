@@ -366,3 +366,8 @@ const Sidebar = ({ onSearchClick }: SidebarProps) => {
 };
 
 export default Sidebar;
+
+
+
+
+

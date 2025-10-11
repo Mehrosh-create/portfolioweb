@@ -12,6 +12,7 @@ import {
   Activity,
   Layers,
   Network,
+  ExternalLink,
 } from "lucide-react";
 import Image from "next/image";
 import GravWrap from "@/components/Common/GravWrap";
@@ -173,7 +174,7 @@ const NewPage: React.FC = () => {
       id: 2,
       title: "CRM Implementation Toolkit 3.0",
       description:
-        "Updated toolkit with 50+ templates, frameworks, and automation scripts for complete CRM transformation",
+        "Polarised toolkit with 50+ templates, frameworks, and automation scripts for complete CRM transformation",
       category: "RESOURCE UPDATE",
       date: "March 15, 2025",
       status: "UPDATED",
@@ -181,8 +182,8 @@ const NewPage: React.FC = () => {
       price: "FREE",
       features: [
         "50+ Templates",
-        "Automation Scripts",
         "Process Frameworks",
+        "Automation Scripts",
         "Video Tutorials",
       ],
       image: "/images/crmm-toolkit.jpg",
@@ -207,20 +208,20 @@ const NewPage: React.FC = () => {
     },
   ];
 
-  const [visible, setVisible] = useState(2);
+  const [visible, setVisible] = useState(1); // Start with only first item
 
   return (
-    <div className="min-h-screen bg-background dark:bg-white text-foreground dark:text-black">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Services Section */}
-      <div className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <div className="py-8 md:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-8 md:mb-12 lg:mb-16">
             <SlidingHighlight text="SPECIALIZATIONS" />
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-foreground dark:text-black mb-4 sm:mb-6 leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black uppercase text-foreground mb-3 md:mb-4 lg:mb-6 leading-tight">
               MY <span className="text-[#0fb8af]">EXPERTISE</span>
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-light dark:text-gray-700 max-w-3xl mx-auto px-4">
+            <p className="text-sm md:text-base lg:text-lg xl:text-xl text-gray-light max-w-2xl lg:max-w-3xl mx-auto px-2 md:px-4">
               With over 7 years of experience, I specialize in transforming
               businesses through digital innovation and strategic growth
             </p>
@@ -240,26 +241,28 @@ const NewPage: React.FC = () => {
             {services.map((service, index) => (
               <FadeSlide key={index} delay={index * 0.15}>
                 <GravWrap>
-                  <div className="bg-gray-dark dark:bg-gray-100 border border-gray-800 dark:border-gray-300 rounded-xl overflow-hidden hover:border-[#0fb8af] transition-colors group cursor-pointer h-full flex flex-col">
-                    <div className="relative aspect-[4/3]">
+                  <div className="bg-gray-dark border border-gray-800 rounded-xl overflow-hidden hover:border-[#0fb8af] transition-colors group cursor-pointer h-full flex flex-col">
+                    {/* Image container - adjusted to fit container without cropping */}
+                    <div className="relative aspect-[4/3] overflow-hidden">
                       <Image
                         src={service.image}
                         alt={service.title}
                         fill
-                        className="object-cover"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       />
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                      {/* Hover overlay with icon */}
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                         <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-full flex items-center justify-center">
                           {service.icon}
                         </div>
                       </div>
                     </div>
                     <div className="p-4 sm:p-5 flex-1 flex flex-col">
-                      <h3 className="text-lg sm:text-xl font-bold mb-2 text-foreground dark:text-black group-hover:text-[#0fb8af] transition-colors">
+                      <h3 className="text-lg sm:text-xl font-bold mb-2 text-foreground group-hover:text-[#0fb8af] transition-colors">
                         {service.title}
                       </h3>
-                      <p className="text-gray-light dark:text-gray-700 text-sm sm:text-base flex-1">
+                      <p className="text-gray-light text-sm sm:text-base flex-1">
                         {service.description}
                       </p>
                     </div>
@@ -271,94 +274,96 @@ const NewPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Latest Launches - Solid White only in Light Mode */}
-      <div className={`py-16 px-6 ${theme === 'light' ? 'bg-white' : 'bg-gray-dark'}`}>
+      {/* Latest Launches Section */}
+      <div className="py-8 md:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <SlidingHighlight text="LATEST LAUNCHES" />
 
-            <h2 className={`text-3xl lg:text-4xl font-bold mb-6 leading-tight ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 leading-tight text-foreground">
               NEW <span className="text-[#0fb8af]">RELEASES</span>
             </h2>
           </div>
 
           {/* Updates list */}
-          <div className="space-y-16">
+          <div className="space-y-12 md:space-y-16 lg:space-y-20">
             {latestUpdates.slice(0, visible).map((update, index) => (
               <FadeSlide key={update.id} delay={index * 0.25} direction="up">
-                <div
-                  className={`flex flex-col lg:flex-row gap-8 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                    }`}
-                >
+                <div className="flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-10 xl:gap-12 items-start">
                   {/* Image */}
-                  <div className="lg:flex-1 w-full">
-                    <div className="relative aspect-[16/9] rounded-xl overflow-hidden">
+                  <div className="w-full lg:w-1/2">
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
                       <Image
                         src={update.image}
                         alt={update.title}
                         fill
-                        className="object-cover"
+                        className="object-cover hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 50vw, 50vw"
                       />
-                      <div
-                        className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-bold uppercase"
-                        style={{
-                          backgroundColor: "#0fb8af",
-                          color: "black",
-                        }}
-                      >
-                        {update.status}
-                      </div>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="lg:flex-1">
-                    <div
-                      className="inline-block px-2 py-1 mb-3 text-xs font-bold uppercase"
-                      style={{
-                        backgroundColor: "#0fb8af",
-                        color: "black",
-                      }}
-                    >
-                      {update.category}
+                  <div className="w-full lg:w-1/2 flex flex-col h-full">
+                    {/* Category Badge - STYLED LIKE LATEST LAUNCHES */}
+                    <div className="relative inline-block mb-3 md:mb-4 overflow-hidden">
+                      <span className="absolute top-0 left-0 h-30 w-30 bg-[#0fb8af]"></span>
+                      <span
+                        className="relative z-10 text-black font-bold tracking-wider uppercase whitespace-nowrap px-3 py-1 inline-block text-xs"
+                        style={{
+                          fontFamily: '"Bebas Neue", sans-serif',
+                          fontWeight: 700,
+                          letterSpacing: "0.08em",
+                        }}
+                      >
+                        {update.category}
+                      </span>
                     </div>
 
-                    <h3 className={`text-2xl lg:text-3xl font-bold mb-4 leading-tight ${theme === 'light' ? 'text-black' : 'text-white'}`}>
+                    {/* Title */}
+                    <h3 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mb-3 md:mb-4 leading-tight text-foreground">
                       {update.title}
                     </h3>
 
-                    <p className={`mb-6 text-base ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
+                    {/* Description */}
+                    <p className="mb-4 md:mb-5 lg:mb-6 text-sm md:text-base text-gray-light leading-relaxed flex-1">
                       {update.description}
                     </p>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                    {/* Features Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-4 md:mb-5 lg:mb-6">
                       {update.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-[#0fb8af] flex-shrink-0" />
-                          <span className={`text-sm ${theme === 'light' ? 'text-black' : 'text-white'}`}>{feature}</span>
+                        <div key={idx} className="flex items-center gap-2 md:gap-3">
+                          <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-[#0fb8af] flex-shrink-0" />
+                          <span className="text-xs md:text-sm text-foreground leading-tight">
+                            {feature}
+                          </span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between mb-6 gap-3">
-                      <div className="text-2xl lg:text-3xl font-black text-[#0fb8af]">
+                    {/* Price and Date */}
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 md:gap-4 mb-4 md:mb-5 lg:mb-6">
+                      <div className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-black text-[#0fb8af]">
                         {update.price}
                       </div>
-                      <div className={`text-xs flex items-center gap-2 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
-                        <Calendar className="w-3 h-3" />
-                        {update.date}
+                      <div className="text-xs md:text-sm flex items-center gap-2 text-gray-light">
+                        <Calendar className="w-4 h-4" />
+                        <span className="whitespace-nowrap">{update.date}</span>
                       </div>
                     </div>
 
-                    <div className="flex gap-3">
+                    {/* Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-3 mt-auto">
                       <Link
                         href={`/learnmore/${update.id}`}
-                        className="border-2 border-[#0fb8af] text-[#0fb8af] px-5 py-3 uppercase transition-all duration-300 transform hover:scale-105 text-sm text-center font-semibold"
+                        className="border-2 border-[#0fb8af] text-[#0fb8af] px-4 md:px-5 lg:px-6 py-2 md:py-3 uppercase transition-all duration-300 transform hover:scale-105 hover:bg-[#0fb8af] hover:text-black text-xs md:text-sm text-center font-semibold whitespace-nowrap flex items-center justify-center gap-2"
                         style={{
                           letterSpacing: "0.08em",
                         }}
                       >
                         Learn More
+                        <ExternalLink className="w-4 h-4" />
                       </Link>
                     </div>
                   </div>
@@ -367,17 +372,17 @@ const NewPage: React.FC = () => {
             ))}
           </div>
 
-          {/* Load More */}
+          {/* Load More Button */}
           {visible < latestUpdates.length && (
-            <div className="text-center mt-12">
+            <div className="text-center mt-8 md:mt-12 lg:mt-16">
               <button
-                onClick={() => setVisible((prev) => prev + 1)}
-                className="px-6 py-3 bg-[#0fb8af] text-black uppercase transition-all duration-300 transform hover:scale-105 text-sm font-semibold"
+                onClick={() => setVisible(latestUpdates.length)}
+                className="px-6 md:px-8 py-2 md:py-3 lg:py-4 bg-[#0fb8af] text-black uppercase transition-all duration-300 transform hover:scale-105 text-xs md:text-sm font-semibold"
                 style={{
                   letterSpacing: "0.08em",
                 }}
               >
-                Load More
+                <strong>Load More</strong>
               </button>
             </div>
           )}
